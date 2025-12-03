@@ -49,16 +49,29 @@ const STR = {
 
     faqH: "Často se ptáte",
     faq: [
-      { q: "Jak probíhá konzultace?", a: "Přijedu k vám, podívám se na prostor, probereme vaše potřeby a zvolíme směr i materiály." },
-      { q: "Jak dlouho trvá výroba?", a: "Obvykle 3–6 týdnů podle rozsahu zakázky a dostupnosti materiálů." },
-      { q: "Mohu vidět vzorky?", a: "Ano, vzorky látek přivezu na osobní konzultaci přímo do vašeho prostoru." },
-      { q: "Montujete i kolejnice a systémy?", a: "Ano, zajišťujeme kompletní dodání včetně techniky a montáže." }
+      {
+        q: "Jak probíhá konzultace?",
+        a: "Přijedu k vám, podívám se na prostor, probereme vaše potřeby a zvolíme směr i materiály."
+      },
+      {
+        q: "Jak dlouho trvá výroba?",
+        a: "Obvykle 3–6 týdnů podle rozsahu zakázky a dostupnosti materiálů."
+      },
+      {
+        q: "Mohu vidět vzorky?",
+        a: "Ano, vzorky látek přivezu na osobní konzultaci přímo do vašeho prostoru."
+      },
+      {
+        q: "Montujete i kolejnice a systémy?",
+        a: "Ano, zajišťujeme kompletní dodání včetně techniky a montáže."
+      }
     ],
 
     inspH: "Atmosféra",
 
     priceH: "Kolik zaplatíte",
-    priceP: "Ceny jsou orientační; závisí na materiálu, rozměrech a typu systému. Rámec sdělím na první schůzce.",
+    priceP:
+      "Ceny jsou orientační; závisí na materiálu, rozměrech a typu systému. Rámec sdělím na první schůzce.",
 
     processH: "Jak pracujeme",
 
@@ -670,6 +683,209 @@ function Contact({ t }) {
   );
 }
 
+/* ---------- NOVÉ STRÁNKY: VOP, GDPR, COOKIES ---------- */
+
+function Terms() {
+  useReveal();
+  return (
+    <section className="max-w-4xl mx-auto px-4 py-16 reveal">
+      <h2 className="script text-4xl mb-6">Obchodní podmínky</h2>
+      <p className="text-[var(--muted)] mb-4 text-sm">
+        Tyto obchodní podmínky upravují vztah mezi prodávajícím a zákazníkem při nákupu
+        zboží a služeb prostřednictvím těchto webových stránek. Doporučuji vám je před
+        dokončením objednávky pročíst.
+      </p>
+
+      <h3 className="font-semibold mt-4 mb-1 text-base">I. Úvodní ustanovení</h3>
+      <p className="text-[var(--muted)] text-sm mb-3">
+        Prodávajícím je podnikatel působící pod jménem nebo obchodní firmou uvedenou
+        na této stránce a v patičce webu (včetně IČO, DIČ a kontaktních údajů). Zákazníkem
+        je fyzická nebo právnická osoba, která uzavírá smlouvu s prodávajícím na dálku,
+        prostřednictvím těchto webových stránek, e-mailu nebo telefonu.
+      </p>
+
+      <h3 className="font-semibold mt-4 mb-1 text-base">II. Nabídka zboží a služeb</h3>
+      <p className="text-[var(--muted)] text-sm mb-3">
+        Na webu jsou prezentovány zejména hotové nebo zakázkově vyráběné prvky vnitřního
+        stínění, doplňkové produkty (např. esence a vůně) a související služby, jako jsou
+        konzultace, návrh řešení a montáž. U zakázek na míru je cena stanovována individuálně
+        podle konkrétních parametrů zakázky.
+      </p>
+
+      <h3 className="font-semibold mt-4 mb-1 text-base">III. Objednávka a uzavření smlouvy</h3>
+      <p className="text-[var(--muted)] text-sm mb-3">
+        Zboží nebo služby lze objednat prostřednictvím objednávkového formuláře, e-mailem
+        nebo telefonicky. Smlouva je uzavřena okamžikem potvrzení objednávky ze strany
+        prodávajícího, a to zpravidla e-mailem. U zakázek na míru dochází k uzavření smlouvy
+        až po schválení konkrétní cenové nabídky zákazníkem.
+      </p>
+
+      <h3 className="font-semibold mt-4 mb-1 text-base">IV. Cena a platební podmínky</h3>
+      <p className="text-[var(--muted)] text-sm mb-3">
+        Ceny jsou uvedeny včetně DPH, je-li prodávající plátcem DPH, a včetně případných
+        zákonných poplatků, není-li uvedeno jinak. Cena může být uhrazena převodem na účet
+        prodávajícího nebo jiným způsobem uvedeným v objednávce. U zakázek na míru si
+        prodávající může vyžádat zálohu, jejíž výše a splatnost jsou uvedeny v nabídce.
+      </p>
+
+      <h3 className="font-semibold mt-4 mb-1 text-base">V. Dodací podmínky</h3>
+      <p className="text-[var(--muted)] text-sm mb-3">
+        Dodací lhůta hotového zboží je uvedena orientačně u jednotlivých produktů nebo v
+        potvrzení objednávky. U zakázek na míru závisí na povaze zakázky, zvolených
+        materiálech a domluveném harmonogramu. Zboží je doručováno dopravcem nebo
+        předáno při osobní montáži.
+      </p>
+
+      <h3 className="font-semibold mt-4 mb-1 text-base">
+        VI. Práva z vadného plnění (reklamace)
+      </h3>
+      <p className="text-[var(--muted)] text-sm mb-3">
+        Zákazník je povinen po převzetí zboží zkontrolovat jeho stav a případné zjevné
+        vady bez zbytečného odkladu reklamovat. Reklamace může být uplatněna písemně
+        nebo e-mailem na kontakty uvedené na webu. Prodávající vyřídí reklamaci bez
+        zbytečného odkladu, nejpozději do 30 dnů od jejího uplatnění, pokud se se
+        zákazníkem nedohodne jinak.
+      </p>
+
+      <h3 className="font-semibold mt-4 mb-1 text-base">
+        VII. Odstoupení od smlouvy u spotřebitelů
+      </h3>
+      <p className="text-[var(--muted)] text-sm mb-3">
+        Je-li zákazník spotřebitelem, má při nákupu na dálku právo odstoupit od smlouvy
+        do 14 dnů od převzetí zboží, není-li zákonem stanovena výjimka. Toto právo se
+        nevztahuje zejména na zboží vyrobené podle přání zákazníka nebo pro jeho osobní
+        potřebu (například závěsy, záclony a stínění šité na konkrétní míru a dle schváleného
+        návrhu).
+      </p>
+
+      <h3 className="font-semibold mt-4 mb-1 text-base">
+        VIII. Mimosoudní řešení sporů
+      </h3>
+      <p className="text-[var(--muted)] text-sm mb-3">
+        V případě sporu mezi prodávajícím a spotřebitelem se může spotřebitel obrátit na
+        Českou obchodní inspekci (www.coi.cz) jako subjekt mimosoudního řešení sporů.
+      </p>
+
+      <h3 className="font-semibold mt-4 mb-1 text-base">IX. Závěrečná ustanovení</h3>
+      <p className="text-[var(--muted)] text-sm mb-3">
+        Právní vztahy mezi prodávajícím a zákazníkem se řídí právním řádem České republiky.
+        Aktuální znění těchto obchodních podmínek je zveřejněno na webových stránkách
+        prodávajícího a může být průběžně aktualizováno.
+      </p>
+    </section>
+  );
+}
+
+function Privacy() {
+  useReveal();
+  return (
+    <section className="max-w-4xl mx-auto px-4 py-16 reveal">
+      <h2 className="script text-4xl mb-6">Ochrana osobních údajů</h2>
+      <p className="text-[var(--muted)] text-sm mb-4">
+        Na této stránce najdete informace o tom, jak zpracovávám osobní údaje v souvislosti
+        s poptávkami, objednávkami a fungováním těchto webových stránek.
+      </p>
+
+      <h3 className="font-semibold mt-4 mb-1 text-base">Správce osobních údajů</h3>
+      <p className="text-[var(--muted)] text-sm mb-3">
+        Správcem osobních údajů je podnikatel uvedený v kontaktních údajích na těchto
+        stránkách (jméno / název, adresa, IČO, DIČ, e-mail, telefon).
+      </p>
+
+      <h3 className="font-semibold mt-4 mb-1 text-base">
+        Jaké údaje zpracovávám a za jakým účelem
+      </h3>
+      <p className="text-[var(--muted)] text-sm mb-3">
+        Zpracovávám zejména identifikační a kontaktní údaje (jméno, příjmení, název firmy,
+        e-mail, telefon, adresu), dále údaje o poptávce a zakázce (např. rozměry, fotografie
+        oken a interiéru, vaše požadavky na řešení) a fakturační údaje včetně platebních
+        údajů.
+      </p>
+      <p className="text-[var(--muted)] text-sm mb-3">
+        Údaje zpracovávám za účelem vyřízení poptávky, uzavření smlouvy, dodání zboží a
+        služeb, vedení účetnictví a plnění zákonných povinností, případně ochrany svých
+        právních nároků (např. při reklamaci nebo sporu).
+      </p>
+
+      <h3 className="font-semibold mt-4 mb-1 text-base">Právní základ zpracování</h3>
+      <p className="text-[var(--muted)] text-sm mb-3">
+        Právním základem je zejména plnění smlouvy nebo jednání před uzavřením smlouvy,
+        splnění právních povinností v oblasti účetnictví a daní a oprávněný zájem na
+        ochraně právních nároků. Pro případný marketing (např. zasílání newsletteru) bych
+        osobní údaje používala pouze s vaším souhlasem nebo na základě oprávněného
+        zájmu, pokud jste mým zákazníkem, a vždy s možností jednoduchého odhlášení.
+      </p>
+
+      <h3 className="font-semibold mt-4 mb-1 text-base">
+        Doba uchování osobních údajů
+      </h3>
+      <p className="text-[var(--muted)] text-sm mb-3">
+        Údaje související se smlouvou a fakturací uchovávám po dobu stanovenou právními
+        předpisy (typicky 10 let). Údaje z nezávazných poptávek uchovávám po dobu
+        nezbytně nutnou k vyřízení komunikace, obvykle nejdéle 1 rok, pokud z poptávky
+        nevznikne smluvní vztah.
+      </p>
+
+      <h3 className="font-semibold mt-4 mb-1 text-base">
+        Předávání osobních údajů třetím stranám
+      </h3>
+      <p className="text-[var(--muted)] text-sm mb-3">
+        Osobní údaje mohu předat pouze v nezbytném rozsahu účetnímu nebo daňovému
+        poradci, poskytovatelům IT a hostingových služeb, dopravcům nebo montážním
+        partnerům, pokud je to nutné pro realizaci zakázky, a orgánům veřejné moci,
+        pokud to vyžaduje zákon. S těmito subjekty mám uzavřeny odpovídající smlouvy
+        o zpracování osobních údajů.
+      </p>
+
+      <h3 className="font-semibold mt-4 mb-1 text-base">Vaše práva</h3>
+      <p className="text-[var(--muted)] text-sm mb-3">
+        Máte právo na přístup k osobním údajům, jejich opravu nebo doplnění, omezení
+        zpracování, výmaz (pokud jsou splněny zákonné podmínky), přenositelnost údajů
+        a právo vznést námitku proti zpracování založenému na oprávněném zájmu.
+      </p>
+      <p className="text-[var(--muted)] text-sm mb-3">
+        Pokud se domníváte, že dochází k neoprávněnému zpracování osobních údajů, máte
+        také právo podat stížnost u Úřadu pro ochranu osobních údajů (www.uoou.cz).
+      </p>
+
+      <h3 className="font-semibold mt-4 mb-1 text-base">
+        Fotografie interiéru a referenční snímky
+      </h3>
+      <p className="text-[var(--muted)] text-sm mb-3">
+        Fotografie vašeho interiéru, oken a realizovaného stínění slouží primárně k
+        návrhu a realizaci zakázky. Pro použití fotografií jako referencí (např. v galerii
+        realizací) vždy požádám o váš výslovný souhlas nebo fotografie používám tak, aby
+        nebylo možné vás jednoznačně identifikovat.
+      </p>
+    </section>
+  );
+}
+
+function CookiesPage() {
+  useReveal();
+  return (
+    <section className="max-w-4xl mx-auto px-4 py-16 reveal">
+      <h2 className="script text-4xl mb-6">Cookies</h2>
+      <p className="text-[var(--muted)] text-sm mb-3">
+        Tyto webové stránky používají soubory cookies, které slouží k zajištění jejich
+        základní funkčnosti, případně k anonymnímu měření návštěvnosti a zlepšování
+        uživatelského prostředí.
+      </p>
+      <p className="text-[var(--muted)] text-sm mb-3">
+        Cookies jsou malé textové soubory, které se ukládají do vašeho prohlížeče. V
+        nastavení prohlížeče můžete používání cookies kdykoli omezit nebo zcela zakázat.
+        Pokud cookies vypnete, může dojít k omezení některých funkcí webu.
+      </p>
+      <p className="text-[var(--muted)] text-sm mb-3">
+        Pokud na webu používám cookies pro marketingové účely nebo pokročilou analytiku,
+        informuji vás o tom při první návštěvě pomocí lišty a mám možnost získat váš
+        souhlas. Souhlas můžete kdykoli odvolat úpravou nastavení nebo změnou nastavení
+        prohlížeče.
+      </p>
+    </section>
+  );
+}
+
 function App() {
   const { lang, setLang, t } = useLang();
   const { route } = useRoute();
@@ -689,6 +905,12 @@ function App() {
         return <Essences t={t} />;
       case "/contact":
         return <Contact t={t} />;
+      case "/terms":
+        return <Terms />;
+      case "/privacy":
+        return <Privacy />;
+      case "/cookies":
+        return <CookiesPage />;
       default:
         return <Home t={t} />;
     }
@@ -706,23 +928,39 @@ function App() {
             <div className="text-sm text-[#bdbdbd]">{t.brand2}</div>
           </div>
 
-          <div className="grid gap-2">
+          <div className="grid gap-2 text-sm text-[#bdbdbd]">
             <div className="font-semibold">Osobní přístup</div>
-            <div className="text-sm text-[#bdbdbd]">
-              Řešení na míru vašemu stylu.
-            </div>
+            <div>Řešení na míru vašemu stylu.</div>
             <div className="font-semibold mt-3">Prémiová kvalita</div>
-            <div className="text-sm text-[#bdbdbd]">
-              Pečlivé zpracování detailů.
-            </div>
+            <div>Pečlivé zpracování detailů.</div>
             <div className="font-semibold mt-3">Ověřená odbornost</div>
-            <div className="text-sm text-[#bdbdbd]">Dvacet let zkušeností.</div>
+            <div>Dvacet let zkušeností.</div>
           </div>
 
-          <div className="text-sm text-[#bdbdbd]">
+          <div className="text-sm text-[#bdbdbd] flex flex-col gap-2">
             <p>
               &copy; 2025 {t.brand1}. {t.rights}
             </p>
+            <div className="flex flex-wrap gap-3">
+              <button
+                onClick={() => go("/terms")}
+                className="underline text-xs hover:text-white"
+              >
+                Obchodní podmínky
+              </button>
+              <button
+                onClick={() => go("/privacy")}
+                className="underline text-xs hover:text-white"
+              >
+                Ochrana osobních údajů
+              </button>
+              <button
+                onClick={() => go("/cookies")}
+                className="underline text-xs hover:text-white"
+              >
+                Cookies
+              </button>
+            </div>
           </div>
         </div>
       </footer>
@@ -754,6 +992,7 @@ function closeLightbox() {
 }
 
 ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+
 
 
 
