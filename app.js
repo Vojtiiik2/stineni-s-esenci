@@ -27,9 +27,9 @@ const STR = {
     cta: "Kontaktujte nás",
 
     homeAbout: [
-  "Navrhujeme stínění tak, aby sedělo vašemu prostoru i tomu, jak v něm opravdu žijete. Nejde jen o látku a systém – jde o světlo během dne, soukromí večer a pocit, který doma chcete mít.",
+  "Navrhujeme stínění tak, aby sedělo vašemu prostoru i tomu, jak v něm opravdu žijete. Nejde jen o látku a systém, jde o světlo během dne, soukromí večer a pocit, který doma chcete mít.",
   "Každý detail ladíme podle vás. Respektujeme vaše potřeby a preference a přizpůsobujeme se tomu, co je pro vás důležité. Někdo chce klid a měkké světlo, jiný funkční zatemnění nebo jednoduché řešení bez zbytečností. Vždy hledáme cestu, která dává smysl právě vám.",
-  "Jsme rodinná firma a na práci je to znát. Dáváme si záležet, komunikujeme na rovinu a držíme domluvy. Máme více než dvacet let zkušeností s látkami, šitím i technikou a chceme, aby výsledek fungoval dlouhodobě – nejen první den."
+  "Jsme rodinná firma a na práci je to znát. Dáváme si záležet, komunikujeme na rovinu a držíme domluvy. Máme více než dvacet let zkušeností s látkami, šitím i technikou a chceme, aby výsledek fungoval dlouhodobě, nejen první den."
 ],
 
 
