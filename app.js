@@ -24,18 +24,23 @@ const STR = {
     nav: ["Jak pracujeme", "Kolik zaplatíte", "Galerie", "Hotové stínění", "Esence", "Kontakt"],
     heroH1: "Kde se světlo setká s emocí",
     heroSub: "Záclony · Závěsy · Rolety · Esence",
-    cta: "Nezávazná konzultace",
+    cta: "Kontaktujte nás",
 
     homeAbout: [
-      "Navrhuji stínění, které ctí architekturu, rytmus dne a prostor.",
-      "Každý detail ladím tak, aby látka, světlo a vůně tvořily harmonii vašeho domova. Jsme rodinná služba s více než dvaceti lety zkušeností s prací s látkou, jemností detailu a atmosférou interiéru.",
-      "Každý projekt vnímáme individuálně — s respektem k prostoru, světlu i vašemu stylu. Věřím, že dobře navržené stínění dokáže proměnit domov v místo, kde se cítíte klidně, příjemně a sami sebou."
+      
+Navrhuji stínění tak, aby sedělo vašemu prostoru i tomu, jak v něm opravdu žijete. Nejde jen o látku a systém — jde o světlo během dne, soukromí večer a pocit, který doma chcete mít.
+
+Každý detail ladíme podle vás. Respektujeme vaše potřeby a preference a přizpůsobujeme se tomu, co je pro vás důležité — někdo chce klid a měkké světlo, někdo funkční zatemnění, jiný zase jednoduché řešení bez zbytečností. Vždy hledáme cestu, která dává smysl právě vám.
+
+Jsme rodinná firma a na práci je to znát: dáváme si záležet, komunikujeme na rovinu a držíme domluvy. Máme přes dvacet let zkušeností s látkami, šitím i technikou a chceme, aby výsledek vypadal dobře nejen první den, ale i za pár let.
+
+
     ],
 
     servicesH: "Služby",
     services: [
-      { name: "Záclony", note: "Lehkost, jemnost a soukromí." },
-      { name: "Závěsy", note: "Estetika, teplo a útulnost." },
+      { name: "Záclony", note: "Lehkost, jemnost a útulnost." },
+      { name: "Závěsy", note: "Estetika, teplo a soukromí." },
       { name: "Rolety", note: "Praktičnost a čisté linie." },
       { name: "Technické systémy", note: "Minimalistické a funkční řešení." }
     ],
@@ -55,7 +60,7 @@ const STR = {
       },
       {
         q: "Jak dlouho trvá výroba?",
-        a: "Obvykle 3–6 týdnů podle rozsahu zakázky a dostupnosti materiálů."
+        a: "Obvykle 4–8 týdnů podle rozsahu zakázky a dostupnosti materiálů."
       },
       {
         q: "Mohu vidět vzorky?",
