@@ -45,9 +45,9 @@ const STR = {
 
     benefitsH: "Proč s námi",
     benefits: [
-      { name: "Individuální návrh", note: "Řešení vytvořené přesně pro váš prostor." },
+      { name: "Individuální návrh", note: "Řešení vytvořené přesně pro váš prostor a vaše potřeby." },
       { name: "20 let zkušeností", note: "Znalost materiálů i technologií." },
-      { name: "Jemnost detailu", note: "Každý šev a linie jsou promyšlené." }
+      { name: "Jemnost detailu", note: "Preciznost v každém kroku." }
     ],
 
     faqH: "Často se ptáte",
