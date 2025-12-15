@@ -41,6 +41,7 @@ const STR = {
 ],
 
 
+
     homeAbout: [
   "Navrhujeme stínění tak, aby sedělo vašemu prostoru i tomu, jak v něm opravdu žijete. Nejde jen o látku a systém. Jde o světlo během dne, soukromí večer a pocit, který doma chcete mít.",
   "Každý detail ladíme podle vás. Respektujeme vaše potřeby a preference a přizpůsobujeme se tomu, co je pro vás důležité. Někdo chce klid a měkké světlo, jiný funkční zatemnění nebo jednoduché řešení bez zbytečností. Vždy hledáme cestu, která dává smysl právě vám.",
@@ -206,81 +207,57 @@ const Header = ({ t, lang, setLang }) => {
 };
 
 function Hero({ t, small = false, showCta = false, intervalMs = 8000 }) {
-  useReveal();
-
-  const slides = (t.heroSlides && t.heroSlides.length ? t.heroSlides : [{ h1: t.heroH1, bg: MAIN_HERO }]);
-
-  const [idx, setIdx] = useState(0);
-  const [prevIdx, setPrevIdx] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
+  const slides = t.heroSlides || [];
+  const [index, setIndex] = useState(0);
+  const [animate, setAnimate] = useState(true);
 
   useEffect(() => {
-    if (small || slides.length <= 1) return;
+    if (small || slides.length < 2) return;
 
-    const tick = () => {
-      setPrevIdx((p) => {
-        // p je předchozí "prevIdx", ale my chceme uložit aktuální idx
-        return idx;
-      });
-      setIsTransitioning(true);
-      setIdx((i) => (i + 1) % slides.length);
-    };
+    const id = setInterval(() => {
+      setAnimate(false);
+      setTimeout(() => {
+        setIndex((i) => (i + 1) % slides.length);
+        setAnimate(true);
+      }, 600);
+    }, intervalMs);
 
-    const id = setInterval(tick, intervalMs);
     return () => clearInterval(id);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [small, slides.length, intervalMs, idx]);
+  }, [slides.length, intervalMs, small]);
 
-  // po změně idx ukončíme přechod po krátké době
-  useEffect(() => {
-    if (!isTransitioning) return;
-    const tmr = setTimeout(() => setIsTransitioning(false), 900);
-    return () => clearTimeout(tmr);
-  }, [isTransitioning]);
-
-  const current = slides[idx];
-  const prev = slides[prevIdx];
+  const slide = slides[index] || {};
 
   return (
-    <section className={(small ? "min-h-[42vh]" : "min-h-[92vh]") + " relative flex items-center reveal overflow-hidden"}>
-      {/* Předchozí slide (mizí) */}
-      {!small && slides.length > 1 && (
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `linear-gradient(to right, rgba(0,0,0,.20), rgba(0,0,0,.05)), url('${prev.bg}')`,
-            backgroundSize: "cover",
-            backgroundPosition: "left center",
-            opacity: isTransitioning ? 0 : 1,
-            transform: isTransitioning ? "translateX(-2%)" : "translateX(0)",
-            transition: "opacity 900ms ease, transform 900ms ease"
-          }}
-        />
-      )}
-
-      {/* Aktuální slide (nabíhá) */}
+    <section
+      className={
+        (small ? "min-h-[42vh]" : "min-h-[92vh]") +
+        " relative flex items-center overflow-hidden"
+      }
+    >
+      {/* background image */}
       <div
-        className="absolute inset-0"
+        className="absolute inset-0 transition-all duration-700 ease-in-out"
         style={{
-          backgroundImage: `linear-gradient(to right, rgba(0,0,0,.20), rgba(0,0,0,.05)), url('${current.bg}')`,
+          backgroundImage: `linear-gradient(to right, rgba(0,0,0,.25), rgba(0,0,0,.05)), url('${slide.bg}')`,
           backgroundSize: "cover",
-          backgroundPosition: "left center",
-          opacity: isTransitioning ? 1 : 1
+          backgroundPosition: "center",
+          transform: animate ? "scale(1)" : "scale(1.04)",
+          opacity: animate ? 1 : 0.6
         }}
       />
 
-      <div className="absolute inset-0 bg-gradient-to-b from-black/15 via-transparent to-black/20 pointer-events-none"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/25"></div>
 
+      {/* text */}
       <div className="relative max-w-6xl mx-auto px-4 w-full">
         <div
-          className="max-w-2xl text-white drop-shadow-xl"
-          style={{
-            opacity: isTransitioning ? 0.98 : 1,
-            transform: isTransitioning ? "translateX(0)" : "translateX(0)",
-            transition: "opacity 500ms ease"
-          }}
+          className={`max-w-2xl text-white transition-all duration-700 ease-out ${
+            animate ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+          }`}
         >
-          <h1 className="script text-5xl md:text-6xl mb-3">{current.h1}</h1>
+          <h1 className="script text-5xl md:text-6xl mb-3">
+            {slide.h1}
+          </h1>
           <p className="text-lg opacity-95">{t.heroSub}</p>
 
           {!small && showCta && (
@@ -303,7 +280,7 @@ function Home({ t }) {
 
   return (
     <>
-      <Hero t={t} showCta />
+   <Hero t={t} showCta />
 
       <section className="py-16 max-w-6xl mx-auto px-4 reveal">
         <div className="grid md:grid-cols-2 gap-8 items-center">
