@@ -40,7 +40,7 @@ const STR = {
       { name: "Záclony", note: "Lehkost, jemnost a útulnost." },
       { name: "Závěsy", note: "Estetika, teplo a soukromí." },
       { name: "Rolety", note: "Praktičnost a čisté linie." },
-      { name: "Technické systémy", note: "Minimalistické a funkční řešení." }
+      { name: "Technické systémy", note: "Dekorativní a funkční řešení." }
     ],
 
     benefitsH: "Proč s námi",
