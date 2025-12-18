@@ -274,30 +274,30 @@ function Hero({ t, small = false, showCta = false, intervalMs = 8000 }) {
 />
 
 
+
       <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/25"></div>
 
       {/* SLIDE text */}
       <div className="relative max-w-6xl mx-auto px-4 w-full">
-        <div
-         className={
-  "max-w-2xl text-white transition-all duration-800 ease-in-out will-change-transform " +
-  textClass
-}
+  <div
+    className={
+      "max-w-2xl text-white transition-all duration-700 ease-in-out will-change-transform " +
+      textClass
+    }
+  >
+    <h1 className="script text-5xl md:text-6xl mb-3">{slide.h1}</h1>
+    <p className="text-lg opacity-95">{t.heroSub}</p>
 
-        >
-          <h1 className="script text-5xl md:text-6xl mb-3">{slide.h1}</h1>
-          <p className="text-lg opacity-95">{t.heroSub}</p>
-
-          {!small && showCta && (
-            <button
-              onClick={() => go("/contact")}
-              className="btn-cta inline-block mt-6 px-5 py-3 rounded-full bg-[var(--sand)] text-[var(--text)] font-bold border border-black/5"
-            >
-              {t.cta}
-            </button>
-          )}
-        </div>
-      </div>
+    {!small && showCta && (
+      <button
+        onClick={() => go("/contact")}
+        className="btn-cta inline-block mt-6 px-5 py-3 rounded-full bg-[var(--sand)] text-[var(--text)] font-bold border border-black/5"
+      >
+        {t.cta}
+      </button>
+    )}
+  </div>
+</div>
     </section>
   );
 }
