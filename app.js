@@ -426,12 +426,28 @@ function Home({ t }) {
 function Process({ t }) {
   useReveal();
 
-  const bgTop = (t.processImgs && t.processImgs[0]) || 
+  const bgTop =
+    (t.processImgs && t.processImgs[0]) ||
     "https://images.unsplash.com/photo-1484154218962-a197022b5858?q=80&w=1800&auto=format&fit=crop";
 
   const steps = t.steps || [];
   const texts = t.stepsTxt || [];
   const imgs = t.processImgs || [];
+
+  // 1) krátké „lepidlo“ mezi kroky (editorial linka příběhu)
+  const bridges = [
+    "Z pozorování vzniká směr.",
+    "Návrh se mění v realitu.",
+    "Detail rozhoduje o výsledku."
+  ];
+
+  // 2) co klient získá v daném kroku (jedna věta, bez boxu)
+  const outputs = [
+    "Výstup: jasný směr a další kroky.",
+    "Výstup: konkrétní návrh + rámcový rozpočet.",
+    "Výstup: výroba na míru a připravená montáž.",
+    "Výstup: hotový prostor, který funguje dlouhodobě."
+  ];
 
   return (
     <>
@@ -446,63 +462,99 @@ function Process({ t }) {
           </p>
         </div>
 
-        <div className="mt-12 space-y-8">
-          {steps.map((title, i) => {
-            const reverse = i % 2 === 1;
-            const n = String(i + 1).padStart(2, "0");
+        {/* WRAPPER s jemnou svislou linkou (na desktopu) */}
+        <div className="mt-12 relative">
+          <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-px bg-[var(--line)]/60" />
 
-            return (
-              <div
-                key={i}
-                className={
-                  "grid md:grid-cols-2 gap-8 items-center reveal " +
-                  (reverse ? "md:[&>*:first-child]:order-2" : "")
-                }
-              >
-                {/* IMAGE */}
-                <div className="soft-shadow rounded-2xl overflow-hidden bg-white border border-[var(--line)]">
-                  <img
-                    src={imgs[i] || bgTop}
-                    alt={title}
-                    className="w-full h-full object-cover aspect-[16/10] md:aspect-[16/9]"
-                    loading="lazy"
-                  />
-                </div>
+          <div className="space-y-8 md:space-y-10">
+            {steps.map((title, i) => {
+              const reverse = i % 2 === 1;
+              const n = String(i + 1).padStart(2, "0");
 
-                {/* TEXT */}
-                <div className="max-w-xl">
-                  <div className="text-xs tracking-widest text-[var(--muted)] mb-2">
-                    {n}
+              return (
+                <React.Fragment key={i}>
+                  {/* KROK */}
+                  <div
+                    className={
+                      "grid md:grid-cols-2 gap-8 items-center reveal " +
+                      (reverse ? "md:[&>*:first-child]:order-2" : "")
+                    }
+                  >
+                    {/* IMAGE */}
+                    <div className="soft-shadow rounded-2xl overflow-hidden bg-white border border-[var(--line)]">
+                      <img
+                        src={imgs[i] || bgTop}
+                        alt={title}
+                        className="w-full h-full object-cover aspect-[16/10] md:aspect-[16/9]"
+                        loading="lazy"
+                      />
+                    </div>
+
+                    {/* TEXT */}
+                    <div className="max-w-xl">
+                      <div className="text-xs tracking-widest text-[var(--muted)] mb-2">
+                        {n}
+                      </div>
+
+                      <h3 className="text-2xl font-semibold mb-2">{title}</h3>
+
+                      <p className="text-[var(--muted)] text-base leading-relaxed">
+                        {texts[i]}
+                      </p>
+
+                      {/* mikro detail linka */}
+                      <div className="mt-4 inline-flex items-center gap-2 text-sm text-[var(--muted)]">
+                        <span className="w-10 h-px bg-[var(--line)]" />
+                        <span>
+                          {i === 0 && "Světlo, proporce, rytmus dne."}
+                          {i === 1 && "Materiál, technika, harmonie."}
+                          {i === 2 && "Řemeslo, přesnost, trpělivost."}
+                          {i === 3 && "Montáž, doladění, klid."}
+                        </span>
+                      </div>
+
+                      {/* výstup (co klient získá) */}
+                      <div className="mt-3 text-sm text-[var(--muted)]">
+                        <span className="font-semibold text-[var(--text)]/70">
+                          {outputs[i]}
+                        </span>
+                      </div>
+                    </div>
                   </div>
-                  <h3 className="text-2xl font-semibold mb-2">{title}</h3>
-                  <p className="text-[var(--muted)] text-base leading-relaxed">
-                    {texts[i]}
-                  </p>
 
-                  {/* malý "detail" řádek – drží premium pocit */}
-                  <div className="mt-4 inline-flex items-center gap-2 text-sm text-[var(--muted)]">
-                    <span className="w-10 h-px bg-[var(--line)]"></span>
-                    <span>
-                      {i === 0 && "Světlo, proporce, rytmus dne."}
-                      {i === 1 && "Materiál, technika, harmonie."}
-                      {i === 2 && "Řemeslo, přesnost, trpělivost."}
-                      {i === 3 && "Montáž, doladění, klid."}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
+                  {/* BRIDGE mezi kroky (jen mezi 1-2, 2-3, 3-4) */}
+                  {i < steps.length - 1 && (
+                    <div className="reveal text-center py-2 md:py-3">
+                      <div className="mx-auto w-24 h-px bg-[var(--line)]/80 mb-3" />
+                      <p className="text-xs italic text-[var(--muted)]">
+                        {bridges[i]}
+                      </p>
+                    </div>
+                  )}
+                </React.Fragment>
+              );
+            })}
+          </div>
         </div>
 
-        <div className="max-w-3xl mx-auto mt-12 text-center text-[var(--muted)]">
-          Cílem je, abyste se v prostoru cítili přirozeně a klidně – bez kompromisů
-          mezi estetikou a praktičností.
+        {/* finální tečka + podpis */}
+        <div className="max-w-3xl mx-auto mt-12 text-center">
+          <p className="text-[var(--muted)]">
+            Cílem je, abyste se v prostoru cítili přirozeně a klidně – bez
+            kompromisů mezi estetikou a praktičností.
+          </p>
+          <p className="mt-4 text-sm text-[var(--muted)]">
+            <span className="font-semibold text-[var(--text)]/75">
+              Jana Segelberg
+            </span>{" "}
+            — stínění s esencí
+          </p>
         </div>
       </section>
     </>
   );
 }
+
 
 
 function Pricing({ t }) {
