@@ -160,12 +160,20 @@ function useLang() {
 }
 
 function useRoute() {
-  const [route, setRoute] = useState(() => location.hash.replace("#", "") || "/");
+  const getRoute = () => {
+    const raw = location.hash || "#/";
+    const clean = raw.startsWith("#") ? raw.slice(1) : raw; // "/process#detail"
+    return clean.split("#")[0] || "/";
+  };
+
+  const [route, setRoute] = useState(getRoute);
+
   useEffect(() => {
-    const onHash = () => setRoute(location.hash.replace("#", "") || "/");
+    const onHash = () => setRoute(getRoute());
     window.addEventListener("hashchange", onHash);
     return () => window.removeEventListener("hashchange", onHash);
   }, []);
+
   return { route };
 }
 
@@ -372,8 +380,23 @@ function Home({ t }) {
       <section className="py-16 max-w-6xl mx-auto px-4 reveal">
         <h2 className="script text-4xl mb-8">{t.benefitsH}</h2>
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {t.benefits.map((b, i) => (
-            <div key={i} className="benefit-card soft-shadow reveal">
+         {t.benefits.map((b, i) => {
+  const hash = ["individualni-navrh", "zkusenosti", "detail"][i];
+  return (
+    <button
+      key={i}
+      onClick={() => (location.hash = `/process#${hash}`)}
+      className="benefit-card soft-shadow reveal text-left hover:translate-y-[-1px] transition"
+    >
+      <div className="text-lg font-semibold mb-2">{b.name}</div>
+      <p className="text-[var(--muted)] text-sm leading-relaxed">{b.note}</p>
+      <div className="mt-3 text-xs tracking-widest text-[var(--muted)]">
+        Zjistit víc →
+      </div>
+    </button>
+  );
+})}
+
               <div className="text-lg font-semibold mb-2">{b.name}</div>
               <p className="text-[var(--muted)] text-sm leading-relaxed">
                 {b.note}
@@ -434,19 +457,11 @@ function Process({ t }) {
   const texts = t.stepsTxt || [];
   const imgs = t.processImgs || [];
 
-  // 1) krátké „lepidlo“ mezi kroky (editorial linka příběhu)
+  // jemné propojení mezi kroky
   const bridges = [
     "Z pozorování vzniká směr.",
     "Návrh se mění v realitu.",
     "Detail rozhoduje o výsledku."
-  ];
-
-  // 2) co klient získá v daném kroku (jedna věta, bez boxu)
-  const outputs = [
-    "Výstup: jasný směr a další kroky.",
-    "Výstup: konkrétní návrh + rámcový rozpočet.",
-    "Výstup: výroba na míru a připravená montáž.",
-    "Výstup: hotový prostor, který funguje dlouhodobě."
   ];
 
   return (
@@ -454,16 +469,18 @@ function Process({ t }) {
       <Hero t={t} small bg={bgTop} />
 
       <section className="max-w-6xl mx-auto px-4 py-16 reveal">
+        {/* ===== HLAVIČKA ===== */}
         <div className="max-w-3xl mx-auto text-left md:text-center">
           <h2 className="script text-4xl mb-4">{t.processH}</h2>
           <p className="text-[var(--muted)] text-lg">
-            {t.processIntro ||
-              "Čtyři kroky. Jeden celek. V každém je prostor pro návrat a doladění detailu."}
+            Čtyři kroky. Jeden celek. V každém je prostor pro návrat a doladění
+            detailu.
           </p>
         </div>
 
-        {/* WRAPPER s jemnou svislou linkou (na desktopu) */}
+        {/* ===== CYKLUS KROKŮ ===== */}
         <div className="mt-12 relative">
+          {/* jemná svislá linka – jen desktop */}
           <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-px bg-[var(--line)]/60" />
 
           <div className="space-y-8 md:space-y-10">
@@ -473,7 +490,6 @@ function Process({ t }) {
 
               return (
                 <React.Fragment key={i}>
-                  {/* KROK */}
                   <div
                     className={
                       "grid md:grid-cols-2 gap-8 items-center reveal " +
@@ -496,13 +512,15 @@ function Process({ t }) {
                         {n}
                       </div>
 
-                      <h3 className="text-2xl font-semibold mb-2">{title}</h3>
+                      <h3 className="text-2xl font-semibold mb-2">
+                        {title}
+                      </h3>
 
                       <p className="text-[var(--muted)] text-base leading-relaxed">
                         {texts[i]}
                       </p>
 
-                      {/* mikro detail linka */}
+                      {/* mikro detail */}
                       <div className="mt-4 inline-flex items-center gap-2 text-sm text-[var(--muted)]">
                         <span className="w-10 h-px bg-[var(--line)]" />
                         <span>
@@ -512,17 +530,10 @@ function Process({ t }) {
                           {i === 3 && "Montáž, doladění, klid."}
                         </span>
                       </div>
-
-                      {/* výstup (co klient získá) */}
-                      <div className="mt-3 text-sm text-[var(--muted)]">
-                        <span className="font-semibold text-[var(--text)]/70">
-                          {outputs[i]}
-                        </span>
-                      </div>
                     </div>
                   </div>
 
-                  {/* BRIDGE mezi kroky (jen mezi 1-2, 2-3, 3-4) */}
+                  {/* přechodová věta */}
                   {i < steps.length - 1 && (
                     <div className="reveal text-center py-2 md:py-3">
                       <div className="mx-auto w-24 h-px bg-[var(--line)]/80 mb-3" />
@@ -537,18 +548,94 @@ function Process({ t }) {
           </div>
         </div>
 
-        {/* finální tečka + podpis */}
-        <div className="max-w-3xl mx-auto mt-12 text-center">
-          <p className="text-[var(--muted)]">
-            Cílem je, abyste se v prostoru cítili přirozeně a klidně – bez
-            kompromisů mezi estetikou a praktičností.
-          </p>
-          <p className="mt-4 text-sm text-[var(--muted)]">
-            <span className="font-semibold text-[var(--text)]/75">
-              Jana Segelberg
-            </span>{" "}
-            — stínění s esencí
-          </p>
+        {/* ===== CO STOJÍ ZA NAŠÍ PRACÍ ===== */}
+        <section className="max-w-5xl mx-auto px-4 py-16 reveal">
+          <div className="text-left md:text-center">
+            <h3 className="script text-3xl mb-6">
+              Co stojí za naší prací
+            </h3>
+            <p className="text-[var(--muted)] max-w-3xl mx-auto">
+              Principy, které se propisují do každého návrhu i realizace.
+            </p>
+          </div>
+
+          <div className="mt-10 grid md:grid-cols-3 gap-6">
+            {/* Individuální návrh */}
+            <article
+              id="individualni-navrh"
+              className="rounded-2xl bg-white border border-[var(--line)] soft-shadow p-7 reveal scroll-mt-24"
+            >
+              <h4 className="text-lg font-semibold mb-3">
+                Individuální návrh
+              </h4>
+              <p className="text-[var(--muted)] leading-relaxed">
+                Každý prostor má jiné světlo, jiné proporce a jiný rytmus dne.
+                Proto nikdy nezačínáme hotovým řešením ani typovým balíčkem.
+              </p>
+              <p className="text-[var(--muted)] leading-relaxed mt-3">
+                Návrh vzniká až na místě — z pozorování světla, z toho, jak
+                prostor používáte, a z toho, co od stínění opravdu očekáváte.
+                Během procesu se klidně vracíme o krok zpět, pokud cítíme, že
+                řešení ještě není ono.
+              </p>
+              <p className="text-[var(--muted)] leading-relaxed mt-3">
+                Individuální návrh pro nás neznamená více možností, ale správnou
+                volbu.
+              </p>
+            </article>
+
+            {/* Zkušenosti */}
+            <article
+              id="zkusenosti"
+              className="rounded-2xl bg-white border border-[var(--line)] soft-shadow p-7 reveal scroll-mt-24"
+            >
+              <h4 className="text-lg font-semibold mb-3">
+                20 let zkušeností
+              </h4>
+              <p className="text-[var(--muted)] leading-relaxed">
+                Zkušenosti se neprojevují v množství realizací, ale v
+                rozhodnutích. V tom, kdy ubrat, kdy zvolit jednodušší řešení a
+                kdy naopak investovat do detailu, který ovlivní celý prostor.
+              </p>
+              <p className="text-[var(--muted)] leading-relaxed mt-3">
+                Díky dlouhodobé práci s látkami, technikou i montáží víme, co
+                bude fungovat nejen dnes, ale i za několik let. Nevybíráme
+                řešení podle trendů, ale podle světla, materiálu a proporcí.
+              </p>
+              <p className="text-[var(--muted)] leading-relaxed mt-3">
+                Zkušenost dává klid — a ten je v interiéru znát.
+              </p>
+            </article>
+
+            {/* Detail */}
+            <article
+              id="detail"
+              className="rounded-2xl bg-white border border-[var(--line)] soft-shadow p-7 reveal scroll-mt-24"
+            >
+              <h4 className="text-lg font-semibold mb-3">
+                Jemnost detailu
+              </h4>
+              <p className="text-[var(--muted)] leading-relaxed">
+                Detail pro nás není dekorace. Je to gramáž látky, způsob
+                zavěšení, šev i reakce materiálu na světlo během dne.
+              </p>
+              <p className="text-[var(--muted)] leading-relaxed mt-3">
+                Právě drobnosti rozhodují o tom, zda prostor působí přirozeně,
+                nebo „udělaně“. Proto se detailům věnujeme od prvního návrhu až
+                po finální montáž.
+              </p>
+              <p className="text-[var(--muted)] leading-relaxed mt-3">
+                Když je detail v rovnováze, prostor funguje tiše — a
+                dlouhodobě.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        {/* ===== ZÁVĚREČNÁ TEČKA ===== */}
+        <div className="max-w-3xl mx-auto mt-12 text-center text-[var(--muted)]">
+          Cílem je, abyste se v prostoru cítili přirozeně a klidně — bez
+          kompromisů mezi estetikou a praktičností.
         </div>
       </section>
     </>
