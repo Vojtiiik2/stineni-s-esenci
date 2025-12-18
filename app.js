@@ -549,7 +549,7 @@ function Process({ t }) {
         </div>
 
         {/* ===== CO STOJÍ ZA NAŠÍ PRACÍ ===== */}
-        <section className="max-w-5xl mx-auto px-4 py-16 reveal">
+<div className="max-w-5xl mx-auto px-4 py-16 reveal">
           <div className="text-left md:text-center">
             <h3 className="script text-3xl mb-6">
               Co stojí za naší prací
