@@ -335,17 +335,19 @@ function Home({ t }) {
 
   return (
     <>
-  <Hero t={t} showCta intervalMs={8000} />
+      <Hero t={t} showCta intervalMs={8000} />
 
-
+      {/* ===== O NÁS ===== */}
       <section className="py-16 max-w-6xl mx-auto px-4 reveal">
         <div className="grid md:grid-cols-2 gap-8 items-center">
           <div className="soft-shadow rounded-2xl overflow-hidden">
             <img
               src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1600&auto=format&fit=crop"
+              alt="Interiér"
               className="w-full h-full object-cover"
             />
           </div>
+
           <div>
             <h2 className="script text-4xl mb-4">O nás</h2>
             {t.homeAbout.map((p, idx) => (
@@ -363,8 +365,10 @@ function Home({ t }) {
         </div>
       </section>
 
+      {/* ===== SLUŽBY ===== */}
       <section className="py-16 max-w-6xl mx-auto px-4 reveal">
         <h2 className="script text-4xl mb-8">{t.servicesH}</h2>
+
         <div className="grid sm:grid-cols-2 md:grid-cols-5 gap-6">
           {t.services.map((s, i) => (
             <div key={i} className="service-card soft-shadow reveal">
@@ -377,35 +381,34 @@ function Home({ t }) {
         </div>
       </section>
 
+      {/* ===== PROČ S NÁMI ===== */}
       <section className="py-16 max-w-6xl mx-auto px-4 reveal">
         <h2 className="script text-4xl mb-8">{t.benefitsH}</h2>
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
-         {t.benefits.map((b, i) => {
-  const hash = ["individualni-navrh", "zkusenosti", "detail"][i];
-  return (
-    <button
-      key={i}
-      onClick={() => (location.hash = `/process#${hash}`)}
-      className="benefit-card soft-shadow reveal text-left hover:translate-y-[-1px] transition"
-    >
-      <div className="text-lg font-semibold mb-2">{b.name}</div>
-      <p className="text-[var(--muted)] text-sm leading-relaxed">{b.note}</p>
-      <div className="mt-3 text-xs tracking-widest text-[var(--muted)]">
-        Zjistit víc →
-      </div>
-    </button>
-  );
-})}
 
-              <div className="text-lg font-semibold mb-2">{b.name}</div>
-              <p className="text-[var(--muted)] text-sm leading-relaxed">
-                {b.note}
-              </p>
-            </div>
-          ))}
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+          {t.benefits.map((b, i) => {
+            const hash = ["individualni-navrh", "zkusenosti", "detail"][i];
+
+            return (
+              <button
+                key={i}
+                onClick={() => (location.hash = `/process#${hash}`)}
+                className="benefit-card soft-shadow reveal text-left hover:translate-y-[-1px] transition"
+              >
+                <div className="text-lg font-semibold mb-2">{b.name}</div>
+                <p className="text-[var(--muted)] text-sm leading-relaxed">
+                  {b.note}
+                </p>
+                <div className="mt-3 text-xs tracking-widest text-[var(--muted)]">
+                  Zjistit víc →
+                </div>
+              </button>
+            );
+          })}
         </div>
       </section>
 
+      {/* ===== CTA ===== */}
       <section className="py-16 max-w-4xl mx-auto px-4 reveal text-center">
         <button
           onClick={() => go("/contact")}
@@ -415,8 +418,10 @@ function Home({ t }) {
         </button>
       </section>
 
+      {/* ===== FAQ ===== */}
       <section className="py-16 max-w-4xl mx-auto px-4 reveal">
         <h2 className="script text-4xl mb-6">{t.faqH}</h2>
+
         {t.faq.map((f, i) => (
           <div key={i} className="faq-item">
             <div className="font-semibold mb-1">{f.q}</div>
@@ -425,8 +430,10 @@ function Home({ t }) {
         ))}
       </section>
 
+      {/* ===== ATMOSFÉRA ===== */}
       <section className="py-16 max-w-6xl mx-auto px-4 reveal">
         <h2 className="script text-4xl mb-8">{t.inspH}</h2>
+
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
           {[
             "https://images.unsplash.com/photo-1484154218962-a197022b5858?q=80&w=1600&auto=format&fit=crop",
@@ -436,6 +443,7 @@ function Home({ t }) {
             <div key={i} className="inspiration-img soft-shadow overflow-hidden">
               <img
                 src={src}
+                alt="Atmosféra interiéru"
                 className="w-full h-full object-cover aspect-[4/3]"
               />
             </div>
@@ -445,6 +453,7 @@ function Home({ t }) {
     </>
   );
 }
+
 
 function Process({ t }) {
   useReveal();
