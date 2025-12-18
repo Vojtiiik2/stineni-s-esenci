@@ -243,19 +243,15 @@ function Hero({ t, small = false, showCta = false, intervalMs = 8000 }) {
   const slide = slides[index] || {};
 
   // Pozice pro slide efekt
-  const bgClass =
-    stage === "enter"
-      ? "opacity-0 translate-x-full"
-      : stage === "exit"
-      ? "opacity-0 -translate-x-full"
-      : "opacity-100 translate-x-0";
+ const bgClass =
+  stage === "exit"
+    ? "opacity-0 scale-[1.03]"
+    : "opacity-100 scale-100";
 
   const textClass =
-    stage === "enter"
-      ? "opacity-0 translate-x-6"
-      : stage === "exit"
-      ? "opacity-0 -translate-x-6"
-      : "opacity-100 translate-x-0";
+  stage === "exit"
+    ? "opacity-0 translate-y-2"
+    : "opacity-100 translate-y-0";
 
   return (
     <section
@@ -266,9 +262,11 @@ function Hero({ t, small = false, showCta = false, intervalMs = 8000 }) {
     >
       {/* SLIDE background */}
       <div
-        className={
-          "absolute inset-0 transition-all duration-700 ease-in-out will-change-transform " +
-          bgClass
+       className={
+  "absolute inset-0 transition-all duration-1000 ease-in-out will-change-transform " +
+  bgClass
+}
+
         }
         style={{
           backgroundImage: `linear-gradient(to right, rgba(0,0,0,.25), rgba(0,0,0,.05)), url('${slide.bg}')`,
@@ -282,10 +280,11 @@ function Hero({ t, small = false, showCta = false, intervalMs = 8000 }) {
       {/* SLIDE text */}
       <div className="relative max-w-6xl mx-auto px-4 w-full">
         <div
-          className={
-            "max-w-2xl text-white transition-all duration-700 ease-in-out will-change-transform " +
-            textClass
-          }
+         className={
+  "max-w-2xl text-white transition-all duration-800 ease-in-out will-change-transform " +
+  textClass
+}
+
         >
           <h1 className="script text-5xl md:text-6xl mb-3">{slide.h1}</h1>
           <p className="text-lg opacity-95">{t.heroSub}</p>
