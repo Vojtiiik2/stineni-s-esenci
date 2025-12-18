@@ -209,23 +209,53 @@ const Header = ({ t, lang, setLang }) => {
 function Hero({ t, small = false, showCta = false, intervalMs = 8000 }) {
   const slides = t.heroSlides || [];
   const [index, setIndex] = useState(0);
-  const [animate, setAnimate] = useState(true);
+
+  // "stage" řídí animaci: enter -> show -> exit
+  const [stage, setStage] = useState("show");
+  const timerRef = useRef(null);
 
   useEffect(() => {
     if (small || slides.length < 2) return;
 
-    const id = setInterval(() => {
-      setAnimate(false);
-      setTimeout(() => {
-        setIndex((i) => (i + 1) % slides.length);
-        setAnimate(true);
-      }, 600);
-    }, intervalMs);
+    const run = () => {
+      // Exit animace (odjíždí doleva)
+      setStage("exit");
 
-    return () => clearInterval(id);
-  }, [slides.length, intervalMs, small]);
+      // po době exitu přepneme slide a dáme enter
+      timerRef.current = setTimeout(() => {
+        setIndex((i) => (i + 1) % slides.length);
+        setStage("enter");
+
+        // po krátké době enteru přejdeme do show
+        timerRef.current = setTimeout(() => {
+          setStage("show");
+        }, 40);
+      }, 650);
+    };
+
+    const id = setInterval(run, intervalMs);
+    return () => {
+      clearInterval(id);
+      clearTimeout(timerRef.current);
+    };
+  }, [small, slides.length, intervalMs]);
 
   const slide = slides[index] || {};
+
+  // Pozice pro slide efekt
+  const bgClass =
+    stage === "enter"
+      ? "opacity-0 translate-x-full"
+      : stage === "exit"
+      ? "opacity-0 -translate-x-full"
+      : "opacity-100 translate-x-0";
+
+  const textClass =
+    stage === "enter"
+      ? "opacity-0 translate-x-6"
+      : stage === "exit"
+      ? "opacity-0 -translate-x-6"
+      : "opacity-100 translate-x-0";
 
   return (
     <section
@@ -234,30 +264,30 @@ function Hero({ t, small = false, showCta = false, intervalMs = 8000 }) {
         " relative flex items-center overflow-hidden"
       }
     >
-      {/* background image */}
+      {/* SLIDE background */}
       <div
-        className="absolute inset-0 transition-all duration-700 ease-in-out"
+        className={
+          "absolute inset-0 transition-all duration-700 ease-in-out will-change-transform " +
+          bgClass
+        }
         style={{
           backgroundImage: `linear-gradient(to right, rgba(0,0,0,.25), rgba(0,0,0,.05)), url('${slide.bg}')`,
           backgroundSize: "cover",
-          backgroundPosition: "center",
-          transform: animate ? "scale(1)" : "scale(1.04)",
-          opacity: animate ? 1 : 0.6
+          backgroundPosition: "center"
         }}
       />
 
       <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/25"></div>
 
-      {/* text */}
+      {/* SLIDE text */}
       <div className="relative max-w-6xl mx-auto px-4 w-full">
         <div
-          className={`max-w-2xl text-white transition-all duration-700 ease-out ${
-            animate ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-          }`}
+          className={
+            "max-w-2xl text-white transition-all duration-700 ease-in-out will-change-transform " +
+            textClass
+          }
         >
-          <h1 className="script text-5xl md:text-6xl mb-3">
-            {slide.h1}
-          </h1>
+          <h1 className="script text-5xl md:text-6xl mb-3">{slide.h1}</h1>
           <p className="text-lg opacity-95">{t.heroSub}</p>
 
           {!small && showCta && (
@@ -275,12 +305,14 @@ function Hero({ t, small = false, showCta = false, intervalMs = 8000 }) {
 }
 
 
+
 function Home({ t }) {
   useReveal();
 
   return (
     <>
-   <Hero t={t} showCta />
+  <Hero t={t} showCta intervalMs={8000} />
+
 
       <section className="py-16 max-w-6xl mx-auto px-4 reveal">
         <div className="grid md:grid-cols-2 gap-8 items-center">
