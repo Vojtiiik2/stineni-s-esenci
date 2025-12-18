@@ -446,7 +446,7 @@ function Process({ t }) {
           </p>
         </div>
 
-        <div className="mt-12 space-y-10">
+        <div className="mt-12 space-y-8">
           {steps.map((title, i) => {
             const reverse = i % 2 === 1;
             const n = String(i + 1).padStart(2, "0");
@@ -464,7 +464,7 @@ function Process({ t }) {
                   <img
                     src={imgs[i] || bgTop}
                     alt={title}
-                    className="w-full h-full object-cover aspect-[4/3] md:aspect-[5/4]"
+                    className="w-full h-full object-cover aspect-[16/10] md:aspect-[16/9]"
                     loading="lazy"
                   />
                 </div>
