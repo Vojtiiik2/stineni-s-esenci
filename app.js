@@ -52,13 +52,13 @@ const STR = {
 
 
     servicesH: "Služby",
-    services: [
-      { name: "Záclony", note: "Lehkost, jemnost a útulnost." },
-      { name: "Závěsy", note: "Estetika, teplo a soukromí." },
-      { name: "Rolety", note: "Praktičnost a čisté linie." },
-      { name: "Technické systémy", note: "Dekorativní a funkční řešení." }
-    ],
-
+  services: [
+  { name: "Záclony", note: "Lehkost, jemnost a útulnost." },
+  { name: "Závěsy", note: "Estetika, teplo a soukromí." },
+  { name: "Rolety", note: "Praktičnost a čisté linie." },
+  { name: "Technické systémy", note: "Dekorativní a funkční řešení." },
+  { name: "Servis", note: "Údržba textilu." }
+],
     benefitsH: "Proč s námi",
     benefits: [
       { name: "Individuální návrh", note: "Řešení vytvořené přesně pro váš prostor a vaše potřeby." },
@@ -339,7 +339,7 @@ function Home({ t }) {
 
       <section className="py-16 max-w-6xl mx-auto px-4 reveal">
         <h2 className="script text-4xl mb-8">{t.servicesH}</h2>
-        <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="grid sm:grid-cols-2 md:grid-cols-5 gap-6">
           {t.services.map((s, i) => (
             <div key={i} className="service-card soft-shadow reveal">
               <div className="text-lg font-semibold mb-1">{s.name}</div>
