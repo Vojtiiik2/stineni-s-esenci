@@ -96,11 +96,15 @@ const STR = {
 
    steps: ["Konzultace", "Návrh řešení", "Příprava & výroba", "Realizace"],
 stepsTxt: [
-  "Poznáme váš prostor, světlo a to, co od stínění očekáváte.",
-  "Vybereme vhodné látky a techniku, navrhneme konkrétní řešení a harmonogram.",
-  "Zaměření, šití a technické zpracování na míru včetně přípravy montáže.",
-  "Montáž, doladění a finální atmosféra, aby vše fungovalo dlouhodobě."
+  "Přijedeme za vámi, prostor si projdeme přímo na místě a vše přesně zaměříme. Probereme, co od stínění očekáváte – soukromí, zatemnění, regulaci světla nebo čistě doplnění interiéru. Ukážeme vám vzorky látek, vysvětlíme rozdíly mezi jednotlivými možnostmi a řekneme rovnou, co dává smysl a co by bylo zbytečné. Na konci konzultace máte jasnou představu o řešení i orientačním rozpočtu.",
+
+  "Na základě konzultace připravíme konkrétní návrh. Vybereme vhodné látky, typ zavěšení a technický systém tak, aby řešení odpovídalo prostoru i tomu, jak ho používáte. Návrh s vámi projdeme a případně doladíme detaily. Nezahlcujeme variantami – cílem je jedno funkční řešení, se kterým budete spokojeni dlouhodobě.",
+
+  "Po schválení návrhu provedeme přesné zaměření a zadáme výrobu. Látky se šijí na míru, technické systémy se připravují podle konkrétního prostoru. V této fázi řešíme všechny technické detaily tak, aby při montáži vše sedělo a nebylo nutné cokoli improvizovat. Délka výroby závisí na rozsahu zakázky a použitých materiálech.",
+
+  "Hotové stínění přivezeme a kompletně namontujeme. Postaráme se o instalaci kolejnic, systémů i finální seřízení. Na místě doladíme detaily, ukážeme vám, jak se se stíněním pracuje a jak se o něj starat. Odcházíme až ve chvíli, kdy je vše hotové, funkční a v pořádku."
 ],
+
     
 processIntro:
   "Čtyři kroky. Jeden celek. V každém je prostor pro návrat a doladění detailu.",
