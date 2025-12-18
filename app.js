@@ -260,20 +260,19 @@ function Hero({ t, small = false, showCta = false, intervalMs = 8000 }) {
         " relative flex items-center overflow-hidden"
       }
     >
-      {/* SLIDE background */}
-      <div
-       className={
-  "absolute inset-0 transition-all duration-1000 ease-in-out will-change-transform " +
-  bgClass
-}
+     {/* SLIDE background */}
+<div
+  className={
+    "absolute inset-0 transition-all duration-1000 ease-in-out will-change-transform " +
+    bgClass
+  }
+  style={{
+    backgroundImage: `linear-gradient(to right, rgba(0,0,0,.25), rgba(0,0,0,.05)), url('${slide.bg}')`,
+    backgroundSize: "cover",
+    backgroundPosition: "center"
+  }}
+/>
 
-        }
-        style={{
-          backgroundImage: `linear-gradient(to right, rgba(0,0,0,.25), rgba(0,0,0,.05)), url('${slide.bg}')`,
-          backgroundSize: "cover",
-          backgroundPosition: "center"
-        }}
-      />
 
       <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/25"></div>
 
