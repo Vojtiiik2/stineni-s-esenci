@@ -430,142 +430,129 @@ function Process({ t }) {
           podpoří atmosféru domova.
         </p>
 
-        <div className="mt-10 max-w-6xl mx-auto">
-  <div className="grid md:grid-cols-2 gap-10 items-center">
-    {/* LEFT: cycle */}
-    <div className="relative mx-auto w-full max-w-[560px] min-h-[560px]">
-      {/* background circle + arrows */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+    <div className="mt-12 grid lg:grid-cols-2 gap-10 items-start">
+  {/* LEFT: compact cycle (design motif) */}
+  <div className="reveal">
+    <div className="rounded-2xl bg-white border border-[var(--line)] soft-shadow p-8">
+      <div className="text-sm text-[var(--muted)] mb-4">
+        Přehledně, v cyklu – podle prostoru se někdy vracíme krok zpět, aby to sedělo.
+      </div>
+
+      <div className="relative mx-auto aspect-square max-w-[420px]">
+        {/* circle + arrows */}
         <svg
           viewBox="0 0 600 600"
-          className="w-full h-full opacity-40"
+          className="absolute inset-0 w-full h-full opacity-45"
           aria-hidden="true"
         >
           <circle
             cx="300"
             cy="300"
-            r="200"
+            r="210"
             fill="none"
-            stroke="rgba(0,0,0,0.18)"
+            stroke="rgba(0,0,0,0.16)"
             strokeWidth="2"
             strokeDasharray="6 10"
           />
           <defs>
-            <marker
-              id="arrow"
-              markerWidth="10"
-              markerHeight="10"
-              refX="9"
-              refY="5"
-              orient="auto"
-            >
-              <path d="M0,0 L10,5 L0,10 Z" fill="rgba(0,0,0,0.22)" />
+            <marker id="arr2" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+              <path d="M0,0 L10,5 L0,10 Z" fill="rgba(0,0,0,0.20)" />
             </marker>
           </defs>
-
           <path
-            d="M300 100 A200 200 0 0 1 500 300"
+            d="M300 90 A210 210 0 0 1 510 300"
             fill="none"
-            stroke="rgba(0,0,0,0.22)"
+            stroke="rgba(0,0,0,0.20)"
             strokeWidth="2"
-            markerEnd="url(#arrow)"
+            markerEnd="url(#arr2)"
           />
           <path
-            d="M500 300 A200 200 0 0 1 300 500"
+            d="M510 300 A210 210 0 0 1 300 510"
             fill="none"
-            stroke="rgba(0,0,0,0.22)"
+            stroke="rgba(0,0,0,0.20)"
             strokeWidth="2"
-            markerEnd="url(#arrow)"
+            markerEnd="url(#arr2)"
           />
           <path
-            d="M300 500 A200 200 0 0 1 100 300"
+            d="M300 510 A210 210 0 0 1 90 300"
             fill="none"
-            stroke="rgba(0,0,0,0.22)"
+            stroke="rgba(0,0,0,0.20)"
             strokeWidth="2"
-            markerEnd="url(#arrow)"
+            markerEnd="url(#arr2)"
           />
           <path
-            d="M100 300 A200 200 0 0 1 300 100"
+            d="M90 300 A210 210 0 0 1 300 90"
             fill="none"
-            stroke="rgba(0,0,0,0.22)"
+            stroke="rgba(0,0,0,0.20)"
             strokeWidth="2"
-            markerEnd="url(#arrow)"
+            markerEnd="url(#arr2)"
           />
         </svg>
-      </div>
 
-      {/* center badge */}
-      <div className="absolute inset-0 flex items-center justify-center">
-        <div className="rounded-2xl bg-white/85 backdrop-blur border border-[var(--line)] soft-shadow px-6 py-5 text-center reveal max-w-[260px]">
-          <div className="script text-3xl mb-1">{t.processH}</div>
-          <div className="text-sm text-[var(--muted)]">
-            Cyklus, který se ladí podle prostoru.
+        {/* center */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="rounded-2xl bg-white/85 backdrop-blur border border-[var(--line)] soft-shadow px-6 py-5 text-center max-w-[240px]">
+            <div className="script text-3xl mb-1">{t.processH}</div>
+            <div className="text-sm text-[var(--muted)]">4 kroky, jeden celek.</div>
           </div>
         </div>
-      </div>
 
-      {/* cards (fixed widths on desktop, stacked on mobile) */}
-      {/* top */}
-      <div className="absolute left-1/2 -translate-x-1/2 top-2 w-[92%] sm:w-[78%] md:w-[320px]">
-        <div className="rounded-2xl bg-white border border-[var(--line)] soft-shadow p-5 reveal">
-          <div className="text-xs tracking-widest text-[var(--muted)] mb-1">01</div>
-          <div className="text-lg font-semibold mb-1">{t.steps[0]}</div>
-          <div className="text-sm text-[var(--muted)]">{t.stepsTxt[0]}</div>
-        </div>
-      </div>
-
-      {/* right */}
-      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[92%] sm:w-[78%] md:w-[320px] md:translate-x-[10%]">
-        <div className="rounded-2xl bg-white border border-[var(--line)] soft-shadow p-5 reveal">
-          <div className="text-xs tracking-widest text-[var(--muted)] mb-1">02</div>
-          <div className="text-lg font-semibold mb-1">{t.steps[1]}</div>
-          <div className="text-sm text-[var(--muted)]">{t.stepsTxt[1]}</div>
-        </div>
-      </div>
-
-      {/* bottom */}
-      <div className="absolute left-1/2 -translate-x-1/2 bottom-2 w-[92%] sm:w-[78%] md:w-[320px]">
-        <div className="rounded-2xl bg-white border border-[var(--line)] soft-shadow p-5 reveal">
-          <div className="text-xs tracking-widest text-[var(--muted)] mb-1">03</div>
-          <div className="text-lg font-semibold mb-1">{t.steps[2]}</div>
-          <div className="text-sm text-[var(--muted)]">{t.stepsTxt[2]}</div>
-        </div>
-      </div>
-
-      {/* left */}
-      <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[92%] sm:w-[78%] md:w-[320px] md:-translate-x-[10%]">
-        <div className="rounded-2xl bg-white border border-[var(--line)] soft-shadow p-5 reveal">
-          <div className="text-xs tracking-widest text-[var(--muted)] mb-1">04</div>
-          <div className="text-lg font-semibold mb-1">{t.steps[3]}</div>
-          <div className="text-sm text-[var(--muted)]">{t.stepsTxt[3]}</div>
-        </div>
+        {/* four nodes */}
+        {[
+          { n: "01", label: t.steps[0], pos: "left-1/2 -translate-x-1/2 top-6" },
+          { n: "02", label: t.steps[1], pos: "right-6 top-1/2 -translate-y-1/2" },
+          { n: "03", label: t.steps[2], pos: "left-1/2 -translate-x-1/2 bottom-6" },
+          { n: "04", label: t.steps[3], pos: "left-6 top-1/2 -translate-y-1/2" }
+        ].map((x, i) => (
+          <div key={i} className={"absolute " + x.pos}>
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-white border border-[var(--line)] soft-shadow flex items-center justify-center text-xs tracking-widest text-[var(--muted)]">
+                {x.n}
+              </div>
+              <div className="hidden sm:block text-sm font-semibold text-[var(--text)]/90">
+                {x.label}
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
+  </div>
 
-    {/* RIGHT: light filler (kills emptiness, keeps elegance) */}
-    <div className="reveal">
-      <div className="rounded-2xl bg-white border border-[var(--line)] soft-shadow p-7">
-        <h3 className="text-xl font-semibold mb-3">Co tím získáte</h3>
-        <ul className="text-[var(--muted)] space-y-3 leading-relaxed">
-          <li>• Jasný směr – co zvolit a proč, bez zbytečných kompromisů.</li>
-          <li>• Klid v rozhodování – vzorky, světlo a proporce řešíme u vás v prostoru.</li>
-          <li>• Řemeslnou kvalitu – precizní zpracování a funkční techniku.</li>
-          <li>• Hotový výsledek – montáž a doladění detailů do finální atmosféry.</li>
-        </ul>
+  {/* RIGHT: timeline (fills space, looks premium) */}
+  <div className="reveal">
+    <div className="rounded-2xl bg-white border border-[var(--line)] soft-shadow p-8">
+      <h3 className="text-xl font-semibold mb-6">Jak to probíhá</h3>
+
+      <div className="relative pl-6">
+        {/* vertical line */}
+        <div className="absolute left-[10px] top-1 bottom-1 w-px bg-[var(--line)]"></div>
+
+        {t.steps.map((title, i) => (
+          <div key={i} className="relative pb-8 last:pb-0 reveal">
+            {/* dot */}
+            <div className="absolute left-0 top-1.5 w-5 h-5 rounded-full bg-white border border-[var(--line)] soft-shadow"></div>
+
+            <div className="ml-6">
+              <div className="text-xs tracking-widest text-[var(--muted)] mb-1">
+                {String(i + 1).padStart(2, "0")}
+              </div>
+              <div className="text-lg font-semibold mb-1">{title}</div>
+              <div className="text-[var(--muted)] leading-relaxed">
+                {t.stepsTxt[i]}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="mt-2 text-sm text-[var(--muted)]">
+        V průběhu návrhu se můžeme vracet mezi kroky, aby výsledek seděl světlu i proporcím.
       </div>
     </div>
   </div>
 </div>
-
-
-        <p className="text-[var(--muted)] max-w-3xl mx-auto mt-10 text-sm md:text-base text-center">
-          Cílem je, abyste se v prostoru cítili přirozeně a klidně – bez
-          kompromisů mezi estetikou a praktičností.
-        </p>
-      </section>
-    </>
-  );
-}
+   
 
 function Pricing({ t }) {
   useReveal();
