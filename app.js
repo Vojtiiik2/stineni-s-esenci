@@ -571,8 +571,6 @@ function Process({ t }) {
 }
 
 
-   
-
 function Pricing({ t }) {
   useReveal();
 
