@@ -94,12 +94,14 @@ const STR = {
 
     processH: "Jak pracujeme",
 
-    steps: ["Konzultace", "Návrh", "Realizace"],
-    stepsTxt: [
-      "Poznáme váš prostor, světlo a to, co od stínění očekáváte.",
-      "Vybereme vhodné látky a techniku, navrhneme konkrétní řešení a harmonogram.",
-      "Ušijeme na míru, zajistíme montáž a postaráme se o finální doladění."
-    ],
+   steps: ["Konzultace", "Návrh řešení", "Příprava & výroba", "Realizace"],
+stepsTxt: [
+  "Poznáme váš prostor, světlo a to, co od stínění očekáváte.",
+  "Vybereme vhodné látky a techniku, navrhneme konkrétní řešení a harmonogram.",
+  "Zaměření, šití a technické zpracování na míru včetně přípravy montáže.",
+  "Montáž, doladění a finální atmosféra, aby vše fungovalo dlouhodobě."
+],
+
 
     finishedH: "Hotové stínění",
     finished: [
@@ -428,20 +430,120 @@ function Process({ t }) {
           podpoří atmosféru domova.
         </p>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          {t.steps.map((step, i) => (
-            <div className="flex flex-col h-full reveal" key={i}>
-              <img
-                src={IMGS[i]}
-                className="rounded-2xl soft-shadow w-full mb-4 object-cover aspect-[4/3]"
-              />
-              <div className="rounded-2xl bg-white border border-[var(--line)] p-6 soft-shadow flex-1 flex flex-col">
-                <div className="text-lg font-semibold mb-2">{step}</div>
-                <p className="text-[var(--muted)] flex-1">{t.stepsTxt[i]}</p>
-              </div>
-            </div>
-          ))}
+        <div className="relative max-w-4xl mx-auto mt-10">
+  {/* Kruh + jemné šipky (pozadí) */}
+  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+    <svg
+      viewBox="0 0 600 600"
+      className="w-full max-w-[520px] h-auto opacity-40"
+      aria-hidden="true"
+    >
+      {/* kruh */}
+      <circle
+        cx="300"
+        cy="300"
+        r="190"
+        fill="none"
+        stroke="rgba(0,0,0,0.18)"
+        strokeWidth="2"
+        strokeDasharray="6 10"
+      />
+
+      {/* šipky po kruhu */}
+      <defs>
+        <marker
+          id="arrow"
+          markerWidth="10"
+          markerHeight="10"
+          refX="9"
+          refY="5"
+          orient="auto"
+        >
+          <path d="M0,0 L10,5 L0,10 Z" fill="rgba(0,0,0,0.22)" />
+        </marker>
+      </defs>
+
+      <path
+        d="M300 110 A190 190 0 0 1 490 300"
+        fill="none"
+        stroke="rgba(0,0,0,0.22)"
+        strokeWidth="2"
+        markerEnd="url(#arrow)"
+      />
+      <path
+        d="M490 300 A190 190 0 0 1 300 490"
+        fill="none"
+        stroke="rgba(0,0,0,0.22)"
+        strokeWidth="2"
+        markerEnd="url(#arrow)"
+      />
+      <path
+        d="M300 490 A190 190 0 0 1 110 300"
+        fill="none"
+        stroke="rgba(0,0,0,0.22)"
+        strokeWidth="2"
+        markerEnd="url(#arrow)"
+      />
+      <path
+        d="M110 300 A190 190 0 0 1 300 110"
+        fill="none"
+        stroke="rgba(0,0,0,0.22)"
+        strokeWidth="2"
+        markerEnd="url(#arrow)"
+      />
+    </svg>
+  </div>
+
+  {/* Obsah – 4 kroky do kruhu */}
+  <div className="relative mx-auto aspect-square max-w-[620px]">
+    {/* střed */}
+    <div className="absolute inset-0 flex items-center justify-center">
+      <div className="rounded-2xl bg-white/80 backdrop-blur border border-[var(--line)] soft-shadow px-6 py-5 text-center reveal">
+        <div className="script text-3xl mb-1">{t.processH}</div>
+        <div className="text-sm text-[var(--muted)]">
+          Jemný cyklus, který se přizpůsobí vašemu prostoru.
         </div>
+      </div>
+    </div>
+
+    {/* karta 1 – nahoře */}
+    <div className="absolute left-1/2 -translate-x-1/2 top-2 w-[88%] sm:w-[62%]">
+      <div className="rounded-2xl bg-white border border-[var(--line)] soft-shadow p-5 reveal">
+        <div className="text-xs tracking-widest text-[var(--muted)] mb-1">01</div>
+        <div className="text-lg font-semibold mb-1">{t.steps[0]}</div>
+        <div className="text-sm text-[var(--muted)]">{t.stepsTxt[0]}</div>
+      </div>
+    </div>
+
+    {/* karta 2 – vpravo */}
+    <div className="absolute right-2 top-1/2 -translate-y-1/2 w-[88%] sm:w-[56%] sm:right-0">
+      <div className="rounded-2xl bg-white border border-[var(--line)] soft-shadow p-5 reveal">
+        <div className="text-xs tracking-widest text-[var(--muted)] mb-1">02</div>
+        <div className="text-lg font-semibold mb-1">{t.steps[1]}</div>
+        <div className="text-sm text-[var(--muted)]">{t.stepsTxt[1]}</div>
+      </div>
+    </div>
+
+    {/* karta 3 – dole */}
+    <div className="absolute left-1/2 -translate-x-1/2 bottom-2 w-[88%] sm:w-[62%]">
+      <div className="rounded-2xl bg-white border border-[var(--line)] soft-shadow p-5 reveal">
+        <div className="text-xs tracking-widest text-[var(--muted)] mb-1">03</div>
+        <div className="text-lg font-semibold mb-1">{t.steps[2]}</div>
+        <div className="text-sm text-[var(--muted)]">{t.stepsTxt[2]}</div>
+      </div>
+    </div>
+
+    {/* karta 4 – vlevo */}
+    <div className="absolute left-2 top-1/2 -translate-y-1/2 w-[88%] sm:w-[56%] sm:left-0">
+      <div className="rounded-2xl bg-white border border-[var(--line)] soft-shadow p-5 reveal">
+        <div className="text-xs tracking-widest text-[var(--muted)] mb-1">04</div>
+        <div className="text-lg font-semibold mb-1">{t.steps[3]}</div>
+        <div className="text-sm text-[var(--muted)]">{t.stepsTxt[3]}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
         <p className="text-[var(--muted)] max-w-3xl mx-auto mt-10 text-sm md:text-base text-center">
           Cílem je, abyste se v prostoru cítili přirozeně a klidně – bez
