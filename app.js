@@ -424,134 +424,153 @@ function Process({ t }) {
         <h2 className="script text-4xl mb-6 text-left md:text-center">
           {t.processH}
         </h2>
+
         <p className="text-[var(--muted)] max-w-3xl mx-auto mb-10 text-center">
           Společně projdeme váš prostor, světlo během dne i to, jak v interiéru
           trávíte čas. Z toho vychází návrh stínění, které je funkční a zároveň
           podpoří atmosféru domova.
         </p>
 
-    <div className="mt-12 grid lg:grid-cols-2 gap-10 items-start">
-  {/* LEFT: compact cycle (design motif) */}
-  <div className="reveal">
-    <div className="rounded-2xl bg-white border border-[var(--line)] soft-shadow p-8">
-      <div className="text-sm text-[var(--muted)] mb-4">
-        Přehledně, v cyklu – podle prostoru se někdy vracíme krok zpět, aby to sedělo.
-      </div>
+        <div className="mt-12 grid lg:grid-cols-2 gap-10 items-start">
+          {/* LEFT: compact cycle (design motif) */}
+          <div className="reveal">
+            <div className="rounded-2xl bg-white border border-[var(--line)] soft-shadow p-8">
+              <div className="text-sm text-[var(--muted)] mb-4">
+                Přehledně, v cyklu – podle prostoru se někdy vracíme krok zpět, aby to sedělo.
+              </div>
 
-      <div className="relative mx-auto aspect-square max-w-[420px]">
-        {/* circle + arrows */}
-        <svg
-          viewBox="0 0 600 600"
-          className="absolute inset-0 w-full h-full opacity-45"
-          aria-hidden="true"
-        >
-          <circle
-            cx="300"
-            cy="300"
-            r="210"
-            fill="none"
-            stroke="rgba(0,0,0,0.16)"
-            strokeWidth="2"
-            strokeDasharray="6 10"
-          />
-          <defs>
-            <marker id="arr2" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
-              <path d="M0,0 L10,5 L0,10 Z" fill="rgba(0,0,0,0.20)" />
-            </marker>
-          </defs>
-          <path
-            d="M300 90 A210 210 0 0 1 510 300"
-            fill="none"
-            stroke="rgba(0,0,0,0.20)"
-            strokeWidth="2"
-            markerEnd="url(#arr2)"
-          />
-          <path
-            d="M510 300 A210 210 0 0 1 300 510"
-            fill="none"
-            stroke="rgba(0,0,0,0.20)"
-            strokeWidth="2"
-            markerEnd="url(#arr2)"
-          />
-          <path
-            d="M300 510 A210 210 0 0 1 90 300"
-            fill="none"
-            stroke="rgba(0,0,0,0.20)"
-            strokeWidth="2"
-            markerEnd="url(#arr2)"
-          />
-          <path
-            d="M90 300 A210 210 0 0 1 300 90"
-            fill="none"
-            stroke="rgba(0,0,0,0.20)"
-            strokeWidth="2"
-            markerEnd="url(#arr2)"
-          />
-        </svg>
+              <div className="relative mx-auto aspect-square max-w-[420px]">
+                {/* circle + arrows */}
+                <svg
+                  viewBox="0 0 600 600"
+                  className="absolute inset-0 w-full h-full opacity-45"
+                  aria-hidden="true"
+                >
+                  <circle
+                    cx="300"
+                    cy="300"
+                    r="210"
+                    fill="none"
+                    stroke="rgba(0,0,0,0.16)"
+                    strokeWidth="2"
+                    strokeDasharray="6 10"
+                  />
+                  <defs>
+                    <marker
+                      id="arr2"
+                      markerWidth="10"
+                      markerHeight="10"
+                      refX="9"
+                      refY="5"
+                      orient="auto"
+                    >
+                      <path d="M0,0 L10,5 L0,10 Z" fill="rgba(0,0,0,0.20)" />
+                    </marker>
+                  </defs>
+                  <path
+                    d="M300 90 A210 210 0 0 1 510 300"
+                    fill="none"
+                    stroke="rgba(0,0,0,0.20)"
+                    strokeWidth="2"
+                    markerEnd="url(#arr2)"
+                  />
+                  <path
+                    d="M510 300 A210 210 0 0 1 300 510"
+                    fill="none"
+                    stroke="rgba(0,0,0,0.20)"
+                    strokeWidth="2"
+                    markerEnd="url(#arr2)"
+                  />
+                  <path
+                    d="M300 510 A210 210 0 0 1 90 300"
+                    fill="none"
+                    stroke="rgba(0,0,0,0.20)"
+                    strokeWidth="2"
+                    markerEnd="url(#arr2)"
+                  />
+                  <path
+                    d="M90 300 A210 210 0 0 1 300 90"
+                    fill="none"
+                    stroke="rgba(0,0,0,0.20)"
+                    strokeWidth="2"
+                    markerEnd="url(#arr2)"
+                  />
+                </svg>
 
-        {/* center */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="rounded-2xl bg-white/85 backdrop-blur border border-[var(--line)] soft-shadow px-6 py-5 text-center max-w-[240px]">
-            <div className="script text-3xl mb-1">{t.processH}</div>
-            <div className="text-sm text-[var(--muted)]">4 kroky, jeden celek.</div>
+                {/* center */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="rounded-2xl bg-white/85 backdrop-blur border border-[var(--line)] soft-shadow px-6 py-5 text-center max-w-[240px]">
+                    <div className="script text-3xl mb-1">{t.processH}</div>
+                    <div className="text-sm text-[var(--muted)]">4 kroky, jeden celek.</div>
+                  </div>
+                </div>
+
+                {/* four nodes */}
+                {[
+                  { n: "01", label: t.steps[0], pos: "left-1/2 -translate-x-1/2 top-6" },
+                  { n: "02", label: t.steps[1], pos: "right-6 top-1/2 -translate-y-1/2" },
+                  { n: "03", label: t.steps[2], pos: "left-1/2 -translate-x-1/2 bottom-6" },
+                  { n: "04", label: t.steps[3], pos: "left-6 top-1/2 -translate-y-1/2" }
+                ].map((x, i) => (
+                  <div key={i} className={"absolute " + x.pos}>
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-full bg-white border border-[var(--line)] soft-shadow flex items-center justify-center text-xs tracking-widest text-[var(--muted)]">
+                        {x.n}
+                      </div>
+                      <div className="hidden sm:block text-sm font-semibold text-[var(--text)]/90">
+                        {x.label}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* RIGHT: timeline (fills space, looks premium) */}
+          <div className="reveal">
+            <div className="rounded-2xl bg-white border border-[var(--line)] soft-shadow p-8">
+              <h3 className="text-xl font-semibold mb-6">Jak to probíhá</h3>
+
+              <div className="relative pl-6">
+                {/* vertical line */}
+                <div className="absolute left-[10px] top-1 bottom-1 w-px bg-[var(--line)]"></div>
+
+                {t.steps.map((title, i) => (
+                  <div key={i} className="relative pb-8 last:pb-0 reveal">
+                    {/* dot */}
+                    <div className="absolute left-0 top-1.5 w-5 h-5 rounded-full bg-white border border-[var(--line)] soft-shadow"></div>
+
+                    <div className="ml-6">
+                      <div className="text-xs tracking-widest text-[var(--muted)] mb-1">
+                        {String(i + 1).padStart(2, "0")}
+                      </div>
+                      <div className="text-lg font-semibold mb-1">{title}</div>
+                      <div className="text-[var(--muted)] leading-relaxed">
+                        {t.stepsTxt[i]}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-2 text-sm text-[var(--muted)]">
+                V průběhu návrhu se můžeme vracet mezi kroky, aby výsledek seděl světlu i proporcím.
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* four nodes */}
-        {[
-          { n: "01", label: t.steps[0], pos: "left-1/2 -translate-x-1/2 top-6" },
-          { n: "02", label: t.steps[1], pos: "right-6 top-1/2 -translate-y-1/2" },
-          { n: "03", label: t.steps[2], pos: "left-1/2 -translate-x-1/2 bottom-6" },
-          { n: "04", label: t.steps[3], pos: "left-6 top-1/2 -translate-y-1/2" }
-        ].map((x, i) => (
-          <div key={i} className={"absolute " + x.pos}>
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-white border border-[var(--line)] soft-shadow flex items-center justify-center text-xs tracking-widest text-[var(--muted)]">
-                {x.n}
-              </div>
-              <div className="hidden sm:block text-sm font-semibold text-[var(--text)]/90">
-                {x.label}
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </div>
+        <p className="text-[var(--muted)] max-w-3xl mx-auto mt-10 text-sm md:text-base text-center">
+          Cílem je, abyste se v prostoru cítili přirozeně a klidně – bez
+          kompromisů mezi estetikou a praktičností.
+        </p>
+      </section>
+    </>
+  );
+}
 
-  {/* RIGHT: timeline (fills space, looks premium) */}
-  <div className="reveal">
-    <div className="rounded-2xl bg-white border border-[var(--line)] soft-shadow p-8">
-      <h3 className="text-xl font-semibold mb-6">Jak to probíhá</h3>
 
-      <div className="relative pl-6">
-        {/* vertical line */}
-        <div className="absolute left-[10px] top-1 bottom-1 w-px bg-[var(--line)]"></div>
-
-        {t.steps.map((title, i) => (
-          <div key={i} className="relative pb-8 last:pb-0 reveal">
-            {/* dot */}
-            <div className="absolute left-0 top-1.5 w-5 h-5 rounded-full bg-white border border-[var(--line)] soft-shadow"></div>
-
-            <div className="ml-6">
-              <div className="text-xs tracking-widest text-[var(--muted)] mb-1">
-                {String(i + 1).padStart(2, "0")}
-              </div>
-              <div className="text-lg font-semibold mb-1">{title}</div>
-              <div className="text-[var(--muted)] leading-relaxed">
-                {t.stepsTxt[i]}
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <div className="mt-2 text-sm text-[var(--muted)]">
-        V průběhu návrhu se můžeme vracet mezi kroky, aby výsledek seděl světlu i proporcím.
-      </div>
-    </div>
-  </div>
-</div>
    
 
 function Pricing({ t }) {
