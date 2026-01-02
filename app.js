@@ -369,37 +369,35 @@ function Home({ t }) {
         </div>
       </section>
 
-      {/* ===== SLUŽBY ===== */}
-      <section className="py-16 max-w-6xl mx-auto px-4 reveal">
-        <h2 className="script text-4xl mb-8">{t.servicesH}</h2>
+ {/* ===== SLUŽBY ===== */}
+<section className="py-16 max-w-6xl mx-auto px-4 reveal">
+  <h2 className="script text-4xl mb-8">{t.servicesH}</h2>
 
-        <div className="grid sm:grid-cols-2 md:grid-cols-5 gap-6">
-         {t.services.map((s, i) => {
-  const hash = ["zaclon", "zaves", "roleta", "systemy", "servis"][i];
+  <div className="grid sm:grid-cols-2 md:grid-cols-5 gap-6">
+    {t.services.map((s, i) => {
+      const hash = ["zaclon", "zaves", "roleta", "systemy", "servis"][i];
 
-  return (
-    <button
-      key={i}
-      onClick={() => (location.hash = `/pricing#${hash}`)}
-      className="service-card soft-shadow reveal text-left hover:translate-y-[-1px] transition"
-    >
-      <div className="text-lg font-semibold mb-1">{s.name}</div>
-      <p className="text-[var(--muted)] text-sm leading-relaxed">{s.note}</p>
-      <div className="mt-3 text-xs tracking-widest text-[var(--muted)]">
-        Kolik zaplatíte →
-      </div>
-    </button>
-  );
-})}
+      return (
+        <button
+          key={i}
+          onClick={() => (location.hash = `/pricing#${hash}`)}
+          className="service-card soft-shadow reveal text-left hover:translate-y-[-1px] transition"
+          type="button"
+        >
+          <div className="text-lg font-semibold mb-1">{s.name}</div>
+          <p className="text-[var(--muted)] text-sm leading-relaxed">
+            {s.note}
+          </p>
+          <div className="mt-3 text-xs tracking-widest text-[var(--muted)]">
+            Kolik zaplatíte →
+          </div>
+        </button>
+      );
+    })}
+  </div>
+</section>
 
-              <div className="text-lg font-semibold mb-1">{s.name}</div>
-              <p className="text-[var(--muted)] text-sm leading-relaxed">
-                {s.note}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
+    
 
       {/* ===== PROČ S NÁMI ===== */}
       <section className="py-16 max-w-6xl mx-auto px-4 reveal">
