@@ -374,8 +374,24 @@ function Home({ t }) {
         <h2 className="script text-4xl mb-8">{t.servicesH}</h2>
 
         <div className="grid sm:grid-cols-2 md:grid-cols-5 gap-6">
-          {t.services.map((s, i) => (
-            <div key={i} className="service-card soft-shadow reveal">
+         {t.services.map((s, i) => {
+  const hash = ["zaclon", "zaves", "roleta", "systemy", "servis"][i];
+
+  return (
+    <button
+      key={i}
+      onClick={() => (location.hash = `/pricing#${hash}`)}
+      className="service-card soft-shadow reveal text-left hover:translate-y-[-1px] transition"
+    >
+      <div className="text-lg font-semibold mb-1">{s.name}</div>
+      <p className="text-[var(--muted)] text-sm leading-relaxed">{s.note}</p>
+      <div className="mt-3 text-xs tracking-widest text-[var(--muted)]">
+        Kolik zaplatíte →
+      </div>
+    </button>
+  );
+})}
+
               <div className="text-lg font-semibold mb-1">{s.name}</div>
               <p className="text-[var(--muted)] text-sm leading-relaxed">
                 {s.note}
@@ -631,10 +647,57 @@ function Process({ t }) {
 function Pricing({ t }) {
   useReveal();
 
-  const details = [
-    "Ideální, když chcete jemné denní světlo, ale zachovat si soukromí.",
-    "Pro večerní zatemnění, akustický komfort a pocit útulna.",
-    "Technické zázemí, které drží celé řešení elegantně a spolehlivě."
+  const blocks = [
+    {
+      id: "zaclon",
+      title: "Záclony",
+      lead: "Lehká vrstva pro denní světlo a soukromí.",
+      points: [
+        "Cena se odvíjí hlavně od výšky, šířky a typu řasení.",
+        "Rozdíl dělá materiál (voál / struktura / praný vzhled) a údržba.",
+        "Důležitá je i montážní výška a to, jestli je potřeba řešit více oken najednou."
+      ]
+    },
+    {
+      id: "zaves",
+      title: "Závěsy (dim-out / blackout)",
+      lead: "Pro zatemnění, teplo, akustiku a večerní klid.",
+      points: [
+        "Největší vliv má typ látky (dim-out vs blackout), gramáž a podšívka.",
+        "Cena roste s šířkou vrstvení (kolik látky je potřeba na pěkný pád).",
+        "U velkých ploch řešíme i způsob dělení a pohodlné ovládání."
+      ]
+    },
+    {
+      id: "roleta",
+      title: "Rolety",
+      lead: "Praktické řešení – čisté linie a jednoduché ovládání.",
+      points: [
+        "Rozhoduje typ rolety (screen, den/noc, zatemňovací, římská apod.).",
+        "Cena závisí na rozměru, ovládání (řetízek vs motor) a montáži.",
+        "U atypických oken se cena odvíjí od technického řešení."
+      ]
+    },
+    {
+      id: "systemy",
+      title: "Technické systémy (kolejnice, tyče, motor)",
+      lead: "Základ, který drží celé řešení – a často rozhoduje o výsledku.",
+      points: [
+        "Cena se liší podle délky, počtu ohybů, způsobu uchycení a zatížení.",
+        "U ohýbaných kolejnic a atypů je důležitá přesnost zaměření.",
+        "Motorové řešení je pohodlné, ale musí se řešit napájení a kompatibilita."
+      ]
+    },
+    {
+      id: "servis",
+      title: "Servis",
+      lead: "Úpravy, doplnění, výměny a údržba – když potřebuješ, aby to dál fungovalo.",
+      points: [
+        "Pomůžeme s úpravou délky, přešitím, výměnou jezdců nebo doplněním vrstev.",
+        "Děláme i servis montáže a dořešení detailů po čase.",
+        "Cena se odvíjí podle rozsahu, dostupnosti materiálu a náročnosti práce na místě."
+      ]
+    }
   ];
 
   return (
@@ -644,41 +707,61 @@ function Pricing({ t }) {
         small
         bg="https://images.unsplash.com/photo-1549187774-b4e9b0445b41?q=80&w=1800&auto=format&fit=crop"
       />
+
       <section className="max-w-6xl mx-auto px-4 py-16 reveal">
         <h2 className="script text-4xl mb-4">{t.priceH}</h2>
-        <p className="text-[var(--muted)] max-w-3xl">{t.priceP}</p>
+        <p className="text-[var(--muted)] max-w-3xl">
+          {t.priceP}
+        </p>
 
-        <div className="mt-8 grid md:grid-cols-3 gap-4">
-          {["Voile / Záclona", "Závěs (blackout/dim-out)", "Kolejnice / systém"].map(
-            (name, i) => (
-              <div
-                key={i}
-                className="rounded-2xl bg-white border border-[var(--line)] p-6 soft-shadow reveal"
-              >
-                <div className="font-semibold mb-2">{name}</div>
-                <div className="text-sm text-[var(--muted)] mb-2">
-                  Cena na míru po zaměření • materiál, rozměr, ušití
-                </div>
-                <div className="text-sm text-[var(--muted)]">
-                  {details[i]}
-                </div>
-              </div>
-            )
-          )}
+        {/* rychlá navigace (nenápadná, ale užitečná) */}
+        <div className="mt-8 flex flex-wrap gap-2">
+          {blocks.map((b) => (
+            <button
+              key={b.id}
+              onClick={() => (location.hash = `/pricing#${b.id}`)}
+              className="px-3 py-1.5 text-sm rounded-full border border-[var(--line)] bg-white hover:translate-y-[-1px] transition"
+            >
+              {b.title}
+            </button>
+          ))}
         </div>
 
-        <div className="mt-10 max-w-3xl text-sm text-[var(--muted)]">
-          <div className="font-semibold mb-2">Co ovlivňuje cenu</div>
+        {/* rozvedené bloky */}
+        <div className="mt-10 grid gap-6">
+          {blocks.map((b) => (
+            <article
+              key={b.id}
+              id={b.id}
+              className="rounded-2xl bg-white border border-[var(--line)] soft-shadow p-7 reveal scroll-mt-24"
+            >
+              <h3 className="text-xl font-semibold mb-2">{b.title}</h3>
+              <p className="text-[var(--muted)] mb-5">{b.lead}</p>
+
+              <ul className="list-disc pl-5 space-y-2 text-[var(--muted)]">
+                {b.points.map((x, i) => (
+                  <li key={i}>{x}</li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+
+        {/* společné faktory – necháme, protože to sedí */}
+        <div className="mt-12 max-w-3xl text-sm text-[var(--muted)]">
+          <div className="font-semibold mb-2">Co ovlivňuje cenu obecně</div>
           <ul className="list-disc pl-5 space-y-1">
-            <li>typ a kvalita zvoleného materiálu, jeho gramáž a údržba,</li>
-            <li>rozměry oken a výška montáže,</li>
-            <li>náročnost technického řešení (ohyby, střešní okna, kombinace vrstev).</li>
+            <li>typ a kvalita materiálu, gramáž a údržba,</li>
+            <li>rozměry oken, výška montáže a množství řasení,</li>
+            <li>náročnost techniky (ohyby, atypy, vrstvení),</li>
+            <li>montážní podmínky na místě.</li>
           </ul>
         </div>
       </section>
     </>
   );
 }
+
 
 function Gallery({ t }) {
   useReveal();
