@@ -649,7 +649,7 @@ function Pricing({ t }) {
     {
       key: "zaclon",
       title: "Záclony",
-      img: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1400&auto=format&fit=crop",
+      img: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1800&auto=format&fit=crop",
       intro:
         "Lehká vrstva, která propouští denní světlo a zároveň vytváří základní pocit soukromí. Hodí se do obytných místností, kuchyní i prostor, kde nechcete úplné zatemnění.",
       how:
@@ -681,7 +681,7 @@ function Pricing({ t }) {
     {
       key: "zaves",
       title: "Závěsy (dim-out / blackout)",
-      img: "https://images.unsplash.com/photo-1505693416388-36a5ac3be353?q=80&w=1400&auto=format&fit=crop",
+      img: "https://images.unsplash.com/photo-1505693416388-36a5ac3be353?q=80&w=1800&auto=format&fit=crop",
       intro:
         "Pro večerní soukromí, zatemnění a pocit útulna. Liší se mírou zatemnění a gramáží materiálu.",
       how:
@@ -704,7 +704,7 @@ function Pricing({ t }) {
     {
       key: "roleta",
       title: "Rolety",
-      img: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1400&auto=format&fit=crop",
+      img: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1800&auto=format&fit=crop",
       intro:
         "Praktické řešení s čistými liniemi. Vhodné tam, kde je potřeba jednoduchá regulace světla.",
       how:
@@ -717,17 +717,13 @@ function Pricing({ t }) {
         { name: "Zatemňovací", note: "Větší soukromí a tlumení světla." },
         { name: "Motorové ovládání", note: "Komfort, ale vyšší náklady a technika." }
       ],
-      factors: [
-        "typ rolety a materiál",
-        "rozměry",
-        "ovládání a montáž"
-      ]
+      factors: ["typ rolety a materiál", "rozměry", "ovládání a montáž"]
     },
 
     {
       key: "systemy",
       title: "Technické systémy",
-      img: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=1400&auto=format&fit=crop",
+      img: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=1800&auto=format&fit=crop",
       intro:
         "Kolejnice, tyče a technika, která drží celé řešení pohromadě a ovlivňuje jeho funkčnost.",
       how:
@@ -740,17 +736,13 @@ function Pricing({ t }) {
         { name: "Ohýbané / atypy", note: "Na míru prostoru a půdorysu." },
         { name: "Motor / chytré ovládání", note: "Komfort a čistota bez šňůr." }
       ],
-      factors: [
-        "délka a ohyby",
-        "uchycení a podklad",
-        "zatížení a typ závěsu"
-      ]
+      factors: ["délka a ohyby", "uchycení a podklad", "zatížení a typ závěsu"]
     },
 
     {
       key: "servis",
       title: "Servis",
-      img: "https://images.unsplash.com/photo-1590698933947-a202b069a861?q=80&w=1400&auto=format&fit=crop",
+      img: "https://images.unsplash.com/photo-1590698933947-a202b069a861?q=80&w=1800&auto=format&fit=crop",
       intro:
         "Úpravy, doplnění a opravy hotového stínění, aby vše dlouhodobě fungovalo.",
       how:
@@ -763,11 +755,7 @@ function Pricing({ t }) {
         { name: "Technické dořešení", note: "Jezdce, háčky, vedení, drobnosti." },
         { name: "Doplnění vrstev", note: "Když chcete přidat další funkci." }
       ],
-      factors: [
-        "rozsah práce",
-        "stav stávajícího řešení",
-        "časová náročnost a dojezd"
-      ]
+      factors: ["rozsah práce", "stav stávajícího řešení", "časová náročnost a dojezd"]
     }
   ];
 
@@ -783,65 +771,79 @@ function Pricing({ t }) {
         <h2 className="script text-4xl mb-4">{t.priceH}</h2>
         <p className="text-[var(--muted)] max-w-3xl mb-10">{t.priceP}</p>
 
-        {/* 2 sloupce, ať to není 3+2 */}
-        <div className="grid md:grid-cols-2 gap-6">
+        {/* POD SEBOU (žádné sloupce) */}
+        <div className="space-y-8">
           {items.map((x) => (
             <article
               key={x.key}
-              className="rounded-2xl bg-white border border-[var(--line)] soft-shadow overflow-hidden reveal"
               id={x.key}
+              className="rounded-2xl bg-white border border-[var(--line)] soft-shadow overflow-hidden reveal"
             >
-              {/* Obrázek – nízký a kompaktní */}
-              <img
-                src={x.img}
-                alt={x.title}
-                className="w-full h-[110px] object-cover"
-                loading="lazy"
-              />
-
-              <div className="p-6">
-                <h3 className="text-lg font-semibold mb-2">{x.title}</h3>
-
-                <p className="text-[var(--muted)] text-sm leading-relaxed mb-4">
-                  {x.intro}
-                </p>
-
-                <div className="text-sm font-semibold mb-2">
-                  Jak se orientačně počítá cena
-                </div>
-                <p className="text-[var(--muted)] text-sm leading-relaxed mb-4">
-                  {x.how}
-                </p>
-
-                {/* Chytrý trik: zvýrazněná věta (ne zavádějící číslo) */}
-                <div className="inline-flex items-center bg-[var(--bg2)] rounded-full px-4 py-2 mb-5">
-                  <span className="text-sm text-[var(--muted)]">
-                    {x.highlight}
-                  </span>
+              {/* Desktop: vlevo fotka / vpravo obsah. Mobile: pod sebou */}
+              <div className="md:flex">
+                <div className="md:w-[42%]">
+                  <img
+                    src={x.img}
+                    alt={x.title}
+                    className="w-full h-[220px] md:h-full object-cover"
+                    loading="lazy"
+                  />
                 </div>
 
-                <div className="text-sm font-semibold mb-2">{x.tiersTitle}</div>
+                <div className="p-6 md:p-8 md:w-[58%]">
+                  <div className="flex items-baseline justify-between gap-4">
+                    <h3 className="text-xl font-semibold">{x.title}</h3>
+                  </div>
 
-                <div className="grid gap-2 mb-5">
-                  {x.tiers.map((t0, i) => (
-                    <div
-                      key={i}
-                      className="rounded-xl border border-[var(--line)] bg-white px-4 py-3"
-                    >
-                      <div className="text-sm font-semibold">{t0.name}</div>
-                      <div className="text-[var(--muted)] text-sm">
-                        {t0.note}
+                  <p className="text-[var(--muted)] text-sm leading-relaxed mt-3">
+                    {x.intro}
+                  </p>
+
+                  {/* zvýrazněná věta – ne “ceník” */}
+                  <div className="mt-5 inline-flex items-center bg-[var(--bg2)] rounded-full px-4 py-2">
+                    <span className="text-sm text-[var(--muted)]">{x.highlight}</span>
+                  </div>
+
+                  {/* Detaily schované – aby to nepůsobilo rozlezle */}
+                  <div className="mt-6 space-y-3">
+                    <details className="rounded-xl border border-[var(--line)] bg-white px-4 py-3">
+                      <summary className="cursor-pointer text-sm font-semibold select-none">
+                        Jak se orientačně počítá cena
+                      </summary>
+                      <p className="text-[var(--muted)] text-sm leading-relaxed mt-2">
+                        {x.how}
+                      </p>
+                    </details>
+
+                    <details className="rounded-xl border border-[var(--line)] bg-white px-4 py-3">
+                      <summary className="cursor-pointer text-sm font-semibold select-none">
+                        {x.tiersTitle}
+                      </summary>
+                      <div className="grid gap-2 mt-3">
+                        {x.tiers.map((t0, i) => (
+                          <div
+                            key={i}
+                            className="rounded-xl border border-[var(--line)] bg-white px-4 py-3"
+                          >
+                            <div className="text-sm font-semibold">{t0.name}</div>
+                            <div className="text-[var(--muted)] text-sm">{t0.note}</div>
+                          </div>
+                        ))}
                       </div>
-                    </div>
-                  ))}
-                </div>
+                    </details>
 
-                <div className="text-sm font-semibold mb-2">Co do ceny vstupuje</div>
-                <ul className="list-disc pl-5 text-[var(--muted)] text-sm space-y-1">
-                  {x.factors.map((f, i) => (
-                    <li key={i}>{f}</li>
-                  ))}
-                </ul>
+                    <details className="rounded-xl border border-[var(--line)] bg-white px-4 py-3">
+                      <summary className="cursor-pointer text-sm font-semibold select-none">
+                        Co do ceny vstupuje
+                      </summary>
+                      <ul className="list-disc pl-5 text-[var(--muted)] text-sm space-y-1 mt-2">
+                        {x.factors.map((f, i) => (
+                          <li key={i}>{f}</li>
+                        ))}
+                      </ul>
+                    </details>
+                  </div>
+                </div>
               </div>
             </article>
           ))}
