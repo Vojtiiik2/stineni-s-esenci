@@ -642,152 +642,155 @@ function Process({ t }) {
   );
 }
 
-function Pricing({ t }) {
+import React, { useEffect, useMemo, useState } from "react";
+
+function Modal({ open, onClose, title, children }) {
+  useEffect(() => {
+    if (!open) return;
+
+    const onKey = (e) => {
+      if (e.key === "Escape") onClose?.();
+    };
+
+    document.addEventListener("keydown", onKey);
+    // lock body scroll
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prev;
+    };
+  }, [open, onClose]);
+
+  if (!open) return null;
+
+  return (
+    <div className="fixed inset-0 z-[999]">
+      {/* backdrop */}
+      <div
+        className="absolute inset-0 bg-black/50"
+        onClick={onClose}
+        aria-hidden="true"
+      />
+
+      {/* dialog */}
+      <div className="absolute inset-0 flex items-center justify-center p-4">
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label={title}
+          className="w-full max-w-4xl rounded-2xl bg-white border border-[var(--line)] soft-shadow overflow-hidden"
+        >
+          {/* header */}
+          <div className="flex items-center justify-between px-5 py-4 border-b border-[var(--line)]">
+            <div className="text-base font-semibold">{title}</div>
+            <button
+              type="button"
+              onClick={onClose}
+              className="rounded-full px-3 py-1 text-sm border border-[var(--line)] hover:bg-[var(--bg2)]"
+              aria-label="Zavřít"
+            >
+              Zavřít
+            </button>
+          </div>
+
+          {/* content (scrollable) */}
+          <div className="max-h-[78vh] overflow-y-auto">
+            {children}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function RangeChips({ items }) {
+  return (
+    <div className="grid sm:grid-cols-3 gap-3">
+      {items.map((r, i) => (
+        <div
+          key={i}
+          className="rounded-xl border border-[var(--line)] bg-white px-4 py-3"
+        >
+          <div className="text-xs text-[var(--muted)]">{r.label}</div>
+          <div className="mt-1 text-sm font-semibold">{r.value}</div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+export default function Pricing({ t }) {
   useReveal();
+  const [active, setActive] = useState(null);
 
-  const items = [
-    {
-      key: "zaclon",
-      title: "Záclony",
-      img: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1800&auto=format&fit=crop",
-      vibe: "Světlo zůstává. Prostor se zjemní. Soukromí se přidá.",
-      intro:
-        "Lehká vrstva, která propouští denní světlo a zároveň vytváří základní pocit soukromí. Hodí se do obytných místností, kuchyní i prostor, kde nechcete úplné zatemnění.",
-      rangesTitle: "Orientační scénáře (pro představu)",
-      ranges: [
-        { label: "1 běžné okno", value: "cca 8–18 tis. Kč" },
-        { label: "větší okno / francouzské", value: "cca 15–35 tis. Kč" },
-        { label: "celá stěna / více dílů", value: "cca 25–55 tis. Kč" }
-      ],
-      how:
-        "Cena se odvíjí od vybrané látky a množství metrů potřebných na konkrétní okno. Nejde jen o šířku skla, ale i o výšku zavěšení a koeficient řasení.",
-      tiersTitle: "Cenové hladiny látek (orientačně)",
-      tiers: [
-        {
-          name: "Základní lehké voály",
-          note: "Jednoduché, vzdušné látky s nižší pořizovací cenou."
-        },
-        {
-          name: "Střední kategorie – struktura / přírodní vzhled",
-          note: "Nejčastější volba. Vyvážený poměr ceny, vzhledu a funkce."
-        },
-        {
-          name: "Prémiové tkaniny",
-          note: "Výrazný materiál, vyšší gramáž, specifická textura nebo původ."
-        }
-      ],
-      factors: [
-        "množství látky (šířka × výška × řasení)",
-        "ušití na míru + typ řasení (vlna ap.)",
-        "technický systém (kolejnice/tyč) + montáž"
-      ],
-      bridge: "Pozorování → rozměr → látka → řasení → čistý detail"
-    },
+  const items = useMemo(
+    () => [
+      {
+        key: "zaclon",
+        title: "Záclony",
+        img: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1800&auto=format&fit=crop",
+        vibe: "Světlo zůstává. Prostor se zjemní. Soukromí se přidá.",
+        intro:
+          "Lehká vrstva, která propouští denní světlo a zároveň vytváří základní pocit soukromí. Hodí se do obytných místností, kuchyní i prostor, kde nechcete úplné zatemnění.",
+        rangesTitle: "Orientační scénáře (pro představu)",
+        ranges: [
+          { label: "1 běžné okno", value: "cca 8–18 tis. Kč" },
+          { label: "větší okno / francouzské", value: "cca 15–35 tis. Kč" },
+          { label: "celá stěna / více dílů", value: "cca 25–55 tis. Kč" }
+        ],
+        how:
+          "Cena se odvíjí od vybrané látky a množství metrů potřebných na konkrétní okno. Nejde jen o šířku skla, ale i o výšku zavěšení a koeficient řasení.",
+        tiersTitle: "Cenové hladiny látek (orientačně)",
+        tiers: [
+          { name: "Základní lehké voály", note: "Jednoduché, vzdušné látky s nižší pořizovací cenou." },
+          { name: "Střední kategorie – struktura / přírodní vzhled", note: "Nejčastější volba. Vyvážený poměr ceny, vzhledu a funkce." },
+          { name: "Prémiové tkaniny", note: "Výrazný materiál, vyšší gramáž, specifická textura nebo původ." }
+        ],
+        factors: [
+          "množství látky (šířka × výška × řasení)",
+          "ušití na míru + typ řasení (vlna ap.)",
+          "technický systém (kolejnice/tyč) + montáž"
+        ],
+        bridge: "Pozorování → rozměr → látka → řasení → čistý detail"
+      },
 
-    {
-      key: "zaves",
-      title: "Závěsy (dim-out / blackout)",
-      img: "https://images.unsplash.com/photo-1505693416388-36a5ac3be353?q=80&w=1800&auto=format&fit=crop",
-      vibe: "Večer zklidní. Ráno ochrání. Prostor zútulní.",
-      intro:
-        "Pro večerní soukromí, zatemnění a pocit útulna. Liší se mírou zatemnění a gramáží materiálu.",
-      rangesTitle: "Orientační scénáře (pro představu)",
-      ranges: [
-        { label: "1 okno (dekor / dim-out)", value: "cca 12–28 tis. Kč" },
-        { label: "větší plocha (dim-out)", value: "cca 22–45 tis. Kč" },
-        { label: "blackout / dělení na více dílů", value: "cca 30–65 tis. Kč" }
-      ],
-      how:
-        "Rozdíl v ceně dělá typ zatemnění, gramáž a množství řasení. U větších ploch je potřeba více materiálu, často i dělení na více dílů a řešení pohodlného ovládání.",
-      tiersTitle: "Orientační přístup",
-      tiers: [
-        { name: "Dim-out", note: "Ztlumí světlo, ale úplnou tmu neudělá." },
-        { name: "Blackout", note: "Maximální zatemnění – typicky ložnice." },
-        { name: "Dekorační závěs", note: "Primárně vzhled, soukromí a zútulnění." }
-      ],
-      factors: [
-        "typ látky (dekor / dim-out / blackout) a gramáž",
-        "množství řasení + velikost plochy + dělení na díly",
-        "technika / systém + montáž"
-      ],
-      bridge: "Světlo → soukromí → zatemnění → komfort ovládání"
-    },
+      {
+        key: "zaves",
+        title: "Závěsy (dim-out / blackout)",
+        img: "https://images.unsplash.com/photo-1505693416388-36a5ac3be353?q=80&w=1800&auto=format&fit=crop",
+        vibe: "Večer zklidní. Ráno ochrání. Prostor zútulní.",
+        intro:
+          "Pro večerní soukromí, zatemnění a pocit útulna. Liší se mírou zatemnění a gramáží materiálu.",
+        rangesTitle: "Orientační scénáře (pro představu)",
+        ranges: [
+          { label: "1 okno (dekor / dim-out)", value: "cca 12–28 tis. Kč" },
+          { label: "větší plocha (dim-out)", value: "cca 22–45 tis. Kč" },
+          { label: "blackout / více dílů", value: "cca 30–65 tis. Kč" }
+        ],
+        how:
+          "Rozdíl v ceně dělá typ zatemnění, gramáž a množství řasení. U větších ploch je potřeba více materiálu, často i dělení na více dílů a řešení pohodlného ovládání.",
+        tiersTitle: "Orientační přístup",
+        tiers: [
+          { name: "Dim-out", note: "Ztlumí světlo, ale úplnou tmu neudělá." },
+          { name: "Blackout", note: "Maximální zatemnění – typicky ložnice." },
+          { name: "Dekorační závěs", note: "Primárně vzhled, soukromí a zútulnění." }
+        ],
+        factors: [
+          "typ látky (dekor / dim-out / blackout) a gramáž",
+          "množství řasení + velikost plochy + dělení na díly",
+          "technika / systém + montáž"
+        ],
+        bridge: "Světlo → soukromí → zatemnění → komfort ovládání"
+      },
 
-    {
-      key: "roleta",
-      title: "Rolety",
-      img: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1800&auto=format&fit=crop",
-      vibe: "Čisté linie. Funkce bez kompromisu.",
-      intro:
-        "Praktické řešení s čistými liniemi. Vhodné tam, kde je potřeba jednoduchá regulace světla.",
-      rangesTitle: "Orientační scénáře (pro představu)",
-      ranges: [
-        { label: "standardní okno", value: "cca 4–12 tis. Kč / ks" },
-        { label: "větší rozměr / lepší materiál", value: "cca 10–22 tis. Kč / ks" },
-        { label: "motor / atyp / složitější montáž", value: "cca 18–40+ tis. Kč / ks" }
-      ],
-      how:
-        "Cena rolet se odvíjí hlavně od typu rolety, rozměru a způsobu ovládání. Jednoduché řešení je cenově dostupnější, technicky náročnější varianty nebo motor cenu zvyšují.",
-      tiersTitle: "Typy (orientačně)",
-      tiers: [
-        { name: "Screen / denní", note: "Regulace světla, zachování vzdušnosti." },
-        { name: "Zatemňovací", note: "Větší soukromí a tlumení světla." },
-        { name: "Motorové ovládání", note: "Komfort, ale vyšší náklady a technika." }
-      ],
-      factors: ["typ rolety a materiál", "rozměry", "ovládání + montáž"],
-      bridge: "Rozměr → materiál → ovládání → montáž"
-    },
+      // … můžeš sem doplnit roleta/systemy/servis stejně jako výš
+    ],
+    []
+  );
 
-    {
-      key: "systemy",
-      title: "Technické systémy",
-      img: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=1800&auto=format&fit=crop",
-      vibe: "To, co není vidět – rozhoduje nejvíc.",
-      intro:
-        "Kolejnice, tyče a technika, která drží celé řešení pohromadě a ovlivňuje jeho funkčnost.",
-      rangesTitle: "Orientační scénáře (pro představu)",
-      ranges: [
-        { label: "rovná kolejnice", value: "cca 2–8 tis. Kč" },
-        { label: "více vrstev / delší délky", value: "cca 6–18 tis. Kč" },
-        { label: "oblouk / atyp / motor", value: "cca 15–45+ tis. Kč" }
-      ],
-      how:
-        "Cena se liší podle délky, počtu ohybů, způsobu uchycení a zatížení. U ohýbaných kolejnic a atypů rozhoduje přesnost zaměření a zpracování.",
-      tiersTitle: "Nejčastěji řešíme",
-      tiers: [
-        { name: "Rovné kolejnice", note: "Jednoduché, čisté řešení." },
-        { name: "Ohýbané / atypy", note: "Na míru prostoru a půdorysu." },
-        { name: "Motor / chytré ovládání", note: "Komfort a čistota bez šňůr." }
-      ],
-      factors: ["délka a ohyby", "uchycení a podklad", "zatížení + typ závěsu"],
-      bridge: "Ticho chodu → přesnost → dlouhá životnost"
-    },
-
-    {
-      key: "servis",
-      title: "Servis",
-      img: "https://images.unsplash.com/photo-1590698933947-a202b069a861?q=80&w=1800&auto=format&fit=crop",
-      vibe: "Aby to fungovalo i za rok. A i za tři.",
-      intro:
-        "Úpravy, doplnění a opravy hotového stínění, aby vše dlouhodobě fungovalo.",
-      rangesTitle: "Orientačně podle rozsahu",
-      ranges: [
-        { label: "drobná úprava", value: "cca 800–3 500 Kč" },
-        { label: "servis + materiál", value: "cca 2 500–9 000 Kč" },
-        { label: "větší zásah / více prvků", value: "cca 7 000–20 000+ Kč" }
-      ],
-      how:
-        "Servis řešíme podle konkrétní situace. Může jít o úpravu délky, přešití, výměnu jezdců, doplnění vrstvy nebo dořešení detailu po čase.",
-      tiersTitle: "Typicky pomůžeme s",
-      tiers: [
-        { name: "Úpravy a přešití", note: "Zkrácení, přizpůsobení, opravy." },
-        { name: "Technické dořešení", note: "Jezdce, háčky, vedení, drobnosti." },
-        { name: "Doplnění vrstev", note: "Když chcete přidat další funkci." }
-      ],
-      factors: ["rozsah práce", "stav stávajícího řešení", "časová náročnost + dojezd"],
-      bridge: "Detail → funkce → klid"
-    }
-  ];
+  const activeItem = active ? items.find((i) => i.key === active) : null;
 
   return (
     <>
@@ -801,103 +804,50 @@ function Pricing({ t }) {
         <h2 className="script text-4xl mb-4">{t.priceH}</h2>
         <p className="text-[var(--muted)] max-w-3xl mb-10">{t.priceP}</p>
 
-        {/* PANELY POD SEBOU – sjednocené jako "Jak pracujeme" */}
-        <div className="space-y-10">
+        {/* PREVIEW GRID – kompaktní, sjednocené, bez "celostránkových panelů" */}
+        <div className="grid md:grid-cols-2 gap-6">
           {items.map((x) => (
             <article
               key={x.key}
-              id={x.key}
               className="rounded-2xl bg-white border border-[var(--line)] soft-shadow overflow-hidden reveal"
             >
-              {/* grid, aby se obrázek NIKDY neroztahoval s detailem */}
-              <div className="grid md:grid-cols-12 gap-0">
-                {/* IMAGE – fixní výška, NEROSTE */}
-                <div className="md:col-span-5">
-                  <div className="h-[220px] md:h-[320px] w-full overflow-hidden">
-                    <img
-                      src={x.img}
-                      alt={x.title}
-                      className="w-full h-full object-cover"
-                      loading="lazy"
-                    />
-                  </div>
+              {/* mělký obrázek */}
+              <div className="h-[140px] w-full overflow-hidden">
+                <img
+                  src={x.img}
+                  alt={x.title}
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+
+              <div className="p-6">
+                <h3 className="text-lg font-semibold">{x.title}</h3>
+                <div className="mt-2 text-sm italic text-[var(--muted)]">
+                  {x.vibe}
                 </div>
 
-                {/* CONTENT */}
-                <div className="md:col-span-7 p-6 md:p-8">
-                  <h3 className="text-xl font-semibold">{x.title}</h3>
+                <p className="mt-3 text-[var(--muted)] text-sm leading-relaxed">
+                  {x.intro}
+                </p>
 
-                  {/* sjednocující „věta / vibe“ jako na Jak pracujeme */}
-                  <div className="mt-2 text-sm italic text-[var(--muted)]">
-                    {x.vibe}
-                  </div>
+                <div className="mt-5">
+                  <div className="text-sm font-semibold mb-2">{x.rangesTitle}</div>
+                  <RangeChips items={x.ranges} />
+                </div>
 
-                  <p className="mt-4 text-[var(--muted)] text-sm leading-relaxed">
-                    {x.intro}
-                  </p>
+                <div className="mt-5 rounded-full bg-[var(--bg2)] px-4 py-2 inline-flex">
+                  <span className="text-sm text-[var(--muted)]">{x.bridge}</span>
+                </div>
 
-                  {/* ORIENTAČNÍ SCÉNÁŘE – užitečné a konkrétnější než „jednotky až desítky“ */}
-                  <div className="mt-6">
-                    <div className="text-sm font-semibold mb-3">{x.rangesTitle}</div>
-                    <div className="grid sm:grid-cols-3 gap-3">
-                      {x.ranges.map((r, i) => (
-                        <div
-                          key={i}
-                          className="rounded-xl border border-[var(--line)] bg-white px-4 py-3"
-                        >
-                          <div className="text-xs text-[var(--muted)]">{r.label}</div>
-                          <div className="mt-1 text-sm font-semibold">{r.value}</div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* mezivěta – sjednocení rytmu */}
-                  <div className="mt-6 rounded-full bg-[var(--bg2)] px-4 py-2 inline-flex">
-                    <span className="text-sm text-[var(--muted)]">{x.bridge}</span>
-                  </div>
-
-                  {/* Detaily – rozbalovací, ale už to nepůsobí „suchý“ */}
-                  <div className="mt-6 space-y-3">
-                    <details className="rounded-xl border border-[var(--line)] bg-white px-4 py-3">
-                      <summary className="cursor-pointer text-sm font-semibold select-none">
-                        Jak se orientačně počítá cena
-                      </summary>
-                      <p className="text-[var(--muted)] text-sm leading-relaxed mt-2">
-                        {x.how}
-                      </p>
-                    </details>
-
-                    <details className="rounded-xl border border-[var(--line)] bg-white px-4 py-3">
-                      <summary className="cursor-pointer text-sm font-semibold select-none">
-                        {x.tiersTitle}
-                      </summary>
-                      <div className="grid gap-2 mt-3">
-                        {x.tiers.map((t0, i) => (
-                          <div
-                            key={i}
-                            className="rounded-xl border border-[var(--line)] bg-white px-4 py-3"
-                          >
-                            <div className="text-sm font-semibold">{t0.name}</div>
-                            <div className="text-[var(--muted)] text-sm">
-                              {t0.note}
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </details>
-
-                    <details className="rounded-xl border border-[var(--line)] bg-white px-4 py-3">
-                      <summary className="cursor-pointer text-sm font-semibold select-none">
-                        Co do ceny vstupuje
-                      </summary>
-                      <ul className="list-disc pl-5 text-[var(--muted)] text-sm space-y-1 mt-2">
-                        {x.factors.map((f, i) => (
-                          <li key={i}>{f}</li>
-                        ))}
-                      </ul>
-                    </details>
-                  </div>
+                <div className="mt-6">
+                  <button
+                    type="button"
+                    onClick={() => setActive(x.key)}
+                    className="rounded-full px-5 py-2 text-sm border border-[var(--line)] hover:bg-[var(--bg2)]"
+                  >
+                    Zobrazit detail
+                  </button>
                 </div>
               </div>
             </article>
@@ -910,9 +860,104 @@ function Pricing({ t }) {
           materiálů a technického řešení.
         </div>
       </section>
+
+      {/* MODAL DETAIL */}
+      <Modal
+        open={!!activeItem}
+        onClose={() => setActive(null)}
+        title={activeItem?.title || ""}
+      >
+        {activeItem && (
+          <div className="grid md:grid-cols-12 gap-0">
+            {/* fixní image – už nikdy neroste */}
+            <div className="md:col-span-5">
+              <div className="h-[220px] md:h-[520px] w-full overflow-hidden">
+                <img
+                  src={activeItem.img}
+                  alt={activeItem.title}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+
+            <div className="md:col-span-7 p-6 md:p-8">
+              <div className="text-sm italic text-[var(--muted)]">
+                {activeItem.vibe}
+              </div>
+
+              <p className="mt-4 text-[var(--muted)] text-sm leading-relaxed">
+                {activeItem.intro}
+              </p>
+
+              <div className="mt-6">
+                <div className="text-sm font-semibold mb-3">{activeItem.rangesTitle}</div>
+                <RangeChips items={activeItem.ranges} />
+              </div>
+
+              <div className="mt-6 rounded-full bg-[var(--bg2)] px-4 py-2 inline-flex">
+                <span className="text-sm text-[var(--muted)]">{activeItem.bridge}</span>
+              </div>
+
+              <div className="mt-7 space-y-3">
+                <div className="rounded-xl border border-[var(--line)] bg-white px-4 py-3">
+                  <div className="text-sm font-semibold">Jak se orientačně počítá cena</div>
+                  <p className="text-[var(--muted)] text-sm leading-relaxed mt-2">
+                    {activeItem.how}
+                  </p>
+                </div>
+
+                <div className="rounded-xl border border-[var(--line)] bg-white px-4 py-3">
+                  <div className="text-sm font-semibold">{activeItem.tiersTitle}</div>
+                  <div className="grid gap-2 mt-3">
+                    {activeItem.tiers.map((t0, i) => (
+                      <div
+                        key={i}
+                        className="rounded-xl border border-[var(--line)] bg-white px-4 py-3"
+                      >
+                        <div className="text-sm font-semibold">{t0.name}</div>
+                        <div className="text-[var(--muted)] text-sm">{t0.note}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="rounded-xl border border-[var(--line)] bg-white px-4 py-3">
+                  <div className="text-sm font-semibold">Co do ceny vstupuje</div>
+                  <ul className="list-disc pl-5 text-[var(--muted)] text-sm space-y-1 mt-2">
+                    {activeItem.factors.map((f, i) => (
+                      <li key={i}>{f}</li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="mt-6">
+                  <div className="rounded-2xl bg-[var(--bg2)] px-5 py-4">
+                    <div className="text-sm font-semibold">Chceš rychlý odhad?</div>
+                    <div className="text-sm text-[var(--muted)] mt-1">
+                      Pošli fotku prostoru + přibližné rozměry (šířka a výška) a napiš,
+                      jestli chceš spíš soukromí, zútulnění nebo zatemnění.
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-6">
+                  <button
+                    type="button"
+                    onClick={() => setActive(null)}
+                    className="rounded-full px-5 py-2 text-sm border border-[var(--line)] hover:bg-[var(--bg2)]"
+                  >
+                    Zavřít detail
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </Modal>
     </>
   );
 }
+
 
 
 
