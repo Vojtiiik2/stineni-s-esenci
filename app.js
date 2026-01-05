@@ -673,7 +673,7 @@ function Pricing({ t }) {
       ],
       factors: [
         "množství potřebné látky (šířka × výška × řasení)",
-        "uští na míru",
+        "ušití na míru",
         "technický systém a montáž"
       ]
     },
