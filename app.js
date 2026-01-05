@@ -643,110 +643,6 @@ function Process({ t }) {
 }
 
 
-// ====== PRICING – preview ve stylu Process + modal detail ======
-// Bez importů. Předpokládá: useState/useEffect/useMemo už bereš z Reactu nahoře.
-// Předpokládá: useReveal() a <Hero .../> existují jako u Process.
-
-function Modal({ open, onClose, title, subtitle, children }) {
-  useEffect(() => {
-    if (!open) return;
-
-    const onKey = (e) => {
-      if (e.key === "Escape") onClose?.();
-    };
-
-    document.addEventListener("keydown", onKey);
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-
-    return () => {
-      document.removeEventListener("keydown", onKey);
-      document.body.style.overflow = prev;
-    };
-  }, [open, onClose]);
-
-  if (!open) return null;
-
-  return (
-    <div className="fixed inset-0 z-[999]">
-      <div
-        className="absolute inset-0 bg-black/50"
-        onClick={onClose}
-        aria-hidden="true"
-      />
-      <div className="absolute inset-0 flex items-center justify-center p-4">
-        <div
-          role="dialog"
-          aria-modal="true"
-          aria-label={title}
-          className="w-full max-w-5xl rounded-2xl bg-white border border-[var(--line)] soft-shadow overflow-hidden"
-        >
-          <div className="flex items-start justify-between gap-4 px-5 py-4 border-b border-[var(--line)]">
-            <div>
-              <div className="text-base font-semibold">{title}</div>
-              {subtitle ? (
-                <div className="text-sm italic text-[var(--muted)] mt-1">
-                  {subtitle}
-                </div>
-              ) : null}
-            </div>
-
-            <button
-              type="button"
-              onClick={onClose}
-              className="rounded-full px-3 py-1 text-sm border border-[var(--line)] hover:bg-[var(--bg2)]"
-              aria-label="Zavřít"
-            >
-              Zavřít
-            </button>
-          </div>
-
-          <div className="max-h-[78vh] overflow-y-auto">{children}</div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function RangeChips({ items }) {
-  return (
-    <div className="grid sm:grid-cols-3 gap-3">
-      {items.map((r, i) => (
-        <div
-          key={i}
-          className="rounded-xl border border-[var(--line)] bg-white px-4 py-3"
-        >
-          <div className="text-xs text-[var(--muted)]">{r.label}</div>
-          <div className="mt-1 text-sm font-semibold">{r.value}</div>
-        </div>
-      ))}
-    </div>
-  );
-}
-
-function PillLine({ text, variant = "soft" }) {
-  const cls =
-    variant === "soft"
-      ? "bg-[var(--bg2)]"
-      : "bg-white border border-[var(--line)]";
-  return (
-    <div className={"mt-4 inline-flex items-center gap-2 rounded-full px-4 py-2 " + cls}>
-      <span className="w-8 h-px bg-[var(--line)]" />
-      <span className="text-sm text-[var(--muted)]">{text}</span>
-    </div>
-  );
-}
-
-function DetailBlock({ title, children }) {
-  return (
-    <div className="rounded-xl border border-[var(--line)] bg-white px-4 py-3">
-      <div className="text-sm font-semibold">{title}</div>
-      <div className="mt-2 text-[var(--muted)] text-sm leading-relaxed">
-        {children}
-      </div>
-    </div>
-  );
-}
 
 function Pricing({ t }) {
   useReveal();
@@ -767,29 +663,27 @@ function Pricing({ t }) {
         vibe: "Světlo zůstává. Prostor se zjemní. Soukromí se přidá.",
         micro: "Světlo, proporce, jemnost.",
         intro:
-          "Lehká vrstva, která propouští denní světlo a zároveň vytváří základní pocit soukromí. Vhodné tam, kde nechcete úplné zatemnění.",
+          "Lehká vrstva, která propouští denní světlo a zároveň vytváří základní pocit soukromí.",
         rangesTitle: "Orientačně (pro představu)",
         ranges: [
           { label: "1 běžné okno", value: "cca 8–18 tis. Kč" },
-          { label: "větší okno / francouzské", value: "cca 15–35 tis. Kč" },
-          { label: "celá stěna / více dílů", value: "cca 25–55 tis. Kč" }
+          { label: "větší okno", value: "cca 15–35 tis. Kč" },
+          { label: "celá stěna", value: "cca 25–55 tis. Kč" }
         ],
         how:
-          "Cena se odvíjí od vybrané látky a množství metrů potřebných na konkrétní okno. Nejde jen o šířku skla, ale i o výšku zavěšení a koeficient řasení.",
+          "Cena se odvíjí od vybrané látky a množství metrů potřebných na konkrétní okno. Důležitá je výška zavěšení a koeficient řasení.",
         tiersTitle: "Cenové hladiny látek (orientačně)",
         tiers: [
           { name: "Základní lehké voály", note: "Vzdušné látky s nižší pořizovací cenou." },
-          { name: "Střední kategorie – struktura / přírodní vzhled", note: "Nejčastější volba. Vyvážený poměr ceny, vzhledu a funkce." },
-          { name: "Prémiové tkaniny", note: "Výraznější materiál, vyšší gramáž, specifická textura nebo původ." }
+          { name: "Střední kategorie", note: "Vyvážený poměr ceny, vzhledu a funkce." },
+          { name: "Prémiové tkaniny", note: "Výraznější materiál, textura, vyšší gramáž." }
         ],
         factors: [
           "množství látky (šířka × výška × řasení)",
-          "ušití na míru + typ řasení (vlna ap.)",
-          "technika (kolejnice/tyč) + montáž"
-        ],
-        bridge: "Z pozorování vzniká směr."
+          "ušití na míru + typ řasení",
+          "technika + montáž"
+        ]
       },
-
       {
         key: "zaves",
         title: "Závěsy (dim-out / blackout)",
@@ -797,31 +691,29 @@ function Pricing({ t }) {
           (t.priceImgs && t.priceImgs[2]) ||
           "https://images.unsplash.com/photo-1505693416388-36a5ac3be353?q=80&w=1800&auto=format&fit=crop",
         vibe: "Večer zklidní. Ráno ochrání. Prostor zútulní.",
-        micro: "Materiál, technika, harmonie.",
+        micro: "Materiál, ticho, komfort.",
         intro:
-          "Závěsy pro soukromí, zútulnění a zatemnění. Rozdíl dělá typ zatemnění, gramáž a množství řasení.",
+          "Pro soukromí, zútulnění a zatemnění. Rozdíl dělá typ zatemnění, gramáž a množství řasení.",
         rangesTitle: "Orientačně (pro představu)",
         ranges: [
-          { label: "1 okno (dekor / dim-out)", value: "cca 12–28 tis. Kč" },
-          { label: "větší plocha (dim-out)", value: "cca 22–45 tis. Kč" },
-          { label: "blackout / více dílů", value: "cca 30–65 tis. Kč" }
+          { label: "1 okno (dim-out)", value: "cca 12–28 tis. Kč" },
+          { label: "větší plocha", value: "cca 22–45 tis. Kč" },
+          { label: "blackout", value: "cca 30–65 tis. Kč" }
         ],
         how:
-          "Rozdíl v ceně dělá typ zatemnění, gramáž a množství řasení. U větších ploch je potřeba více materiálu, často i dělení na více dílů a řešení ovládání.",
+          "Cena roste s gramáží, typem zatemnění a množstvím řasení. U velkých ploch často řešíme dělení na více dílů a ovládání.",
         tiersTitle: "Orientační přístup",
         tiers: [
           { name: "Dim-out", note: "Ztlumí světlo, ale úplnou tmu neudělá." },
           { name: "Blackout", note: "Maximální zatemnění – typicky ložnice." },
-          { name: "Dekorační závěs", note: "Primárně vzhled, soukromí a zútulnění." }
+          { name: "Dekorační závěs", note: "Primárně vzhled a soukromí." }
         ],
         factors: [
-          "typ látky (dekor/dim-out/blackout) + gramáž",
-          "množství řasení + velikost plochy + dělení na díly",
-          "technika / systém + montáž"
-        ],
-        bridge: "Návrh se mění v realitu."
+          "typ látky + gramáž",
+          "množství řasení + velikost plochy",
+          "technika + montáž"
+        ]
       },
-
       {
         key: "roleta",
         title: "Rolety",
@@ -829,27 +721,25 @@ function Pricing({ t }) {
           (t.priceImgs && t.priceImgs[3]) ||
           "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1800&auto=format&fit=crop",
         vibe: "Čisté linie. Funkce bez kompromisu.",
-        micro: "Rytmus dne, komfort, kontrola světla.",
+        micro: "Regulace světla, jednoduchost.",
         intro:
-          "Praktické řešení s čistými liniemi. Cena se odvíjí od typu rolety, rozměru a způsobu ovládání (manuál vs motor).",
+          "Praktické řešení s čistými liniemi. Cena se odvíjí od typu, rozměru a způsobu ovládání.",
         rangesTitle: "Orientačně (pro představu)",
         ranges: [
-          { label: "standardní okno", value: "cca 4–12 tis. Kč / ks" },
-          { label: "větší rozměr / lepší materiál", value: "cca 10–22 tis. Kč / ks" },
-          { label: "motor / atyp / složitější montáž", value: "cca 18–40+ tis. Kč / ks" }
+          { label: "standard", value: "cca 4–12 tis. Kč / ks" },
+          { label: "větší rozměr", value: "cca 10–22 tis. Kč / ks" },
+          { label: "motor / atyp", value: "cca 18–40+ tis. Kč / ks" }
         ],
         how:
-          "Cena rolet se odvíjí hlavně od typu, rozměru a ovládání. Technicky náročnější varianty, motor nebo atypická montáž cenu zvyšují.",
+          "Cena rolet se odvíjí hlavně od typu, rozměru a ovládání. Motor a atypická montáž cenu zvyšují.",
         tiersTitle: "Typy (orientačně)",
         tiers: [
           { name: "Screen / denní", note: "Regulace světla, vzdušnost." },
           { name: "Zatemňovací", note: "Větší soukromí a tlumení světla." },
-          { name: "Motorové ovládání", note: "Komfort, ale vyšší náklady a technika." }
+          { name: "Motor", note: "Komfort, ale vyšší náklady." }
         ],
-        factors: ["typ rolety a materiál", "rozměry", "ovládání + montáž"],
-        bridge: "Detail rozhoduje o výsledku."
+        factors: ["typ rolety a materiál", "rozměry", "ovládání + montáž"]
       },
-
       {
         key: "systemy",
         title: "Technické systémy",
@@ -857,27 +747,25 @@ function Pricing({ t }) {
           (t.priceImgs && t.priceImgs[4]) ||
           "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=1800&auto=format&fit=crop",
         vibe: "To, co není vidět – rozhoduje nejvíc.",
-        micro: "Ticho chodu, přesnost, dlouhá životnost.",
+        micro: "Ticho chodu, přesnost.",
         intro:
-          "Kolejnice, tyče, ohyby, více vrstev, motor. Cena se liší podle délky, tvaru, uchycení a náročnosti montáže.",
+          "Kolejnice, tyče, ohyby, více vrstev, motor. Cena se liší podle délky, tvaru a montáže.",
         rangesTitle: "Orientačně (pro představu)",
         ranges: [
           { label: "rovná kolejnice", value: "cca 2–8 tis. Kč" },
-          { label: "více vrstev / delší délky", value: "cca 6–18 tis. Kč" },
-          { label: "oblouk / atyp / motor", value: "cca 15–45+ tis. Kč" }
+          { label: "delší / více vrstev", value: "cca 6–18 tis. Kč" },
+          { label: "oblouk / motor", value: "cca 15–45+ tis. Kč" }
         ],
         how:
-          "Cena techniky roste s délkou, počtem ohybů, typem uchycení a zátěží. U ohýbaných kolejnic a atypů rozhoduje přesnost zaměření a zpracování.",
+          "Cena techniky roste s délkou, ohyby, typem uchycení a zátěží. U atypů rozhoduje přesnost zaměření.",
         tiersTitle: "Nejčastěji řešíme",
         tiers: [
-          { name: "Rovné kolejnice", note: "Jednoduché, čisté řešení." },
-          { name: "Ohýbané / atypy", note: "Na míru prostoru a půdorysu." },
-          { name: "Motor / chytré ovládání", note: "Komfort a čistota bez šňůr." }
+          { name: "Rovné kolejnice", note: "Čisté řešení." },
+          { name: "Ohýbané / atypy", note: "Na míru prostoru." },
+          { name: "Motor", note: "Komfort bez šňůr." }
         ],
-        factors: ["délka a ohyby", "uchycení a podklad", "zatížení + typ závěsu"],
-        bridge: "Když je technika tichá, interiér dýchá."
+        factors: ["délka a ohyby", "uchycení a podklad", "zatížení + typ závěsu"]
       },
-
       {
         key: "servis",
         title: "Servis",
@@ -887,23 +775,22 @@ function Pricing({ t }) {
         vibe: "Aby to fungovalo i za rok. A i za tři.",
         micro: "Úpravy, doladění, klid.",
         intro:
-          "Úpravy, doplnění a opravy hotového stínění. Cena se odvíjí hlavně od rozsahu práce a času na místě.",
+          "Úpravy, doplnění a opravy hotového stínění. Cena se odvíjí od rozsahu práce a času na místě.",
         rangesTitle: "Orientačně podle rozsahu",
         ranges: [
           { label: "drobná úprava", value: "cca 800–3 500 Kč" },
           { label: "servis + materiál", value: "cca 2 500–9 000 Kč" },
-          { label: "větší zásah / více prvků", value: "cca 7 000–20 000+ Kč" }
+          { label: "větší zásah", value: "cca 7 000–20 000+ Kč" }
         ],
         how:
-          "Servis řešíme podle konkrétní situace: úprava délky, přešití, výměna jezdců, doplnění vrstvy nebo dořešení detailu po čase.",
+          "Servis řešíme podle situace: úprava délky, přešití, výměna jezdců, doplnění vrstvy nebo dořešení detailu po čase.",
         tiersTitle: "Typicky pomůžeme s",
         tiers: [
           { name: "Úpravy a přešití", note: "Zkrácení, přizpůsobení, opravy." },
-          { name: "Technické dořešení", note: "Jezdce, háčky, vedení, drobnosti." },
+          { name: "Technické dořešení", note: "Jezdce, háčky, vedení." },
           { name: "Doplnění vrstev", note: "Když chcete přidat další funkci." }
         ],
-        factors: ["rozsah práce", "stav stávajícího řešení", "časová náročnost + dojezd"],
-        bridge: "Drobnosti udržují celek v rovnováze."
+        factors: ["rozsah práce", "stav řešení", "čas + dojezd"]
       }
     ],
     [t]
@@ -911,99 +798,82 @@ function Pricing({ t }) {
 
   const activeItem = activeKey ? items.find((i) => i.key === activeKey) : null;
 
+  const bridges = [
+    "Orientačně. S respektem k prostoru.",
+    "Cena je výsledek volby, ne položka v ceníku.",
+    "Detail otevřete jen tam, kde vás to zajímá."
+  ];
+
   return (
     <>
       <Hero t={t} small bg={bgTop} />
 
       <section className="max-w-6xl mx-auto px-4 py-16 reveal">
-        {/* HLAVIČKA jako Process – sjednocené */}
         <div className="max-w-3xl mx-auto text-left md:text-center">
           <h2 className="script text-4xl mb-4">{t.priceH}</h2>
           <p className="text-[var(--muted)] text-lg">
-            Orientačně a srozumitelně. Detail otevřete jen tam, kde vás to zajímá.
+            Rychlá kotva pro představu. Detail až po kliknutí.
           </p>
+
+          <div className="mt-6 flex flex-col items-start md:items-center gap-2">
+            {bridges.map((b, i) => (
+              <div key={i} className="inline-flex items-center gap-2 text-sm text-[var(--muted)]">
+                <span className="w-10 h-px bg-[var(--line)]" />
+                <span className="italic">{b}</span>
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* LIST jako Process – střídání, ale kompaktnější */}
-        <div className="mt-12 relative">
-          <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-px bg-[var(--line)]/60" />
+        {/* MOZAIKA – bez střídání */}
+        <div className="mt-12 grid md:grid-cols-2 gap-6">
+          {items.map((x) => (
+            <article
+              key={x.key}
+              className="rounded-2xl bg-white border border-[var(--line)] soft-shadow overflow-hidden reveal"
+            >
+              <div className="soft-shadow overflow-hidden bg-white">
+                <img
+                  src={x.img}
+                  alt={x.title}
+                  className="w-full object-cover aspect-[16/9]"
+                  loading="lazy"
+                />
+              </div>
 
-          <div className="space-y-8 md:space-y-10">
-            {items.map((x, i) => {
-              const reverse = i % 2 === 1;
-              const n = String(i + 1).padStart(2, "0");
+              <div className="p-6">
+                <h3 className="text-xl font-semibold">{x.title}</h3>
 
-              return (
-                <React.Fragment key={x.key}>
-                  <div
-                    className={
-                      "grid md:grid-cols-2 gap-8 items-center reveal " +
-                      (reverse ? "md:[&>*:first-child]:order-2" : "")
-                    }
+                <div className="mt-2 text-sm italic text-[var(--muted)]">
+                  {x.vibe}
+                </div>
+
+                <div className="mt-3 inline-flex items-center gap-2 text-sm text-[var(--muted)]">
+                  <span className="w-10 h-px bg-[var(--line)]" />
+                  <span>{x.micro}</span>
+                </div>
+
+                <p className="mt-4 text-[var(--muted)] text-sm leading-relaxed">
+                  {x.intro}
+                </p>
+
+                <div className="mt-5">
+                  <div className="text-sm font-semibold mb-2">{x.rangesTitle}</div>
+                  <RangeChips items={x.ranges} />
+                </div>
+
+                <div className="mt-6">
+                  <button
+                    type="button"
+                    onClick={() => setActiveKey(x.key)}
+                    className="rounded-full px-5 py-2 text-sm border border-[var(--line)] hover:bg-[var(--bg2)]"
                   >
-                    {/* IMAGE – kompaktní (ne jako velký panel) */}
-                    <div className="soft-shadow rounded-2xl overflow-hidden bg-white border border-[var(--line)]">
-                      <img
-                        src={x.img}
-                        alt={x.title}
-                        className="w-full object-cover aspect-[16/10] md:aspect-[16/9]"
-                        loading="lazy"
-                      />
-                    </div>
-
-                    {/* TEXT PREVIEW */}
-                    <div className="max-w-xl">
-                      <div className="text-xs tracking-widest text-[var(--muted)] mb-2">
-                        {n}
-                      </div>
-
-                      <h3 className="text-2xl font-semibold mb-2">{x.title}</h3>
-
-                      <p className="text-[var(--muted)] text-base leading-relaxed">
-                        {x.intro}
-                      </p>
-
-                      {/* mikro-věta jako v Process (sjednocující linka) */}
-                      <div className="mt-4 inline-flex items-center gap-2 text-sm text-[var(--muted)]">
-                        <span className="w-10 h-px bg-[var(--line)]" />
-                        <span>{x.micro}</span>
-                      </div>
-
-                      {/* vibe jako jemná poetická linka */}
-                      <PillLine text={x.vibe} />
-
-                      {/* 3 scénáře – rychlá kotva */}
-                      <div className="mt-6">
-                        <div className="text-sm font-semibold mb-2">{x.rangesTitle}</div>
-                        <RangeChips items={x.ranges} />
-                      </div>
-
-                      {/* CTA */}
-                      <div className="mt-6">
-                        <button
-                          type="button"
-                          onClick={() => setActiveKey(x.key)}
-                          className="rounded-full px-5 py-2 text-sm border border-[var(--line)] hover:bg-[var(--bg2)]"
-                        >
-                          Zobrazit detail
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* bridge mezi položkami – jako Process, ale jiné věty */}
-                  {i < items.length - 1 && (
-                    <div className="reveal text-center py-2 md:py-3">
-                      <div className="mx-auto w-24 h-px bg-[var(--line)]/80 mb-3" />
-                      <p className="text-xs italic text-[var(--muted)]">
-                        {x.bridge}
-                      </p>
-                    </div>
-                  )}
-                </React.Fragment>
-              );
-            })}
-          </div>
+                    Zobrazit detail
+                  </button>
+                </div>
+              </div>
+            </article>
+          ))}
         </div>
 
         <div className="max-w-3xl mx-auto mt-12 text-sm text-[var(--muted)] text-left md:text-center">
@@ -1012,7 +882,7 @@ function Pricing({ t }) {
         </div>
       </section>
 
-      {/* MODAL – detail pro každou službu */}
+      {/* MODAL – stejný jako dřív */}
       <Modal
         open={!!activeItem}
         onClose={() => setActiveKey(null)}
@@ -1021,7 +891,6 @@ function Pricing({ t }) {
       >
         {activeItem && (
           <div className="grid md:grid-cols-12 gap-0">
-            {/* Fixní image – neroste s obsahem */}
             <div className="md:col-span-5">
               <div className="h-[220px] md:h-[520px] w-full overflow-hidden">
                 <img
@@ -1037,20 +906,30 @@ function Pricing({ t }) {
                 {activeItem.micro}
               </div>
 
-              <DetailBlock title="O co jde">
-                {activeItem.intro}
-              </DetailBlock>
+              <div className="rounded-xl border border-[var(--line)] bg-white px-4 py-3">
+                <div className="text-sm font-semibold">O co jde</div>
+                <p className="text-[var(--muted)] text-sm leading-relaxed mt-2">
+                  {activeItem.intro}
+                </p>
+              </div>
 
-              <DetailBlock title={activeItem.rangesTitle}>
-                <RangeChips items={activeItem.ranges} />
-              </DetailBlock>
+              <div className="rounded-xl border border-[var(--line)] bg-white px-4 py-3">
+                <div className="text-sm font-semibold">{activeItem.rangesTitle}</div>
+                <div className="mt-3">
+                  <RangeChips items={activeItem.ranges} />
+                </div>
+              </div>
 
-              <DetailBlock title="Jak se orientačně počítá cena">
-                {activeItem.how}
-              </DetailBlock>
+              <div className="rounded-xl border border-[var(--line)] bg-white px-4 py-3">
+                <div className="text-sm font-semibold">Jak se orientačně počítá cena</div>
+                <p className="text-[var(--muted)] text-sm leading-relaxed mt-2">
+                  {activeItem.how}
+                </p>
+              </div>
 
-              <DetailBlock title={activeItem.tiersTitle}>
-                <div className="grid gap-2">
+              <div className="rounded-xl border border-[var(--line)] bg-white px-4 py-3">
+                <div className="text-sm font-semibold">{activeItem.tiersTitle}</div>
+                <div className="grid gap-2 mt-3">
                   {activeItem.tiers.map((t0, i) => (
                     <div
                       key={i}
@@ -1061,15 +940,16 @@ function Pricing({ t }) {
                     </div>
                   ))}
                 </div>
-              </DetailBlock>
+              </div>
 
-              <DetailBlock title="Co do ceny vstupuje">
-                <ul className="list-disc pl-5 space-y-1">
+              <div className="rounded-xl border border-[var(--line)] bg-white px-4 py-3">
+                <div className="text-sm font-semibold">Co do ceny vstupuje</div>
+                <ul className="list-disc pl-5 text-[var(--muted)] text-sm space-y-1 mt-2">
                   {activeItem.factors.map((f, i) => (
                     <li key={i}>{f}</li>
                   ))}
                 </ul>
-              </DetailBlock>
+              </div>
 
               <div className="rounded-2xl bg-[var(--bg2)] px-5 py-4 mt-2">
                 <div className="text-sm font-semibold">Chceš rychlý odhad?</div>
@@ -1095,7 +975,6 @@ function Pricing({ t }) {
     </>
   );
 }
-
 
 
 
