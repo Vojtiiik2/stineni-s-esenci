@@ -941,7 +941,6 @@ function Pricing({ t }) {
         </div>
       </section>
 
-      {/* ✅ TADY byla chyba: Modal -> ModalLocal */}
       <ModalLocal
         open={!!activeItem}
         onClose={() => setActiveKey(null)}
@@ -949,76 +948,89 @@ function Pricing({ t }) {
         subtitle={activeItem?.vibe || ""}
       >
         {activeItem && (
-          <div className="grid md:grid-cols-12 gap-0">
-            <div className="md:col-span-5">
-              <div className="h-[220px] md:h-[520px] w-full overflow-hidden">
-                <img
-                  src={activeItem.img}
-                  alt={activeItem.title}
-                  className="w-full h-full object-cover"
-                />
+          <div className="p-6 md:p-8">
+            {/* horní část – klidný layout, bez střídání */}
+            <div className="grid md:grid-cols-12 gap-8 items-start">
+              <div className="md:col-span-5">
+                <div className="rounded-2xl overflow-hidden soft-shadow bg-white border border-[var(--line)]">
+                  <img
+                    src={activeItem.img}
+                    alt={activeItem.title}
+                    className="w-full h-[240px] md:h-[520px] object-cover"
+                  />
+                </div>
+              </div>
+
+              <div className="md:col-span-7">
+                <div className="text-sm italic text-[var(--muted)]">
+                  {activeItem.micro}
+                </div>
+
+                <p className="mt-4 text-[var(--muted)] text-sm leading-relaxed">
+                  {activeItem.intro}
+                </p>
+
+                <div className="mt-5 inline-flex items-center gap-2 text-sm text-[var(--muted)]">
+                  <span className="w-10 h-px bg-[var(--line)]" />
+                  <span>{activeItem.vibe}</span>
+                </div>
               </div>
             </div>
 
-            <div className="md:col-span-7 p-6 md:p-8 space-y-3">
-              <div className="text-sm italic text-[var(--muted)]">
-                {activeItem.micro}
-              </div>
+            {/* sekce přes šířku – méně “čtverců” */}
+            <div className="mt-10 space-y-10">
+              <section>
+                <h4 className="text-sm font-semibold mb-3">
+                  {activeItem.rangesTitle}
+                </h4>
+                <RangeChipsLocal items={activeItem.ranges} />
+              </section>
 
-              <div className="rounded-xl border border-[var(--line)] bg-white px-4 py-3">
-                <div className="text-sm font-semibold">O co jde</div>
-                <p className="text-[var(--muted)] text-sm leading-relaxed mt-2">
-                  {activeItem.intro}
-                </p>
-              </div>
-
-              <div className="rounded-xl border border-[var(--line)] bg-white px-4 py-3">
-                <div className="text-sm font-semibold">{activeItem.rangesTitle}</div>
-                <div className="mt-3">
-                  <RangeChipsLocal items={activeItem.ranges} />
-                </div>
-              </div>
-
-              <div className="rounded-xl border border-[var(--line)] bg-white px-4 py-3">
-                <div className="text-sm font-semibold">Jak se orientačně počítá cena</div>
-                <p className="text-[var(--muted)] text-sm leading-relaxed mt-2">
+              <section>
+                <h4 className="text-sm font-semibold mb-3">
+                  Jak se orientačně počítá cena
+                </h4>
+                <p className="text-[var(--muted)] text-sm leading-relaxed">
                   {activeItem.how}
                 </p>
-              </div>
+              </section>
 
-              <div className="rounded-xl border border-[var(--line)] bg-white px-4 py-3">
-                <div className="text-sm font-semibold">{activeItem.tiersTitle}</div>
-                <div className="grid gap-2 mt-3">
+              <section>
+                <h4 className="text-sm font-semibold mb-3">
+                  {activeItem.tiersTitle}
+                </h4>
+                <div className="grid sm:grid-cols-3 gap-4">
                   {activeItem.tiers.map((t0, i) => (
-                    <div
-                      key={i}
-                      className="rounded-xl border border-[var(--line)] bg-white px-4 py-3"
-                    >
+                    <div key={i} className="px-2">
                       <div className="text-sm font-semibold">{t0.name}</div>
-                      <div className="text-[var(--muted)] text-sm">{t0.note}</div>
+                      <div className="text-[var(--muted)] text-sm mt-1">
+                        {t0.note}
+                      </div>
                     </div>
                   ))}
                 </div>
-              </div>
+              </section>
 
-              <div className="rounded-xl border border-[var(--line)] bg-white px-4 py-3">
-                <div className="text-sm font-semibold">Co do ceny vstupuje</div>
-                <ul className="list-disc pl-5 text-[var(--muted)] text-sm space-y-1 mt-2">
+              <section>
+                <h4 className="text-sm font-semibold mb-3">
+                  Co do ceny vstupuje
+                </h4>
+                <ul className="list-disc pl-5 text-[var(--muted)] text-sm space-y-1">
                   {activeItem.factors.map((f, i) => (
                     <li key={i}>{f}</li>
                   ))}
                 </ul>
-              </div>
+              </section>
 
-              <div className="rounded-2xl bg-[var(--bg2)] px-5 py-4 mt-2">
+              <section className="rounded-2xl bg-[var(--bg2)] px-5 py-4">
                 <div className="text-sm font-semibold">Chceš rychlý odhad?</div>
-                <div className="text-sm text-[var(--muted)] mt-1">
+                <p className="text-sm text-[var(--muted)] mt-1">
                   Pošli fotku prostoru + přibližné rozměry (šířka a výška) a napiš,
                   jestli chceš spíš soukromí, zútulnění nebo zatemnění.
-                </div>
-              </div>
+                </p>
+              </section>
 
-              <div className="pt-2">
+              <div>
                 <button
                   type="button"
                   onClick={() => setActiveKey(null)}
@@ -1034,6 +1046,7 @@ function Pricing({ t }) {
     </>
   );
 }
+
 
 
 
