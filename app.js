@@ -653,7 +653,6 @@ function Modal({ open, onClose, title, children }) {
     };
 
     document.addEventListener("keydown", onKey);
-    // lock body scroll
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
 
@@ -667,14 +666,11 @@ function Modal({ open, onClose, title, children }) {
 
   return (
     <div className="fixed inset-0 z-[999]">
-      {/* backdrop */}
       <div
         className="absolute inset-0 bg-black/50"
         onClick={onClose}
         aria-hidden="true"
       />
-
-      {/* dialog */}
       <div className="absolute inset-0 flex items-center justify-center p-4">
         <div
           role="dialog"
@@ -682,7 +678,6 @@ function Modal({ open, onClose, title, children }) {
           aria-label={title}
           className="w-full max-w-4xl rounded-2xl bg-white border border-[var(--line)] soft-shadow overflow-hidden"
         >
-          {/* header */}
           <div className="flex items-center justify-between px-5 py-4 border-b border-[var(--line)]">
             <div className="text-base font-semibold">{title}</div>
             <button
@@ -695,10 +690,7 @@ function Modal({ open, onClose, title, children }) {
             </button>
           </div>
 
-          {/* content (scrollable) */}
-          <div className="max-h-[78vh] overflow-y-auto">
-            {children}
-          </div>
+          <div className="max-h-[78vh] overflow-y-auto">{children}</div>
         </div>
       </div>
     </div>
@@ -721,7 +713,7 @@ function RangeChips({ items }) {
   );
 }
 
-export default function Pricing({ t }) {
+function Pricing({ t }) {
   useReveal();
   const [active, setActive] = useState(null);
 
@@ -755,7 +747,6 @@ export default function Pricing({ t }) {
         ],
         bridge: "Pozorování → rozměr → látka → řasení → čistý detail"
       },
-
       {
         key: "zaves",
         title: "Závěsy (dim-out / blackout)",
@@ -783,9 +774,7 @@ export default function Pricing({ t }) {
           "technika / systém + montáž"
         ],
         bridge: "Světlo → soukromí → zatemnění → komfort ovládání"
-      },
-
-      // … můžeš sem doplnit roleta/systemy/servis stejně jako výš
+      }
     ],
     []
   );
@@ -804,14 +793,12 @@ export default function Pricing({ t }) {
         <h2 className="script text-4xl mb-4">{t.priceH}</h2>
         <p className="text-[var(--muted)] max-w-3xl mb-10">{t.priceP}</p>
 
-        {/* PREVIEW GRID – kompaktní, sjednocené, bez "celostránkových panelů" */}
         <div className="grid md:grid-cols-2 gap-6">
           {items.map((x) => (
             <article
               key={x.key}
               className="rounded-2xl bg-white border border-[var(--line)] soft-shadow overflow-hidden reveal"
             >
-              {/* mělký obrázek */}
               <div className="h-[140px] w-full overflow-hidden">
                 <img
                   src={x.img}
@@ -861,7 +848,6 @@ export default function Pricing({ t }) {
         </div>
       </section>
 
-      {/* MODAL DETAIL */}
       <Modal
         open={!!activeItem}
         onClose={() => setActive(null)}
@@ -869,7 +855,6 @@ export default function Pricing({ t }) {
       >
         {activeItem && (
           <div className="grid md:grid-cols-12 gap-0">
-            {/* fixní image – už nikdy neroste */}
             <div className="md:col-span-5">
               <div className="h-[220px] md:h-[520px] w-full overflow-hidden">
                 <img
@@ -890,24 +875,32 @@ export default function Pricing({ t }) {
               </p>
 
               <div className="mt-6">
-                <div className="text-sm font-semibold mb-3">{activeItem.rangesTitle}</div>
+                <div className="text-sm font-semibold mb-3">
+                  {activeItem.rangesTitle}
+                </div>
                 <RangeChips items={activeItem.ranges} />
               </div>
 
               <div className="mt-6 rounded-full bg-[var(--bg2)] px-4 py-2 inline-flex">
-                <span className="text-sm text-[var(--muted)]">{activeItem.bridge}</span>
+                <span className="text-sm text-[var(--muted)]">
+                  {activeItem.bridge}
+                </span>
               </div>
 
               <div className="mt-7 space-y-3">
                 <div className="rounded-xl border border-[var(--line)] bg-white px-4 py-3">
-                  <div className="text-sm font-semibold">Jak se orientačně počítá cena</div>
+                  <div className="text-sm font-semibold">
+                    Jak se orientačně počítá cena
+                  </div>
                   <p className="text-[var(--muted)] text-sm leading-relaxed mt-2">
                     {activeItem.how}
                   </p>
                 </div>
 
                 <div className="rounded-xl border border-[var(--line)] bg-white px-4 py-3">
-                  <div className="text-sm font-semibold">{activeItem.tiersTitle}</div>
+                  <div className="text-sm font-semibold">
+                    {activeItem.tiersTitle}
+                  </div>
                   <div className="grid gap-2 mt-3">
                     {activeItem.tiers.map((t0, i) => (
                       <div
@@ -915,7 +908,9 @@ export default function Pricing({ t }) {
                         className="rounded-xl border border-[var(--line)] bg-white px-4 py-3"
                       >
                         <div className="text-sm font-semibold">{t0.name}</div>
-                        <div className="text-[var(--muted)] text-sm">{t0.note}</div>
+                        <div className="text-[var(--muted)] text-sm">
+                          {t0.note}
+                        </div>
                       </div>
                     ))}
                   </div>
@@ -930,13 +925,11 @@ export default function Pricing({ t }) {
                   </ul>
                 </div>
 
-                <div className="mt-6">
-                  <div className="rounded-2xl bg-[var(--bg2)] px-5 py-4">
-                    <div className="text-sm font-semibold">Chceš rychlý odhad?</div>
-                    <div className="text-sm text-[var(--muted)] mt-1">
-                      Pošli fotku prostoru + přibližné rozměry (šířka a výška) a napiš,
-                      jestli chceš spíš soukromí, zútulnění nebo zatemnění.
-                    </div>
+                <div className="rounded-2xl bg-[var(--bg2)] px-5 py-4 mt-6">
+                  <div className="text-sm font-semibold">Chceš rychlý odhad?</div>
+                  <div className="text-sm text-[var(--muted)] mt-1">
+                    Pošli fotku prostoru + přibližné rozměry (šířka a výška) a napiš,
+                    jestli chceš spíš soukromí, zútulnění nebo zatemnění.
                   </div>
                 </div>
 
