@@ -647,7 +647,70 @@ function Pricing({ t }) {
   useReveal();
   const [activeKey, setActiveKey] = useState(null);
 
-  // lokální komponenta – už nikdy nebude "not defined"
+  // ====== Modal lokálně (už nikdy "Modal is not defined") ======
+  function ModalLocal({ open, onClose, title, subtitle, children }) {
+    useEffect(() => {
+      if (!open) return;
+
+      const onKey = (e) => {
+        if (e.key === "Escape") onClose?.();
+      };
+
+      document.addEventListener("keydown", onKey);
+      const prev = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+
+      return () => {
+        document.removeEventListener("keydown", onKey);
+        document.body.style.overflow = prev;
+      };
+    }, [open, onClose]);
+
+    if (!open) return null;
+
+    return (
+      <div className="fixed inset-0 z-[999]">
+        <div
+          className="absolute inset-0 bg-black/50"
+          onClick={onClose}
+          aria-hidden="true"
+        />
+        <div className="absolute inset-0 flex items-center justify-center p-4">
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-label={title}
+            className="w-full max-w-5xl rounded-2xl bg-white border border-[var(--line)] soft-shadow overflow-hidden"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-start justify-between gap-4 px-5 py-4 border-b border-[var(--line)]">
+              <div>
+                <div className="text-base font-semibold">{title}</div>
+                {subtitle ? (
+                  <div className="text-sm italic text-[var(--muted)] mt-1">
+                    {subtitle}
+                  </div>
+                ) : null}
+              </div>
+
+              <button
+                type="button"
+                onClick={onClose}
+                className="rounded-full px-3 py-1 text-sm border border-[var(--line)] hover:bg-[var(--bg2)]"
+                aria-label="Zavřít"
+              >
+                Zavřít
+              </button>
+            </div>
+
+            <div className="max-h-[78vh] overflow-y-auto">{children}</div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // ====== Range chips lokálně ======
   function RangeChipsLocal({ items }) {
     return (
       <div className="grid sm:grid-cols-3 gap-3">
@@ -878,7 +941,8 @@ function Pricing({ t }) {
         </div>
       </section>
 
-      <Modal
+      {/* ✅ TADY byla chyba: Modal -> ModalLocal */}
+      <ModalLocal
         open={!!activeItem}
         onClose={() => setActiveKey(null)}
         title={activeItem?.title || ""}
@@ -966,7 +1030,7 @@ function Pricing({ t }) {
             </div>
           </div>
         )}
-      </Modal>
+      </ModalLocal>
     </>
   );
 }
