@@ -643,7 +643,6 @@ function Process({ t }) {
 }
 
 
-
 function Pricing({ t }) {
   useReveal();
   const [activeKey, setActiveKey] = useState(null);
@@ -890,7 +889,7 @@ function Pricing({ t }) {
           </p>
         </div>
 
-        {/* ✅ TADY JE HLAVNÍ ZMĚNA: místo md:grid-cols-2 je to seznam přes šířku */}
+        {/* seznam přes šířku, bez střídání */}
         <div className="mt-12 space-y-8">
           {items.map((x) => (
             <section
@@ -898,13 +897,16 @@ function Pricing({ t }) {
               className="rounded-2xl bg-white border border-[var(--line)] soft-shadow overflow-hidden reveal"
             >
               <div className="grid md:grid-cols-12 gap-0">
+                {/* ✅ výška jako v "Jak pracujeme" (aspect ratio) */}
                 <div className="md:col-span-5">
-                  <img
-                    src={x.img}
-                    alt={x.title}
-                    className="w-full h-[240px] md:h-full object-cover"
-                    loading="lazy"
-                  />
+                  <div className="w-full overflow-hidden bg-white">
+                    <img
+                      src={x.img}
+                      alt={x.title}
+                      className="w-full h-full object-cover aspect-[16/10] md:aspect-[16/9]"
+                      loading="lazy"
+                    />
+                  </div>
                 </div>
 
                 <div className="md:col-span-7 p-6 md:p-8">
