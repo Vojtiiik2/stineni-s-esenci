@@ -647,63 +647,126 @@ function Pricing({ t }) {
 
   const items = [
     {
+      key: "zaclon",
       title: "Záclony",
-      img: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1200&auto=format&fit=crop",
-      desc:
-        "Lehká vrstva, která propouští denní světlo a zároveň zajišťuje základní soukromí. Vhodná pro obytné místnosti i kuchyně.",
-      price: "8 000 – 25 000 Kč",
-      points: [
-        "výška a šířka oken",
-        "typ a struktura látky",
-        "způsob řasení a montáže"
+      img: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1400&auto=format&fit=crop",
+      intro:
+        "Lehká vrstva, která propouští denní světlo a zároveň vytváří základní pocit soukromí. Hodí se do obytných místností, kuchyní i prostor, kde nechcete úplné zatemnění.",
+      how:
+        "Cena záclon se vždy odvíjí od kombinace vybrané látky a množství metrů potřebných na konkrétní okno. Nejde jen o šířku skla, ale i o výšku zavěšení a způsob řasení.",
+      highlight:
+        "Typické zakázky se pohybují v řádu jednotek až nižších desítek tisíc korun.",
+      tiersTitle: "Cenové hladiny látek (orientačně)",
+      tiers: [
+        {
+          name: "Základní lehké voály",
+          note: "Jednoduché, vzdušné látky s nižší pořizovací cenou."
+        },
+        {
+          name: "Střední kategorie – struktura / přírodní vzhled",
+          note: "Nejčastější volba. Vyvážený poměr ceny, vzhledu a funkce."
+        },
+        {
+          name: "Prémiové tkaniny",
+          note: "Výrazný materiál, vyšší gramáž, specifická textura nebo původ."
+        }
+      ],
+      factors: [
+        "množství potřebné látky (šířka × výška × řasení)",
+        "uští na míru",
+        "technický systém a montáž"
       ]
     },
+
     {
+      key: "zaves",
       title: "Závěsy (dim-out / blackout)",
-      img: "https://images.unsplash.com/photo-1505693416388-36a5ac3be353?q=80&w=1200&auto=format&fit=crop",
-      desc:
+      img: "https://images.unsplash.com/photo-1505693416388-36a5ac3be353?q=80&w=1400&auto=format&fit=crop",
+      intro:
         "Pro večerní soukromí, zatemnění a pocit útulna. Liší se mírou zatemnění a gramáží materiálu.",
-      price: "15 000 – 45 000 Kč",
-      points: [
-        "typ zatemnění",
-        "množství řasení",
-        "velikost plochy"
+      how:
+        "Rozdíl v ceně dělá typ zatemnění, gramáž a množství řasení. U větších ploch je potřeba více materiálu, často i dělení na více dílů a řešení pohodlného ovládání.",
+      highlight:
+        "Pokud chcete skutečné zatemnění, počítejte s vyšší gramáží a vyšší spotřebou materiálu.",
+      tiersTitle: "Orientační přístup",
+      tiers: [
+        { name: "Dim-out", note: "Ztlumí světlo, ale úplnou tmu neudělá." },
+        { name: "Blackout", note: "Maximální zatemnění – typicky ložnice." },
+        { name: "Dekorační závěs", note: "Primárně vzhled, soukromí a zútulnění." }
+      ],
+      factors: [
+        "typ látky a zatemnění",
+        "množství řasení a velikost plochy",
+        "technika / systém a montáž"
       ]
     },
+
     {
+      key: "roleta",
       title: "Rolety",
-      img: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200&auto=format&fit=crop",
-      desc:
+      img: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1400&auto=format&fit=crop",
+      intro:
         "Praktické řešení s čistými liniemi. Vhodné tam, kde je potřeba jednoduchá regulace světla.",
-      price: "6 000 – 30 000 Kč",
-      points: [
-        "typ rolety",
+      how:
+        "Cena rolet se odvíjí hlavně od typu rolety, rozměru a způsobu ovládání. Jednoduché řešení je cenově dostupnější, technicky náročnější varianty nebo motor cenu zvyšují.",
+      highlight:
+        "U atypických oken a technicky složitější montáže je vždy potřeba řešení na míru.",
+      tiersTitle: "Typy (orientačně)",
+      tiers: [
+        { name: "Screen / denní", note: "Regulace světla, zachování vzdušnosti." },
+        { name: "Zatemňovací", note: "Větší soukromí a tlumení světla." },
+        { name: "Motorové ovládání", note: "Komfort, ale vyšší náklady a technika." }
+      ],
+      factors: [
+        "typ rolety a materiál",
         "rozměry",
-        "ruční nebo motorické ovládání"
+        "ovládání a montáž"
       ]
     },
+
     {
+      key: "systemy",
       title: "Technické systémy",
-      img: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=1200&auto=format&fit=crop",
-      desc:
+      img: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=1400&auto=format&fit=crop",
+      intro:
         "Kolejnice, tyče a technika, která drží celé řešení pohromadě a ovlivňuje jeho funkčnost.",
-      price: "3 000 – 20 000 Kč",
-      points: [
-        "délka a počet ohybů",
-        "způsob uchycení",
-        "zatížení systému"
+      how:
+        "Cena se liší podle délky, počtu ohybů, způsobu uchycení a zatížení. U ohýbaných kolejnic a atypů rozhoduje přesnost zaměření a zpracování.",
+      highlight:
+        "Technika je základ. Levné řešení umí zkazit i krásnou látku.",
+      tiersTitle: "Nejčastěji řešíme",
+      tiers: [
+        { name: "Rovné kolejnice", note: "Jednoduché, čisté řešení." },
+        { name: "Ohýbané / atypy", note: "Na míru prostoru a půdorysu." },
+        { name: "Motor / chytré ovládání", note: "Komfort a čistota bez šňůr." }
+      ],
+      factors: [
+        "délka a ohyby",
+        "uchycení a podklad",
+        "zatížení a typ závěsu"
       ]
     },
+
     {
+      key: "servis",
       title: "Servis",
-      img: "https://images.unsplash.com/photo-1590698933947-a202b069a861?q=80&w=1200&auto=format&fit=crop",
-      desc:
+      img: "https://images.unsplash.com/photo-1590698933947-a202b069a861?q=80&w=1400&auto=format&fit=crop",
+      intro:
         "Úpravy, doplnění a opravy hotového stínění, aby vše dlouhodobě fungovalo.",
-      price: "od jednotek tisíc Kč",
-      points: [
+      how:
+        "Servis řešíme podle konkrétní situace. Může jít o úpravu délky, přešití, výměnu jezdců, doplnění vrstvy nebo dořešení detailu po čase.",
+      highlight:
+        "U servisu se cena odvíjí hlavně od rozsahu práce a času na místě.",
+      tiersTitle: "Typicky pomůžeme s",
+      tiers: [
+        { name: "Úpravy a přešití", note: "Zkrácení, přizpůsobení, opravy." },
+        { name: "Technické dořešení", note: "Jezdce, háčky, vedení, drobnosti." },
+        { name: "Doplnění vrstev", note: "Když chcete přidat další funkci." }
+      ],
+      factors: [
         "rozsah práce",
         "stav stávajícího řešení",
-        "časová náročnost"
+        "časová náročnost a dojezd"
       ]
     }
   ];
@@ -717,50 +780,66 @@ function Pricing({ t }) {
       />
 
       <section className="max-w-6xl mx-auto px-4 py-16 reveal">
-        {/* HLAVIČKA */}
         <h2 className="script text-4xl mb-4">{t.priceH}</h2>
-        <p className="text-[var(--muted)] max-w-3xl mb-12">
-          {t.priceP}
-        </p>
+        <p className="text-[var(--muted)] max-w-3xl mb-10">{t.priceP}</p>
 
-        {/* KARTY */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {items.map((x, i) => (
+        {/* 2 sloupce, ať to není 3+2 */}
+        <div className="grid md:grid-cols-2 gap-6">
+          {items.map((x) => (
             <article
-              key={i}
+              key={x.key}
               className="rounded-2xl bg-white border border-[var(--line)] soft-shadow overflow-hidden reveal"
+              id={x.key}
             >
-              {/* OBRÁZEK */}
+              {/* Obrázek – nízký a kompaktní */}
               <img
                 src={x.img}
                 alt={x.title}
-                className="w-full h-[140px] object-cover"
+                className="w-full h-[110px] object-cover"
                 loading="lazy"
               />
 
-              {/* OBSAH */}
               <div className="p-6">
-                <h3 className="text-lg font-semibold mb-2">
-                  {x.title}
-                </h3>
+                <h3 className="text-lg font-semibold mb-2">{x.title}</h3>
 
-                <p className="text-[var(--muted)] text-sm leading-relaxed mb-3">
-                  {x.desc}
+                <p className="text-[var(--muted)] text-sm leading-relaxed mb-4">
+                  {x.intro}
                 </p>
 
-                {/* CHYTRÝ TRIK – CENA */}
-                <div className="inline-flex items-center gap-3 bg-[var(--bg2)] rounded-full px-4 py-2 mb-4">
-                  <span className="text-xs tracking-widest text-[var(--muted)]">
-                    ORIENTAČNĚ
-                  </span>
-                  <span className="font-semibold text-sm">
-                    {x.price}
+                <div className="text-sm font-semibold mb-2">
+                  Jak se orientačně počítá cena
+                </div>
+                <p className="text-[var(--muted)] text-sm leading-relaxed mb-4">
+                  {x.how}
+                </p>
+
+                {/* Chytrý trik: zvýrazněná věta (ne zavádějící číslo) */}
+                <div className="inline-flex items-center bg-[var(--bg2)] rounded-full px-4 py-2 mb-5">
+                  <span className="text-sm text-[var(--muted)]">
+                    {x.highlight}
                   </span>
                 </div>
 
-                <ul className="list-disc pl-4 text-sm text-[var(--muted)] space-y-1">
-                  {x.points.map((p, j) => (
-                    <li key={j}>{p}</li>
+                <div className="text-sm font-semibold mb-2">{x.tiersTitle}</div>
+
+                <div className="grid gap-2 mb-5">
+                  {x.tiers.map((t0, i) => (
+                    <div
+                      key={i}
+                      className="rounded-xl border border-[var(--line)] bg-white px-4 py-3"
+                    >
+                      <div className="text-sm font-semibold">{t0.name}</div>
+                      <div className="text-[var(--muted)] text-sm">
+                        {t0.note}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="text-sm font-semibold mb-2">Co do ceny vstupuje</div>
+                <ul className="list-disc pl-5 text-[var(--muted)] text-sm space-y-1">
+                  {x.factors.map((f, i) => (
+                    <li key={i}>{f}</li>
                   ))}
                 </ul>
               </div>
@@ -768,16 +847,16 @@ function Pricing({ t }) {
           ))}
         </div>
 
-        {/* ZÁVĚREČNÁ POZNÁMKA */}
         <div className="max-w-3xl mx-auto mt-12 text-sm text-[var(--muted)]">
-          Uvedené ceny jsou orientační. Konkrétní částka se vždy odvíjí od
-          rozměrů, materiálů a technického řešení a upřesňuje se po konzultaci
-          na místě.
+          Uvedené informace jsou orientační. Konkrétní návrh a rozpočet vždy
+          upřesníme po konzultaci na místě podle rozměrů, zvolených materiálů a
+          technického řešení.
         </div>
       </section>
     </>
   );
 }
+
 
 
 function Gallery({ t }) {
