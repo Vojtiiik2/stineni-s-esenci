@@ -643,11 +643,12 @@ function Process({ t }) {
 }
 
 
+
 function Pricing({ t }) {
   useReveal();
   const [activeKey, setActiveKey] = useState(null);
 
-  // ====== Modal lokálně (už nikdy "Modal is not defined") ======
+  // ====== Modal lokálně ======
   function ModalLocal({ open, onClose, title, subtitle, children }) {
     useEffect(() => {
       if (!open) return;
@@ -710,17 +711,17 @@ function Pricing({ t }) {
     );
   }
 
-  // ====== Range chips lokálně ======
+  // ====== Range "chips" bez čtverců ======
   function RangeChipsLocal({ items }) {
     return (
-      <div className="grid sm:grid-cols-3 gap-3">
+      <div className="grid gap-2">
         {items.map((r, i) => (
           <div
             key={i}
-            className="rounded-xl border border-[var(--line)] bg-white px-4 py-3"
+            className="flex items-center justify-between gap-4 rounded-xl bg-[var(--bg2)] px-4 py-3"
           >
-            <div className="text-xs text-[var(--muted)]">{r.label}</div>
-            <div className="mt-1 text-sm font-semibold">{r.value}</div>
+            <div className="text-sm text-[var(--muted)]">{r.label}</div>
+            <div className="text-sm font-semibold">{r.value}</div>
           </div>
         ))}
       </div>
@@ -889,49 +890,56 @@ function Pricing({ t }) {
           </p>
         </div>
 
-        <div className="mt-12 grid md:grid-cols-2 gap-6">
+        {/* ✅ TADY JE HLAVNÍ ZMĚNA: místo md:grid-cols-2 je to seznam přes šířku */}
+        <div className="mt-12 space-y-8">
           {items.map((x) => (
-            <article
+            <section
               key={x.key}
               className="rounded-2xl bg-white border border-[var(--line)] soft-shadow overflow-hidden reveal"
             >
-              <img
-                src={x.img}
-                alt={x.title}
-                className="w-full object-cover aspect-[16/9]"
-                loading="lazy"
-              />
-
-              <div className="p-6">
-                <h3 className="text-xl font-semibold">{x.title}</h3>
-
-                <div className="mt-2 text-sm italic text-[var(--muted)]">{x.vibe}</div>
-
-                <div className="mt-3 inline-flex items-center gap-2 text-sm text-[var(--muted)]">
-                  <span className="w-10 h-px bg-[var(--line)]" />
-                  <span>{x.micro}</span>
+              <div className="grid md:grid-cols-12 gap-0">
+                <div className="md:col-span-5">
+                  <img
+                    src={x.img}
+                    alt={x.title}
+                    className="w-full h-[240px] md:h-full object-cover"
+                    loading="lazy"
+                  />
                 </div>
 
-                <p className="mt-4 text-[var(--muted)] text-sm leading-relaxed">
-                  {x.intro}
-                </p>
+                <div className="md:col-span-7 p-6 md:p-8">
+                  <h3 className="text-2xl font-semibold">{x.title}</h3>
 
-                <div className="mt-5">
-                  <div className="text-sm font-semibold mb-2">{x.rangesTitle}</div>
-                  <RangeChipsLocal items={x.ranges} />
-                </div>
+                  <div className="mt-2 text-sm italic text-[var(--muted)]">
+                    {x.vibe}
+                  </div>
 
-                <div className="mt-6">
-                  <button
-                    type="button"
-                    onClick={() => setActiveKey(x.key)}
-                    className="rounded-full px-5 py-2 text-sm border border-[var(--line)] hover:bg-[var(--bg2)]"
-                  >
-                    Zobrazit detail
-                  </button>
+                  <div className="mt-4 inline-flex items-center gap-2 text-sm text-[var(--muted)]">
+                    <span className="w-10 h-px bg-[var(--line)]" />
+                    <span>{x.micro}</span>
+                  </div>
+
+                  <p className="mt-4 text-[var(--muted)] text-sm leading-relaxed">
+                    {x.intro}
+                  </p>
+
+                  <div className="mt-6">
+                    <div className="text-sm font-semibold mb-3">{x.rangesTitle}</div>
+                    <RangeChipsLocal items={x.ranges} />
+                  </div>
+
+                  <div className="mt-7">
+                    <button
+                      type="button"
+                      onClick={() => setActiveKey(x.key)}
+                      className="rounded-full px-5 py-2 text-sm border border-[var(--line)] hover:bg-[var(--bg2)]"
+                    >
+                      Zobrazit detail
+                    </button>
+                  </div>
                 </div>
               </div>
-            </article>
+            </section>
           ))}
         </div>
 
@@ -949,7 +957,6 @@ function Pricing({ t }) {
       >
         {activeItem && (
           <div className="p-6 md:p-8">
-            {/* horní část – klidný layout, bez střídání */}
             <div className="grid md:grid-cols-12 gap-8 items-start">
               <div className="md:col-span-5">
                 <div className="rounded-2xl overflow-hidden soft-shadow bg-white border border-[var(--line)]">
@@ -977,7 +984,6 @@ function Pricing({ t }) {
               </div>
             </div>
 
-            {/* sekce přes šířku – méně “čtverců” */}
             <div className="mt-10 space-y-10">
               <section>
                 <h4 className="text-sm font-semibold mb-3">
@@ -999,9 +1005,9 @@ function Pricing({ t }) {
                 <h4 className="text-sm font-semibold mb-3">
                   {activeItem.tiersTitle}
                 </h4>
-                <div className="grid sm:grid-cols-3 gap-4">
+                <div className="grid sm:grid-cols-3 gap-6">
                   {activeItem.tiers.map((t0, i) => (
-                    <div key={i} className="px-2">
+                    <div key={i} className="px-1">
                       <div className="text-sm font-semibold">{t0.name}</div>
                       <div className="text-[var(--muted)] text-sm mt-1">
                         {t0.note}
