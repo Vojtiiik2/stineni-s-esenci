@@ -909,41 +909,41 @@ function Pricing({ t }) {
                   </div>
                 </div>
 
-                <div className="md:col-span-7 p-6 md:p-8">
-                  <h3 className="text-2xl font-semibold">{x.title}</h3>
+               <div className="md:col-span-7 p-5 md:p-6 flex flex-col justify-between">
+  <div>
+    <h3 className="text-2xl font-semibold">{x.title}</h3>
 
-                  <div className="mt-2 text-sm italic text-[var(--muted)]">
-                    {x.vibe}
-                  </div>
+    <div className="mt-2 text-sm italic text-[var(--muted)]">{x.vibe}</div>
 
-                  <div className="mt-4 inline-flex items-center gap-2 text-sm text-[var(--muted)]">
-                    <span className="w-10 h-px bg-[var(--line)]" />
-                    <span>{x.micro}</span>
-                  </div>
+    <div className="mt-4 inline-flex items-center gap-2 text-sm text-[var(--muted)]">
+      <span className="w-10 h-px bg-[var(--line)]" />
+      <span>{x.micro}</span>
+    </div>
 
-                  <p className="mt-4 text-[var(--muted)] text-sm leading-relaxed">
-                    {x.intro}
-                  </p>
+    {/* krátký náhled – aby karta nerostla */}
+    <p
+      className="mt-4 text-[var(--muted)] text-sm leading-relaxed overflow-hidden"
+      style={{
+        display: "-webkit-box",
+        WebkitLineClamp: 3,
+        WebkitBoxOrient: "vertical"
+      }}
+    >
+      {x.intro}
+    </p>
+  </div>
 
-                  <div className="mt-6">
-                    <div className="text-sm font-semibold mb-3">{x.rangesTitle}</div>
-                    <RangeChipsLocal items={x.ranges} />
-                  </div>
+  <div className="mt-6">
+    <button
+      type="button"
+      onClick={() => setActiveKey(x.key)}
+      className="rounded-full px-5 py-2 text-sm border border-[var(--line)] hover:bg-[var(--bg2)]"
+    >
+      Zobrazit detail
+    </button>
+  </div>
+</div>
 
-                  <div className="mt-7">
-                    <button
-                      type="button"
-                      onClick={() => setActiveKey(x.key)}
-                      className="rounded-full px-5 py-2 text-sm border border-[var(--line)] hover:bg-[var(--bg2)]"
-                    >
-                      Zobrazit detail
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </section>
-          ))}
-        </div>
 
         <div className="max-w-3xl mx-auto mt-12 text-sm text-[var(--muted)] text-left md:text-center">
           Uvedené částky jsou orientační scénáře pro představu. Konkrétní návrh a rozpočet
