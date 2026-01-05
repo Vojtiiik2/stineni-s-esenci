@@ -643,10 +643,26 @@ function Process({ t }) {
 }
 
 
-
 function Pricing({ t }) {
   useReveal();
   const [activeKey, setActiveKey] = useState(null);
+
+  // lokální komponenta – už nikdy nebude "not defined"
+  function RangeChipsLocal({ items }) {
+    return (
+      <div className="grid sm:grid-cols-3 gap-3">
+        {items.map((r, i) => (
+          <div
+            key={i}
+            className="rounded-xl border border-[var(--line)] bg-white px-4 py-3"
+          >
+            <div className="text-xs text-[var(--muted)]">{r.label}</div>
+            <div className="mt-1 text-sm font-semibold">{r.value}</div>
+          </div>
+        ))}
+      </div>
+    );
+  }
 
   const bgTop =
     (t.priceImgs && t.priceImgs[0]) ||
@@ -798,12 +814,6 @@ function Pricing({ t }) {
 
   const activeItem = activeKey ? items.find((i) => i.key === activeKey) : null;
 
-  const bridges = [
-    "Orientačně. S respektem k prostoru.",
-    "Cena je výsledek volby, ne položka v ceníku.",
-    "Detail otevřete jen tam, kde vás to zajímá."
-  ];
-
   return (
     <>
       <Hero t={t} small bg={bgTop} />
@@ -814,39 +824,25 @@ function Pricing({ t }) {
           <p className="text-[var(--muted)] text-lg">
             Rychlá kotva pro představu. Detail až po kliknutí.
           </p>
-
-          <div className="mt-6 flex flex-col items-start md:items-center gap-2">
-            {bridges.map((b, i) => (
-              <div key={i} className="inline-flex items-center gap-2 text-sm text-[var(--muted)]">
-                <span className="w-10 h-px bg-[var(--line)]" />
-                <span className="italic">{b}</span>
-              </div>
-            ))}
-          </div>
         </div>
 
-        {/* MOZAIKA – bez střídání */}
         <div className="mt-12 grid md:grid-cols-2 gap-6">
           {items.map((x) => (
             <article
               key={x.key}
               className="rounded-2xl bg-white border border-[var(--line)] soft-shadow overflow-hidden reveal"
             >
-              <div className="soft-shadow overflow-hidden bg-white">
-                <img
-                  src={x.img}
-                  alt={x.title}
-                  className="w-full object-cover aspect-[16/9]"
-                  loading="lazy"
-                />
-              </div>
+              <img
+                src={x.img}
+                alt={x.title}
+                className="w-full object-cover aspect-[16/9]"
+                loading="lazy"
+              />
 
               <div className="p-6">
                 <h3 className="text-xl font-semibold">{x.title}</h3>
 
-                <div className="mt-2 text-sm italic text-[var(--muted)]">
-                  {x.vibe}
-                </div>
+                <div className="mt-2 text-sm italic text-[var(--muted)]">{x.vibe}</div>
 
                 <div className="mt-3 inline-flex items-center gap-2 text-sm text-[var(--muted)]">
                   <span className="w-10 h-px bg-[var(--line)]" />
@@ -859,7 +855,7 @@ function Pricing({ t }) {
 
                 <div className="mt-5">
                   <div className="text-sm font-semibold mb-2">{x.rangesTitle}</div>
-                  <RangeChips items={x.ranges} />
+                  <RangeChipsLocal items={x.ranges} />
                 </div>
 
                 <div className="mt-6">
@@ -882,7 +878,6 @@ function Pricing({ t }) {
         </div>
       </section>
 
-      {/* MODAL – stejný jako dřív */}
       <Modal
         open={!!activeItem}
         onClose={() => setActiveKey(null)}
@@ -916,7 +911,7 @@ function Pricing({ t }) {
               <div className="rounded-xl border border-[var(--line)] bg-white px-4 py-3">
                 <div className="text-sm font-semibold">{activeItem.rangesTitle}</div>
                 <div className="mt-3">
-                  <RangeChips items={activeItem.ranges} />
+                  <RangeChipsLocal items={activeItem.ranges} />
                 </div>
               </div>
 
@@ -975,6 +970,7 @@ function Pricing({ t }) {
     </>
   );
 }
+
 
 
 
