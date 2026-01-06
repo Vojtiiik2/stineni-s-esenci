@@ -1047,23 +1047,26 @@ function Pricing({ t }) {
 
 
 
-
-
 function Gallery({ t }) {
   useReveal();
 
-  // ==== TVOJE REALIZACE ====
+  // ==== TVOJE REALIZACE (zatím ilustrační) ====
   const OUR_WORK = [
     "https://images.unsplash.com/photo-1501183638710-841dd1904471?q=80&w=1600&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=1600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=1600&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=1600&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1484154218962-a197022b5858?q=80&w=1600&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1505693416388-36a5ac3be353?q=80&w=1600&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1600&auto=format&fit=crop"
   ];
 
-  // ==== SPOLUPRÁCE ====
+  // ==== PARTNEŘI (ilustrační fotky, reálně sem dáš jejich realizace / vizualizace) ====
   const PARTNERS = [
     {
       name: "RichterDesign",
       url: "https://www.richterdesign.cz",
+      note:
+        "Spolupráce na interiérech, kde hraje roli čistota linií, funkce a klid prostoru.",
       images: [
         "https://images.unsplash.com/photo-1549187774-b4e9b0445b41?q=80&w=1600&auto=format&fit=crop",
         "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=1600&auto=format&fit=crop",
@@ -1073,6 +1076,8 @@ function Gallery({ t }) {
     {
       name: "ono.je",
       url: "https://www.ono.je",
+      note:
+        "Architektura s citem pro atmosféru, materiál a detail. Dáváme tomu finální vrstvu.",
       images: [
         "https://images.unsplash.com/photo-1521783988139-893ce3cdb4e8?q=80&w=1600&auto=format&fit=crop",
         "https://images.unsplash.com/photo-1505693416388-36a5ac3be353?q=80&w=1600&auto=format&fit=crop",
@@ -1092,9 +1097,14 @@ function Gallery({ t }) {
 
       {/* ==== NAŠE PRÁCE ==== */}
       <section className="max-w-6xl mx-auto px-4 py-16 reveal">
-        <h3 className="script text-3xl mb-6">Naše realizace</h3>
+        <div className="max-w-3xl">
+          <h3 className="script text-3xl mb-3">Naše realizace</h3>
+          <p className="text-[var(--muted)] text-sm leading-relaxed">
+            Výběr projektů, kde řešíme světlo, látku a proporce prostoru. (Ukázky jsou zatím ilustrační.)
+          </p>
+        </div>
 
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+        <div className="mt-8 grid sm:grid-cols-2 md:grid-cols-3 gap-4">
           {OUR_WORK.map((src, i) => (
             <a
               key={i}
@@ -1105,6 +1115,8 @@ function Gallery({ t }) {
               <img
                 src={src}
                 className="w-full h-full object-cover rounded-xl aspect-[4/3] soft-shadow"
+                loading="lazy"
+                alt="Realizace"
               />
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition rounded-xl" />
             </a>
@@ -1114,40 +1126,74 @@ function Gallery({ t }) {
 
       {/* ==== SPOLUPRACUJEME S ==== */}
       <section className="max-w-6xl mx-auto px-4 pb-20 reveal">
-        <h3 className="script text-3xl mb-10">Spolupracujeme s</h3>
+        <div className="max-w-3xl">
+          <h3 className="script text-3xl mb-3">Spolupracujeme s</h3>
+          <p className="text-[var(--muted)] text-sm leading-relaxed">
+            Architekti a designéři, se kterými často ladíme finální vrstvu stínění. 
+            Ukázky níže jsou ilustrační – nahradíme je konkrétními projekty.
+          </p>
+        </div>
 
-        <div className="space-y-14">
+        <div className="mt-10 space-y-6">
           {PARTNERS.map((p, idx) => (
-            <div key={idx} className="reveal">
-              <div className="flex items-center justify-between mb-4">
-                <div className="text-xl font-semibold">{p.name}</div>
-                <a
-                  href={p.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm underline text-[var(--muted)] hover:text-black"
-                >
-                  Navštívit web →
-                </a>
-              </div>
+            <article
+              key={idx}
+              className="rounded-2xl border border-[var(--line)] bg-white soft-shadow overflow-hidden reveal"
+            >
+              <div className="grid md:grid-cols-12 gap-0">
+                {/* TEXT */}
+                <div className="md:col-span-5 p-6 flex flex-col justify-between">
+                  <div>
+                    <div className="text-xl font-semibold">{p.name}</div>
+                    <p className="text-[var(--muted)] text-sm mt-2 leading-relaxed">
+                      {p.note}
+                    </p>
+                  </div>
 
-              <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-                {p.images.map((img, i) => (
-                  <img
-                    key={i}
-                    src={img}
-                    className="rounded-xl object-cover aspect-[4/3] soft-shadow"
-                    loading="lazy"
-                  />
-                ))}
+                  <div className="mt-5">
+                    <a
+                      href={p.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-sm font-semibold underline text-[var(--muted)] hover:text-black"
+                    >
+                      Navštívit web <span aria-hidden="true">→</span>
+                    </a>
+                  </div>
+                </div>
+
+                {/* IMAGES */}
+                <div className="md:col-span-7 p-4 md:p-5">
+                  <div className="grid grid-cols-3 gap-3">
+                    {p.images.map((img, i) => (
+                      <a
+                        key={i}
+                        href={img}
+                        onClick={(e) => openLightbox(e, img)}
+                        className="group relative"
+                      >
+                        <img
+                          src={img}
+                          className="rounded-xl object-cover aspect-[4/3] w-full h-full"
+                          loading="lazy"
+                          alt={`${p.name} ukázka`}
+                        />
+                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition rounded-xl" />
+                      </a>
+                    ))}
+                  </div>
+                </div>
               </div>
-            </div>
+            </article>
           ))}
         </div>
       </section>
     </>
   );
 }
+
+
+
 
 function Finished({ t }) {
   useReveal();
