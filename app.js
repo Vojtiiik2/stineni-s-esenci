@@ -1149,6 +1149,106 @@ function Gallery({ t }) {
   );
 }
 
+function Finished({ t }) {
+  useReveal();
+
+  const IMGS = [
+    "https://images.unsplash.com/photo-1505691723518-36a5ac3be353?q=80&w=1600&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1521783988139-893ce3cdb4e8?q=80&w=1600&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c?q=80&w=1600&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1501183638710-841dd1904471?q=80&w=1600&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1484100356142-db6ab6244067?q=80&w=1600&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1600&auto=format&fit=crop"
+  ];
+
+  const uses = [
+    "Silné zatemnění pro klidný, nerušený spánek.",
+    "Jemné denní světlo s pocitem lehkosti.",
+    "Dekorativní vrstva, která prostoru dodá výraz.",
+    "Spojení praktičnosti a estetiky v jedné kompozici.",
+    "Řešení pro velká okna, kanceláře či atypické prostory.",
+    "Pro projekty, kde je potřeba jít za běžné standardy."
+  ];
+
+  const idealFor = [
+    "Ideální pro ložnice, dětské pokoje a projekční místnosti.",
+    "Vhodné do obývacích pokojů, kuchyní a společných prostor.",
+    "Nejlépe funguje v obývacích pokojích, jídelnách a reprezentativních místnostech.",
+    "Vhodné tam, kde potřebujete scénovat světlo během dne i večera.",
+    "Doporučeno pro minimalistické interiéry a moderní architekturu.",
+    "Pro interiéry s konkrétním zadáním a specifickými požadavky."
+  ];
+
+  const bg =
+    "https://images.unsplash.com/photo-1501183638710-841dd1904471?q=80&w=1800&auto=format&fit=crop";
+
+  return (
+    <>
+      <Hero t={t} small bg={bg} title={t.finishedH} />
+
+      <section className="max-w-6xl mx-auto px-4 py-16 reveal">
+        <p className="text-[var(--muted)] max-w-3xl mb-8">
+          Nabízíme několik základních typů hotového stínění, které umíme dále
+          přizpůsobit vašemu prostoru. Každý typ má své optimální použití – od
+          ložnicového zatemnění až po jemné vrstvení ve společenských místnostech.
+        </p>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {t.finished.map((f, i) => (
+            <div
+              key={i}
+              className="rounded-2xl border border-[var(--line)] p-4 soft-shadow reveal bg-gradient-to-b from-white to-[var(--bg2)] flex flex-col"
+            >
+              <img
+                src={IMGS[i % IMGS.length]}
+                className="w-full h-36 object-cover rounded-xl mb-3"
+                loading="lazy"
+                alt={f.name}
+              />
+              <div className="text-base font-semibold mb-1">{f.name}</div>
+              <p className="text-[var(--muted)] text-sm mb-2">{f.note}</p>
+              <p className="text-[var(--muted)] text-xs mb-1">{uses[i % uses.length]}</p>
+              <p className="text-[var(--muted)] text-xs">{idealFor[i % idealFor.length]}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    </>
+  );
+}
+
+function Essences({ t }) {
+  useReveal();
+
+  const bg =
+    "https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=80&w=1800&auto=format&fit=crop";
+
+  return (
+    <>
+      <Hero t={t} small bg={bg} title={t.essenceH} />
+
+      <section className="max-w-6xl mx-auto px-4 py-16 reveal">
+        <p className="text-[var(--muted)] max-w-3xl mb-8">
+          Vůně jemně doplňuje vizuální dojem z prostoru. Pomáhá dotvořit atmosféru,
+          která se pojí se světlem, látkou i rytmem dne. Vybrané esence používáme
+          jako nenápadný, ale výrazný prvek celkového vnímání interiéru.
+        </p>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {t.essences.map((e, i) => (
+            <div
+              key={i}
+              className="rounded-2xl border border-[var(--line)] p-6 soft-shadow reveal bg-gradient-to-b from-white to-[var(--bg2)]"
+            >
+              <h3 className="text-base font-semibold">{e.name}</h3>
+              <p className="text-[var(--muted)] mt-2 text-sm">{e.note}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    </>
+  );
+}
 
 function Contact({ t }) {
   useReveal();
