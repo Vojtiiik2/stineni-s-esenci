@@ -1052,113 +1052,95 @@ function Pricing({ t }) {
 function Gallery({ t }) {
   useReveal();
 
-  const GALLERY = [
+  // ==== TVOJE REALIZACE ====
+  const OUR_WORK = [
     "https://images.unsplash.com/photo-1501183638710-841dd1904471?q=80&w=1600&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=1600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1542326237-94b1c5a538d6?q=80&w=1600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=1600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1521783988139-893ce3cdb4e8?q=80&w=1600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1493666438817-866a91353ca9?q=80&w=1600&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=1600&auto=format&fit=crop"
+  ];
+
+  // ==== SPOLUPRÁCE ====
+  const PARTNERS = [
+    {
+      name: "RichterDesign",
+      url: "https://www.richterdesign.cz",
+      images: [
+        "https://images.unsplash.com/photo-1549187774-b4e9b0445b41?q=80&w=1600&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=1600&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1484154218962-a197022b5858?q=80&w=1600&auto=format&fit=crop"
+      ]
+    },
+    {
+      name: "ono.je",
+      url: "https://www.ono.je",
+      images: [
+        "https://images.unsplash.com/photo-1521783988139-893ce3cdb4e8?q=80&w=1600&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1505693416388-36a5ac3be353?q=80&w=1600&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1600&auto=format&fit=crop"
+      ]
+    }
   ];
 
   return (
     <>
       <Hero
-  t={t}
-  small
-  bg="https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=1800&auto=format&fit=crop"
-  title={t.galleryH}
-/>
+        t={t}
+        small
+        title={t.galleryH}
+        bg="https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=1800&auto=format&fit=crop"
+      />
 
+      {/* ==== NAŠE PRÁCE ==== */}
       <section className="max-w-6xl mx-auto px-4 py-16 reveal">
-        <p className="text-[var(--muted)] max-w-3xl mb-8">
-          Výběr realizací, kde hraje roli světlo, látka a proporce prostoru.
-          Fotografie průběžně obměňujeme podle aktuálních projektů.
-        </p>
+        <h3 className="script text-3xl mb-6">Naše realizace</h3>
 
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-          {GALLERY.map((src, i) => (
+          {OUR_WORK.map((src, i) => (
             <a
               key={i}
               href={src}
-              className="relative group reveal"
               onClick={(e) => openLightbox(e, src)}
+              className="group relative reveal"
             >
               <img
                 src={src}
-                className="rounded-xl soft-shadow w-full h-full object-cover aspect-[4/3]"
+                className="w-full h-full object-cover rounded-xl aspect-[4/3] soft-shadow"
               />
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition rounded-xl"></div>
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition rounded-xl" />
             </a>
           ))}
         </div>
       </section>
-    </>
-  );
-}
 
-function Finished({ t }) {
-  useReveal();
+      {/* ==== SPOLUPRACUJEME S ==== */}
+      <section className="max-w-6xl mx-auto px-4 pb-20 reveal">
+        <h3 className="script text-3xl mb-10">Spolupracujeme s</h3>
 
-  const IMGS = [
-    "https://images.unsplash.com/photo-1505691723518-36a5ac3be353?q=80&w=1600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1521783988139-893ce3cdb4e8?q=80&w=1600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c?q=80&w=1600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1505691723518-36a5ac3be353?q=80&w=1600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1484100356142-db6ab6244067?q=80&w=1600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1600&auto=format&fit=crop"
-  ];
+        <div className="space-y-14">
+          {PARTNERS.map((p, idx) => (
+            <div key={idx} className="reveal">
+              <div className="flex items-center justify-between mb-4">
+                <div className="text-xl font-semibold">{p.name}</div>
+                <a
+                  href={p.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm underline text-[var(--muted)] hover:text-black"
+                >
+                  Navštívit web →
+                </a>
+              </div>
 
-  const uses = [
-    "Silné zatemnění pro klidný, nerušený spánek.",
-    "Jemné denní světlo s pocitem lehkosti.",
-    "Dekorativní vrstva, která prostoru dodá výraz.",
-    "Spojení praktičnosti a estetiky v jedné kompozici.",
-    "Řešení pro velká okna, kanceláře či atypické prostory.",
-    "Pro projekty, kde je potřeba jít za běžné standardy."
-  ];
-
-  const idealFor = [
-    "Ideální pro ložnice, dětské pokoje a projekční místnosti.",
-    "Vhodné do obývacích pokojů, kuchyní a společných prostor.",
-    "Nejlépe funguje v obývacích pokojích, jídelnách a reprezentativních místnostech.",
-    "Vhodné tam, kde potřebujete scénovat světlo během dne i večera.",
-    "Doporučeno pro minimalistické interiéry a moderní architekturu.",
-    "Pro interiéry s konkrétním zadáním a specifickými požadavky."
-  ];
-
-  return (
-    <>
-      <Hero
-  t={t}
-  small
-  bg="https://images.unsplash.com/photo-1501183638710-841dd1904471?q=80&w=1800&auto=format&fit=crop"
-  title={t.finishedH}
-/>
-
-
-      <section className="max-w-6xl mx-auto px-4 py-16 reveal">
-        <p className="text-[var(--muted)] max-w-3xl mb-8">
-          Nabízíme několik základních typů hotového stínění, které umíme dále
-          přizpůsobit vašemu prostoru. Každý typ má své optimální použití – od
-          ložnicového zatemnění až po jemné vrstvení ve společenských
-          místnostech.
-        </p>
-
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {t.finished.map((f, i) => (
-            <div
-              key={i}
-              className="rounded-2xl border border-[var(--line)] p-4 soft-shadow reveal bg-gradient-to-b from-white to-[var(--bg2)] flex flex-col"
-            >
-              <img
-                src={IMGS[i]}
-                className="w-full h-36 object-cover rounded-xl mb-3"
-              />
-              <div className="text-base font-semibold mb-1">{f.name}</div>
-              <p className="text-[var(--muted)] text-sm mb-2">{f.note}</p>
-              <p className="text-[var(--muted)] text-xs mb-1">{uses[i]}</p>
-              <p className="text-[var(--muted)] text-xs">{idealFor[i]}</p>
+              <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+                {p.images.map((img, i) => (
+                  <img
+                    key={i}
+                    src={img}
+                    className="rounded-xl object-cover aspect-[4/3] soft-shadow"
+                    loading="lazy"
+                  />
+                ))}
+              </div>
             </div>
           ))}
         </div>
@@ -1167,41 +1149,6 @@ function Finished({ t }) {
   );
 }
 
-function Essences({ t }) {
-  useReveal();
-
-  return (
-    <>
-      <Hero
-  t={t}
-  small
-  bg="https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=80&w=1800&auto=format&fit=crop"
-  title={t.essenceH}
-/>
-
-
-      <section className="max-w-6xl mx-auto px-4 py-16 reveal">
-        <p className="text-[var(--muted)] max-w-3xl mb-8">
-          Vůně jemně doplňuje vizuální dojem z prostoru. Pomáhá dotvořit atmosféru,
-          která se pojí se světlem, látkou i rytmem dne. Vybrané esence
-          používáme jako nenápadný, ale výrazný prvek celkového vnímání interiéru.
-        </p>
-
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {t.essences.map((e, i) => (
-            <div
-              key={i}
-              className="rounded-2xl border border-[var(--line)] p-6 soft-shadow reveal bg-gradient-to-b from-white to-[var(--bg2)]"
-            >
-              <h3 className="text-base font-semibold">{e.name}</h3>
-              <p className="text-[var(--muted)] mt-2 text-sm">{e.note}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-    </>
-  );
-}
 
 function Contact({ t }) {
   useReveal();
