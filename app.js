@@ -234,7 +234,7 @@ const Header = ({ t, lang, setLang }) => {
   );
 };
 
-function Hero({ t, small = false, showCta = false, intervalMs = 8000, bg }) {
+function Hero({ t, small = false, showCta = false, intervalMs = 8000, bg, title }) {
   const slides = t.heroSlides || [];
   const [index, setIndex] = useState(0);
 
@@ -315,7 +315,7 @@ const effectiveBg = small && bg ? bg : slide.bg;
       textClass
     }
   >
-    <h1 className="script text-5xl md:text-6xl mb-3">{slide.h1}</h1>
+    <h1 className="script text-5xl md:text-6xl mb-3">{title || slide.h1}</h1>
     <p className="text-lg opacity-95">{t.heroSub}</p>
 
     {!small && showCta && (
@@ -492,12 +492,11 @@ function Process({ t }) {
 
   return (
     <>
-      <Hero t={t} small bg={bgTop} />
+      <Hero t={t} small bg={bgTop} title={t.processH} />
 
       <section className="max-w-6xl mx-auto px-4 py-16 reveal">
         {/* ===== HLAVIČKA ===== */}
         <div className="max-w-3xl mx-auto text-left md:text-center">
-          <h2 className="script text-4xl mb-4">{t.processH}</h2>
           <p className="text-[var(--muted)] text-lg">
             Čtyři kroky. Jeden celek. V každém je prostor pro návrat a doladění detailu.
           </p>
@@ -880,11 +879,10 @@ function Pricing({ t }) {
 
   return (
     <>
-      <Hero t={t} small bg={bgTop} />
+      <Hero t={t} small bg={bgTop} title={t.priceH} />
 
       <section className="max-w-6xl mx-auto px-4 py-16 reveal">
         <div className="max-w-3xl mx-auto text-left md:text-center">
-          <h2 className="script text-4xl mb-4">{t.priceH}</h2>
           <p className="text-[var(--muted)] text-lg">
             Rychlá kotva pro představu. Detail až po kliknutí.
           </p>
