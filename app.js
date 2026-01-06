@@ -1064,13 +1064,13 @@ function Gallery({ t }) {
   return (
     <>
       <Hero
-        t={t}
-        small
-        bg="https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=1800&auto=format&fit=crop"
-      />
+  t={t}
+  small
+  bg="https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=1800&auto=format&fit=crop"
+  title={t.galleryH}
+/>
 
       <section className="max-w-6xl mx-auto px-4 py-16 reveal">
-        <h2 className="script text-4xl mb-4">{t.galleryH}</h2>
         <p className="text-[var(--muted)] max-w-3xl mb-8">
           Výběr realizací, kde hraje roli světlo, látka a proporce prostoru.
           Fotografie průběžně obměňujeme podle aktuálních projektů.
@@ -1130,13 +1130,14 @@ function Finished({ t }) {
   return (
     <>
       <Hero
-        t={t}
-        small
-        bg="https://images.unsplash.com/photo-1501183638710-841dd1904471?q=80&w=1800&auto=format&fit=crop"
-      />
+  t={t}
+  small
+  bg="https://images.unsplash.com/photo-1501183638710-841dd1904471?q=80&w=1800&auto=format&fit=crop"
+  title={t.finishedH}
+/>
+
 
       <section className="max-w-6xl mx-auto px-4 py-16 reveal">
-        <h2 className="script text-4xl mb-4">{t.finishedH}</h2>
         <p className="text-[var(--muted)] max-w-3xl mb-8">
           Nabízíme několik základních typů hotového stínění, které umíme dále
           přizpůsobit vašemu prostoru. Každý typ má své optimální použití – od
@@ -1172,13 +1173,14 @@ function Essences({ t }) {
   return (
     <>
       <Hero
-        t={t}
-        small
-        bg="https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=80&w=1800&auto=format&fit=crop"
-      />
+  t={t}
+  small
+  bg="https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=80&w=1800&auto=format&fit=crop"
+  title={t.essenceH}
+/>
+
 
       <section className="max-w-6xl mx-auto px-4 py-16 reveal">
-        <h2 className="script text-4xl mb-4">{t.essenceH}</h2>
         <p className="text-[var(--muted)] max-w-3xl mb-8">
           Vůně jemně doplňuje vizuální dojem z prostoru. Pomáhá dotvořit atmosféru,
           která se pojí se světlem, látkou i rytmem dne. Vybrané esence
@@ -1206,15 +1208,14 @@ function Contact({ t }) {
 
   return (
     <>
-      <Hero
-        t={t}
-        small
-        bg="https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=1800&auto=format&fit=crop"
-      />
+     <Hero
+  t={t}
+  small
+  bg="https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=1800&auto=format&fit=crop"
+  title={t.contactH}
+/>
 
       <section className="max-w-6xl mx-auto px-4 py-16 reveal">
-        <h2 className="script text-4xl mb-6">{t.contactH}</h2>
-
         <div className="grid md:grid-cols-2 gap-6">
           <div>
             <p>
