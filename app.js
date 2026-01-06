@@ -643,6 +643,7 @@ function Process({ t }) {
 }
 
 
+
 function Pricing({ t }) {
   useReveal();
   const [activeKey, setActiveKey] = useState(null);
@@ -680,7 +681,7 @@ function Pricing({ t }) {
             role="dialog"
             aria-modal="true"
             aria-label={title}
-            className="w-full max-w-5xl rounded-2xl bg-white border border-[var(--line)] soft-shadow overflow-hidden"
+            className="w-full max-w-4xl rounded-2xl bg-white border border-[var(--line)] soft-shadow overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-start justify-between gap-4 px-5 py-4 border-b border-[var(--line)]">
@@ -696,7 +697,7 @@ function Pricing({ t }) {
               <button
                 type="button"
                 onClick={onClose}
-                className="rounded-full px-3 py-1 text-sm border border-[var(--line)] hover:bg-[var(--bg2)]"
+                className="rounded-full px-3 py-1 text-sm border border-[var(--line)] hover:bg-[var(--bg2)] transition"
                 aria-label="Zavřít"
               >
                 Zavřít
@@ -710,7 +711,7 @@ function Pricing({ t }) {
     );
   }
 
-  // ====== Range "chips" bez čtverců ======
+  // ====== Range "chips" ======
   function RangeChipsLocal({ items }) {
     return (
       <div className="grid gap-2">
@@ -889,7 +890,7 @@ function Pricing({ t }) {
           </p>
         </div>
 
-        {/* ✅ seznam: nizsi ramecek (pravý sloupec zkrácený), bez střídání */}
+        {/* seznam bez střídání + nižší karty */}
         <div className="mt-12 space-y-8">
           {items.map((x) => (
             <section
@@ -935,9 +936,9 @@ function Pricing({ t }) {
                     <button
                       type="button"
                       onClick={() => setActiveKey(x.key)}
-                      className="rounded-full px-5 py-2 text-sm border border-[var(--line)] hover:bg-[var(--bg2)]"
+                      className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold border border-[var(--line)] bg-white hover:bg-[var(--bg2)] hover:border-[var(--sand)] transition"
                     >
-                      Zobrazit detail
+                      Otevřít detail <span aria-hidden="true">→</span>
                     </button>
                   </div>
                 </div>
@@ -952,6 +953,7 @@ function Pricing({ t }) {
         </div>
       </section>
 
+      {/* ===== MODAL: proporčně vyvážený, bez prázdného místa ===== */}
       <ModalLocal
         open={!!activeItem}
         onClose={() => setActiveKey(null)}
@@ -959,93 +961,82 @@ function Pricing({ t }) {
         subtitle={activeItem?.vibe || ""}
       >
         {activeItem && (
-          <div className="p-6 md:p-8">
-            <div className="grid md:grid-cols-12 gap-8 items-start">
+          <div className="p-5 md:p-6">
+            {/* TOP: obraz + nejdůležitější info hned vpravo */}
+            <div className="grid md:grid-cols-12 gap-6 items-start">
               <div className="md:col-span-5">
-                <div className="rounded-2xl overflow-hidden soft-shadow bg-white border border-[var(--line)]">
+                <div className="rounded-2xl overflow-hidden border border-[var(--line)] bg-white soft-shadow">
                   <img
                     src={activeItem.img}
                     alt={activeItem.title}
-                    className="w-full h-[240px] md:h-[520px] object-cover"
+                    className="w-full object-cover aspect-[4/5] md:aspect-[3/4]"
+                    style={{ objectPosition: "center" }}
                   />
                 </div>
               </div>
 
-              <div className="md:col-span-7">
-                <div className="text-sm italic text-[var(--muted)]">
-                  {activeItem.micro}
+              <div className="md:col-span-7 space-y-4">
+                <div>
+                  <div className="text-sm italic text-[var(--muted)]">{activeItem.micro}</div>
+                  <p className="mt-2 text-[var(--muted)] text-sm leading-relaxed">
+                    {activeItem.intro}
+                  </p>
                 </div>
 
-                <p className="mt-4 text-[var(--muted)] text-sm leading-relaxed">
-                  {activeItem.intro}
-                </p>
+                <div className="rounded-2xl border border-[var(--line)] bg-white px-4 py-4">
+                  <div className="text-sm font-semibold">{activeItem.rangesTitle}</div>
+                  <div className="mt-3">
+                    <RangeChipsLocal items={activeItem.ranges} />
+                  </div>
+                </div>
 
-                <div className="mt-5 inline-flex items-center gap-2 text-sm text-[var(--muted)]">
-                  <span className="w-10 h-px bg-[var(--line)]" />
-                  <span>{activeItem.vibe}</span>
+                <div className="rounded-2xl border border-[var(--line)] bg-white px-4 py-4">
+                  <div className="text-sm font-semibold">Jak se orientačně počítá cena</div>
+                  <p className="text-[var(--muted)] text-sm leading-relaxed mt-2">
+                    {activeItem.how}
+                  </p>
                 </div>
               </div>
             </div>
 
-            <div className="mt-10 space-y-10">
-              <section>
-                <h4 className="text-sm font-semibold mb-3">
-                  {activeItem.rangesTitle}
-                </h4>
-                <RangeChipsLocal items={activeItem.ranges} />
-              </section>
-
-              <section>
-                <h4 className="text-sm font-semibold mb-3">
-                  Jak se orientačně počítá cena
-                </h4>
-                <p className="text-[var(--muted)] text-sm leading-relaxed">
-                  {activeItem.how}
-                </p>
-              </section>
-
-              <section>
-                <h4 className="text-sm font-semibold mb-3">
-                  {activeItem.tiersTitle}
-                </h4>
-                <div className="grid sm:grid-cols-3 gap-6">
+            {/* BOTTOM: zbytek informací */}
+            <div className="mt-6 space-y-6">
+              <div className="rounded-2xl border border-[var(--line)] bg-white px-4 py-4">
+                <div className="text-sm font-semibold">{activeItem.tiersTitle}</div>
+                <div className="grid sm:grid-cols-3 gap-4 mt-3">
                   {activeItem.tiers.map((t0, i) => (
-                    <div key={i} className="px-1">
+                    <div key={i} className="rounded-xl bg-[var(--bg2)] px-4 py-3">
                       <div className="text-sm font-semibold">{t0.name}</div>
-                      <div className="text-[var(--muted)] text-sm mt-1">
-                        {t0.note}
-                      </div>
+                      <div className="text-[var(--muted)] text-sm mt-1">{t0.note}</div>
                     </div>
                   ))}
                 </div>
-              </section>
+              </div>
 
-              <section>
-                <h4 className="text-sm font-semibold mb-3">
-                  Co do ceny vstupuje
-                </h4>
-                <ul className="list-disc pl-5 text-[var(--muted)] text-sm space-y-1">
+              <div className="rounded-2xl border border-[var(--line)] bg-white px-4 py-4">
+                <div className="text-sm font-semibold">Co do ceny vstupuje</div>
+                <ul className="list-disc pl-5 text-[var(--muted)] text-sm space-y-1 mt-2">
                   {activeItem.factors.map((f, i) => (
                     <li key={i}>{f}</li>
                   ))}
                 </ul>
-              </section>
+              </div>
 
-              <section className="rounded-2xl bg-[var(--bg2)] px-5 py-4">
+              <div className="rounded-2xl bg-[var(--bg2)] px-5 py-4">
                 <div className="text-sm font-semibold">Chceš rychlý odhad?</div>
-                <p className="text-sm text-[var(--muted)] mt-1">
+                <div className="text-sm text-[var(--muted)] mt-1">
                   Pošli fotku prostoru + přibližné rozměry (šířka a výška) a napiš,
                   jestli chceš spíš soukromí, zútulnění nebo zatemnění.
-                </p>
-              </section>
+                </div>
+              </div>
 
-              <div>
+              <div className="pt-1">
                 <button
                   type="button"
                   onClick={() => setActiveKey(null)}
-                  className="rounded-full px-5 py-2 text-sm border border-[var(--line)] hover:bg-[var(--bg2)]"
+                  className="rounded-full px-5 py-2.5 text-sm border border-[var(--line)] hover:bg-[var(--bg2)] transition"
                 >
-                  Zavřít detail
+                  Zavřít
                 </button>
               </div>
             </div>
