@@ -448,27 +448,29 @@ function Home({ t }) {
         ))}
       </section>
 
-      {/* ===== ATMOSFÉRA ===== */}
-      <section className="py-16 max-w-6xl mx-auto px-4 reveal">
-        <h2 className="script text-4xl mb-8">{t.inspH}</h2>
+     {/* ===== ATMOSFÉRA ===== */}
+<section className="py-16 max-w-6xl mx-auto px-4 reveal">
+  <h2 className="script text-4xl mb-8">{t.inspH}</h2>
 
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-         {[
-  "/img/atmosfera/atm-01.webp",
-  "/img/atmosfera/atm-02.webp",
-  "/img/atmosfera/atm-03.webp",
-  // "/img/atmosfera/atm-04.webp",
-].map((src, i) => (
-  <div key={i} className="inspiration-img soft-shadow overflow-hidden">
-    <img
-      src={src}
-      alt={`Atmosféra interiéru ${i + 1}`}
-      className="w-full h-full object-cover aspect-[4/3]"
-      loading="lazy"
-      decoding="async"
-    />
+  <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+    {[
+      "/img/atmosfera/atm-01.webp",
+      "/img/atmosfera/atm-02.webp",
+      "/img/atmosfera/atm-03.webp",
+      // "/img/atmosfera/atm-04.webp",
+    ].map((src, i) => (
+      <div key={i} className="inspiration-img soft-shadow overflow-hidden">
+        <img
+          src={src}
+          alt={`Atmosféra interiéru ${i + 1}`}
+          className="w-full h-full object-cover aspect-[4/3]"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+    ))}
   </div>
-))}
+</section>
 
 
 
