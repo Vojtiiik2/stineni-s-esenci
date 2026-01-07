@@ -450,30 +450,51 @@ function Home({ t }) {
 
      {/* ===== ATMOSFÉRA ===== */}
 <section className="py-16 max-w-6xl mx-auto px-4 reveal">
-  <h2 className="script text-4xl mb-8">{t.inspH}</h2>
+  <h2 className="script text-4xl mb-3">{t.inspH}</h2>
+
+  <p className="text-[var(--muted)] text-lg leading-relaxed mb-8 max-w-2xl">
+    Světlo formuje prostor.<br />
+    Textil mu dává charakter.
+  </p>
 
   <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-   {[
-  "assets/img/atmosfera/atmosfera-01.webp",
-  "assets/img/atmosfera/atmosfera-02.webp",
-  "assets/img/atmosfera/atmosfera-03.webp",
-].map((src, i) => (
-  <div key={i} className="inspiration-img soft-shadow overflow-hidden">
-    <img
-      src={src}
-      alt={`Atmosféra interiéru ${i + 1}`}
-      className="w-full h-full object-cover aspect-[4/3]"
-      loading="lazy"
-      decoding="async"
-    />
-  </div>
-))}
+    {[
+      {
+        src: "assets/img/atmosfera/atmosfera-01.webp",
+        tags: "Světlo · Prostor · Svoboda",
+      },
+      {
+        src: "assets/img/atmosfera/atmosfera-02.webp",
+        tags: "Měkkost · Pohyb · Soukromí",
+      },
+      {
+        src: "assets/img/atmosfera/atmosfera-03.webp",
+        tags: "Hloubka · Ticho · Domov",
+      },
+    ].map((item, i) => (
+      <div
+        key={i}
+        className="relative inspiration-img soft-shadow overflow-hidden"
+      >
+        <img
+          src={item.src}
+          alt={`Atmosféra interiéru ${i + 1}`}
+          className="w-full h-full object-cover aspect-[4/3]"
+          loading="lazy"
+          decoding="async"
+        />
+
+        {/* Jemný gradient pro čitelnost textu */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/0 to-transparent" />
+
+        {/* Klíčová slova */}
+        <div className="absolute bottom-3 left-4 text-xs tracking-wide text-white/90">
+          {item.tags}
+        </div>
+      </div>
+    ))}
   </div>
 </section>
-    </>
-  );
-}
-
 
 
 function Process({ t }) {
