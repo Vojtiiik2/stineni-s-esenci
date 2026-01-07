@@ -100,22 +100,6 @@ article,
   transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
-article:hover,
-.rounded-2xl:hover {
-  transform: translateY(-4px);
-  box-shadow:
-    0 6px 16px rgba(0, 0, 0, 0.06),
-    0 14px 32px rgba(0, 0, 0, 0.08);
-}
-
-img {
-  transition: transform 0.6s ease;
-}
-
-img:hover {
-  transform: scale(1.03);
-}
-
 .lb {
   display: none;
   position: fixed;
@@ -138,11 +122,8 @@ img:hover {
   .section-swap {
     animation-duration: 0.8s;
   }
-
-  img:hover {
-    transform: scale(1);
-  }
 }
+  
 
 .service-card {
   border: 1px solid var(--line);
@@ -150,7 +131,7 @@ img:hover {
   background: white;
   padding: 24px;
   text-align: left;
-}
+  }
 
 .benefit-card {
   background: var(--bg2);
