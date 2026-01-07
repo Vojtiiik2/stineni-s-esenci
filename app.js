@@ -454,9 +454,9 @@ function Home({ t }) {
 
   <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
    {[
-  "img/atmosfera/atm-01.webp",
-  "img/atmosfera/atm-02.webp",
-  "img/atmosfera/atm-03.webp",
+  "assets/img/atmosfera/atmosfera-01.webp",
+  "assets/img/atmosfera/atmosfera-02.webp",
+  "assets/img/atmosfera/atmosfera-03.webp",
 ].map((src, i) => (
   <div key={i} className="inspiration-img soft-shadow overflow-hidden">
     <img
