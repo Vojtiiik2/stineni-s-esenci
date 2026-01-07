@@ -453,24 +453,23 @@ function Home({ t }) {
         <h2 className="script text-4xl mb-8">{t.inspH}</h2>
 
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-          {[
-            "https://images.unsplash.com/photo-1484154218962-a197022b5858?q=80&w=1600&auto=format&fit=crop",
-            "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1600&auto=format&fit=crop",
-            "https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=1600&auto=format&fit=crop"
-          ].map((src, i) => (
-            <div key={i} className="inspiration-img soft-shadow overflow-hidden">
-              <img
-                src={src}
-                alt="Atmosféra interiéru"
-                className="w-full h-full object-cover aspect-[4/3]"
-              />
-            </div>
-          ))}
-        </div>
-      </section>
-    </>
-  );
-}
+         {[
+  "/img/atmosfera/atm-01.webp",
+  "/img/atmosfera/atm-02.webp",
+  "/img/atmosfera/atm-03.webp",
+  // "/img/atmosfera/atm-04.webp",
+].map((src, i) => (
+  <div key={i} className="inspiration-img soft-shadow overflow-hidden">
+    <img
+      src={src}
+      alt={`Atmosféra interiéru ${i + 1}`}
+      className="w-full h-full object-cover aspect-[4/3]"
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+))}
+
 
 
 function Process({ t }) {
