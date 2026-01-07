@@ -495,6 +495,9 @@ function Home({ t }) {
     ))}
   </div>
 </section>
+    </>
+  );
+}
 
 
 function Process({ t }) {
