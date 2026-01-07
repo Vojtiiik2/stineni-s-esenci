@@ -471,6 +471,9 @@ function Home({ t }) {
     ))}
   </div>
 </section>
+    </>
+  );
+}
 
 
 
