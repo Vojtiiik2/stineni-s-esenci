@@ -333,7 +333,6 @@ const effectiveBg = small && bg ? bg : slide.bg;
 }
 
 
-
 function Home({ t }) {
   useReveal();
 
@@ -341,63 +340,79 @@ function Home({ t }) {
     <>
       <Hero t={t} showCta intervalMs={8000} />
 
-      {/* ===== O NÁS ===== */}
+      {/* ===== ATMOSFÉRA ===== */}
       <section className="py-16 max-w-6xl mx-auto px-4 reveal">
-        <div className="grid md:grid-cols-2 gap-8 items-center">
-          <div className="soft-shadow rounded-2xl overflow-hidden">
-            <img
-              src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1600&auto=format&fit=crop"
-              alt="Interiér"
-              className="w-full h-full object-cover"
-            />
-          </div>
+        <h2 className="script text-4xl mb-3">{t.inspH}</h2>
 
-          <div>
-            <h2 className="script text-4xl mb-4">O nás</h2>
-            {t.homeAbout.map((p, idx) => (
-              <p
-                key={idx}
-                className={
-                  "text-[var(--muted)] text-lg leading-relaxed" +
-                  (idx > 0 ? " mt-4" : "")
-                }
-              >
-                {p}
-              </p>
-            ))}
-          </div>
+        <p className="text-[var(--muted)] text-lg leading-relaxed mb-8 max-w-2xl">
+          Světlo formuje prostor.<br />
+          Textil mu dává charakter.
+        </p>
+
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+          {[
+            {
+              src: "assets/img/atmosfera/atmosfera-01.webp",
+              tags: "Světlo · Prostor · Svoboda"
+            },
+            {
+              src: "assets/img/atmosfera/atmosfera-02.webp",
+              tags: "Měkkost · Pohyb · Soukromí"
+            },
+            {
+              src: "assets/img/atmosfera/atmosfera-03.webp",
+              tags: "Hloubka · Ticho · Domov"
+            }
+          ].map((item, i) => (
+            <div
+              key={i}
+              className="relative inspiration-img soft-shadow overflow-hidden"
+            >
+              <img
+                src={item.src}
+                alt={`Atmosféra interiéru ${i + 1}`}
+                className="w-full h-full object-cover aspect-[4/3]"
+                loading="lazy"
+                decoding="async"
+              />
+
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/0 to-transparent" />
+
+              <div className="absolute bottom-3 left-4 text-xs tracking-wide text-white/90">
+                {item.tags}
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
- {/* ===== SLUŽBY ===== */}
-<section className="py-16 max-w-6xl mx-auto px-4 reveal">
-  <h2 className="script text-4xl mb-8">{t.servicesH}</h2>
+      {/* ===== SLUŽBY ===== */}
+      <section className="py-16 max-w-6xl mx-auto px-4 reveal">
+        <h2 className="script text-4xl mb-8">{t.servicesH}</h2>
 
-  <div className="grid sm:grid-cols-2 md:grid-cols-5 gap-6">
-    {t.services.map((s, i) => {
-      const hash = ["zaclon", "zaves", "roleta", "systemy", "servis"][i];
+        <div className="grid sm:grid-cols-2 md:grid-cols-5 gap-6">
+          {t.services.map((s, i) => {
+            const hash = ["zaclon", "zaves", "roleta", "systemy", "servis"][i];
 
-      return (
-        <button
-          key={i}
-          onClick={() => (location.hash = `/pricing#${hash}`)}
-          className="service-card soft-shadow reveal text-left hover:translate-y-[-1px] transition"
-          type="button"
-        >
-          <div className="text-lg font-semibold mb-1">{s.name}</div>
-          <p className="text-[var(--muted)] text-sm leading-relaxed">
-            {s.note}
-          </p>
-          <div className="mt-3 text-xs tracking-widest text-[var(--muted)]">
-            Kolik zaplatíte →
-          </div>
-        </button>
-      );
-    })}
-  </div>
-</section>
-
-    
+            return (
+              <button
+                key={i}
+                onClick={() => (location.hash = `/pricing#${hash}`)}
+                className="service-card soft-shadow reveal text-left hover:translate-y-[-1px] transition"
+                type="button"
+              >
+                <div className="text-lg font-semibold mb-1">{s.name}</div>
+                <p className="text-[var(--muted)] text-sm leading-relaxed">
+                  {s.note}
+                </p>
+                <div className="mt-3 text-xs tracking-widest text-[var(--muted)]">
+                  Kolik zaplatíte →
+                </div>
+              </button>
+            );
+          })}
+        </div>
+      </section>
 
       {/* ===== PROČ S NÁMI ===== */}
       <section className="py-16 max-w-6xl mx-auto px-4 reveal">
@@ -448,56 +463,38 @@ function Home({ t }) {
         ))}
       </section>
 
-     {/* ===== ATMOSFÉRA ===== */}
-<section className="py-16 max-w-6xl mx-auto px-4 reveal">
-  <h2 className="script text-4xl mb-3">{t.inspH}</h2>
+      {/* ===== O NÁS ===== */}
+      <section className="py-16 max-w-6xl mx-auto px-4 reveal">
+        <div className="grid md:grid-cols-2 gap-8 items-center">
+          <div className="soft-shadow rounded-2xl overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1600&auto=format&fit=crop"
+              alt="Interiér"
+              className="w-full h-full object-cover"
+            />
+          </div>
 
-  <p className="text-[var(--muted)] text-lg leading-relaxed mb-8 max-w-2xl">
-    Světlo formuje prostor.<br />
-    Textil mu dává charakter.
-  </p>
-
-  <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-    {[
-      {
-        src: "assets/img/atmosfera/atmosfera-01.webp",
-        tags: "Světlo · Prostor · Svoboda",
-      },
-      {
-        src: "assets/img/atmosfera/atmosfera-02.webp",
-        tags: "Měkkost · Pohyb · Soukromí",
-      },
-      {
-        src: "assets/img/atmosfera/atmosfera-03.webp",
-        tags: "Hloubka · Ticho · Domov",
-      },
-    ].map((item, i) => (
-      <div
-        key={i}
-        className="relative inspiration-img soft-shadow overflow-hidden"
-      >
-        <img
-          src={item.src}
-          alt={`Atmosféra interiéru ${i + 1}`}
-          className="w-full h-full object-cover aspect-[4/3]"
-          loading="lazy"
-          decoding="async"
-        />
-
-        {/* Jemný gradient pro čitelnost textu */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/0 to-transparent" />
-
-        {/* Klíčová slova */}
-        <div className="absolute bottom-3 left-4 text-xs tracking-wide text-white/90">
-          {item.tags}
+          <div>
+            <h2 className="script text-4xl mb-4">O nás</h2>
+            {t.homeAbout.map((p, idx) => (
+              <p
+                key={idx}
+                className={
+                  "text-[var(--muted)] text-lg leading-relaxed" +
+                  (idx > 0 ? " mt-4" : "")
+                }
+              >
+                {p}
+              </p>
+            ))}
+          </div>
         </div>
-      </div>
-    ))}
-  </div>
-</section>
+      </section>
     </>
   );
 }
+
+
 
 
 function Process({ t }) {
