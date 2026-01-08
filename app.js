@@ -669,12 +669,6 @@ function Process({ t }) {
 }
 
 
-
-import React, { useEffect, useMemo, useState } from "react";
-import { useNavigate } from "react-router-dom";
-
-
-
 function Pricing({ t }) {
   useReveal();
   const [activeKey, setActiveKey] = useState(null);
@@ -1014,23 +1008,27 @@ function Pricing({ t }) {
                   </div>
                 </div>
 
-                <div className="pt-1 flex flex-wrap gap-3">
-                  <a
-                    href={CONTACT_HREF}
-                    onClick={() => setActiveKey(null)}
-                    className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold border border-[var(--line)] bg-white hover:bg-[var(--bg2)] hover:border-[var(--sand)] transition"
-                  >
-                    Napište mi <span aria-hidden="true">→</span>
-                  </a>
+               <div className="pt-1 flex flex-wrap gap-3">
+  <button
+    type="button"
+    onClick={() => {
+      setActiveKey(null);
+      go("/contact");
+    }}
+    className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold border border-[var(--line)] bg-white hover:bg-[var(--bg2)] hover:border-[var(--sand)] transition"
+  >
+    Napište mi <span aria-hidden="true">→</span>
+  </button>
 
-                  <button
-                    type="button"
-                    onClick={() => setActiveKey(null)}
-                    className="rounded-full px-5 py-2.5 text-sm border border-[var(--line)] hover:bg-[var(--bg2)] transition"
-                  >
-                    Zavřít
-                  </button>
-                </div>
+  <button
+    type="button"
+    onClick={() => setActiveKey(null)}
+    className="rounded-full px-5 py-2.5 text-sm border border-[var(--line)] hover:bg-[var(--bg2)] transition"
+  >
+    Zavřít
+  </button>
+</div>
+
               </div>
             </div>
           </div>
