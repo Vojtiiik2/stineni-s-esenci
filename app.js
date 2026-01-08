@@ -673,9 +673,10 @@ function Process({ t }) {
 import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+
+
 function Pricing({ t }) {
   useReveal();
-  const go = useNavigate();
   const [activeKey, setActiveKey] = useState(null);
 
   // ====== Modal lokálně ======
@@ -757,6 +758,12 @@ function Pricing({ t }) {
       </div>
     );
   }
+
+  // ====== Navigace na kontakt (GitHub Pages safe) ======
+  // Pokud máš kontakt jako sekci na stejné stránce, dej v Contact <section id="contact"> ... a nech to takhle.
+  // Pokud je kontakt samostatná "route" v tvém SPA, dej sem např. "#/contact" podle tvého routeru.
+  const CONTACT_HREF = "#/contact"; // nejčastější varianta pro SPA na GH pages
+  // const CONTACT_HREF = "#contact"; // pokud je kontakt sekce na stejné stránce
 
   const bgTop =
     (t.priceImgs && t.priceImgs[0]) ||
@@ -958,7 +965,6 @@ function Pricing({ t }) {
         </div>
       </section>
 
-      {/* ===== MODAL: zjednodušený, přehledný + CTA ===== */}
       <ModalLocal
         open={!!activeItem}
         onClose={() => setActiveKey(null)}
@@ -1009,16 +1015,13 @@ function Pricing({ t }) {
                 </div>
 
                 <div className="pt-1 flex flex-wrap gap-3">
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setActiveKey(null);
-                      go("/contact");
-                    }}
+                  <a
+                    href={CONTACT_HREF}
+                    onClick={() => setActiveKey(null)}
                     className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold border border-[var(--line)] bg-white hover:bg-[var(--bg2)] hover:border-[var(--sand)] transition"
                   >
                     Napište mi <span aria-hidden="true">→</span>
-                  </button>
+                  </a>
 
                   <button
                     type="button"
@@ -1036,9 +1039,6 @@ function Pricing({ t }) {
     </>
   );
 }
-
-export default Pricing;
-
 
 
 
