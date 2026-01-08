@@ -340,13 +340,75 @@ function Home({ t }) {
     <>
       <Hero t={t} showCta intervalMs={8000} />
 
+      {/* ===== O NÁS ===== */}
+      <section className="py-16 max-w-6xl mx-auto px-4 reveal">
+        <div className="grid md:grid-cols-2 gap-8 items-center">
+          <div className="soft-shadow rounded-2xl overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1600&auto=format&fit=crop"
+              alt="Interiér"
+              className="w-full h-full object-cover"
+            />
+          </div>
+
+          <div>
+            <h2 className="script text-4xl mb-4">O nás</h2>
+            {t.homeAbout.map((p, idx) => (
+              <p
+                key={idx}
+                className={
+                  "text-[var(--muted)] text-lg leading-relaxed" +
+                  (idx > 0 ? " mt-4" : "")
+                }
+              >
+                {p}
+              </p>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== SLUŽBY ===== */}
+      <section className="py-16 max-w-6xl mx-auto px-4 reveal">
+        <h2 className="script text-4xl mb-8">{t.servicesH}</h2>
+
+        <div className="grid sm:grid-cols-2 md:grid-cols-5 gap-6">
+          {t.services.map((s, i) => {
+            const hash = ["zaclon", "zaves", "roleta", "systemy", "servis"][i];
+
+            return (
+              <button
+                key={i}
+                onClick={() => (location.hash = `/pricing#${hash}`)}
+                className="service-card soft-shadow reveal text-left hover:translate-y-[-1px] transition"
+                type="button"
+              >
+                <div className="text-lg font-semibold mb-1">{s.name}</div>
+                <p className="text-[var(--muted)] text-sm leading-relaxed">
+                  {s.note}
+                </p>
+                <div className="mt-3 text-xs tracking-widest text-[var(--muted)]">
+                  Kolik zaplatíte →
+                </div>
+              </button>
+            );
+          })}
+        </div>
+      </section>
+
       {/* ===== ATMOSFÉRA ===== */}
       <section className="py-16 max-w-6xl mx-auto px-4 reveal">
         <h2 className="script text-4xl mb-3">{t.inspH}</h2>
 
-        <p className="text-[var(--muted)] text-lg leading-relaxed mb-8 max-w-2xl">
-          Světlo formuje prostor.<br />
-          Textil mu dává charakter.
+        <p className="text-[var(--muted)] text-lg leading-relaxed mb-4 max-w-3xl">
+          Stejný prostor. Jiný pocit.
+          <br />
+          Rozdíl mezi oknem bez stínění, se záclonou a se závěsem je často větší,
+          než čekáte.
+        </p>
+
+        <p className="text-sm tracking-wide text-[var(--muted)] mb-8">
+          Světlo · Soukromí · Klid
         </p>
 
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
@@ -386,69 +448,23 @@ function Home({ t }) {
         </div>
       </section>
 
-      {/* ===== SLUŽBY ===== */}
-      <section className="py-16 max-w-6xl mx-auto px-4 reveal">
-        <h2 className="script text-4xl mb-8">{t.servicesH}</h2>
-
-        <div className="grid sm:grid-cols-2 md:grid-cols-5 gap-6">
-          {t.services.map((s, i) => {
-            const hash = ["zaclon", "zaves", "roleta", "systemy", "servis"][i];
-
-            return (
-              <button
-                key={i}
-                onClick={() => (location.hash = `/pricing#${hash}`)}
-                className="service-card soft-shadow reveal text-left hover:translate-y-[-1px] transition"
-                type="button"
-              >
-                <div className="text-lg font-semibold mb-1">{s.name}</div>
-                <p className="text-[var(--muted)] text-sm leading-relaxed">
-                  {s.note}
-                </p>
-                <div className="mt-3 text-xs tracking-widest text-[var(--muted)]">
-                  Kolik zaplatíte →
-                </div>
-              </button>
-            );
-          })}
-        </div>
-      </section>
-
       {/* ===== PROČ S NÁMI ===== */}
       <section className="py-16 max-w-6xl mx-auto px-4 reveal">
         <h2 className="script text-4xl mb-8">{t.benefitsH}</h2>
 
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {t.benefits.map((b, i) => {
-            const hash = ["individualni-navrh", "zkusenosti", "detail"][i];
-
-            return (
-              <button
-                key={i}
-                onClick={() => (location.hash = `/process#${hash}`)}
-                className="benefit-card soft-shadow reveal text-left hover:translate-y-[-1px] transition"
-              >
-                <div className="text-lg font-semibold mb-2">{b.name}</div>
-                <p className="text-[var(--muted)] text-sm leading-relaxed">
-                  {b.note}
-                </p>
-                <div className="mt-3 text-xs tracking-widest text-[var(--muted)]">
-                  Zjistit víc →
-                </div>
-              </button>
-            );
-          })}
+          {t.benefits.map((b, i) => (
+            <div
+              key={i}
+              className="benefit-card soft-shadow reveal text-left"
+            >
+              <div className="text-lg font-semibold mb-2">{b.name}</div>
+              <p className="text-[var(--muted)] text-sm leading-relaxed">
+                {b.note}
+              </p>
+            </div>
+          ))}
         </div>
-      </section>
-
-      {/* ===== CTA ===== */}
-      <section className="py-16 max-w-4xl mx-auto px-4 reveal text-center">
-        <button
-          onClick={() => go("/contact")}
-          className="btn-cta px-6 py-4 rounded-full bg-[var(--sand)] text-[var(--text)] font-bold border border-black/5 text-lg"
-        >
-          {t.cta}
-        </button>
       </section>
 
       {/* ===== FAQ ===== */}
@@ -463,36 +479,23 @@ function Home({ t }) {
         ))}
       </section>
 
-      {/* ===== O NÁS ===== */}
-      <section className="py-16 max-w-6xl mx-auto px-4 reveal">
-        <div className="grid md:grid-cols-2 gap-8 items-center">
-          <div className="soft-shadow rounded-2xl overflow-hidden">
-            <img
-              src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1600&auto=format&fit=crop"
-              alt="Interiér"
-              className="w-full h-full object-cover"
-            />
-          </div>
+      {/* ===== CTA ===== */}
+      <section className="py-16 max-w-4xl mx-auto px-4 reveal text-center">
+        <button
+          onClick={() => go("/contact")}
+          className="btn-cta px-6 py-4 rounded-full bg-[var(--sand)] text-[var(--text)] font-bold border border-black/5 text-lg"
+        >
+          {t.cta}
+        </button>
 
-          <div>
-            <h2 className="script text-4xl mb-4">O nás</h2>
-            {t.homeAbout.map((p, idx) => (
-              <p
-                key={idx}
-                className={
-                  "text-[var(--muted)] text-lg leading-relaxed" +
-                  (idx > 0 ? " mt-4" : "")
-                }
-              >
-                {p}
-              </p>
-            ))}
-          </div>
-        </div>
+        <p className="text-sm text-[var(--muted)] mt-4">
+          Ozvu se vám osobně. Bez závazků, bez tlaku.
+        </p>
       </section>
     </>
   );
 }
+
 
 
 
