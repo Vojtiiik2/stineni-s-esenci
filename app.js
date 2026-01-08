@@ -1006,26 +1006,24 @@ function Pricing({ t }) {
                   </div>
                 </div>
 
-                <div className="pt-1 flex flex-wrap gap-3">
-                  <a
-  href="/kontakt"
-  onClick={() => setActiveKey(null)}
-  className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold border border-[var(--line)] bg-white hover:bg-[var(--bg2)] hover:border-[var(--sand)] transition"
->
-  Napište mi <span aria-hidden="true">→</span>
-</a>
+               <div className="pt-1 flex flex-wrap gap-3">
+  <a
+    href="/kontakt"
+    onClick={() => setActiveKey(null)}
+    className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold border border-[var(--line)] bg-white hover:bg-[var(--bg2)] hover:border-[var(--sand)] transition"
+  >
+    Napište mi <span aria-hidden="true">→</span>
+  </a>
 
-                    Napište mi <span aria-hidden="true">→</span>
-                  </a>
-
-                  <button
-                    type="button"
-                    onClick={() => setActiveKey(null)}
-                    className="rounded-full px-5 py-2.5 text-sm border border-[var(--line)] hover:bg-[var(--bg2)] transition"
-                  >
-                    Zavřít
-                  </button>
-                </div>
+  <button
+    type="button"
+    onClick={() => setActiveKey(null)}
+    className="rounded-full px-5 py-2.5 text-sm border border-[var(--line)] hover:bg-[var(--bg2)] transition"
+  >
+    Zavřít
+  </button>
+</div>
+ 
               </div>
             </div>
           </div>
