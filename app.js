@@ -670,12 +670,12 @@ function Process({ t }) {
 
 
 
+import React, { useEffect, useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 function Pricing({ t }) {
   useReveal();
-
-  const go = useGo(); 
-  // nebo: const go = useNavigate();
-
+  const go = useNavigate();
   const [activeKey, setActiveKey] = useState(null);
 
   // ====== Modal lokálně ======
@@ -782,10 +782,7 @@ function Pricing({ t }) {
         ],
         tiersTitle: "Cenové hladiny látek (orientačně)",
         tiers: [
-          {
-            name: "Základní lehké voály",
-            note: "Vzdušné látky s nižší pořizovací cenou."
-          },
+          { name: "Základní lehké voály", note: "Vzdušné látky s nižší pořizovací cenou." },
           { name: "Střední kategorie", note: "Vyvážený poměr ceny, vzhledu a funkce." },
           { name: "Prémiové tkaniny", note: "Výraznější materiál, textura, vyšší gramáž." }
         ]
@@ -899,7 +896,6 @@ function Pricing({ t }) {
           </p>
         </div>
 
-        {/* seznam bez střídání + nižší karty */}
         <div className="mt-12 space-y-8">
           {items.map((x) => (
             <section
@@ -962,7 +958,7 @@ function Pricing({ t }) {
         </div>
       </section>
 
-      {/* ===== MODAL: zjednodušený, přehledný ===== */}
+      {/* ===== MODAL: zjednodušený, přehledný + CTA ===== */}
       <ModalLocal
         open={!!activeItem}
         onClose={() => setActiveKey(null)}
@@ -985,7 +981,9 @@ function Pricing({ t }) {
 
               <div className="md:col-span-7 space-y-5">
                 <div>
-                  <div className="text-sm italic text-[var(--muted)]">{activeItem.micro}</div>
+                  <div className="text-sm italic text-[var(--muted)]">
+                    {activeItem.micro}
+                  </div>
                   <p className="mt-2 text-[var(--muted)] text-sm leading-relaxed">
                     {activeItem.intro}
                   </p>
@@ -1010,27 +1008,26 @@ function Pricing({ t }) {
                   </div>
                 </div>
 
-               <div className="pt-1 flex flex-wrap gap-3">
-  <button
-    type="button"
-    onClick={() => {
-      setActiveKey(null);
-      go("/contact");
-    }}
-    className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold border border-[var(--line)] bg-white hover:bg-[var(--bg2)] hover:border-[var(--sand)] transition"
-  >
-    Napište mi <span aria-hidden="true">→</span>
-  </button>
+                <div className="pt-1 flex flex-wrap gap-3">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setActiveKey(null);
+                      go("/contact");
+                    }}
+                    className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold border border-[var(--line)] bg-white hover:bg-[var(--bg2)] hover:border-[var(--sand)] transition"
+                  >
+                    Napište mi <span aria-hidden="true">→</span>
+                  </button>
 
-  <button
-    type="button"
-    onClick={() => setActiveKey(null)}
-    className="rounded-full px-5 py-2.5 text-sm border border-[var(--line)] hover:bg-[var(--bg2)] transition"
-  >
-    Zavřít
-  </button>
-</div>
- 
+                  <button
+                    type="button"
+                    onClick={() => setActiveKey(null)}
+                    className="rounded-full px-5 py-2.5 text-sm border border-[var(--line)] hover:bg-[var(--bg2)] transition"
+                  >
+                    Zavřít
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -1039,6 +1036,9 @@ function Pricing({ t }) {
     </>
   );
 }
+
+export default Pricing;
+
 
 
 
