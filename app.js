@@ -1245,25 +1245,35 @@ function Finished({ t }) {
           ložnicového zatemnění až po jemné vrstvení ve společenských místnostech.
         </p>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {t.finished.map((f, i) => (
-            <div
-              key={i}
-              className="rounded-2xl border border-[var(--line)] p-4 soft-shadow reveal bg-gradient-to-b from-white to-[var(--bg2)] flex flex-col"
-            >
-              <img
-                src={IMGS[i % IMGS.length]}
-                className="w-full h-36 object-cover rounded-xl mb-3"
-                loading="lazy"
-                alt={f.name}
-              />
-              <div className="text-base font-semibold mb-1">{f.name}</div>
-              <p className="text-[var(--muted)] text-sm mb-2">{f.note}</p>
-              <p className="text-[var(--muted)] text-xs mb-1">{uses[i % uses.length]}</p>
-              <p className="text-[var(--muted)] text-xs">{idealFor[i % idealFor.length]}</p>
-            </div>
-          ))}
-        </div>
+       <div className="max-w-4xl mx-auto mt-10">
+  <div className="rounded-2xl border border-dashed border-[var(--line)] bg-[var(--bg2)] p-10 text-center soft-shadow">
+    <h3 className="text-xl font-semibold mb-3">
+      Hotová řešení připravujeme
+    </h3>
+
+    <p className="text-[var(--muted)] text-sm leading-relaxed max-w-2xl mx-auto">
+      Nabídku hotových řešení stínění aktuálně připravujeme.
+      <br /><br />
+      Každý prostor řešíme individuálně – pokud vás zajímá,
+      jaké řešení by dávalo smysl právě u vás,
+      ozvěte se nám a připravíme návrh na míru.
+    </p>
+
+    <div className="mt-6">
+      <button
+        onClick={() => go("/contact")}
+        className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold border border-[var(--line)] hover:bg-white transition"
+      >
+        Nezávazně se zeptat →
+      </button>
+    </div>
+
+    <p className="text-xs text-[var(--muted)] mt-4">
+      Hotová kolekce bude dostupná později
+    </p>
+  </div>
+</div>
+
       </section>
     </>
   );
@@ -1286,17 +1296,24 @@ function Essences({ t }) {
           jako nenápadný, ale výrazný prvek celkového vnímání interiéru.
         </p>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {t.essences.map((e, i) => (
-            <div
-              key={i}
-              className="rounded-2xl border border-[var(--line)] p-6 soft-shadow reveal bg-gradient-to-b from-white to-[var(--bg2)]"
-            >
-              <h3 className="text-base font-semibold">{e.name}</h3>
-              <p className="text-[var(--muted)] mt-2 text-sm">{e.note}</p>
-            </div>
-          ))}
-        </div>
+       <div className="max-w-3xl mx-auto mt-10">
+  <div className="rounded-2xl border border-dashed border-[var(--line)] bg-[var(--bg2)] p-8 text-center soft-shadow">
+    <h3 className="text-lg font-semibold mb-2">Esence připravujeme</h3>
+
+    <p className="text-[var(--muted)] text-sm leading-relaxed">
+      Vůně budou samostatnou kapitolou – navázanou na prostor,
+      denní světlo a atmosféru interiéru.
+      <br /><br />
+      Aktuálně ladíme koncepci tak, aby esence nebyly jen „produktem“,
+      ale přirozeným doplňkem celkového návrhu.
+    </p>
+
+    <p className="text-xs tracking-wide text-[var(--muted)] mt-4">
+      Připravujeme pro vás
+    </p>
+  </div>
+</div>
+
       </section>
     </>
   );
