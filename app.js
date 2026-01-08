@@ -5,6 +5,7 @@ const MAIN_HERO =
 function useReveal() {
   useEffect(() => {
     const els = document.querySelectorAll(".reveal");
+
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
@@ -13,9 +14,15 @@ function useReveal() {
       },
       { threshold: 0.15 }
     );
+
     els.forEach((el) => io.observe(el));
+
+    return () => {
+      io.disconnect(); // <- důležité proti „sekání“ při přepínání stránek
+    };
   }, []);
 }
+
 
 const STR = {
   cs: {
@@ -448,24 +455,34 @@ function Home({ t }) {
         </div>
       </section>
 
-      {/* ===== PROČ S NÁMI ===== */}
-      <section className="py-16 max-w-6xl mx-auto px-4 reveal">
-        <h2 className="script text-4xl mb-8">{t.benefitsH}</h2>
+{/* ===== PROČ S NÁMI ===== */}
+<section className="py-16 max-w-6xl mx-auto px-4 reveal">
+  <h2 className="script text-4xl mb-8">{t.benefitsH}</h2>
 
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {t.benefits.map((b, i) => (
-            <div
-              key={i}
-              className="benefit-card soft-shadow reveal text-left"
-            >
-              <div className="text-lg font-semibold mb-2">{b.name}</div>
-              <p className="text-[var(--muted)] text-sm leading-relaxed">
-                {b.note}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
+  <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+    {t.benefits.map((b, i) => {
+      const hash = ["individualni-navrh", "zkusenosti", "detail"][i];
+
+      return (
+        <button
+          key={i}
+          onClick={() => (location.hash = `/process#${hash}`)}
+          className="benefit-card soft-shadow reveal text-left hover:translate-y-[-1px] transition"
+          type="button"
+        >
+          <div className="text-lg font-semibold mb-2">{b.name}</div>
+          <p className="text-[var(--muted)] text-sm leading-relaxed">
+            {b.note}
+          </p>
+          <div className="mt-3 text-xs tracking-widest text-[var(--muted)]">
+            Zjistit víc →
+          </div>
+        </button>
+      );
+    })}
+  </div>
+</section>
+
 
       {/* ===== FAQ ===== */}
       <section className="py-16 max-w-4xl mx-auto px-4 reveal">
@@ -479,19 +496,19 @@ function Home({ t }) {
         ))}
       </section>
 
-      {/* ===== CTA ===== */}
-      <section className="py-16 max-w-4xl mx-auto px-4 reveal text-center">
-        <button
-          onClick={() => go("/contact")}
-          className="btn-cta px-6 py-4 rounded-full bg-[var(--sand)] text-[var(--text)] font-bold border border-black/5 text-lg"
-        >
-          {t.cta}
-        </button>
+     {/* ===== CTA ===== */}
+<section className="py-16 max-w-4xl mx-auto px-4 reveal text-center">
+  <button
+    onClick={() => go("/contact")}
+    className="btn-cta px-6 py-4 rounded-full bg-[var(--sand)] text-[var(--text)] font-bold border border-black/5 text-lg"
+  >
+    {t.cta}
+  </button>
 
-        <p className="text-sm text-[var(--muted)] mt-4">
-          Ozvu se vám osobně. Bez závazků, bez tlaku.
-        </p>
-      </section>
+  <p className="text-sm text-[var(--muted)] mt-4">
+    Praha a okolí. Konzultace u vás doma. Výroba obvykle 4–8 týdnů.
+  </p>
+</section>
     </>
   );
 }
