@@ -672,6 +672,10 @@ function Process({ t }) {
 
 function Pricing({ t }) {
   useReveal();
+
+  const go = useGo(); 
+  // nebo: const go = useNavigate();
+
   const [activeKey, setActiveKey] = useState(null);
 
   // ====== Modal lokálně ======
@@ -1007,13 +1011,16 @@ function Pricing({ t }) {
                 </div>
 
                <div className="pt-1 flex flex-wrap gap-3">
-  <a
-  href="kontakt"
-  onClick={() => setActiveKey(null)}
-  className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold border border-[var(--line)] bg-white hover:bg-[var(--bg2)] hover:border-[var(--sand)] transition"
->
-  Napište mi <span aria-hidden="true">→</span>
-</a>
+  <button
+    type="button"
+    onClick={() => {
+      setActiveKey(null);
+      go("/contact");
+    }}
+    className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold border border-[var(--line)] bg-white hover:bg-[var(--bg2)] hover:border-[var(--sand)] transition"
+  >
+    Napište mi <span aria-hidden="true">→</span>
+  </button>
 
   <button
     type="button"
