@@ -753,11 +753,6 @@ function Pricing({ t }) {
     );
   }
 
-  // ====== Navigace na kontakt (GitHub Pages safe) ======
-  // Pokud máš kontakt jako sekci na stejné stránce, dej v Contact <section id="contact"> ... a nech to takhle.
-  // Pokud je kontakt samostatná "route" v tvém SPA, dej sem např. "#/contact" podle tvého routeru.
-  const CONTACT_HREF = "#/contact"; // nejčastější varianta pro SPA na GH pages
-  // const CONTACT_HREF = "#contact"; // pokud je kontakt sekce na stejné stránce
 
   const bgTop =
     (t.priceImgs && t.priceImgs[0]) ||
