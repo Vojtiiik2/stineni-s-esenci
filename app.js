@@ -32,20 +32,13 @@ const STR = {
     heroH1: "Kde se světlo setká s emocí",
     heroSub: "Záclony · Závěsy · Rolety · Esence",
     cta: "Kontaktujte nás",
-    heroSlides: [
-  {
-    h1: "Kde se světlo setká s emocí",
-    bg: "https://images.unsplash.com/photo-1505691723518-36a5ac3be353?q=80&w=1800&auto=format&fit=crop"
-  },
-  {
-    h1: "Stínění, které dává domovu klid",
-    bg: "https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=1800&auto=format&fit=crop"
-  },
-  {
-    h1: "Látka, světlo a detail v rovnováze",
-    bg: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1800&auto=format&fit=crop"
-  }
+    
+   heroSlides: [
+  { h1: "Kde se světlo setká s emocí", bg: "assets/img/hero/hero-01.webp" },
+  { h1: "Stínění, které dává domovu klid", bg: "assets/img/hero/hero-02.webp" },
+  { h1: "Látka, světlo a detail v rovnováze", bg: "assets/img/hero/hero-03.webp" }
 ],
+
 
 
 
@@ -117,14 +110,10 @@ processIntro:
   "Čtyři kroky. Jeden celek. V každém je prostor pro návrat a doladění detailu.",
 
 processImgs: [
-  // 01 Konzultace – světlo / okno
-  "https://images.unsplash.com/photo-1484154218962-a197022b5858?q=80&w=1600&auto=format&fit=crop",
-  // 02 Návrh řešení – látka / detail
-  "https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=1600&auto=format&fit=crop",
-  // 03 Příprava & výroba – řemeslo
-  "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1600&auto=format&fit=crop",
-  // 04 Realizace – hotový klid / interiér
-  "https://images.unsplash.com/photo-1505693416388-36a5ac3be353?q=80&w=1600&auto=format&fit=crop"
+  "assets/img/process/process-01.webp",
+  "assets/img/process/process-02.webp",
+  "assets/img/process/process-03.webp",
+  "assets/img/process/process-04.webp"
 ],
 
 
@@ -782,7 +771,8 @@ function Pricing({ t }) {
         title: "Záclony",
         img:
           (t.priceImgs && t.priceImgs[1]) ||
-          "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1800&auto=format&fit=crop",
+          img: "assets/img/pricing/pricing-01.webp",
+
         vibe: "Světlo zůstává. Prostor se zjemní. Soukromí se přidá.",
         micro: "Světlo, proporce, jemnost.",
         intro:
@@ -805,7 +795,8 @@ function Pricing({ t }) {
         title: "Závěsy (dim-out / blackout)",
         img:
           (t.priceImgs && t.priceImgs[2]) ||
-          "https://images.unsplash.com/photo-1505693416388-36a5ac3be353?q=80&w=1800&auto=format&fit=crop",
+         img: "assets/img/pricing/pricing-02.webp",
+
         vibe: "Večer zklidní. Ráno ochrání. Prostor zútulní.",
         micro: "Materiál, ticho, komfort.",
         intro:
@@ -828,7 +819,8 @@ function Pricing({ t }) {
         title: "Rolety",
         img:
           (t.priceImgs && t.priceImgs[3]) ||
-          "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1800&auto=format&fit=crop",
+         img: "assets/img/pricing/pricing-03.webp",
+
         vibe: "Čisté linie. Funkce bez kompromisu.",
         micro: "Regulace světla, jednoduchost.",
         intro:
