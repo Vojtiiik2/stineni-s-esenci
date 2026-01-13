@@ -771,7 +771,7 @@ function Pricing({ t }) {
         title: "Záclony",
         img:
           (t.priceImgs && t.priceImgs[1]) ||
-          img: "assets/img/pricing/pricing-01.webp",
+          "assets/img/pricing/pricing-01.webp",
 
         vibe: "Světlo zůstává. Prostor se zjemní. Soukromí se přidá.",
         micro: "Světlo, proporce, jemnost.",
@@ -795,7 +795,7 @@ function Pricing({ t }) {
         title: "Závěsy (dim-out / blackout)",
         img:
           (t.priceImgs && t.priceImgs[2]) ||
-         img: "assets/img/pricing/pricing-02.webp",
+         "assets/img/pricing/pricing-02.webp",
 
         vibe: "Večer zklidní. Ráno ochrání. Prostor zútulní.",
         micro: "Materiál, ticho, komfort.",
@@ -819,7 +819,7 @@ function Pricing({ t }) {
         title: "Rolety",
         img:
           (t.priceImgs && t.priceImgs[3]) ||
-         img: "assets/img/pricing/pricing-03.webp",
+          "assets/img/pricing/pricing-03.webp",
 
         vibe: "Čisté linie. Funkce bez kompromisu.",
         micro: "Regulace světla, jednoduchost.",
