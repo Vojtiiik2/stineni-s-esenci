@@ -341,10 +341,13 @@ function Home({ t }) {
         <div className="grid md:grid-cols-2 gap-8 items-center">
           <div className="soft-shadow rounded-2xl overflow-hidden">
             <img
-              src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1600&auto=format&fit=crop"
-              alt="Interiér"
-              className="w-full h-full object-cover"
-            />
+  src="assets/img/Onas/onas-01.webp"
+  alt="Interiér"
+  className="w-full h-full object-cover"
+  loading="lazy"
+  decoding="async"
+/>
+
           </div>
 
           <div>
@@ -509,9 +512,8 @@ function Home({ t }) {
 function Process({ t }) {
   useReveal();
 
- const bgTop =
-  (t.processImgs && t.processImgs[0]) ||
-  "assets/img/hero/process-hero.webp";
+const bgTop = "assets/img/hero/process-hero.webp";
+
 
     
   const steps = t.steps || [];
