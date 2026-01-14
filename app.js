@@ -509,10 +509,11 @@ function Home({ t }) {
 function Process({ t }) {
   useReveal();
 
-  const bgTop =
-    (t.processImgs && t.processImgs[0]) ||
-    "https://images.unsplash.com/photo-1484154218962-a197022b5858?q=80&w=1800&auto=format&fit=crop";
+ const bgTop =
+  (t.processImgs && t.processImgs[0]) ||
+  "assets/img/hero/process-hero.webp";
 
+    
   const steps = t.steps || [];
   const texts = t.stepsTxt || [];
   const imgs = t.processImgs || [];
@@ -761,8 +762,8 @@ function Pricing({ t }) {
 
 
   const bgTop =
-    (t.priceImgs && t.priceImgs[0]) ||
-    "https://images.unsplash.com/photo-1549187774-b4e9b0445b41?q=80&w=1800&auto=format&fit=crop";
+  (t.priceImgs && t.priceImgs[0]) ||
+  "assets/img/hero/pricing-hero.webp";
 
   const items = useMemo(
     () => [
@@ -1223,8 +1224,8 @@ function Finished({ t }) {
     "Pro interiéry s konkrétním zadáním a specifickými požadavky."
   ];
 
-  const bg =
-    "https://images.unsplash.com/photo-1501183638710-841dd1904471?q=80&w=1800&auto=format&fit=crop";
+const bg = "assets/img/hero/finished-hero.webp";
+
 
   return (
     <>
