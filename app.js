@@ -109,9 +109,9 @@ stepsTxt: [
 
   "Na základě vybraných materiálů a technického systému připravíme cenovou nabídku. Ta slouží jako výchozí bod. Pokud je potřeba cenu upravit, hledáme společně alternativy, ať už v úpravě materiálů, techniky nebo skladby řešení. Naším cílem je vždy najít rovnováhu mezi kvalitou, funkčností a cenou.",
 
-  "Po schválení návrhu zadáme výrobu. Látky se šijí na míru a technické systémy se připravují podle konkrétního prostoru tak, aby při montáži vše perfektně sedělo.",
+  "Po schválení rozpočtu a složení zálohy zahajujeme proces výroby.\n\nV průběhu jednotlivých fází zpracování současně plánujeme termín realizace.",
 
-  "Hotové stínění přivezeme a kompletně namontujeme. Postaráme se o instalaci systémů i finální seřízení. Na místě doladíme detaily a vše vám předáme plně funkční a připravené k používání."
+  "Hotové stínění přivezeme a kompletně namontujeme.Textil pověsíme vyžehlímea finálně nadekorujeme. Zároven Na místě doladíme detaily a vše vám předáme plně funkční a připravené k používání."
 ],
 
 
