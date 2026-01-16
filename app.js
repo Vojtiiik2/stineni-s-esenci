@@ -78,10 +78,10 @@ const STR = {
       },
       {
         q: "Mohu vidět vzorky?",
-        a: "Ano, vzorky látek přivezu na osobní konzultaci přímo do vašeho prostoru."
+        a: „Ano, vzorky látek přivezu na osobní konzultaci přímo do vašeho prostoru. Zároveň je možné si vzorníky prohlédnout také v naší vzorkovně, vždy je ale nutné si schůzku předem domluvit.“
       },
       {
-        q: "Montujete i kolejnice a systémy?",
+        q: "Montujete i kolejnice?",
         a: "Ano, zajišťujeme kompletní dodání včetně techniky a montáže."
       }
     ],
