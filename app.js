@@ -95,16 +95,23 @@ const STR = {
 
     processH: "Jak pracujeme",
 
-   steps: ["Konzultace", "Návrh řešení", "Příprava & výroba", "Realizace"],
+   steps: [
+  "Konzultace",
+  "Návrh řešení",
+  "Příprava & výroba",
+  "Realizace"
+],
+
 stepsTxt: [
-  "Přijedeme za vámi, prostor si projdeme přímo na místě a vše přesně zaměříme. Už při první konzultaci se díváme nejen na rozměry, ale na světlo, funkci prostoru a to, jak v něm skutečně žijete. Společně probereme, co od stínění očekáváte, a ukážeme vám vzorky látek.",
-  
+  "Přijedeme za vámi, prostor si projdeme přímo na místě a vše přesně zaměříme. Už při první konzultaci se díváme nejen na rozměry, ale na světlo, funkci prostoru a to, jak v něm skutečně žijete. Společně probereme, co od stínění očekáváte, soukromí, zatemnění, nebo čistě dekorativní funkci. Ukážeme vám vzorky látek, a řekneme si, co je v daném prostoru vhodné a co by naopak nedávalo smysl po technicke, funkcni i vizualní strance. Konzultace slouží k tomu, abyste získali přehled o materiálech, možnostech řešení a dalším postupu. Po setkání víte, jakým směrem se návrh bude ubírat, jaké typy stínění a materiálů připadají v úvahu.",
+
   "Na základě konzultace připravíme konkrétní návrh. Vybereme vhodné látky, typ zavěšení a technický systém tak, aby řešení odpovídalo prostoru i tomu, jak ho používáte. Návrh s vámi projdeme a případně doladíme detaily.",
-  
+
   "Po schválení návrhu provedeme přesné zaměření a zadáme výrobu. Látky se šijí na míru a technické systémy se připravují podle konkrétního prostoru tak, aby při montáži vše perfektně sedělo.",
-  
+
   "Hotové stínění přivezeme a kompletně namontujeme. Postaráme se o instalaci systémů i finální seřízení. Na místě doladíme detaily a vše vám předáme funkční a připravené k používání."
 ],
+
 
     
 processIntro:
