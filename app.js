@@ -97,7 +97,10 @@ const STR = {
 
    steps: ["Konzultace", "Návrh řešení", "Příprava & výroba", "Realizace"],
 stepsTxt: [
-  "Přijedeme za vámi, prostor si projdeme přímo na místě a vše přesně zaměříme. Probereme, co od stínění očekáváte – soukromí, zatemnění, regulaci světla nebo čistě doplnění interiéru. Ukážeme vám vzorky látek, vysvětlíme rozdíly mezi jednotlivými možnostmi a řekneme rovnou, co dává smysl a co by bylo zbytečné. Na konci konzultace máte jasnou představu o řešení i orientačním rozpočtu.",
+  "Přijedeme za vámi, prostor si projdeme přímo na místě a vše přesně zaměříme. Už při první konzultaci se díváme nejen na rozměry, ale na světlo, funkci prostoru a to, jak v něm skutečně žijete.",
+  "Společně probereme, co od stínění očekáváte – soukromí, zatemnění nebo čistě dekorativní funkci.",
+  "Ukážeme vám vzorky látek a řekneme si, co je v daném prostoru vhodné a co by naopak nedávalo smysl po technické, funkční i vizuální stránce. Konzultace slouží k tomu, abyste získali přehled o materiálech, možnostech řešení a dalším postupu.",
+  "Po setkání víte, jakým směrem se návrh bude ubírat a jaké typy stínění a materiálů připadají v úvahu."
 
   "Na základě konzultace připravíme konkrétní návrh. Vybereme vhodné látky, typ zavěšení a technický systém tak, aby řešení odpovídalo prostoru i tomu, jak ho používáte. Návrh s vámi projdeme a případně doladíme detaily. Nezahlcujeme variantami – cílem je jedno funkční řešení, se kterým budete spokojeni dlouhodobě.",
 
