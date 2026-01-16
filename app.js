@@ -57,7 +57,7 @@ const STR = {
   { name: "Závěsy", note: "Estetika, teplo a soukromí." },
   { name: "Rolety", note: "Praktičnost a čisté linie." },
   { name: "Technické systémy", note: "Dekorativní a funkční řešení." },
-  { name: "Servis", note: "Údržba textilu." }
+  { name: "Servis", note: "Čištění, praní, žehlení." }
 ],
     benefitsH: "Proč s námi",
     benefits: [
