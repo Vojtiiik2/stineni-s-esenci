@@ -105,13 +105,13 @@ const STR = {
 steps: ["Konzultace", "Návrh řešení", "Příprava & výroba", "Realizace"],
 
 stepsTxt: [
-  "Přijedeme za vámi, prostor si projdeme přímo na místě a vše přesně zaměříme. Společně probereme, co od stínění očekáváte – zda potřebujete soukromí, zatemnění nebo čistě dekorativní funkci. Ukážeme vám vzorky látek a otevřeně si řekneme, co je v daném prostoru vhodné a co by naopak nedávalo smysl po technické, funkční i vizuální stránce. Po setkání víte, jakým směrem se návrh bude ubírat a jaké typy stínění a materiálů připadají v úvahu.",
+  "Přijedeme za vámi, prostor si projdeme přímo na místě a vše přesně zaměříme.\n\nSpolečně probereme, co od stínění očekáváte, soukromí, zatemnění, nebo čistě dekorativní funkci.\n\nUkážeme vám vzorky látek, a řekneme si, co je v daném prostoru vhodné a co by naopak nedávalo smysl po technicke, funkcni i vizualní strance.\n\nPo setkání víte, jakým směrem se návrh bude ubírat, jaké typy stínění a materiálů připadají v úvahu.",
 
-  "Na základě konzultace připravíme konkrétní návrh řešení. Vybereme vhodné látky, typ zavěšení a technický systém tak, aby vše odpovídalo prostoru i způsobu jeho používání. Návrh s vámi projdeme a případně doladíme detaily.",
+  "Na základě konzultace připravíme návrh řešení odpovídající prostoru i technickým možnostem.",
 
-  "Po schválení návrhu provedeme přesné zaměření a zadáme výrobu. Látky se šijí na míru a technické systémy se připravují podle konkrétního prostoru tak, aby při montáži vše perfektně sedělo.",
+  "Po schválení návrhu zajistíme výrobu stínění na míru a připravíme vše k montáži.",
 
-  "Hotové stínění přivezeme a kompletně namontujeme. Postaráme se o instalaci systémů i finální seřízení. Na místě doladíme detaily a vše vám předáme plně funkční a připravené k používání."
+  "Hotové stínění přivezeme, namontujeme a doladíme přímo na místě."
 ],
 
 
