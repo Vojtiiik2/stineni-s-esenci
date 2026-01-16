@@ -107,12 +107,13 @@ steps: ["Konzultace", "Návrh řešení", "Příprava & výroba", "Realizace"],
 stepsTxt: [
   "Přijedeme za vámi, prostor si projdeme přímo na místě a vše přesně zaměříme.\n\nSpolečně probereme, co od stínění očekáváte, soukromí, zatemnění, nebo čistě dekorativní funkci.\n\nUkážeme vám vzorky látek, a řekneme si, co je v daném prostoru vhodné a co by naopak nedávalo smysl po technicke, funkcni i vizualní strance.\n\nPo setkání víte, jakým směrem se návrh bude ubírat, jaké typy stínění a materiálů připadají v úvahu.",
 
-  "Na základě konzultace připravíme návrh řešení odpovídající prostoru i technickým možnostem.",
+  "Na základě vybraných materiálů a technického systému připravíme cenovou nabídku. Ta slouží jako výchozí bod. Pokud je potřeba cenu upravit, hledáme společně alternativy, ať už v úpravě materiálů, techniky nebo skladby řešení. Naším cílem je vždy najít rovnováhu mezi kvalitou, funkčností a cenou.",
 
-  "Po schválení návrhu zajistíme výrobu stínění na míru a připravíme vše k montáži.",
+  "Po schválení návrhu zadáme výrobu. Látky se šijí na míru a technické systémy se připravují podle konkrétního prostoru tak, aby při montáži vše perfektně sedělo.",
 
-  "Hotové stínění přivezeme, namontujeme a doladíme přímo na místě."
+  "Hotové stínění přivezeme a kompletně namontujeme. Postaráme se o instalaci systémů i finální seřízení. Na místě doladíme detaily a vše vám předáme plně funkční a připravené k používání."
 ],
+
 
 
 
