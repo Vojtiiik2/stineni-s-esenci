@@ -661,14 +661,14 @@ const bgTop = "assets/img/hero/process-hero-v2.webp";
             >
               <h4 className="text-lg font-semibold mb-3">20 let zkušeností</h4>
               <p className="text-[var(--muted)] leading-relaxed">
-                Zkušenosti se neprojevují v množství realizací, ale v rozhodnutích.
+                Zkušenosti nám dávají nadhled a jistotu při rozhodování.
               </p>
               <p className="text-[var(--muted)] leading-relaxed mt-3">
-                Víme, co bude fungovat dnes i za několik let — ne podle trendů,
-                ale podle světla, materiálu a proporcí.
+                Pomáháme vám se zorientovat v možnostech a sladit funkčnost s estetikou.
+                
               </p>
               <p className="text-[var(--muted)] leading-relaxed mt-3">
-                Zkušenost dává klid — a ten je v interiéru znát.
+                Výsledkem není kompromis ale pocit jistoti, že zvolené řešení dává smysl právě pro vás a váš prostor
               </p>
             </article>
 
