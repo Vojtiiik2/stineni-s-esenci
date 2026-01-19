@@ -645,14 +645,13 @@ const bgTop = "assets/img/hero/process-hero-v2.webp";
               <h4 className="text-lg font-semibold mb-3">Individuální návrh</h4>
               <p className="text-[var(--muted)] leading-relaxed">
                 Každý prostor má jiné světlo, jiné proporce a jiný rytmus dne.
-                Proto nikdy nezačínáme hotovým řešením ani typovým balíčkem.
               </p>
               <p className="text-[var(--muted)] leading-relaxed mt-3">
                 Návrh vzniká až na místě z komunikace s vámi, z pozorování světla, z toho, jak prostor
                 používáte, a z toho, co od stínění opravdu očekáváte.
               </p>
               <p className="text-[var(--muted)] leading-relaxed mt-3">
-                Individuální návrh pro nás znamená společně najít vaši správnou volbu.
+                Individuální návrh pro nás znamená společně najít správnou volbu.
               </p>
             </article>
 
