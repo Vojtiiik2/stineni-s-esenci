@@ -203,23 +203,20 @@ const Header = ({ t, lang, setLang }) => {
 </div>
 
 <nav className="hidden md:flex gap-6 text-sm font-semibold">
+  {t.nav.map((label, i) => {
+    const path = ["/process", "/pricing", "/gallery", "/finished", "/essences", "/contact"][i];
+    return (
+      <button
+        key={i}
+        onClick={() => go(path)}
+        className="relative group hover:text-[var(--text)]/90 text-[var(--text)]/75"
+      >
+        <span>{label}</span>
+      </button>
+    );
+  })}
+</nav>
 
-
-
-        <nav className="hidden md:flex gap-6 text-sm font-semibold">
-          {t.nav.map((label, i) => {
-            const path = ["/process", "/pricing", "/gallery", "/finished", "/essences", "/contact"][i];
-            return (
-              <button
-                key={i}
-                onClick={() => go(path)}
-                className="relative group hover:text-[var(--text)]/90 text-[var(--text)]/75"
-              >
-                <span>{label}</span>
-              </button>
-            );
-          })}
-        </nav>
 
         <div className="flex gap-2">
           <button
