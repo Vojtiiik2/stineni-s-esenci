@@ -188,18 +188,22 @@ const Header = ({ t, lang, setLang }) => {
       <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between reveal">
         <div className="leading-4 cursor-pointer" onClick={() => go("/")}>
   <div
-  className="script text-2xl -mb-0.5"
-  style={{ color: "var(--brand-green)" }}
->
-  {t.brand2}
+    className="script text-2xl -mb-0.5"
+    style={{ color: "var(--brand-green)" }}
+  >
+    {t.brand2}
+  </div>
+
+  <div
+    className="text-xs tracking-wide"
+    style={{ color: "var(--brand-brown)" }}
+  >
+    {t.brand1}
+  </div>
 </div>
 
-<div
-  className="text-xs tracking-wide"
-  style={{ color: "var(--brand-brown)" }}
->
-  {t.brand1}
-</div>
+<nav className="hidden md:flex gap-6 text-sm font-semibold">
+
 
 
         <nav className="hidden md:flex gap-6 text-sm font-semibold">
