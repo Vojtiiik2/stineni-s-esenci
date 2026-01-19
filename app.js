@@ -529,7 +529,8 @@ function Home({ t }) {
 function Process({ t }) {
   useReveal();
 
-const bgTop = "assets/img/hero/process-hero.webp";
+const bgTop = "assets/img/hero/process-hero-v2.webp";
+
 
 
     
