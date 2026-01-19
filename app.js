@@ -113,8 +113,6 @@ stepsTxt: [
 
 
     
-processIntro:
-  "Čtyři kroky. Jeden celek. V každém je prostor pro návrat a doladění detailu.",
 
 processImgs: [
   "assets/img/process/process-01.webp",
