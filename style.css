@@ -4,7 +4,11 @@
   --bg2: #f7f5f3;
   --line: #e5e1dc;
   --sand: #d7c7b4;
+
+  --brand-green: #7a8f63;
+  --brand-brown: #8a6a4a;
 }
+
 
 body {
   margin: 0;
