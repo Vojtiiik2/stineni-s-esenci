@@ -106,7 +106,8 @@ stepsTxt: [
 
   "Po schválení rozpočtu a složení zálohy zahajujeme proces výroby.\n\nV průběhu jednotlivých fází zpracování současně plánujeme termín realizace.",
 
-  "Hotové stínění přivezeme a kompletně namontujeme.Textil pověsíme vyžehlímea finálně nadekorujeme. Zároven Na místě doladíme detaily a vše vám předáme plně funkční a připravené k používání."
+ "Hotové stínění přivezeme, odborně namontujeme a textil pečlivě pověsíme.\n\nZáclony i závěsy vyžehlíme, nadekorujeme a doladíme tak, aby vše fungovalo nejen vizuálně, ale i technicky.\n\nPo dokončení práce vždy uklidíme, prostor vám předáme čistý a připravený k používání.\n\nNa místě vám vysvětlíme ovládání všech prvků a doporučíme vám vhodnou údržbu textilu, aby stínění dlouhodobě fungovalo tak, jak má."
+
 ],
 
 
