@@ -110,10 +110,6 @@ stepsTxt: [
 ],
 
 
-
-
-    
-
 processImgs: [
   "assets/img/process/process-01.webp",
   "assets/img/process/process-02.webp",
