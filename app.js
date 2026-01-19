@@ -95,12 +95,7 @@ const STR = {
 
     processH: "Jak pracujeme",
 
-   steps: [
-  "Konzultace",
-  "Návrh řešení",
-  "Příprava & výroba",
-  "Realizace"
-],
+  
 
 steps: ["Konzultace", "Návrh řešení", "Příprava & výroba", "Realizace"],
 
@@ -198,9 +193,9 @@ const Header = ({ t, lang, setLang }) => {
     <header className="fixed top-0 left-0 right-0 z-30 border-b border-[var(--line)]/70 bg-white/70 backdrop-blur-md">
       <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between reveal">
         <div className="leading-4 cursor-pointer" onClick={() => go("/")}>
-          <div className="script text-2xl -mb-0.5">{t.brand1}</div>
-          <div className="text-xs tracking-wide text-[var(--muted)]">{t.brand2}</div>
-        </div>
+  <div className="script text-2xl -mb-0.5">{t.brand2}</div>
+  <div className="text-xs tracking-wide text-[var(--muted)]">{t.brand1}</div>
+</div>
 
         <nav className="hidden md:flex gap-6 text-sm font-semibold">
           {t.nav.map((label, i) => {
@@ -391,16 +386,21 @@ function Home({ t }) {
               <button
                 key={i}
                 onClick={() => (location.hash = `/pricing#${hash}`)}
-                className="service-card soft-shadow reveal text-left hover:translate-y-[-1px] transition"
+                className="service-card soft-shadow reveal text-left hover:translate-y-[-1px] transition flex flex-col"
                 type="button"
               >
-                <div className="text-lg font-semibold mb-1">{s.name}</div>
-                <p className="text-[var(--muted)] text-sm leading-relaxed">
-                  {s.note}
-                </p>
-                <div className="mt-3 text-xs tracking-widest text-[var(--muted)]">
-                  Kolik zaplatíte →
-                </div>
+                <div className="text-lg font-semibold mb-2">
+  {s.name}
+</div>
+
+<p className="text-[var(--muted)] text-sm leading-relaxed flex-grow flex items-center">
+  {s.note}
+</p>
+
+<div className="mt-3 text-xs tracking-widest text-[var(--muted)]">
+  Kolik zaplatíte →
+</div>
+
               </button>
             );
           })}
