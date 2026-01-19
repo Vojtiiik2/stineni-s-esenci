@@ -676,16 +676,15 @@ const bgTop = "assets/img/hero/process-hero-v2.webp";
               id="detail"
               className="rounded-2xl bg-white border border-[var(--line)] soft-shadow p-7 reveal scroll-mt-24"
             >
-              <h4 className="text-lg font-semibold mb-3">Jemnost detailu</h4>
+              <h4 className="text-lg font-semibold mb-3">Preciznost a jemnost v detailu</h4>
               <p className="text-[var(--muted)] leading-relaxed">
-                Detail pro nás není dekorace. Je to gramáž látky, šev i reakce
-                materiálu na světlo.
+                Kvalita zpracování a technické provedení rozhodují o tom, jestli stínění bude dlouhodobě fungovat a dobře vypadat i po letech.
               </p>
               <p className="text-[var(--muted)] leading-relaxed mt-3">
-                Právě drobnosti rozhodují o tom, zda prostor funguje tiše a přirozeně.
+               V detailech se ukazuje rozdíl mezi řešením, které jen dobře vypadá, a řešením, které obstojí v čase.
               </p>
               <p className="text-[var(--muted)] leading-relaxed mt-3">
-                Když je detail v rovnováze, výsledek obstojí v čase.
+               Preciznost a detail je na první pohled viditelné, Právě v nich se potkává vaše očekávání s naší zkušeností pracovat s materiály.
               </p>
             </article>
           </div>
