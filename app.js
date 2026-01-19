@@ -471,16 +471,21 @@ function Home({ t }) {
         <button
           key={i}
           onClick={() => (location.hash = `/process#${hash}`)}
-          className="benefit-card soft-shadow reveal text-left hover:translate-y-[-1px] transition"
+         className="benefit-card soft-shadow reveal text-left hover:translate-y-[-1px] transition flex flex-col"
           type="button"
         >
-          <div className="text-lg font-semibold mb-2">{b.name}</div>
-          <p className="text-[var(--muted)] text-sm leading-relaxed">
-            {b.note}
-          </p>
-          <div className="mt-3 text-xs tracking-widest text-[var(--muted)]">
-            Zjistit víc →
-          </div>
+          <div className="text-lg font-semibold mb-2">
+  {b.name}
+</div>
+
+<p className="text-[var(--muted)] text-sm leading-relaxed flex-grow flex items-center">
+  {b.note}
+</p>
+
+<div className="mt-3 text-xs tracking-widest text-[var(--muted)]">
+  Zjistit víc →
+</div>
+
         </button>
       );
     })}
