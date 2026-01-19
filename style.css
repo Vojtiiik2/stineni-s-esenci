@@ -5,8 +5,9 @@
   --line: #e5e1dc;
   --sand: #d7c7b4;
 
-  --brand-green: #7a8f63;
-  --brand-brown: #8a6a4a;
+  /* brand */
+  --brand-brown-dark: #5f4a36;   /* STÍNĚNÍ S ESENCÍ */
+  --brand-brown-light: #9b846d;  /* Jana Segelberg */
 }
 
 
