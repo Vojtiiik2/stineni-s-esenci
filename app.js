@@ -1591,8 +1591,8 @@ function CookiesPage() {
 
 function App() {
   const { lang, setLang, t } = useLang();
-const { path } = useRoute();
-useReveal();
+  const { path } = useRoute();
+  useReveal();
 
   const Page = useMemo(() => {
     switch (path) {
@@ -1617,12 +1617,17 @@ useReveal();
       default:
         return <Home t={t} />;
     }
-  }, [route, t]);
+  }, [path, t]);
 
   return (
     <>
       <Header t={t} lang={lang} setLang={setLang} />
       <main className="pt-16">{Page}</main>
+      {/* ...zbytek nech jak máš... */}
+    </>
+  );
+}
+
 
       <footer className="bg-[#222] text-[#ddd] mt-10 reveal">
         <div className="max-w-6xl mx-auto px-4 py-10 grid md:grid-cols-3 gap-6">
