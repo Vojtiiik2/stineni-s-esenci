@@ -65,25 +65,30 @@ section[style*="background-image"]::after {
   }
 }
 
-nav button {
+nav button span {
   position: relative;
-  overflow: hidden;
+  display: inline-block;
+  padding-bottom: 6px; /* prostor pro linku */
 }
 
 nav button span::after {
   content: "";
   position: absolute;
-  bottom: -2px;
   left: 0;
-  width: 0%;
+  bottom: 2px;            /* linka těsně pod textem */
+  width: 100%;
   height: 2px;
-  background: var(--sand);
-  transition: width 0.25s ease;
+  background: var(--sand); /* béžová z webu */
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+  opacity: 0.95;
 }
 
 nav button:hover span::after {
-  width: 100%;
+  transform: scaleX(1);
 }
+
 
 .btn-cta {
   transition: background 0.25s ease, transform 0.25s ease;
