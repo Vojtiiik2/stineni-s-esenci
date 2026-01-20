@@ -63,7 +63,7 @@ const STR = {
     benefits: [
       { name: "Individuální návrh", note: "Řešení vytvořené přesně pro váš prostor a vaše potřeby." },
       { name: "20 let zkušeností", note: "Znalost materiálů i technologií." },
-      { name: "Jemnost detailu", note: "Preciznost v každém kroku." }
+      { name: "Preciznost a jemnost v detailu", note: "Preciznost v každém kroku." }
     ],
 
     faqH: "Často se ptáte",
