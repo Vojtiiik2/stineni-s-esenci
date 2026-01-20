@@ -164,9 +164,16 @@ function useLang() {
 function useRoute() {
   const getRoute = () => {
     const raw = window.location.hash || "#/";
-    const clean = raw.startsWith("#") ? raw.slice(1) : raw;
-    const [path, anchor] = clean.split("#");
-    return { path: path || "/", anchor: anchor || "" };
+    const clean = raw.startsWith("#") ? raw.slice(1) : raw; // "/pricing#zaclon?mode=center"
+    const [path, rest] = clean.split("#");
+    const anchorRaw = rest || "";
+
+    // anchor může mít query: "zaclon?mode=center"
+    const [anchor, qs] = anchorRaw.split("?");
+    const params = new URLSearchParams(qs || "");
+    const mode = params.get("mode") || ""; // "center" | ""
+
+    return { path: path || "/", anchor: anchor || "", mode };
   };
 
   const [route, setRoute] = React.useState(getRoute);
@@ -175,7 +182,6 @@ function useRoute() {
   React.useEffect(() => {
     const onHash = () => setRoute(getRoute());
 
-    // Back/Forward: obnov scroll pozici a zablokuj auto smooth scroll v tomhle renderu
     const onPop = () => {
       isPopRef.current = true;
       setRoute(getRoute());
@@ -183,10 +189,7 @@ function useRoute() {
       requestAnimationFrame(() => {
         const st = window.history.state || {};
         const y = typeof st.__scrollY === "number" ? st.__scrollY : null;
-
-        if (y !== null) {
-          window.scrollTo({ top: y, behavior: "auto" });
-        }
+        if (y !== null) window.scrollTo({ top: y, behavior: "auto" });
 
         requestAnimationFrame(() => {
           isPopRef.current = false;
@@ -204,11 +207,10 @@ function useRoute() {
   }, []);
 
   React.useEffect(() => {
-    // při Back/Forward nescrolluj automaticky (už jsme obnovili scrollY)
     if (isPopRef.current) return;
 
-    // původní chování: anchor -> na element, jinak top (smooth)
     requestAnimationFrame(() => {
+      // bez anchor = top (pro header a běžné přepínání)
       if (!route.anchor) {
         window.scrollTo({ top: 0, behavior: "smooth" });
         return;
@@ -220,15 +222,17 @@ function useRoute() {
         return;
       }
 
-      el.scrollIntoView({ behavior: "smooth", block: "center" });
-    });
-  }, [route.path, route.anchor]);
+      // ✅ homepage karty: střed obrazovky
+      const blockPos = route.mode === "center" ? "center" : "start";
 
-  return route;
+      el.scrollIntoView({ behavior: "smooth", block: blockPos });
+    });
+  }, [route.path, route.anchor, route.mode]);
+
+  return route; // { path, anchor, mode }
 }
 
 function go(path = "/") {
-  // uložit scroll pozici aktuální stránky (kvůli Back)
   const st = window.history.state || {};
   window.history.replaceState({ ...st, __scrollY: window.scrollY }, "");
 
