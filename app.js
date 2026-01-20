@@ -150,6 +150,8 @@ processImgs: [
   }
 };
 
+
+
 STR.en = STR.cs;
 
 function useLang() {
@@ -160,6 +162,9 @@ function useLang() {
   }, [lang]);
   return { lang, setLang, t: STR[lang] };
 }
+
+// flag: poznáme, jestli změnu hashe udělalo naše go() (klik), nebo Back/Forward
+let __navByGo = false;
 
 function useRoute() {
   const getRoute = () => {
@@ -180,37 +185,38 @@ function useRoute() {
   const isPopRef = React.useRef(false);
 
   React.useEffect(() => {
-    const onHash = () => setRoute(getRoute());
+    const onHash = () => {
+      const wasGo = __navByGo;
+      __navByGo = false;
 
-    const onPop = () => {
-      isPopRef.current = true;
-      setRoute(getRoute());
-
-      requestAnimationFrame(() => {
-        const st = window.history.state || {};
-        const y = typeof st.__scrollY === "number" ? st.__scrollY : null;
-        if (y !== null) window.scrollTo({ top: y, behavior: "auto" });
+      // Back/Forward → obnov scroll a zablokuj smooth scroll
+      if (!wasGo) {
+        isPopRef.current = true;
 
         requestAnimationFrame(() => {
-          isPopRef.current = false;
+          const st = window.history.state || {};
+          const y = typeof st.__scrollY === "number" ? st.__scrollY : 0;
+          window.scrollTo({ top: y, behavior: "auto" });
+
+          requestAnimationFrame(() => {
+            isPopRef.current = false;
+          });
         });
-      });
+      }
+
+      setRoute(getRoute());
     };
 
     window.addEventListener("hashchange", onHash);
-    window.addEventListener("popstate", onPop);
-
-    return () => {
-      window.removeEventListener("hashchange", onHash);
-      window.removeEventListener("popstate", onPop);
-    };
+    return () => window.removeEventListener("hashchange", onHash);
   }, []);
 
   React.useEffect(() => {
+    // při Back/Forward restore nescrolluj sem
     if (isPopRef.current) return;
 
     requestAnimationFrame(() => {
-      // bez anchor = top (pro header a běžné přepínání)
+      // bez anchor = top (header kliky)
       if (!route.anchor) {
         window.scrollTo({ top: 0, behavior: "smooth" });
         return;
@@ -222,9 +228,8 @@ function useRoute() {
         return;
       }
 
-      // ✅ homepage karty: střed obrazovky
+      // homepage karty: střed, jinak start
       const blockPos = route.mode === "center" ? "center" : "start";
-
       el.scrollIntoView({ behavior: "smooth", block: blockPos });
     });
   }, [route.path, route.anchor, route.mode]);
@@ -233,8 +238,11 @@ function useRoute() {
 }
 
 function go(path = "/") {
+  // uložit scroll pozici pro Back (do aktuální history entry)
   const st = window.history.state || {};
   window.history.replaceState({ ...st, __scrollY: window.scrollY }, "");
+
+  __navByGo = true;
 
   let p = String(path || "/");
   if (p.startsWith("#")) p = p.slice(1);
@@ -242,7 +250,6 @@ function go(path = "/") {
 
   window.location.hash = "#" + p;
 }
-
 
 const Header = ({ t, lang, setLang }) => {
   return (
@@ -265,30 +272,30 @@ const Header = ({ t, lang, setLang }) => {
           </div>
         </div>
 
-       <nav className="hidden md:flex gap-6 text-sm font-semibold">
-  {t.nav.map((label, i) => {
-    const path = [
-      "/process",
-      "/pricing",
-      "/gallery",
-      "/finished",
-      "/essences",
-      "/contact"
-    ][i];
+        {/* NAV */}
+        <nav className="hidden md:flex gap-6 text-sm font-semibold">
+          {t.nav.map((label, i) => {
+            const path = [
+              "/process",
+              "/pricing",
+              "/gallery",
+              "/finished",
+              "/essences",
+              "/contact"
+            ][i];
 
-    return (
-      <button
-        key={i}
-        onClick={() => go(path)}
-        className="relative group hover:text-[var(--text)]/90 text-[var(--text)]/75"
-        type="button"
-      >
-        <span>{label}</span>
-      </button>
-    );
-  })}
-</nav>
-
+            return (
+              <button
+                key={i}
+                onClick={() => go(path)}
+                className="relative group hover:text-[var(--text)]/90 text-[var(--text)]/75"
+                type="button"
+              >
+                <span>{label}</span>
+              </button>
+            );
+          })}
+        </nav>
 
         {/* LANG */}
         <div className="flex gap-2">
@@ -411,7 +418,6 @@ function Hero({ t, small = false, showCta = false, intervalMs = 8000, bg, title 
   );
 }
 
-
 function Home({ t }) {
   useReveal();
 
@@ -460,7 +466,7 @@ function Home({ t }) {
             return (
               <button
                 key={i}
-                onClick={() => go(`/pricing#${hash}`)}
+                onClick={() => go(`/pricing#${hash}?mode=center`)}
                 className="service-card soft-shadow reveal text-left hover:translate-y-[-1px] transition flex flex-col"
                 type="button"
               >
@@ -538,7 +544,7 @@ function Home({ t }) {
             return (
               <button
                 key={i}
-                onClick={() => go(`/process#${hash}`)}
+                onClick={() => go(`/process#${hash}?mode=center`)}
                 className="benefit-card soft-shadow reveal text-left hover:translate-y-[-1px] transition flex flex-col"
                 type="button"
               >
@@ -586,6 +592,7 @@ function Home({ t }) {
     </>
   );
 }
+
 
 
 
