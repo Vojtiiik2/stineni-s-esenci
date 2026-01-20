@@ -175,21 +175,19 @@ function useRoute() {
   React.useEffect(() => {
     const onHash = () => setRoute(getRoute());
 
-    // Back/Forward → chceme obnovit scroll pozici a NEspouštět smooth scroll logiku
+    // Back/Forward: obnov scroll pozici a zablokuj auto smooth scroll v tomhle renderu
     const onPop = () => {
       isPopRef.current = true;
       setRoute(getRoute());
 
       requestAnimationFrame(() => {
-        const y =
-          window.history.state && typeof window.history.state.__scrollY === "number"
-            ? window.history.state.__scrollY
-            : 0;
+        const st = window.history.state || {};
+        const y = typeof st.__scrollY === "number" ? st.__scrollY : null;
 
-        // restore bez animace (aby to bylo přesné a nechaotické)
-        window.scrollTo({ top: y, behavior: "auto" });
+        if (y !== null) {
+          window.scrollTo({ top: y, behavior: "auto" });
+        }
 
-        // po restore zase povolit normální scrollování pro další kliky
         requestAnimationFrame(() => {
           isPopRef.current = false;
         });
@@ -206,10 +204,10 @@ function useRoute() {
   }, []);
 
   React.useEffect(() => {
-    // Pokud jsme v režimu Back/Forward, nescrolluj sem (už jsme obnovili scrollY)
+    // při Back/Forward nescrolluj automaticky (už jsme obnovili scrollY)
     if (isPopRef.current) return;
 
-    // Normální navigace (klik v menu / tlačítko / anchor skok) → smooth scroll je OK
+    // původní chování: anchor -> na element, jinak top (smooth)
     requestAnimationFrame(() => {
       if (!route.anchor) {
         window.scrollTo({ top: 0, behavior: "smooth" });
@@ -229,10 +227,8 @@ function useRoute() {
   return route;
 }
 
-
 function go(path = "/") {
-  // Ulož scroll pozici do CURRENT history entry,
-  // aby se při Back vrátila přesně tam, kde uživatel byl.
+  // uložit scroll pozici aktuální stránky (kvůli Back)
   const st = window.history.state || {};
   window.history.replaceState({ ...st, __scrollY: window.scrollY }, "");
 
