@@ -628,7 +628,6 @@ function Process({ t }) {
           <div className="text-left md:text-center">
             <h3 className="script text-3xl mb-6">Co stojí za naší prací</h3>
             <p className="text-[var(--muted)] max-w-3xl mx-auto">
-              Principy, které se propisují do každého návrhu i realizace.
             </p>
           </div>
 
@@ -702,8 +701,7 @@ function Process({ t }) {
 
         {/* ===== ZÁVĚREČNÁ TEČKA ===== */}
         <div className="max-w-3xl mx-auto mt-12 text-center text-[var(--muted)]">
-          Cílem je, abyste se v prostoru cítili přirozeně a klidně — bez kompromisů
-          mezi estetikou a praktičností.
+          Cílem je, abyste se v prostoru cítili přirozeně a dobře.
         </div>
       </section>
     </>
