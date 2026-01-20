@@ -418,16 +418,13 @@ function Home({ t }) {
       <section className="py-16 max-w-6xl mx-auto px-4 reveal">
         <h2 className="script text-4xl mb-3">{t.inspH}</h2>
 
-        <p className="text-[var(--muted)] text-lg leading-relaxed mb-4 max-w-3xl">
-          Stejný prostor. Jiný pocit.
-          <br />
-          Rozdíl mezi oknem bez stínění, se záclonou a se závěsem je často větší,
-          než čekáte.
-        </p>
+        <p className="text-[var(--text)]/80 text-lg md:text-xl leading-relaxed mb-6 max-w-3xl">
+  Stejný prostor. Jiný pocit.
+  <br />
+  Rozdíl mezi oknem bez stínění, se záclonou a se závěsem je často větší,
+  než čekáte.
+</p>
 
-        <p className="text-sm tracking-wide text-[var(--muted)] mb-8">
-          Světlo · Soukromí · Klid
-        </p>
 
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
           {[
