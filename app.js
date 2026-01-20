@@ -164,31 +164,59 @@ function useLang() {
 function useRoute() {
   const getRoute = () => {
     const raw = window.location.hash || "#/";
-    const clean = raw.startsWith("#") ? raw.slice(1) : raw; // "/pricing#zaclon"
+    const clean = raw.startsWith("#") ? raw.slice(1) : raw;
     const [path, anchor] = clean.split("#");
     return { path: path || "/", anchor: anchor || "" };
   };
 
   const [route, setRoute] = React.useState(getRoute);
+  const isPopRef = React.useRef(false);
 
   React.useEffect(() => {
     const onHash = () => setRoute(getRoute());
+
+    // Back/Forward → chceme obnovit scroll pozici a NEspouštět smooth scroll logiku
+    const onPop = () => {
+      isPopRef.current = true;
+      setRoute(getRoute());
+
+      requestAnimationFrame(() => {
+        const y =
+          window.history.state && typeof window.history.state.__scrollY === "number"
+            ? window.history.state.__scrollY
+            : 0;
+
+        // restore bez animace (aby to bylo přesné a nechaotické)
+        window.scrollTo({ top: y, behavior: "auto" });
+
+        // po restore zase povolit normální scrollování pro další kliky
+        requestAnimationFrame(() => {
+          isPopRef.current = false;
+        });
+      });
+    };
+
     window.addEventListener("hashchange", onHash);
-    return () => window.removeEventListener("hashchange", onHash);
+    window.addEventListener("popstate", onPop);
+
+    return () => {
+      window.removeEventListener("hashchange", onHash);
+      window.removeEventListener("popstate", onPop);
+    };
   }, []);
 
   React.useEffect(() => {
-    // po přepnutí stránky počkej na render
+    // Pokud jsme v režimu Back/Forward, nescrolluj sem (už jsme obnovili scrollY)
+    if (isPopRef.current) return;
+
+    // Normální navigace (klik v menu / tlačítko / anchor skok) → smooth scroll je OK
     requestAnimationFrame(() => {
-      // když není anchor → vždy nahoru
       if (!route.anchor) {
         window.scrollTo({ top: 0, behavior: "smooth" });
         return;
       }
 
       const el = document.getElementById(route.anchor);
-
-      // když anchor existuje, ale element ne → taky nahoru
       if (!el) {
         window.scrollTo({ top: 0, behavior: "smooth" });
         return;
@@ -198,22 +226,23 @@ function useRoute() {
     });
   }, [route.path, route.anchor]);
 
-  return route; // { path, anchor }
+  return route;
 }
+
 
 function go(path = "/") {
-  // povolit volání s "#/pricing" i "/pricing"
+  // Ulož scroll pozici do CURRENT history entry,
+  // aby se při Back vrátila přesně tam, kde uživatel byl.
+  const st = window.history.state || {};
+  window.history.replaceState({ ...st, __scrollY: window.scrollY }, "");
+
   let p = String(path || "/");
-
-  // když by někdo poslal "#/pricing", odstraň #
   if (p.startsWith("#")) p = p.slice(1);
-
-  // vynutit lomítko na začátku
   if (!p.startsWith("/")) p = "/" + p;
 
-  // nastavit hash přesně ve formátu "#/something"
   window.location.hash = "#" + p;
 }
+
 
 const Header = ({ t, lang, setLang }) => {
   return (
@@ -382,6 +411,7 @@ function Hero({ t, small = false, showCta = false, intervalMs = 8000, bg, title 
   );
 }
 
+
 function Home({ t }) {
   useReveal();
 
@@ -394,13 +424,12 @@ function Home({ t }) {
         <div className="grid md:grid-cols-2 gap-8 items-center">
           <div className="soft-shadow rounded-2xl overflow-hidden">
             <img
-  src="assets/img/Onas/onas-01.webp"
-  alt="Interiér"
-  className="w-full h-full object-cover"
-  loading="lazy"
-  decoding="async"
-/>
-
+              src="assets/img/Onas/onas-01.webp"
+              alt="Interiér"
+              className="w-full h-full object-cover"
+              loading="lazy"
+              decoding="async"
+            />
           </div>
 
           <div>
@@ -431,22 +460,19 @@ function Home({ t }) {
             return (
               <button
                 key={i}
-                onClick={() => (location.hash = `#/pricing#${hash}`)}
+                onClick={() => go(`/pricing#${hash}`)}
                 className="service-card soft-shadow reveal text-left hover:translate-y-[-1px] transition flex flex-col"
                 type="button"
               >
-                <div className="text-lg font-semibold mb-2">
-  {s.name}
-</div>
+                <div className="text-lg font-semibold mb-2">{s.name}</div>
 
-<p className="text-[var(--muted)] text-sm leading-relaxed flex-grow flex items-center">
-  {s.note}
-</p>
+                <p className="text-[var(--muted)] text-sm leading-relaxed flex-grow flex items-center">
+                  {s.note}
+                </p>
 
-<div className="mt-3 text-xs tracking-widest text-[var(--muted)]">
-  Kolik zaplatíte →
-</div>
-
+                <div className="mt-3 text-xs tracking-widest text-[var(--muted)]">
+                  Kolik zaplatíte →
+                </div>
               </button>
             );
           })}
@@ -458,12 +484,11 @@ function Home({ t }) {
         <h2 className="script text-4xl mb-3">{t.inspH}</h2>
 
         <p className="text-[var(--text)]/80 text-lg md:text-xl leading-relaxed mb-6 max-w-3xl">
-  Stejný prostor. Jiný pocit.
-  <br />
-  Rozdíl mezi oknem bez stínění, se záclonou a se závěsem je často větší,
-  než čekáte.
-</p>
-
+          Stejný prostor. Jiný pocit.
+          <br />
+          Rozdíl mezi oknem bez stínění, se záclonou a se závěsem je často větší,
+          než čekáte.
+        </p>
 
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
           {[
@@ -502,39 +527,35 @@ function Home({ t }) {
         </div>
       </section>
 
-{/* ===== PROČ S NÁMI ===== */}
-<section className="py-16 max-w-6xl mx-auto px-4 reveal">
-  <h2 className="script text-4xl mb-8">{t.benefitsH}</h2>
+      {/* ===== PROČ S NÁMI ===== */}
+      <section className="py-16 max-w-6xl mx-auto px-4 reveal">
+        <h2 className="script text-4xl mb-8">{t.benefitsH}</h2>
 
-  <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
-    {t.benefits.map((b, i) => {
-      const hash = ["individualni-navrh", "zkusenosti", "detail"][i];
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+          {t.benefits.map((b, i) => {
+            const hash = ["individualni-navrh", "zkusenosti", "detail"][i];
 
-      return (
-        <button
-          key={i}
-          onClick={() => (location.hash = `#/process#${hash}`)}
-         className="benefit-card soft-shadow reveal text-left hover:translate-y-[-1px] transition flex flex-col"
-          type="button"
-        >
-          <div className="text-lg font-semibold mb-2">
-  {b.name}
-</div>
+            return (
+              <button
+                key={i}
+                onClick={() => go(`/process#${hash}`)}
+                className="benefit-card soft-shadow reveal text-left hover:translate-y-[-1px] transition flex flex-col"
+                type="button"
+              >
+                <div className="text-lg font-semibold mb-2">{b.name}</div>
 
-<p className="text-[var(--muted)] text-sm leading-relaxed flex-grow flex items-center">
-  {b.note}
-</p>
+                <p className="text-[var(--muted)] text-sm leading-relaxed flex-grow flex items-center">
+                  {b.note}
+                </p>
 
-<div className="mt-3 text-xs tracking-widest text-[var(--muted)]">
-  Zjistit víc →
-</div>
-
-        </button>
-      );
-    })}
-  </div>
-</section>
-
+                <div className="mt-3 text-xs tracking-widest text-[var(--muted)]">
+                  Zjistit víc →
+                </div>
+              </button>
+            );
+          })}
+        </div>
+      </section>
 
       {/* ===== FAQ ===== */}
       <section className="py-16 max-w-4xl mx-auto px-4 reveal">
@@ -548,23 +569,23 @@ function Home({ t }) {
         ))}
       </section>
 
-     {/* ===== CTA ===== */}
-<section className="py-16 max-w-4xl mx-auto px-4 reveal text-center">
-  <button
-    onClick={() => go("/contact")}
-    className="btn-cta px-6 py-4 rounded-full bg-[var(--sand)] text-[var(--text)] font-bold border border-black/5 text-lg"
-  >
-    {t.cta}
-  </button>
+      {/* ===== CTA ===== */}
+      <section className="py-16 max-w-4xl mx-auto px-4 reveal text-center">
+        <button
+          onClick={() => go("/contact")}
+          className="btn-cta px-6 py-4 rounded-full bg-[var(--sand)] text-[var(--text)] font-bold border border-black/5 text-lg"
+          type="button"
+        >
+          {t.cta}
+        </button>
 
-  <p className="text-sm text-[var(--muted)] mt-4">
-    Praha a okolí. Konzultace u vás doma. Výroba obvykle 4–8 týdnů.
-  </p>
-</section>
+        <p className="text-sm text-[var(--muted)] mt-4">
+          Praha a okolí. Konzultace u vás doma. Výroba obvykle 4–8 týdnů.
+        </p>
+      </section>
     </>
   );
 }
-
 
 
 
