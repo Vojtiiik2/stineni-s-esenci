@@ -1689,9 +1689,14 @@ function App() {
       <footer className="bg-[#222] text-[#ddd] mt-10 reveal">
         <div className="max-w-6xl mx-auto px-4 py-10 grid md:grid-cols-3 gap-6">
           <div>
-            <div className="script text-2xl">{t.brand1}</div>
-            <div className="text-sm text-[#bdbdbd]">{t.brand2}</div>
-          </div>
+  <div className="script text-2xl text-white">
+    {t.brand2}
+  </div>
+
+  <div className="text-sm text-[#bdbdbd]">
+    {t.brand1}
+  </div>
+</div>
 
           <div className="grid gap-2 text-sm text-[#bdbdbd]">
             <div className="font-semibold">Osobní přístup</div>
