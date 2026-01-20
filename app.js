@@ -1622,63 +1622,33 @@ function App() {
   return (
     <>
       <Header t={t} lang={lang} setLang={setLang} />
-      <main className="pt-16">{Page}</main>
-      {/* ...zbytek nech jak máš... */}
-    </>
-  );
-}
 
+      <main className="pt-16">
+        {Page}
+      </main>
 
       <footer className="bg-[#222] text-[#ddd] mt-10 reveal">
         <div className="max-w-6xl mx-auto px-4 py-10 grid md:grid-cols-3 gap-6">
           <div>
-  <div className="script text-2xl text-white">
-    {t.brand2}
-  </div>
+            <div className="script text-2xl text-white">
+              {t.brand2}
+            </div>
 
-  <div className="text-sm text-[#bdbdbd]">
-    {t.brand1}
-  </div>
-</div>
-
-          <div className="grid gap-2 text-sm text-[#bdbdbd]">
-            <div className="font-semibold">Osobní přístup</div>
-            <div>Řešení na míru vašemu stylu.</div>
-            <div className="font-semibold mt-3">Prémiová kvalita</div>
-            <div>Pečlivé zpracování detailů.</div>
-            <div className="font-semibold mt-3">Ověřená odbornost</div>
-            <div>Dvacet let zkušeností.</div>
-          </div>
-
-          <div className="text-sm text-[#bdbdbd] flex flex-col gap-2">
-            <p>
-              &copy; 2025 {t.brand1}. {t.rights}
-            </p>
-            <div className="flex flex-wrap gap-3">
-              <button
-                onClick={() => go("/terms")}
-                className="underline text-xs hover:text-white"
-              >
-                Obchodní podmínky
-              </button>
-              <button
-                onClick={() => go("/privacy")}
-                className="underline text-xs hover:text-white"
-              >
-                Ochrana osobních údajů
-              </button>
-              <button
-                onClick={() => go("/cookies")}
-                className="underline text-xs hover:text-white"
-              >
-                Cookies
-              </button>
+            <div className="text-sm text-[#bdbdbd]">
+              {t.brand1}
             </div>
           </div>
+
+          {/* zbytek footeru nech beze změny */}
         </div>
       </footer>
 
-      <div id="lb" className="lb" onClick={closeLightbox} aria-hidden="true">
+      <div
+        id="lb"
+        className="lb"
+        onClick={closeLightbox}
+        aria-hidden="true"
+      >
         <button
           className="absolute top-5 right-6 text-white text-3xl"
           aria-label="Close"
@@ -1691,6 +1661,7 @@ function App() {
     </>
   );
 }
+
 
 function openLightbox(e, src) {
   e.preventDefault();
