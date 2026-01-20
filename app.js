@@ -160,15 +160,16 @@ function useLang() {
   }, [lang]);
   return { lang, setLang, t: STR[lang] };
 }
+
 function useRoute() {
   const getRoute = () => {
     const raw = location.hash || "#/";
-    const clean = raw.startsWith("#") ? raw.slice(1) : raw; // "/pricing#zaclon"
+    const clean = raw.startsWith("#") ? raw.slice(1) : raw;
     const [path, anchor] = clean.split("#");
     return { path: path || "/", anchor: anchor || "" };
   };
 
-  const [route, setRoute] = React.useState(() => getRoute());
+  const [route, setRoute] = React.useState(getRoute);
 
   React.useEffect(() => {
     const onHash = () => setRoute(getRoute());
@@ -176,29 +177,19 @@ function useRoute() {
     return () => window.removeEventListener("hashchange", onHash);
   }, []);
 
-  // ✅ Scroll chování po změně route (stránka / kotva)
- React.useEffect(() => {
-  if (!route.anchor) return; // ← KLÍČOVÉ
+  // ✅ scrollujeme JEN když existuje anchor
+  React.useEffect(() => {
+    if (!route.anchor) return;
 
-  requestAnimationFrame(() => {
-    const el = document.getElementById(route.anchor);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "center" });
-    }
-  });
-}, [route.path, route.anchor]);
-
-      // když není anchor, nebo element neexistuje → vždy nahoru
-      window.scrollTo({ top: 0, behavior: "smooth" });
+    requestAnimationFrame(() => {
+      const el = document.getElementById(route.anchor);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
     });
   }, [route.path, route.anchor]);
 
   return route; // { path, anchor }
-}
-
-function go(path) {
-  // path může být "/pricing" nebo "/pricing#zaclon"
-  location.hash = path.startsWith("/") ? `#${path}` : `#/${path}`;
 }
 
 const Header = ({ t, lang, setLang }) => {
