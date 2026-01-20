@@ -177,16 +177,17 @@ function useRoute() {
   }, []);
 
   // ✅ Scroll chování po změně route (stránka / kotva)
-  React.useEffect(() => {
-    // počkáme 1 frame, aby React stihl vyrenderovat nový obsah
-    requestAnimationFrame(() => {
-      if (route.anchor) {
-        const el = document.getElementById(route.anchor);
-        if (el) {
-          el.scrollIntoView({ behavior: "smooth", block: "start" });
-          return;
-        }
-      }
+ React.useEffect(() => {
+  if (!route.anchor) return; // ← KLÍČOVÉ
+
+  requestAnimationFrame(() => {
+    const el = document.getElementById(route.anchor);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  });
+}, [route.path, route.anchor]);
+
       // když není anchor, nebo element neexistuje → vždy nahoru
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
@@ -959,9 +960,11 @@ function Pricing({ t }) {
         <div className="mt-12 space-y-8">
           {items.map((x) => (
             <section
-              key={x.key}
-              className="rounded-2xl bg-white border border-[var(--line)] soft-shadow overflow-hidden reveal"
-            >
+  key={x.key}
+  id={x.key}
+  className="rounded-2xl bg-white border border-[var(--line)] soft-shadow overflow-hidden reveal scroll-mt-24"
+>
+
               <div className="grid md:grid-cols-12 gap-0">
                 <div className="md:col-span-5">
                   <img
