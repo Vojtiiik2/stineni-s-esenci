@@ -536,11 +536,8 @@ function Home({ t }) {
 function Process({ t }) {
   useReveal();
 
-const bgTop = "assets/img/hero/process-hero-v2.webp";
+  const bgTop = "assets/img/hero/process-hero-v2.webp";
 
-
-
-    
   const steps = t.steps || [];
   const texts = t.stepsTxt || [];
   const imgs = t.processImgs || [];
@@ -558,9 +555,7 @@ const bgTop = "assets/img/hero/process-hero-v2.webp";
       <section className="max-w-6xl mx-auto px-4 py-16 reveal">
         {/* ===== HLAVIČKA ===== */}
         <div className="max-w-3xl mx-auto text-left md:text-center">
-          <p className="text-[var(--muted)] text-lg">
-          
-          </p>
+          <p className="text-[var(--muted)] text-lg"></p>
         </div>
 
         {/* ===== CYKLUS KROKŮ ===== */}
@@ -640,52 +635,67 @@ const bgTop = "assets/img/hero/process-hero-v2.webp";
           <div className="mt-10 grid md:grid-cols-3 gap-6">
             <article
               id="individualni-navrh"
-              className="rounded-2xl bg-white border border-[var(--line)] soft-shadow p-7 reveal scroll-mt-24"
+              className="rounded-2xl bg-white border border-[var(--line)] soft-shadow p-7 reveal scroll-mt-24 flex flex-col"
             >
               <h4 className="text-lg font-semibold mb-3">Individuální návrh</h4>
-              <p className="text-[var(--muted)] leading-relaxed">
-                Každý prostor má jiné světlo, jiné proporce a jiný rytmus dne.
-              </p>
-              <p className="text-[var(--muted)] leading-relaxed mt-3">
-                Návrh vzniká až na místě z komunikace s vámi, z pozorování světla, z toho, jak prostor
-                používáte, a z toho, co od stínění opravdu očekáváte.
-              </p>
-              <p className="text-[var(--muted)] leading-relaxed mt-3">
-                Individuální návrh pro nás znamená společně najít správnou volbu.
-              </p>
+
+              <div className="flex-1 flex flex-col justify-between">
+                <p className="text-[var(--muted)] leading-relaxed">
+                  Každý prostor má jiné světlo, jiné proporce a jiný rytmus dne.
+                </p>
+
+                <p className="text-[var(--muted)] leading-relaxed mt-3">
+                  Návrh vzniká až na místě z komunikace s vámi, z pozorování světla, z toho, jak prostor
+                  používáte, a z toho, co od stínění opravdu očekáváte.
+                </p>
+
+                <p className="text-[var(--muted)] leading-relaxed mt-3">
+                  Individuální návrh pro nás znamená společně najít správnou volbu.
+                </p>
+              </div>
             </article>
 
             <article
               id="zkusenosti"
-              className="rounded-2xl bg-white border border-[var(--line)] soft-shadow p-7 reveal scroll-mt-24"
+              className="rounded-2xl bg-white border border-[var(--line)] soft-shadow p-7 reveal scroll-mt-24 flex flex-col"
             >
               <h4 className="text-lg font-semibold mb-3">20 let zkušeností</h4>
-              <p className="text-[var(--muted)] leading-relaxed">
-                Zkušenosti nám dávají nadhled a jistotu při rozhodování.
-              </p>
-              <p className="text-[var(--muted)] leading-relaxed mt-3">
-                Pomáháme vám se zorientovat v možnostech a sladit funkčnost s estetikou.
-                
-              </p>
-              <p className="text-[var(--muted)] leading-relaxed mt-3">
-                Výsledkem není kompromis ale pocit jistoti, že zvolené řešení dává smysl právě pro vás a váš prostor
-              </p>
+
+              <div className="flex-1 flex flex-col justify-between">
+                <p className="text-[var(--muted)] leading-relaxed">
+                  Zkušenosti nám dávají nadhled a jistotu při rozhodování.
+                </p>
+
+                <p className="text-[var(--muted)] leading-relaxed mt-3">
+                  Pomáháme vám se zorientovat v možnostech a sladit funkčnost s estetikou.
+                  
+                </p>
+
+                <p className="text-[var(--muted)] leading-relaxed mt-3">
+                  Výsledkem není kompromis ale pocit jistoti, že zvolené řešení dává smysl právě pro vás a váš prostor.
+                </p>
+              </div>
             </article>
 
             <article
               id="detail"
-              className="rounded-2xl bg-white border border-[var(--line)] soft-shadow p-7 reveal scroll-mt-24"
+              className="rounded-2xl bg-white border border-[var(--line)] soft-shadow p-7 reveal scroll-mt-24 flex flex-col"
             >
               <h4 className="text-lg font-semibold mb-3">Preciznost a jemnost v detailu</h4>
-              <p className="text-[var(--muted)] leading-relaxed">
-                Kvalita zpracování a technické provedení rozhodují o tom, jestli stínění bude dlouhodobě fungovat a dobře vypadat i po letech.
-              </p>
-              <p className="text-[var(--muted)] leading-relaxed mt-3">
-               V detailech se ukazuje rozdíl mezi řešením, které jen dobře vypadá, a řešením, které obstojí v čase.
-              </p>
-              <p className="text-[var(--muted)] leading-relaxed mt-3">
-               Preciznost a detail je na první pohled viditelné, právě v nich se potkává vaše očekávání s naší zkušeností pracovat s materiály.
-              </p>
+
+              <div className="flex-1 flex flex-col justify-between">
+                <p className="text-[var(--muted)] leading-relaxed">
+                  Kvalita zpracování a technické provedení rozhodují o tom, jestli stínění bude dlouhodobě fungovat a dobře vypadat i po letech.
+                </p>
+
+                <p className="text-[var(--muted)] leading-relaxed mt-3">
+                  V detailech se ukazuje rozdíl mezi řešením, které jen dobře vypadá, a řešením, které obstojí v čase.
+                </p>
+
+                <p className="text-[var(--muted)] leading-relaxed mt-3">
+                  Preciznost a detail je na první pohled viditelné, právě v nich se potkává vaše očekávání s naší zkušeností pracovat s materiály.
+                </p>
+              </div>
             </article>
           </div>
         </div>
@@ -699,6 +709,7 @@ const bgTop = "assets/img/hero/process-hero-v2.webp";
     </>
   );
 }
+
 
 
 function Pricing({ t }) {
