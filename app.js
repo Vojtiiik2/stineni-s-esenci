@@ -160,65 +160,93 @@ function useLang() {
   }, [lang]);
   return { lang, setLang, t: STR[lang] };
 }
-
 function useRoute() {
   const getRoute = () => {
     const raw = location.hash || "#/";
-    const clean = raw.startsWith("#") ? raw.slice(1) : raw; // "/process#detail"
-    return clean.split("#")[0] || "/";
+    const clean = raw.startsWith("#") ? raw.slice(1) : raw; // "/pricing#zaclon"
+    const [path, anchor] = clean.split("#");
+    return { path: path || "/", anchor: anchor || "" };
   };
 
-  const [route, setRoute] = useState(getRoute);
+  const [route, setRoute] = React.useState(() => getRoute());
 
-  useEffect(() => {
+  React.useEffect(() => {
     const onHash = () => setRoute(getRoute());
     window.addEventListener("hashchange", onHash);
     return () => window.removeEventListener("hashchange", onHash);
   }, []);
 
-  return { route };
+  // ✅ Scroll chování po změně route (stránka / kotva)
+  React.useEffect(() => {
+    // počkáme 1 frame, aby React stihl vyrenderovat nový obsah
+    requestAnimationFrame(() => {
+      if (route.anchor) {
+        const el = document.getElementById(route.anchor);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+          return;
+        }
+      }
+      // když není anchor, nebo element neexistuje → vždy nahoru
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }, [route.path, route.anchor]);
+
+  return route; // { path, anchor }
 }
 
 function go(path) {
-  location.hash = path;
+  // path může být "/pricing" nebo "/pricing#zaclon"
+  location.hash = path.startsWith("/") ? `#${path}` : `#/${path}`;
 }
 
 const Header = ({ t, lang, setLang }) => {
   return (
     <header className="fixed top-0 left-0 right-0 z-30 border-b border-[var(--line)]/70 bg-white/70 backdrop-blur-md">
       <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between reveal">
+        {/* BRAND */}
         <div className="leading-4 cursor-pointer" onClick={() => go("/")}>
-  <div
-  className="script text-2xl -mb-0.5"
-  style={{ color: "var(--brand-brown-dark)" }}
->
-  {t.brand2}
-</div>
+          <div
+            className="script text-2xl -mb-0.5"
+            style={{ color: "var(--brand-brown-dark)" }}
+          >
+            {t.brand2}
+          </div>
 
-  <div
-  className="text-xs tracking-wide"
-  style={{ color: "var(--brand-brown-light)" }}
->
-  {t.brand1}
-</div>
-</div>
+          <div
+            className="text-xs tracking-wide"
+            style={{ color: "var(--brand-brown-light)" }}
+          >
+            {t.brand1}
+          </div>
+        </div>
 
-<nav className="hidden md:flex gap-6 text-sm font-semibold">
-  {t.nav.map((label, i) => {
-    const path = ["/process", "/pricing", "/gallery", "/finished", "/essences", "/contact"][i];
-    return (
-      <button
-        key={i}
-        onClick={() => go(path)}
-        className="relative group hover:text-[var(--text)]/90 text-[var(--text)]/75"
-      >
-        <span>{label}</span>
-      </button>
-    );
-  })}
-</nav>
+        {/* NAV */}
+        <nav className="hidden md:flex gap-6 text-sm font-semibold">
+          {t.nav.map((label, i) => {
+            const path = [
+              "/process",
+              "/pricing",
+              "/gallery",
+              "/finished",
+              "/essences",
+              "/contact"
+            ][i];
 
+            return (
+              <button
+                key={i}
+                onClick={() => go(path)}
+                className="relative group hover:text-[var(--text)]/90 text-[var(--text)]/75"
+                type="button"
+              >
+                <span>{label}</span>
+              </button>
+            );
+          })}
+        </nav>
 
+        {/* LANG */}
         <div className="flex gap-2">
           <button
             onClick={() => setLang("cs")}
@@ -226,15 +254,18 @@ const Header = ({ t, lang, setLang }) => {
               "px-3 py-1.5 text-sm rounded-lg border " +
               (lang === "cs" ? "border-[var(--sand)]" : "border-[var(--line)]")
             }
+            type="button"
           >
             CZ
           </button>
+
           <button
             onClick={() => setLang("en")}
             className={
               "px-3 py-1.5 text-sm rounded-lg border " +
               (lang === "en" ? "border-[var(--sand)]" : "border-[var(--line)]")
             }
+            type="button"
           >
             EN
           </button>
@@ -243,104 +274,6 @@ const Header = ({ t, lang, setLang }) => {
     </header>
   );
 };
-
-function Hero({ t, small = false, showCta = false, intervalMs = 8000, bg, title }) {
-  const slides = t.heroSlides || [];
-  const [index, setIndex] = useState(0);
-
-  // "stage" řídí animaci: enter -> show -> exit
-  const [stage, setStage] = useState("show");
-  const timerRef = useRef(null);
-
-  useEffect(() => {
-    if (small || slides.length < 2) return;
-
-    const run = () => {
-      // Exit animace (odjíždí doleva)
-      setStage("exit");
-
-      // po době exitu přepneme slide a dáme enter
-      timerRef.current = setTimeout(() => {
-        setIndex((i) => (i + 1) % slides.length);
-        setStage("enter");
-
-        // po krátké době enteru přejdeme do show
-        timerRef.current = setTimeout(() => {
-          setStage("show");
-        }, 40);
-      }, 650);
-    };
-
-    const id = setInterval(run, intervalMs);
-    return () => {
-      clearInterval(id);
-      clearTimeout(timerRef.current);
-    };
-  }, [small, slides.length, intervalMs]);
-
-  const slide = slides[index] || {};
-const effectiveBg = small && bg ? bg : slide.bg;
-
-
-  // Pozice pro slide efekt
- const bgClass =
-  stage === "exit"
-    ? "opacity-0 scale-[1.03]"
-    : "opacity-100 scale-100";
-
-  const textClass =
-  stage === "exit"
-    ? "opacity-0 translate-y-2"
-    : "opacity-100 translate-y-0";
-
-  return (
-    <section
-      className={
-        (small ? "min-h-[42vh]" : "min-h-[92vh]") +
-        " relative flex items-center overflow-hidden"
-      }
-    >
-     {/* SLIDE background */}
-<div
-  className={
-    "absolute inset-0 transition-all duration-1000 ease-in-out will-change-transform " +
-    bgClass
-  }
-  style={{
-   backgroundImage: `linear-gradient(to right, rgba(0,0,0,.25), rgba(0,0,0,.05)), url('${effectiveBg}')`,
-    backgroundSize: "cover",
-    backgroundPosition: "center"
-  }}
-/>
-
-
-
-      <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/25"></div>
-
-      {/* SLIDE text */}
-      <div className="relative max-w-6xl mx-auto px-4 w-full">
-  <div
-    className={
-      "max-w-2xl text-white transition-all duration-700 ease-in-out will-change-transform " +
-      textClass
-    }
-  >
-    <h1 className="script text-5xl md:text-6xl mb-3">{title || slide.h1}</h1>
-    <p className="text-lg opacity-95">{t.heroSub}</p>
-
-    {!small && showCta && (
-      <button
-        onClick={() => go("/contact")}
-        className="btn-cta inline-block mt-6 px-5 py-3 rounded-full bg-[var(--sand)] text-[var(--text)] font-bold border border-black/5"
-      >
-        {t.cta}
-      </button>
-    )}
-  </div>
-</div>
-    </section>
-  );
-}
 
 
 function Home({ t }) {
@@ -1658,11 +1591,11 @@ function CookiesPage() {
 
 function App() {
   const { lang, setLang, t } = useLang();
-  const { route } = useRoute();
-  useReveal();
+const { path } = useRoute();
+useReveal();
 
   const Page = useMemo(() => {
-    switch (route) {
+    switch (path) {
       case "/process":
         return <Process t={t} />;
       case "/pricing":
