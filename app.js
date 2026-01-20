@@ -100,7 +100,7 @@ const STR = {
 steps: ["Konzultace", "Návrh řešení", "Příprava & výroba", "Realizace"],
 
 stepsTxt: [
-  "Přijedeme za vámi, prostor si projdeme přímo na místě a vše přesně zaměříme.\n\nSpolečně probereme, co od stínění očekáváte, soukromí, zatemnění, nebo čistě dekorativní funkci.\n\nUkážeme vám vzorky látek, a řekneme si, co je v daném prostoru vhodné a co by naopak nedávalo smysl po technicke, funkcni i vizualní strance.\n\nPo setkání víte, jakým směrem se návrh bude ubírat, jaké typy stínění a materiálů připadají v úvahu.",
+  "Přijedeme za vámi, prostor si projdeme přímo na místě a vše přesně zaměříme.\n\nSpolečně probereme, co od stínění očekáváte, soukromí, zatemnění, nebo čistě dekorativní funkci.\n\nUkážeme vám vzorky látek a řekneme si, co je v daném prostoru vhodné a co by naopak nedávalo smysl po technické, funkční i vizuální stránce.\n\nPo setkání víte, jakým směrem se návrh bude ubírat, jaké typy stínění a materiálů připadají v úvahu.",
 
   "Na základě vybraných materiálů a technického systému připravíme cenovou nabídku. Ta slouží jako výchozí bod. Pokud je potřeba cenu upravit, hledáme společně alternativy, ať už v úpravě materiálů, techniky nebo skladby řešení. Naším cílem je vždy najít rovnováhu mezi kvalitou, funkčností a cenou.",
 
@@ -684,7 +684,7 @@ const bgTop = "assets/img/hero/process-hero-v2.webp";
                V detailech se ukazuje rozdíl mezi řešením, které jen dobře vypadá, a řešením, které obstojí v čase.
               </p>
               <p className="text-[var(--muted)] leading-relaxed mt-3">
-               Preciznost a detail je na první pohled viditelné, Právě v nich se potkává vaše očekávání s naší zkušeností pracovat s materiály.
+               Preciznost a detail je na první pohled viditelné, právě v nich se potkává vaše očekávání s naší zkušeností pracovat s materiály.
               </p>
             </article>
           </div>
