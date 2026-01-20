@@ -201,6 +201,19 @@ function useRoute() {
   return route; // { path, anchor }
 }
 
+function go(path = "/") {
+  // povolit volání s "#/pricing" i "/pricing"
+  let p = String(path || "/");
+
+  // když by někdo poslal "#/pricing", odstraň #
+  if (p.startsWith("#")) p = p.slice(1);
+
+  // vynutit lomítko na začátku
+  if (!p.startsWith("/")) p = "/" + p;
+
+  // nastavit hash přesně ve formátu "#/something"
+  window.location.hash = "#" + p;
+}
 
 const Header = ({ t, lang, setLang }) => {
   return (
@@ -223,30 +236,30 @@ const Header = ({ t, lang, setLang }) => {
           </div>
         </div>
 
-        {/* NAV */}
-        <nav className="hidden md:flex gap-6 text-sm font-semibold">
-          {t.nav.map((label, i) => {
-            const path = [
-              "/process",
-              "/pricing",
-              "/gallery",
-              "/finished",
-              "/essences",
-              "/contact"
-            ][i];
+       <nav className="hidden md:flex gap-6 text-sm font-semibold">
+  {t.nav.map((label, i) => {
+    const path = [
+      "/process",
+      "/pricing",
+      "/gallery",
+      "/finished",
+      "/essences",
+      "/contact"
+    ][i];
 
-            return (
-              <button
-                key={i}
-                onClick={() => go(path)}
-                className="relative group hover:text-[var(--text)]/90 text-[var(--text)]/75"
-                type="button"
-              >
-                <span>{label}</span>
-              </button>
-            );
-          })}
-        </nav>
+    return (
+      <button
+        key={i}
+        onClick={() => go(path)}
+        className="relative group hover:text-[var(--text)]/90 text-[var(--text)]/75"
+        type="button"
+      >
+        <span>{label}</span>
+      </button>
+    );
+  })}
+</nav>
+
 
         {/* LANG */}
         <div className="flex gap-2">
