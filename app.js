@@ -559,7 +559,7 @@ const bgTop = "assets/img/hero/process-hero-v2.webp";
         {/* ===== HLAVIČKA ===== */}
         <div className="max-w-3xl mx-auto text-left md:text-center">
           <p className="text-[var(--muted)] text-lg">
-            Čtyři kroky. Jeden celek. V každém je prostor pro návrat a doladění detailu.
+          
           </p>
         </div>
 
@@ -923,7 +923,6 @@ function Pricing({ t }) {
       <section className="max-w-6xl mx-auto px-4 py-16 reveal">
         <div className="max-w-3xl mx-auto text-left md:text-center">
           <p className="text-[var(--muted)] text-lg">
-            Rychlá kotva pro představu. Detail až po kliknutí.
           </p>
         </div>
 
