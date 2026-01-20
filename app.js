@@ -163,8 +163,8 @@ function useLang() {
 
 function useRoute() {
   const getRoute = () => {
-    const raw = location.hash || "#/";
-    const clean = raw.startsWith("#") ? raw.slice(1) : raw;
+    const raw = window.location.hash || "#/";
+    const clean = raw.startsWith("#") ? raw.slice(1) : raw; // "/pricing#zaclon"
     const [path, anchor] = clean.split("#");
     return { path: path || "/", anchor: anchor || "" };
   };
@@ -177,20 +177,30 @@ function useRoute() {
     return () => window.removeEventListener("hashchange", onHash);
   }, []);
 
-  // ✅ scrollujeme JEN když existuje anchor
   React.useEffect(() => {
-    if (!route.anchor) return;
-
+    // po přepnutí stránky počkej na render
     requestAnimationFrame(() => {
-      const el = document.getElementById(route.anchor);
-      if (el) {
-        el.scrollIntoView({ behavior: "smooth", block: "center" });
+      // když není anchor → vždy nahoru
+      if (!route.anchor) {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        return;
       }
+
+      const el = document.getElementById(route.anchor);
+
+      // když anchor existuje, ale element ne → taky nahoru
+      if (!el) {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        return;
+      }
+
+      el.scrollIntoView({ behavior: "smooth", block: "center" });
     });
   }, [route.path, route.anchor]);
 
   return route; // { path, anchor }
 }
+
 
 const Header = ({ t, lang, setLang }) => {
   return (
