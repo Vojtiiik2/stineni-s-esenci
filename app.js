@@ -1159,30 +1159,42 @@ function Gallery({ t }) {
   ];
 
   // ==== PARTNEŘI (ilustrační fotky, reálně sem dáš jejich realizace / vizualizace) ====
-  const PARTNERS = [
-    {
-      name: "RichterDesign",
-      url: "https://www.richterdesign.cz",
-      note:
-        "Spolupráce na interiérech, kde hraje roli čistota linií, funkce a klid prostoru.",
-      images: [
-        "https://images.unsplash.com/photo-1549187774-b4e9b0445b41?q=80&w=1600&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=1600&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1484154218962-a197022b5858?q=80&w=1600&auto=format&fit=crop"
-      ]
-    },
-    {
-      name: "ono.je",
-      url: "https://www.ono.je",
-      note:
-        "Architektura s citem pro atmosféru, materiál a detail. Dáváme tomu finální vrstvu.",
-      images: [
-        "https://images.unsplash.com/photo-1521783988139-893ce3cdb4e8?q=80&w=1600&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1505693416388-36a5ac3be353?q=80&w=1600&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1600&auto=format&fit=crop"
-      ]
-    }
-  ];
+ const PARTNERS = [
+  {
+    name: "ono.je",
+    url: "https://www.ono.je",
+    note:
+      "Architektura s citem pro atmosféru, materiál a detail. Dáváme tomu finální vrstvu.",
+    images: [
+      "https://images.unsplash.com/photo-1521783988139-893ce3cdb4e8?q=80&w=1600&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1505693416388-36a5ac3be353?q=80&w=1600&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1600&auto=format&fit=crop"
+    ]
+  },
+  {
+    name: "RichterDesign",
+    url: "https://www.richterdesign.cz",
+    note:
+      "Spolupráce na interiérech, kde hraje roli čistota linií, funkce a klid prostoru.",
+    images: [
+      "https://images.unsplash.com/photo-1549187774-b4e9b0445b41?q=80&w=1600&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=1600&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1484154218962-a197022b5858?q=80&w=1600&auto=format&fit=crop"
+    ]
+  },
+  {
+    name: "Epic Interior Studio",
+    url: "https://www.epicinteriorstudio.cz/",
+    note:
+      "Interiérové studio se zaměřením na atmosféru, funkci a detail. Společně ladíme finální vrstvu stínění tak, aby prostor působil přirozeně a harmonicky.",
+    images: [
+      "https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=1600&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1484154218962-a197022b5858?q=80&w=1600&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=1600&auto=format&fit=crop"
+    ]
+  }
+];
+
 
   return (
     <>
