@@ -1908,6 +1908,15 @@ function App() {
     </>
   );
 }
+// ===== MOUNT APP (NECHAT ÚPLNĚ DOLE) =====
+const rootEl = document.getElementById("root");
+
+if (!rootEl) {
+  console.error('Chybí <div id="root"></div> v index.html');
+} else {
+  const root = ReactDOM.createRoot(rootEl);
+  root.render(<App />);
+}
 
 
 
