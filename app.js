@@ -1189,11 +1189,12 @@ function Gallery({ t }) {
     url: "https://www.ono.je",
     note:
       "Architektura s citem pro atmosféru, materiál a detail. Dáváme tomu finální vrstvu.",
-    images: [
-      "https://images.unsplash.com/photo-1521783988139-893ce3cdb4e8?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1505693416388-36a5ac3be353?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1600&auto=format&fit=crop"
-    ]
+   images: [
+  "assets/img/gallery/partners/ono-je/ono-je-01.webp",
+  "assets/img/gallery/partners/ono-je/ono-je-02.webp",
+  "assets/img/gallery/partners/ono-je/ono-je-03.webp"
+]
+
   },
   {
     name: "RichterDesign",
