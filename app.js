@@ -1237,7 +1237,7 @@ function Gallery({ t }) {
         <div className="max-w-3xl">
           <h3 className="script text-3xl mb-3">Naše realizace</h3>
           <p className="text-[var(--muted)] text-sm leading-relaxed">
-            Výběr projektů, kde řešíme světlo, látku a proporce prostoru. (Ukázky jsou zatím ilustrační.)
+            Výběr projektů, kde řešíme světlo, látku a proporce prostoru.
           </p>
         </div>
 
