@@ -1775,56 +1775,109 @@ function App() {
         {Page}
       </main>
 
-      <footer className="bg-[#222] text-[#ddd] mt-10 reveal">
-        <div className="max-w-6xl mx-auto px-4 py-10 grid md:grid-cols-3 gap-6">
-          <div>
-            <div className="script text-2xl text-white">
-              {t.brand2}
-            </div>
+     <footer className="bg-[#222] text-[#ddd] mt-10 reveal">
+  <div className="max-w-6xl mx-auto px-4 py-10 grid md:grid-cols-3 gap-8">
+    {/* BRAND */}
+    <div>
+      <div className="script text-2xl text-white">{t.brand2}</div>
+      <div className="text-sm text-[#bdbdbd]">{t.brand1}</div>
 
-            <div className="text-sm text-[#bdbdbd]">
-              {t.brand1}
-            </div>
-          </div>
+      <p className="text-sm text-[#bdbdbd] mt-4 leading-relaxed">
+        Návrh a realizace vnitřního stínění na míru.
+        <br />
+        Záclony · Závěsy · Rolety · Technické systémy
+      </p>
+    </div>
 
-          {/* zbytek footeru nech beze změny */}
+    {/* KONTAKT */}
+    <div>
+      <div className="text-white font-semibold mb-3">Kontakt</div>
+
+      <div className="text-sm text-[#bdbdbd] space-y-2">
+        <div>
+          E-mail:{" "}
+          <a className="underline hover:text-white" href="mailto:hello@janasegelberg.com">
+            hello@janasegelberg.com
+          </a>
         </div>
-      </footer>
 
-      <div
-        id="lb"
-        className="lb"
-        onClick={closeLightbox}
-        aria-hidden="true"
-      >
-        <button
-          className="absolute top-5 right-6 text-white text-3xl"
-          aria-label="Close"
-          onClick={closeLightbox}
-        >
-          &times;
-        </button>
-        <img id="lbimg" alt="preview" />
+        <div>
+          Telefon:{" "}
+          <a className="underline hover:text-white" href="tel:+420724379309">
+            +420 724 379 309
+          </a>
+        </div>
+
+        <div className="pt-2">
+          <button
+            type="button"
+            onClick={() => go("/contact")}
+            className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold border border-[#444] hover:border-[#666] hover:bg-[#2a2a2a] transition"
+          >
+            Napište mi <span aria-hidden="true">→</span>
+          </button>
+        </div>
       </div>
-    </>
-  );
-}
+    </div>
 
+    {/* PRÁVNÍ */}
+    <div>
+      <div className="text-white font-semibold mb-3">Právní a informace</div>
 
-function openLightbox(e, src) {
-  e.preventDefault();
-  const lb = document.getElementById("lb");
-  const img = document.getElementById("lbimg");
-  img.src = src;
-  lb.style.display = "flex";
-}
+      <div className="text-sm text-[#bdbdbd] space-y-2">
+        <div>
+          <button
+            type="button"
+            onClick={() => go("/terms")}
+            className="underline hover:text-white"
+          >
+            Obchodní podmínky
+          </button>
+        </div>
 
-function closeLightbox() {
-  document.getElementById("lb").style.display = "none";
-}
+        <div>
+          <button
+            type="button"
+            onClick={() => go("/privacy")}
+            className="underline hover:text-white"
+          >
+            Ochrana osobních údajů
+          </button>
+        </div>
 
-ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+        <div>
+          <button
+            type="button"
+            onClick={() => go("/cookies")}
+            className="underline hover:text-white"
+          >
+            Cookies
+          </button>
+        </div>
 
+        <div className="pt-3 text-xs text-[#9a9a9a]">
+          {t.rights}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {/* spodní proužek */}
+  <div className="border-t border-[#333]">
+    <div className="max-w-6xl mx-auto px-4 py-4 text-xs text-[#9a9a9a] flex flex-col md:flex-row gap-2 md:items-center md:justify-between">
+      <div>© {new Date().getFullYear()} {t.brand2} — {t.brand1}</div>
+      <div>
+        <button
+          type="button"
+          onClick={() => go("/")}
+          className="underline hover:text-white"
+        >
+          Zpět na úvod
+        </button>
+      </div>
+    </div>
+  </div>
+</footer>
 
 
 
