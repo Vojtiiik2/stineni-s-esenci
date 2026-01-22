@@ -1213,11 +1213,12 @@ function Gallery({ t }) {
     url: "https://www.epicinteriorstudio.cz/",
     note:
       "Interiérové studio se zaměřením na atmosféru, funkci a detail. Společně ladíme finální vrstvu stínění tak, aby prostor působil přirozeně a harmonicky.",
-    images: [
-      "https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1484154218962-a197022b5858?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=1600&auto=format&fit=crop"
-    ]
+   images: [
+  "assets/img/gallery/partners/epic-interior-studio/epic-01.webp",
+  "assets/img/gallery/partners/epic-interior-studio/epic-02.webp",
+  "assets/img/gallery/partners/epic-interior-studio/epic-03.webp"
+]
+
   }
 ];
 
