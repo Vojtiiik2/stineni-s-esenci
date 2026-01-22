@@ -163,6 +163,7 @@ function useLang() {
   return { lang, setLang, t: STR[lang] };
 }
 
+
 // flag: poznáme, jestli změnu hashe udělalo naše go() (klik), nebo Back/Forward
 let __navByGo = false;
 
@@ -189,7 +190,10 @@ function useRoute() {
       const wasGo = __navByGo;
       __navByGo = false;
 
-      // Back/Forward → obnov scroll a zablokuj smooth scroll
+      // 1) nejdřív aktualizuj route (ať se vyrenderuje správná stránka)
+      setRoute(getRoute());
+
+      // 2) Back/Forward → až PO renderu obnov scroll a zablokuj smooth scroll
       if (!wasGo) {
         isPopRef.current = true;
 
@@ -203,8 +207,6 @@ function useRoute() {
           });
         });
       }
-
-      setRoute(getRoute());
     };
 
     window.addEventListener("hashchange", onHash);
@@ -212,7 +214,7 @@ function useRoute() {
   }, []);
 
   React.useEffect(() => {
-    // při Back/Forward restore nescrolluj sem
+    // při Back/Forward restore nescrolluj sem (už jsme obnovili scrollY)
     if (isPopRef.current) return;
 
     requestAnimationFrame(() => {
@@ -250,6 +252,7 @@ function go(path = "/") {
 
   window.location.hash = "#" + p;
 }
+
 
 const Header = ({ t, lang, setLang }) => {
   return (
