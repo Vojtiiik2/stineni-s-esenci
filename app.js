@@ -1202,9 +1202,9 @@ function Gallery({ t }) {
     note:
       "Spolupráce na interiérech, kde hraje roli čistota linií, funkce a klid prostoru.",
    images: [
-  "assets/img/gallery/partners/richter/richterdesign-01.webp",
-  "assets/img/gallery/partners/richter/richterdesign-02.webp",
-  "assets/img/gallery/partners/richter/richterdesign-03.webp"
+  "assets/img/gallery/partners/richter/richter-01.webp",
+  "assets/img/gallery/partners/richter/richter-02.webp",
+  "assets/img/gallery/partners/richter/richter-03.webp"
 ]
 
   },
