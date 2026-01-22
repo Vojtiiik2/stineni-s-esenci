@@ -1,4 +1,27 @@
 const { useState, useEffect, useMemo, useRef } = React;
+// ===== LIGHTBOX (nutné pro Gallery + zavírání v App) =====
+function openLightbox(e, src) {
+  if (e) e.preventDefault();
+
+  const lb = document.getElementById("lb");
+  const img = document.getElementById("lbimg");
+  if (!lb || !img) return;
+
+  img.src = src;
+  lb.classList.add("open");
+  document.body.style.overflow = "hidden";
+}
+
+function closeLightbox() {
+  const lb = document.getElementById("lb");
+  const img = document.getElementById("lbimg");
+  if (!lb || !img) return;
+
+  lb.classList.remove("open");
+  img.src = "";
+  document.body.style.overflow = "";
+}
+
 const MAIN_HERO =
   "https://images.unsplash.com/photo-1505691723518-36a5ac3be353?q=80&w=1800&auto=format&fit=crop";
 
