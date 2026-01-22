@@ -1169,37 +1169,6 @@ function Pricing({ t }) {
 }
 
 
-// ===== LIGHTBOX HELPERS (musí být před Gallery/App) =====
-function openLightbox(e, src) {
-  if (e) e.preventDefault();
-
-  const lb = document.getElementById("lb");
-  const img = document.getElementById("lbimg");
-
-  if (!lb || !img) return;
-
-  img.src = src;
-  lb.classList.add("open");
-  document.body.style.overflow = "hidden";
-}
-
-function closeLightbox() {
-  const lb = document.getElementById("lb");
-  const img = document.getElementById("lbimg");
-
-  if (!lb) return;
-
-  lb.classList.remove("open");
-  if (img) img.src = "";
-  document.body.style.overflow = "";
-}
-
-// ESC zavření (globálně)
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") closeLightbox();
-});
-
-
 function Gallery({ t }) {
   useReveal();
 
