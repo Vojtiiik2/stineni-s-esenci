@@ -1201,11 +1201,12 @@ function Gallery({ t }) {
     url: "https://www.richterdesign.cz",
     note:
       "Spolupráce na interiérech, kde hraje roli čistota linií, funkce a klid prostoru.",
-    images: [
-      "https://images.unsplash.com/photo-1549187774-b4e9b0445b41?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1484154218962-a197022b5858?q=80&w=1600&auto=format&fit=crop"
-    ]
+   images: [
+  "assets/img/gallery/partners/richter/richterdesign-01.webp",
+  "assets/img/gallery/partners/richter/richterdesign-02.webp",
+  "assets/img/gallery/partners/richter/richterdesign-03.webp"
+]
+
   },
   {
     name: "Epic Interior Studio",
