@@ -119,6 +119,10 @@ article,
   align-items: center;
   z-index: 999;
 }
+/* Lightbox otevřený stav */
+.lb.open {
+  display: flex;
+}
 
 #lbimg {
   max-width: 90%;
