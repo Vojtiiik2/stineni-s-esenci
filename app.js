@@ -1229,7 +1229,7 @@ function Gallery({ t }) {
         t={t}
         small
         title={t.galleryH}
-        bg="https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=1800&auto=format&fit=crop"
+        bg="assets/img/hero/gallery-hero.webp"
       />
 
       {/* ==== NAŠE PRÁCE ==== */}
