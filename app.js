@@ -1267,7 +1267,6 @@ function Gallery({ t }) {
           <h3 className="script text-3xl mb-3">Spolupracujeme s</h3>
           <p className="text-[var(--muted)] text-sm leading-relaxed">
             Architekti a designéři, se kterými často ladíme finální vrstvu stínění. 
-            Ukázky níže jsou ilustrační – nahradíme je konkrétními projekty.
           </p>
         </div>
 
