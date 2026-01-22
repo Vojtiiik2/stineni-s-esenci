@@ -1190,9 +1190,9 @@ function Gallery({ t }) {
     note:
       "Architektura s citem pro atmosféru, materiál a detail. Dáváme tomu finální vrstvu.",
    images: [
-  "assets/img/gallery/partners/ono-je/ono-je-01.webp",
-  "assets/img/gallery/partners/ono-je/ono-je-02.webp",
-  "assets/img/gallery/partners/ono-je/ono-je-03.webp"
+  "assets/img/gallery/partners/onoje/ono-je-01.webp",
+  "assets/img/gallery/partners/onoje/ono-je-02.webp",
+  "assets/img/gallery/partners/onoje/ono-je-03.webp"
 ]
 
   },
