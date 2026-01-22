@@ -97,7 +97,7 @@ const STR = {
       },
       {
         q: "Jak dlouho trvá výroba?",
-        a: "Obvykle 4–8 týdnů podle rozsahu zakázky a dostupnosti materiálů."
+        a: "Obvykle 2–8 týdnů podle rozsahu zakázky a dostupnosti materiálů."
       },
       {
   q: "Mohu vidět vzorky?",
@@ -612,7 +612,7 @@ function Home({ t }) {
         </button>
 
         <p className="text-sm text-[var(--muted)] mt-4">
-          Praha a okolí. Konzultace u vás doma. Výroba obvykle 4–8 týdnů.
+          Praha a okolí. Konzultace u vás doma. Výroba obvykle 2–8 týdnů.
         </p>
       </section>
     </>
