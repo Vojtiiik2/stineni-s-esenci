@@ -1457,7 +1457,7 @@ function Contact({ t }) {
      <Hero
   t={t}
   small
-  bg="https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=1800&auto=format&fit=crop"
+  bg="assets/img/hero/contact-hero.webp"
   title={t.contactH}
 />
 
