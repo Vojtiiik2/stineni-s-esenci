@@ -1375,7 +1375,7 @@ const bg = "assets/img/hero/finished-hero.webp";
       <section className="max-w-6xl mx-auto px-4 py-16 reveal">
         <p className="text-[var(--muted)] max-w-3xl mb-8">
           Nabízíme několik základních typů hotového stínění, které umíme dále
-          přizpůsobit vašemu prostoru. Každý typ má své optimální použití – od
+          přizpůsobit vašemu prostoru. Každý typ má své optimální použití od
           ložnicového zatemnění až po jemné vrstvení ve společenských místnostech.
         </p>
 
@@ -1388,7 +1388,7 @@ const bg = "assets/img/hero/finished-hero.webp";
     <p className="text-[var(--muted)] text-sm leading-relaxed max-w-2xl mx-auto">
       Nabídku hotových řešení stínění aktuálně připravujeme.
       <br /><br />
-      Každý prostor řešíme individuálně – pokud vás zajímá,
+      Každý prostor řešíme individuálně pokud vás zajímá,
       jaké řešení by dávalo smysl právě u vás,
       ozvěte se nám a připravíme návrh na míru.
     </p>
@@ -1434,7 +1434,7 @@ function Essences({ t }) {
     <h3 className="text-lg font-semibold mb-2">Esence připravujeme</h3>
 
     <p className="text-[var(--muted)] text-sm leading-relaxed">
-      Vůně budou samostatnou kapitolou – navázanou na prostor,
+      Vůně budou samostatnou kapitolou navázanou na prostor,
       denní světlo a atmosféru interiéru.
       <br /><br />
       Aktuálně ladíme koncepci tak, aby esence nebyly jen „produktem“,
