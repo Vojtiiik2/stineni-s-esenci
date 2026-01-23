@@ -921,7 +921,7 @@ function Pricing({ t }) {
       },
       {
         key: "zaves",
-        title: "Závěsy (dim-out / blackout)",
+        title: "Závěsy",
         img:
           (t.priceImgs && t.priceImgs[2]) ||
          "assets/img/pricing/pricing-02.webp",
@@ -932,15 +932,14 @@ function Pricing({ t }) {
           "Těžší vrstva, vytvoří plné soukromí, a zatemnění.",
         rangesTitle: "Orientačně (pro představu)",
         ranges: [
-          { label: "1 okno (dim-out)", value: "cca 12–28 tis. Kč" },
-          { label: "větší plocha", value: "cca 22–45 tis. Kč" },
-          { label: "blackout", value: "cca 30–65 tis. Kč" }
+          { label: "malé okno (200 x 270cm)", value: "cca 12–28 tis. Kč" },
+          { label: "velké okno (500 x 290cm)", value: "cca 22–45 tis. Kč" },
         ],
         tiersTitle: "Orientační přístup",
         tiers: [
-          { name: "Dim-out", note: "Ztlumí světlo, ale úplnou tmu neudělá." },
-          { name: "Blackout", note: "Maximální zatemnění – typicky ložnice." },
-          { name: "Dekorační závěs", note: "Primárně vzhled a soukromí." }
+          { name: "Dekorační závěs", note: "Primárně vzhled a soukromí." }, 
+          { name: "Dim-out", note: "ztlumí světlo, ale úplnou tmu neudělá" },
+          { name: "Blackout", note: "Maximální zatemnění, částečná tepelná izolace" }
         ]
       },
       {
@@ -953,12 +952,11 @@ function Pricing({ t }) {
         vibe: "Čisté linie. Funkce bez kompromisu.",
         micro: "Regulace světla, jednoduchost.",
         intro:
-          "Praktické řešení s čistými liniemi. Cena se odvíjí od typu, rozměru a způsobu ovládání.",
+          "Praktické řešení s čistými liniemi. Vhodné řešení pro kuchyně, koupelny, pracovny/kanceláře.",
         rangesTitle: "Orientačně (pro představu)",
         ranges: [
-          { label: "standard", value: "cca 4–12 tis. Kč / ks" },
-          { label: "větší rozměr", value: "cca 10–22 tis. Kč / ks" },
-          { label: "motor / atyp", value: "cca 18–40+ tis. Kč / ks" }
+          { label: "malé okno (130 x 200cm)", value: "cca 4–12 tis. Kč / ks" },
+          { label: "vélké okno (350 x 300cm)", value: "cca 10–22 tis. Kč / ks" },
         ],
         tiersTitle: "Typy (orientačně)",
         tiers: [
