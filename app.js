@@ -1117,17 +1117,25 @@ function Pricing({ t }) {
                   </div>
                 </div>
 
-                <div className="rounded-2xl border border-[var(--line)] bg-white px-4 py-4">
-                  <div className="text-sm font-semibold">{activeItem.tiersTitle}</div>
-                  <div className="grid sm:grid-cols-3 gap-4 mt-3">
-                    {activeItem.tiers.map((t0, i) => (
-                      <div key={i} className="rounded-xl bg-[var(--bg2)] px-4 py-3">
-                        <div className="text-sm font-semibold">{t0.name}</div>
-                        <div className="text-[var(--muted)] text-sm mt-1">{t0.note}</div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+                {/* ✅ jen pro servis – bez rámečku „Typy“ */}
+{activeItem?.key === "servis" ? (
+  <div className="text-sm text-[var(--muted)] mt-2">
+    Servis poskytujeme pouze na naše realizace.
+  </div>
+) : (
+  <div className="rounded-2xl border border-[var(--line)] bg-white px-4 py-4">
+    <div className="text-sm font-semibold">{activeItem.tiersTitle}</div>
+    <div className="grid sm:grid-cols-3 gap-4 mt-3">
+      {activeItem.tiers.map((t0, i) => (
+        <div key={i} className="rounded-xl bg-[var(--bg2)] px-4 py-3">
+          <div className="text-sm font-semibold">{t0.name}</div>
+          <div className="text-[var(--muted)] text-sm mt-1">{t0.note}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+)}
+
 
                <div className="pt-1 flex flex-wrap gap-3">
   <button
