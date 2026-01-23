@@ -916,7 +916,7 @@ function Pricing({ t }) {
         tiers: [
           { name: "Základní lehké voály", note: "Vzdušné látky s nižší pořizovací cenou." },
           { name: "Střední kategorie", note: "Vyvážený poměr ceny, vzhledu a funkce." },
-          { name: "Prémiové tkaniny", note: "Výraznější materiál, textura, vyšší gramáž." }
+          { name: "Prémiové tkaniny", note: "Exkluzivní textura, Přírodní materiá ." }
         ]
       },
       {
