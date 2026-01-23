@@ -962,7 +962,7 @@ function Pricing({ t }) {
         tiers: [
           { name: "Screen / denní", note: "Regulace světla, vzdušnost." },
           { name: "Zatemňovací", note: "Větší soukromí a tlumení světla." },
-          { name: "Motor", note: "Komfort, ale vyšší náklady." }
+          { name: "Motor", note: "Komfort, vyšší náklady." }
         ]
       },
       {
