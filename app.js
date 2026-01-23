@@ -412,7 +412,7 @@ function Hero({ t, small = false, showCta = false, intervalMs = 8000, bg, title 
   backgroundSize: "cover",
   backgroundPosition:
     effectiveBg?.includes("essence-hero")
-      ? "center 80%"
+      ? "center 65%"
       : "center"
 }}
 
