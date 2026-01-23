@@ -912,7 +912,7 @@ function Pricing({ t }) {
           { label: "malé okno (200 x 270cm)", value: "cca 8–18 tis. Kč" },
           { label: "velké okno (500 x 290m)", value: "cca 15–35 tis. Kč" },
         ],
-        tiersTitle: "Cenové hladiny látek (orientačně)",
+        tiersTitle: "Typy",
         tiers: [
           { name: "Základní lehké voály", note: "Vzdušné látky s nižší pořizovací cenou." },
           { name: "Střední kategorie", note: "Vyvážený poměr ceny, vzhledu a funkce." },
@@ -935,9 +935,9 @@ function Pricing({ t }) {
           { label: "malé okno (200 x 270cm)", value: "cca 12–28 tis. Kč" },
           { label: "velké okno (500 x 290cm)", value: "cca 22–45 tis. Kč" },
         ],
-        tiersTitle: "Orientační přístup",
+        tiersTitle: "Typy",
         tiers: [
-          { name: "Dekorační závěs", note: "Primárně vzhled a soukromí." }, 
+          { name: "Dekorativní závěs", note: "Primárně vzhled a soukromí." }, 
           { name: "Dim-out", note: "ztlumí světlo, ale úplnou tmu neudělá" },
           { name: "Blackout", note: "Maximální zatemnění, částečná tepelná izolace" }
         ]
@@ -974,17 +974,16 @@ function Pricing({ t }) {
         vibe: "Základ který vše řídí.",
         micro: "Funkčí i dekorativní.",
         intro:
-          "Kolejnice, garnýže, ohyby, více vrstev, motor. Cena se liší podle délky, tvaru a montáže.",
+          "Kolejnice, garnýže, ohyby, motory, řešení pro každý interiér",
         rangesTitle: "Orientačně (pro představu)",
         ranges: [
-          { label: "rovná kolejnice", value: "cca 2–8 tis. Kč" },
-          { label: "delší / více vrstev", value: "cca 6–18 tis. Kč" },
-          { label: "oblouk / motor", value: "cca 15–45+ tis. Kč" }
+          { label: "malé okno", value: "cca 2–8 tis. Kč" },
+          { label: "velké okno", value: "cca 6–18 tis. Kč" },
         ],
-        tiersTitle: "Nejčastěji řešíme",
+        tiersTitle: "Typy",
         tiers: [
           { name: "Rovné kolejnice", note: "Čisté řešení." },
-          { name: "Ohýbané / atypy", note: "Na míru prostoru." },
+          { name: "Ohýbané / dekorativní", note: "Na míru prostoru." },
           { name: "Motor", note: "Komfort bez šňůr." }
         ]
       },
