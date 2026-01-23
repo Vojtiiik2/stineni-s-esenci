@@ -903,7 +903,7 @@ function Pricing({ t }) {
           (t.priceImgs && t.priceImgs[1]) ||
           "assets/img/pricing/pricing-01.webp",
 
-        vibe: "Světlo zůstává. Prostor se zjemní. Soukromí se přidá.",
+        vibe: "Světlo zůstává. Prostor se zjemní a zútulní.",
         micro: "Světlo, proporce, jemnost.",
         intro:
           "Lehká vrstva, která propouští denní světlo a zároveň vytváří základní pocit soukromí.",
@@ -927,10 +927,10 @@ function Pricing({ t }) {
           (t.priceImgs && t.priceImgs[2]) ||
          "assets/img/pricing/pricing-02.webp",
 
-        vibe: "Večer zklidní. Ráno ochrání. Prostor zútulní.",
+        vibe: "Vytvoří soukromí. Večer zklidní. Ráno ochrání.",
         micro: "Materiál, ticho, komfort.",
         intro:
-          "Pro soukromí, zútulnění a zatemnění. Rozdíl dělá typ zatemnění, gramáž a množství řasení.",
+          "Pro soukromí, a zatemnění. Rozdíl dělá typ zatemnění, gramáž a množství řasení.",
         rangesTitle: "Orientačně (pro představu)",
         ranges: [
           { label: "1 okno (dim-out)", value: "cca 12–28 tis. Kč" },
