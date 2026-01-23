@@ -977,8 +977,8 @@ function Pricing({ t }) {
           "Kolejnice, garnýže, ohyby, motory, řešení pro každý interiér",
         rangesTitle: "Orientačně (pro představu)",
         ranges: [
-          { label: "malé okno", value: "cca 2–8 tis. Kč" },
-          { label: "velké okno", value: "cca 6–18 tis. Kč" },
+          { label: "malé okno (200 x 270cm)", value: "cca 2–8 tis. Kč" },
+          { label: "velké okno (500 x 290cm)", value: "cca 6–18 tis. Kč" },
         ],
         tiersTitle: "Typy",
         tiers: [
@@ -993,22 +993,16 @@ function Pricing({ t }) {
         img:
           (t.priceImgs && t.priceImgs[5]) ||
           "https://images.unsplash.com/photo-1590698933947-a202b069a861?q=80&w=1800&auto=format&fit=crop",
-        vibe: "Aby to fungovalo i za rok. A i za tři.",
-        micro: "Úpravy, doladění, klid.",
+        vibe: "Profesionální údržba ve třech krocích.",
+        micro: "Znovu jako nové.",
         intro:
-          "Úpravy, doplnění a opravy hotového stínění. Cena se odvíjí od rozsahu práce a času na místě.",
+          "Sundání textilu, praní, čištění, věšení, žehlení. ",
         rangesTitle: "Orientačně podle rozsahu",
         ranges: [
-          { label: "drobná úprava", value: "cca 800–3 500 Kč" },
-          { label: "servis + materiál", value: "cca 2 500–9 000 Kč" },
-          { label: "větší zásah", value: "cca 7 000–20 000+ Kč" }
+          { label: "malé okno  (200 x 270cm)", value: "cca 800–3 500 Kč" },
+          { label: "velké okno (500 x 290cm)", value: "cca 2 500–9 000 Kč" },
         ],
-        tiersTitle: "Typicky pomůžeme s",
-        tiers: [
-          { name: "Úpravy a přešití", note: "Zkrácení, přizpůsobení, opravy." },
-          { name: "Technické dořešení", note: "Jezdce, háčky, vedení." },
-          { name: "Doplnění vrstev", note: "Když chcete přidat další funkci." }
-        ]
+        tiersTitle: "Servis poskytujeme pouze na naše realizace",
       }
     ],
     [t]
