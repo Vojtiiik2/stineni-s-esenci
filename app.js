@@ -958,7 +958,7 @@ function Pricing({ t }) {
           { label: "malé okno (130 x 200cm)", value: "cca 4–12 tis. Kč / ks" },
           { label: "vélké okno (350 x 300cm)", value: "cca 10–22 tis. Kč / ks" },
         ],
-        tiersTitle: "Typy (orientačně)",
+        tiersTitle: "Typy",
         tiers: [
           { name: "Screen / denní", note: "Regulace světla, vzdušnost." },
           { name: "Zatemňovací", note: "Větší soukromí a tlumení světla." },
@@ -971,10 +971,10 @@ function Pricing({ t }) {
         img:
           (t.priceImgs && t.priceImgs[4]) ||
           "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=1800&auto=format&fit=crop",
-        vibe: "To, co není vidět – rozhoduje nejvíc.",
-        micro: "Ticho chodu, přesnost.",
+        vibe: "Základ který vše řídí.",
+        micro: "Funkčí i dekorativní.",
         intro:
-          "Kolejnice, tyče, ohyby, více vrstev, motor. Cena se liší podle délky, tvaru a montáže.",
+          "Kolejnice, garnýže, ohyby, více vrstev, motor. Cena se liší podle délky, tvaru a montáže.",
         rangesTitle: "Orientačně (pro představu)",
         ranges: [
           { label: "rovná kolejnice", value: "cca 2–8 tis. Kč" },
