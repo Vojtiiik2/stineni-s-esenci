@@ -930,7 +930,7 @@ function Pricing({ t }) {
         vibe: "Vytvoří soukromí. Večer zklidní. Ráno ochrání.",
         micro: "Materiál, ticho, komfort.",
         intro:
-          "Pro soukromí, a zatemnění. Rozdíl dělá typ zatemnění, gramáž a množství řasení.",
+          "Těžší vrstva, vytvoří plné soukromí, a zatemnění.",
         rangesTitle: "Orientačně (pro představu)",
         ranges: [
           { label: "1 okno (dim-out)", value: "cca 12–28 tis. Kč" },
