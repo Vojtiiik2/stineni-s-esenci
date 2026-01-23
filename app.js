@@ -1412,9 +1412,8 @@ const bg = "assets/img/hero/finished-hero.webp";
 function Essences({ t }) {
   useReveal();
 
-  const bg =
-    "https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=80&w=1800&auto=format&fit=crop";
-
+ const bg = "assets/img/hero/essence-hero.webp";
+ 
   return (
     <>
       <Hero t={t} small bg={bg} title={t.essenceH} />
