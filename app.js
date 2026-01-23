@@ -1457,7 +1457,7 @@ function Contact({ t }) {
      <Hero
   t={t}
   small
-  bg="assets/img/hero/contact-hero.webp"
+  bg="assets/img/hero/contact-hero01.webp"
   title={t.contactH}
 />
 
