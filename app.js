@@ -892,15 +892,12 @@ function Pricing({ t }) {
   (t.priceImgs && t.priceImgs[0]) ||
   "assets/img/hero/pricing-hero.webp";
 
-  const items = useMemo(
+    const items = useMemo(
     () => [
       {
         key: "zaclon",
         title: "Záclony",
-        img:
-          (t.priceImgs && t.priceImgs[1]) ||
-          "assets/img/pricing/pricing-01.webp",
-
+        img: (t.priceImgs && t.priceImgs[1]) || "assets/img/pricing/pricing-01.webp",
         vibe: "Světlo zůstává. Prostor se zjemní a zútulní.",
         micro: "Světlo, proporce, jemnost.",
         intro:
@@ -908,53 +905,48 @@ function Pricing({ t }) {
         rangesTitle: "Orientačně (pro představu)",
         ranges: [
           { label: "malé okno (200 x 270cm)", value: "cca 8–18 tis. Kč" },
-          { label: "velké okno (500 x 290m)", value: "cca 15–35 tis. Kč" },
+          { label: "velké okno (500 x 290cm)", value: "cca 15–35 tis. Kč" }
         ],
         tiersTitle: "Typy",
         tiers: [
           { name: "Základní lehké voály", note: "Vzdušné látky s nižší pořizovací cenou." },
           { name: "Střední kategorie", note: "Vyvážený poměr ceny, vzhledu a funkce." },
-          { name: "Prémiové tkaniny", note: "Exkluzivní textura, Přírodní materiá ." }
+          { name: "Prémiové tkaniny", note: "Exkluzivní textura, přírodní materiály." }
         ]
       },
+
       {
         key: "zaves",
         title: "Závěsy",
-        img:
-          (t.priceImgs && t.priceImgs[2]) ||
-         "assets/img/pricing/pricing-02.webp",
-
+        img: (t.priceImgs && t.priceImgs[2]) || "assets/img/pricing/pricing-02.webp",
         vibe: "Vytvoří soukromí. Večer zklidní. Ráno ochrání.",
         micro: "Materiál, ticho, komfort.",
-        intro:
-          "Těžší vrstva, vytvoří plné soukromí, a zatemnění.",
+        intro: "Těžší vrstva, vytvoří plné soukromí a zatemnění.",
         rangesTitle: "Orientačně (pro představu)",
         ranges: [
           { label: "malé okno (200 x 270cm)", value: "cca 12–28 tis. Kč" },
-          { label: "velké okno (500 x 290cm)", value: "cca 22–45 tis. Kč" },
+          { label: "velké okno (500 x 290cm)", value: "cca 22–45 tis. Kč" }
         ],
         tiersTitle: "Typy",
         tiers: [
-          { name: "Dekorativní závěs", note: "Primárně vzhled a soukromí." }, 
-          { name: "Dim-out", note: "ztlumí světlo, ale úplnou tmu neudělá" },
-          { name: "Blackout", note: "Maximální zatemnění, částečná tepelná izolace" }
+          { name: "Dekorativní závěs", note: "Primárně vzhled a soukromí." },
+          { name: "Dim-out", note: "Ztlumí světlo, ale úplnou tmu neudělá." },
+          { name: "Blackout", note: "Maximální zatemnění, částečná tepelná izolace." }
         ]
       },
+
       {
         key: "roleta",
         title: "Rolety",
-        img:
-          (t.priceImgs && t.priceImgs[3]) ||
-          "assets/img/pricing/pricing-03.webp",
-
+        img: (t.priceImgs && t.priceImgs[3]) || "assets/img/pricing/pricing-03.webp",
         vibe: "Čisté linie. Funkce bez kompromisu.",
         micro: "Regulace světla, jednoduchost.",
         intro:
-          "Praktické řešení s čistými liniemi. Vhodné řešení pro kuchyně, koupelny, pracovny/kanceláře.",
+          "Praktické řešení s čistými liniemi. Vhodné pro kuchyně, koupelny, pracovny/kanceláře.",
         rangesTitle: "Orientačně (pro představu)",
         ranges: [
           { label: "malé okno (130 x 200cm)", value: "cca 4–12 tis. Kč / ks" },
-          { label: "vélké okno (350 x 300cm)", value: "cca 10–22 tis. Kč / ks" },
+          { label: "velké okno (350 x 300cm)", value: "cca 10–22 tis. Kč / ks" }
         ],
         tiersTitle: "Typy",
         tiers: [
@@ -963,6 +955,7 @@ function Pricing({ t }) {
           { name: "Motor", note: "Komfort, vyšší náklady." }
         ]
       },
+
       {
         key: "systemy",
         title: "Technické systémy",
@@ -970,13 +963,12 @@ function Pricing({ t }) {
           (t.priceImgs && t.priceImgs[4]) ||
           "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=1800&auto=format&fit=crop",
         vibe: "Základ který vše řídí.",
-        micro: "Funkčí i dekorativní.",
-        intro:
-          "Kolejnice, garnýže, ohyby, motory, řešení pro každý interiér",
+        micro: "Funkční i dekorativní.",
+        intro: "Kolejnice, garnýže, ohyby, motory – řešení pro každý interiér.",
         rangesTitle: "Orientačně (pro představu)",
         ranges: [
           { label: "malé okno (200 x 270cm)", value: "cca 2–8 tis. Kč" },
-          { label: "velké okno (500 x 290cm)", value: "cca 6–18 tis. Kč" },
+          { label: "velké okno (500 x 290cm)", value: "cca 6–18 tis. Kč" }
         ],
         tiersTitle: "Typy",
         tiers: [
@@ -985,6 +977,7 @@ function Pricing({ t }) {
           { name: "Motor", note: "Komfort bez šňůr." }
         ]
       },
+
       {
         key: "servis",
         title: "Servis",
@@ -993,22 +986,23 @@ function Pricing({ t }) {
           "https://images.unsplash.com/photo-1590698933947-a202b069a861?q=80&w=1800&auto=format&fit=crop",
         vibe: "Profesionální údržba ve třech krocích.",
         micro: "Znovu jako nové.",
-        intro:
-          "Sundání textilu, praní, čištění, věšení, žehlení. ",
+        intro: "Sundání textilu, praní/čištění, věšení a žehlení.",
         rangesTitle: "Orientačně podle rozsahu",
         ranges: [
-          { label: "malé okno  (200 x 270cm)", value: "cca 800–3 500 Kč" },
-          { label: "velké okno (500 x 290cm)", value: "cca 2 500–9 000 Kč" },
+          { label: "malé okno (200 x 270cm)", value: "cca 800–3 500 Kč" },
+          { label: "velké okno (500 x 290cm)", value: "cca 2 500–9 000 Kč" }
+        ],
         tiersTitle: "Typy",
         tiers: [
-          { name: "Screen / denní", note: "Regulace světla, vzdušnost." },
-          { name: "Zatemňovací", note: "Větší soukromí a tlumení světla." },
-          { name: "Motor", note: "Komfort, vyšší náklady." }
+          { name: "Běžná údržba", note: "Sundání, praní/čištění, žehlení a pověšení." },
+          { name: "Velké plochy", note: "Více dílů, větší náročnost manipulace." },
+          { name: "Atyp / výšky", note: "Speciální přístup, lešení/plošina dle situace." }
         ]
       }
     ],
     [t]
   );
+
 
   const activeItem = activeKey ? items.find((i) => i.key === activeKey) : null;
 
