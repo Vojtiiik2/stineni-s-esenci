@@ -407,14 +407,15 @@ function Hero({ t, small = false, showCta = false, intervalMs = 8000, bg, title 
           "absolute inset-0 transition-all duration-1000 ease-in-out will-change-transform " +
           bgClass
         }
-        style={{
+      style={{
   backgroundImage: `linear-gradient(to right, rgba(0,0,0,.25), rgba(0,0,0,.05)), url('${effectiveBg || ""}')`,
   backgroundSize: "cover",
   backgroundPosition:
     effectiveBg?.includes("essence-hero")
-      ? "center 25%"
+      ? "center 80%"
       : "center"
 }}
+
 
       />
 
