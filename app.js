@@ -1119,8 +1119,11 @@ function Pricing({ t }) {
 
                 {/* ✅ jen pro servis – bez rámečku „Typy“ */}
 {activeItem?.key === "servis" ? (
-  <div className="text-sm text-[var(--muted)] mt-2">
-    Servis poskytujeme pouze na naše realizace.
+  <div className="mt-3 rounded-xl border border-[var(--line)] bg-[var(--bg2)] px-4 py-3">
+    <div className="flex items-center gap-2 text-sm font-semibold">
+      <span className="inline-block w-1.5 h-1.5 rounded-full bg-[var(--sand)]" />
+      Servis poskytujeme pouze na naše realizace.
+    </div>
   </div>
 ) : (
   <div className="rounded-2xl border border-[var(--line)] bg-white px-4 py-4">
@@ -1135,6 +1138,7 @@ function Pricing({ t }) {
     </div>
   </div>
 )}
+
 
 
                <div className="pt-1 flex flex-wrap gap-3">
