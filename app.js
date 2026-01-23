@@ -876,7 +876,7 @@ function Pricing({ t }) {
   function RangeChipsLocal({ items }) {
     return (
       <div className="grid gap-2">
-        {items.map((r, i) => (
+        {(items || []).map((r, i) => (
           <div
             key={i}
             className="flex items-center justify-between gap-4 rounded-xl bg-[var(--bg2)] px-4 py-3"
@@ -889,20 +889,15 @@ function Pricing({ t }) {
     );
   }
 
-
   const bgTop =
-  (t.priceImgs && t.priceImgs[0]) ||
-  "assets/img/hero/pricing-hero.webp";
+    (t.priceImgs && t.priceImgs[0]) || "assets/img/hero/pricing-hero.webp";
 
   const items = useMemo(
     () => [
       {
         key: "zaclon",
         title: "Záclony",
-        img:
-          (t.priceImgs && t.priceImgs[1]) ||
-          "assets/img/pricing/pricing-01.webp",
-
+        img: (t.priceImgs && t.priceImgs[1]) || "assets/img/pricing/pricing-01.webp",
         vibe: "Světlo zůstává. Prostor se zjemní a zútulní.",
         micro: "Světlo, proporce, jemnost.",
         intro:
@@ -910,7 +905,7 @@ function Pricing({ t }) {
         rangesTitle: "Orientačně (pro představu)",
         ranges: [
           { label: "malé okno (200 x 270cm)", value: "cca 8–18 tis. Kč" },
-          { label: "velké okno (500 x 290m)", value: "cca 15–35 tis. Kč" },
+          { label: "velké okno (500 x 290m)", value: "cca 15–35 tis. Kč" }
         ],
         tiersTitle: "Typy",
         tiers: [
@@ -922,22 +917,18 @@ function Pricing({ t }) {
       {
         key: "zaves",
         title: "Závěsy",
-        img:
-          (t.priceImgs && t.priceImgs[2]) ||
-         "assets/img/pricing/pricing-02.webp",
-
+        img: (t.priceImgs && t.priceImgs[2]) || "assets/img/pricing/pricing-02.webp",
         vibe: "Vytvoří soukromí. Večer zklidní. Ráno ochrání.",
         micro: "Materiál, ticho, komfort.",
-        intro:
-          "Těžší vrstva, vytvoří plné soukromí, a zatemnění.",
+        intro: "Těžší vrstva, vytvoří plné soukromí, a zatemnění.",
         rangesTitle: "Orientačně (pro představu)",
         ranges: [
           { label: "malé okno (200 x 270cm)", value: "cca 12–28 tis. Kč" },
-          { label: "velké okno (500 x 290cm)", value: "cca 22–45 tis. Kč" },
+          { label: "velké okno (500 x 290cm)", value: "cca 22–45 tis. Kč" }
         ],
         tiersTitle: "Typy",
         tiers: [
-          { name: "Dekorativní závěs", note: "Primárně vzhled a soukromí." }, 
+          { name: "Dekorativní závěs", note: "Primárně vzhled a soukromí." },
           { name: "Dim-out", note: "ztlumí světlo, ale úplnou tmu neudělá" },
           { name: "Blackout", note: "Maximální zatemnění, částečná tepelná izolace" }
         ]
@@ -945,10 +936,7 @@ function Pricing({ t }) {
       {
         key: "roleta",
         title: "Rolety",
-        img:
-          (t.priceImgs && t.priceImgs[3]) ||
-          "assets/img/pricing/pricing-03.webp",
-
+        img: (t.priceImgs && t.priceImgs[3]) || "assets/img/pricing/pricing-03.webp",
         vibe: "Čisté linie. Funkce bez kompromisu.",
         micro: "Regulace světla, jednoduchost.",
         intro:
@@ -956,7 +944,7 @@ function Pricing({ t }) {
         rangesTitle: "Orientačně (pro představu)",
         ranges: [
           { label: "malé okno (130 x 200cm)", value: "cca 4–12 tis. Kč / ks" },
-          { label: "vélké okno (350 x 300cm)", value: "cca 10–22 tis. Kč / ks" },
+          { label: "vélké okno (350 x 300cm)", value: "cca 10–22 tis. Kč / ks" }
         ],
         tiersTitle: "Typy",
         tiers: [
@@ -973,12 +961,11 @@ function Pricing({ t }) {
           "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=1800&auto=format&fit=crop",
         vibe: "Základ který vše řídí.",
         micro: "Funkčí i dekorativní.",
-        intro:
-          "Kolejnice, garnýže, ohyby, motory, řešení pro každý interiér",
+        intro: "Kolejnice, garnýže, ohyby, motory, řešení pro každý interiér",
         rangesTitle: "Orientačně (pro představu)",
         ranges: [
           { label: "malé okno (200 x 270cm)", value: "cca 2–8 tis. Kč" },
-          { label: "velké okno (500 x 290cm)", value: "cca 6–18 tis. Kč" },
+          { label: "velké okno (500 x 290cm)", value: "cca 6–18 tis. Kč" }
         ],
         tiersTitle: "Typy",
         tiers: [
@@ -995,14 +982,14 @@ function Pricing({ t }) {
           "https://images.unsplash.com/photo-1590698933947-a202b069a861?q=80&w=1800&auto=format&fit=crop",
         vibe: "Profesionální údržba ve třech krocích.",
         micro: "Znovu jako nové.",
-        intro:
-          "Sundání textilu, praní, čištění, věšení, žehlení. ",
+        intro: "Sundání textilu, praní, čištění, věšení, žehlení.",
         rangesTitle: "Orientačně podle rozsahu",
         ranges: [
           { label: "malé okno  (200 x 270cm)", value: "cca 800–3 500 Kč" },
-          { label: "velké okno (500 x 290cm)", value: "cca 2 500–9 000 Kč" },
+          { label: "velké okno (500 x 290cm)", value: "cca 2 500–9 000 Kč" }
         ],
         tiersTitle: "Servis poskytujeme pouze na naše realizace",
+        tiers: []
       }
     ],
     [t]
@@ -1016,18 +1003,16 @@ function Pricing({ t }) {
 
       <section className="max-w-6xl mx-auto px-4 py-16 reveal">
         <div className="max-w-3xl mx-auto text-left md:text-center">
-          <p className="text-[var(--muted)] text-lg">
-          </p>
+          <p className="text-[var(--muted)] text-lg"></p>
         </div>
 
         <div className="mt-12 space-y-8">
           {items.map((x) => (
             <section
-  key={x.key}
-  id={x.key}
-  className="rounded-2xl bg-white border border-[var(--line)] soft-shadow overflow-hidden reveal scroll-mt-24"
->
-
+              key={x.key}
+              id={x.key}
+              className="rounded-2xl bg-white border border-[var(--line)] soft-shadow overflow-hidden reveal scroll-mt-24"
+            >
               <div className="grid md:grid-cols-12 gap-0">
                 <div className="md:col-span-5">
                   <img
@@ -1114,46 +1099,55 @@ function Pricing({ t }) {
                   </p>
                 </div>
 
-                <div className="rounded-2xl border border-[var(--line)] bg-white px-4 py-4">
-                  <div className="text-sm font-semibold">{activeItem.rangesTitle}</div>
-                  <div className="mt-3">
-                    <RangeChipsLocal items={activeItem.ranges} />
-                  </div>
-                </div>
+                {/* TIERS – buď karty, nebo informační věta (SERVIS) */}
+<div className="rounded-2xl border border-[var(--line)] bg-white px-4 py-4">
+  {/* Nadpis jen pokud existují karty */}
+  {(activeItem.tiers || []).length > 0 && (
+    <div className="text-sm font-semibold">
+      {activeItem.tiersTitle}
+    </div>
+  )}
 
-                <div className="rounded-2xl border border-[var(--line)] bg-white px-4 py-4">
-                  <div className="text-sm font-semibold">{activeItem.tiersTitle}</div>
-                  <div className="grid sm:grid-cols-3 gap-4 mt-3">
-                    {activeItem.tiers.map((t0, i) => (
-                      <div key={i} className="rounded-xl bg-[var(--bg2)] px-4 py-3">
-                        <div className="text-sm font-semibold">{t0.name}</div>
-                        <div className="text-[var(--muted)] text-sm mt-1">{t0.note}</div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-               <div className="pt-1 flex flex-wrap gap-3">
-  <button
-    type="button"
-    onClick={() => {
-      setActiveKey(null);
-      go("/contact");
-    }}
-    className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold border border-[var(--line)] bg-white hover:bg-[var(--bg2)] hover:border-[var(--sand)] transition"
-  >
-    Napište mi <span aria-hidden="true">→</span>
-  </button>
-
-  <button
-    type="button"
-    onClick={() => setActiveKey(null)}
-    className="rounded-full px-5 py-2.5 text-sm border border-[var(--line)] hover:bg-[var(--bg2)] transition"
-  >
-    Zavřít
-  </button>
+  {/* Karty (záclony, závěsy, rolety, systémy…) */}
+  {(activeItem.tiers || []).length > 0 ? (
+    <div className="grid sm:grid-cols-3 gap-4 mt-3">
+      {activeItem.tiers.map((t0, i) => (
+        <div key={i} className="rounded-xl bg-[var(--bg2)] px-4 py-3">
+          <div className="text-sm font-semibold">{t0.name}</div>
+          <div className="text-[var(--muted)] text-sm mt-1">
+            {t0.note}
+          </div>
+        </div>
+      ))}
+    </div>
+  ) : (
+    /* Servis – jen věta, bez nadpisu a bez duplicit */
+    <p className="text-[var(--muted)] text-sm">
+      {activeItem.tiersTitle}
+    </p>
+  )}
 </div>
 
+                <div className="pt-1 flex flex-wrap gap-3">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setActiveKey(null);
+                      go("/contact");
+                    }}
+                    className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold border border-[var(--line)] bg-white hover:bg-[var(--bg2)] hover:border-[var(--sand)] transition"
+                  >
+                    Napište mi <span aria-hidden="true">→</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => setActiveKey(null)}
+                    className="rounded-full px-5 py-2.5 text-sm border border-[var(--line)] hover:bg-[var(--bg2)] transition"
+                  >
+                    Zavřít
+                  </button>
+                </div>
               </div>
             </div>
           </div>
