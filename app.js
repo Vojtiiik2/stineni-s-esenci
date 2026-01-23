@@ -408,10 +408,14 @@ function Hero({ t, small = false, showCta = false, intervalMs = 8000, bg, title 
           bgClass
         }
         style={{
-          backgroundImage: `linear-gradient(to right, rgba(0,0,0,.25), rgba(0,0,0,.05)), url('${effectiveBg || ""}')`,
-          backgroundSize: "cover",
-          backgroundPosition: "center"
-        }}
+  backgroundImage: `linear-gradient(to right, rgba(0,0,0,.25), rgba(0,0,0,.05)), url('${effectiveBg || ""}')`,
+  backgroundSize: "cover",
+  backgroundPosition:
+    effectiveBg?.includes("essence-hero")
+      ? "center 25%"
+      : "center"
+}}
+
       />
 
       <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/25"></div>
