@@ -909,9 +909,8 @@ function Pricing({ t }) {
           "Lehká vrstva, která propouští denní světlo a zároveň vytváří základní pocit soukromí.",
         rangesTitle: "Orientačně (pro představu)",
         ranges: [
-          { label: "1 běžné okno", value: "cca 8–18 tis. Kč" },
-          { label: "větší okno", value: "cca 15–35 tis. Kč" },
-          { label: "celá stěna", value: "cca 25–55 tis. Kč" }
+          { label: "malé okno (200 x 270cm)", value: "cca 8–18 tis. Kč" },
+          { label: "velké okno (500 x 290m)", value: "cca 15–35 tis. Kč" },
         ],
         tiersTitle: "Cenové hladiny látek (orientačně)",
         tiers: [
