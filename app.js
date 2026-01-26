@@ -1129,13 +1129,24 @@ function Pricing({ t }) {
   <div className="rounded-2xl border border-[var(--line)] bg-white px-4 py-4">
     <div className="text-sm font-semibold">{activeItem.tiersTitle}</div>
     <div className="grid sm:grid-cols-3 gap-4 mt-3">
-      {activeItem.tiers.map((t0, i) => (
-        <div key={i} className="rounded-xl bg-[var(--bg2)] px-4 py-3">
-          <div className="text-sm font-semibold">{t0.name}</div>
-          <div className="text-[var(--muted)] text-sm mt-1">{t0.note}</div>
-        </div>
-      ))}
+  {activeItem.tiers.map((t0, i) => (
+    <div
+      key={i}
+      className="rounded-xl bg-[var(--bg2)] px-4 py-3 flex flex-col h-full"
+    >
+      {/* nadpis: sjednotíme výšku, aby byly všechny ve stejné rovině */}
+      <div className="text-sm font-semibold leading-snug min-h-[2.6rem]">
+        {t0.name}
+      </div>
+
+      {/* podtext: vyplní zbytek výšky, spodky budou zarovnané */}
+      <div className="text-[var(--muted)] text-sm mt-1 leading-relaxed flex-1">
+        {t0.note}
+      </div>
     </div>
+  ))}
+</div>
+
   </div>
 )}
 
