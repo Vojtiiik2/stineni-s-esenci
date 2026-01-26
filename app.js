@@ -1140,9 +1140,9 @@ function Pricing({ t }) {
       </div>
 
       {/* podtext: vyplní zbytek výšky, spodky budou zarovnané */}
-      <div className="text-[var(--muted)] text-sm mt-1 leading-relaxed flex-1">
-        {t0.note}
-      </div>
+      <div className="text-[var(--muted)] text-sm mt-1 leading-relaxed flex-1 flex items-end">
+  <span>{t0.note}</span>
+</div>
     </div>
   ))}
 </div>
