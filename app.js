@@ -977,13 +977,13 @@ function Pricing({ t }) {
             rangesTitle: "Orientačně (pro představu)",
             ranges: [
               { label: "malé okno (130 x 200cm)", value: "cca 4–12 tis. Kč / ks" },
-              { label: "velké okno (350 x 300cm)", value: "cca 10–22 tis. Kč / ks" }
+              { label: "velké okno (200 x 250cm)", value: "cca 10–22 tis. Kč / ks" }
             ],
             tiersTitle: "Typy",
             tiers: [
-              { name: "Dekorativní", note: "Primárně vzhled a atmosféra." },
-              { name: "Dim-out", note: "Ztlumí světlo, ale úplnou tmu neudělá." },
-              { name: "Blackout", note: "Maximální zatemnění dle materiálu." }
+              { name: "Ze záclonových látek", note: "Vzdušnost, praktičnost." },
+              { name: "Ze závěsových látek", note: "Soukromí, zatemnění." },
+              { name: "Motor", note: "Komfort, vyšší náklady." }
             ]
           },
           {
@@ -995,15 +995,15 @@ function Pricing({ t }) {
               "Plissé je skladaná roleta vhodná i na atypická okna. Umožňuje stínit shora i zdola a velmi přesně regulovat světlo.",
             rangesTitle: "Orientačně (pro představu)",
             ranges: [
-              { label: "malé okno (130 x 200cm)", value: "cca 4–12 tis. Kč / ks" },
-              { label: "velké okno (350 x 300cm)", value: "cca 10–22 tis. Kč / ks" }
+              { label: "malé okno (90 x 150cm)", value: "cca 4–12 tis. Kč / ks" },
+              { label: "velké okno (200 x 220cm)", value: "cca 10–22 tis. Kč / ks" }
             ],
             tiersTitle: "Typy",
-            tiers: [
-              { name: "Standard", note: "Regulace světla, vzdušnost." },
-              { name: "Top-down / bottom-up", note: "Větší soukromí a tlumení světla." },
-              { name: "Zatemňovací", note: "Komfort, vyšší náklady." }
-            ]
+tiers: [
+  { name: "Screen / denní", note: "Regulace světla, vzdušnost." },
+  { name: "Zatemňovací", note: "Větší soukromí a tlumení světla." }
+]
+            
           }
         ]
       },
