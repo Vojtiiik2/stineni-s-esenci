@@ -807,6 +807,9 @@ function Pricing({ t }) {
   useReveal();
   const [activeKey, setActiveKey] = useState(null);
 
+  // ✅ pro přepínání typů rolet v modalu
+  const [roletaTypeIdx, setRoletaTypeIdx] = useState(0);
+
   // ====== Modal lokálně ======
   function ModalLocal({ open, onClose, title, subtitle, children }) {
     useEffect(() => {
@@ -874,7 +877,7 @@ function Pricing({ t }) {
   function RangeChipsLocal({ items }) {
     return (
       <div className="grid gap-2">
-        {items.map((r, i) => (
+        {(items || []).map((r, i) => (
           <div
             key={i}
             className="flex items-center justify-between gap-4 rounded-xl bg-[var(--bg2)] px-4 py-3"
@@ -887,12 +890,9 @@ function Pricing({ t }) {
     );
   }
 
+  const bgTop = (t.priceImgs && t.priceImgs[0]) || "assets/img/hero/pricing-hero.webp";
 
-  const bgTop =
-  (t.priceImgs && t.priceImgs[0]) ||
-  "assets/img/hero/pricing-hero.webp";
-
-    const items = useMemo(
+  const items = useMemo(
     () => [
       {
         key: "zaclon",
@@ -940,19 +940,71 @@ function Pricing({ t }) {
         title: "Rolety",
         img: (t.priceImgs && t.priceImgs[3]) || "assets/img/pricing/pricing-03.webp",
         vibe: "Čisté linie. Funkce bez kompromisu.",
+
+        // ✅ tyhle 2 řádky se používají na kartě v přehledu (necháváme stejné)
         micro: "Regulace světla, jednoduchost.",
         intro:
           "Praktické řešení s čistými liniemi. Vhodné pro kuchyně, koupelny, pracovny/kanceláře.",
-        rangesTitle: "Orientačně (pro představu)",
-        ranges: [
-          { label: "malé okno (130 x 200cm)", value: "cca 4–12 tis. Kč / ks" },
-          { label: "velké okno (350 x 300cm)", value: "cca 10–22 tis. Kč / ks" }
-        ],
-        tiersTitle: "Typy",
-        tiers: [
-          { name: "Screen / denní", note: "Regulace světla, vzdušnost." },
-          { name: "Zatemňovací", note: "Větší soukromí a tlumení světla." },
-          { name: "Motor", note: "Komfort, vyšší náklady." }
+
+        // ✅ nově: přepínatelné podtypy v modalu
+        subtypes: [
+          {
+            key: "latkova",
+            label: "Látková roleta",
+            img: (t.priceImgs && t.priceImgs[3]) || "assets/img/pricing/pricing-03.webp",
+            micro: "Regulace světla, jednoduchost.",
+            intro:
+              "Praktické řešení s čistými liniemi. Vhodné pro kuchyně, koupelny, pracovny/kanceláře.",
+            rangesTitle: "Orientačně (pro představu)",
+            ranges: [
+              { label: "malé okno (130 x 200cm)", value: "cca 4–12 tis. Kč / ks" },
+              { label: "velké okno (350 x 300cm)", value: "cca 10–22 tis. Kč / ks" }
+            ],
+            tiersTitle: "Typy",
+            tiers: [
+              { name: "Screen / denní", note: "Regulace světla, vzdušnost." },
+              { name: "Zatemňovací", note: "Větší soukromí a tlumení světla." },
+              { name: "Motor", note: "Komfort, vyšší náklady." }
+            ]
+          },
+          {
+            key: "rimska",
+            label: "Římská roleta",
+            img: (t.priceImgs && t.priceImgs[3]) || "assets/img/pricing/pricing-03.webp",
+            micro: "Měkká textilní vrstva, dekor a klid.",
+            intro:
+              "Textilní roleta s výrazem závěsu. Hodí se tam, kde chcete měkký dojem a čistý tvar bez dlouhých záclon či závěsů.",
+            rangesTitle: "Orientačně (pro představu)",
+            ranges: [
+              { label: "malé okno (130 x 200cm)", value: "cca 4–12 tis. Kč / ks" },
+              { label: "velké okno (350 x 300cm)", value: "cca 10–22 tis. Kč / ks" }
+            ],
+            tiersTitle: "Typy",
+            tiers: [
+              { name: "Dekorativní", note: "Primárně vzhled a atmosféra." },
+              { name: "Dim-out", note: "Ztlumí světlo, ale úplnou tmu neudělá." },
+              { name: "Blackout", note: "Maximální zatemnění dle materiálu." }
+            ]
+          },
+          {
+            key: "plisse",
+            label: "Plissé roleta",
+            img: (t.priceImgs && t.priceImgs[3]) || "assets/img/pricing/pricing-03.webp",
+            micro: "Přesné dávkování světla. Skvělé i na atypy.",
+            intro:
+              "Plissé je skladaná roleta vhodná i na atypická okna. Umožňuje stínit shora i zdola a velmi přesně regulovat světlo.",
+            rangesTitle: "Orientačně (pro představu)",
+            ranges: [
+              { label: "malé okno (130 x 200cm)", value: "cca 4–12 tis. Kč / ks" },
+              { label: "velké okno (350 x 300cm)", value: "cca 10–22 tis. Kč / ks" }
+            ],
+            tiersTitle: "Typy",
+            tiers: [
+              { name: "Standard", note: "Regulace světla, vzdušnost." },
+              { name: "Top-down / bottom-up", note: "Větší soukromí a tlumení světla." },
+              { name: "Zatemňovací", note: "Komfort, vyšší náklady." }
+            ]
+          }
         ]
       },
 
@@ -1003,8 +1055,13 @@ function Pricing({ t }) {
     [t]
   );
 
-
   const activeItem = activeKey ? items.find((i) => i.key === activeKey) : null;
+
+  // ✅ co se reálně zobrazuje v modalu (u rolet podle zvoleného typu)
+  const currentItem =
+    activeItem?.key === "roleta"
+      ? activeItem.subtypes?.[roletaTypeIdx] || activeItem.subtypes?.[0] || activeItem
+      : activeItem;
 
   return (
     <>
@@ -1012,18 +1069,16 @@ function Pricing({ t }) {
 
       <section className="max-w-6xl mx-auto px-4 py-16 reveal">
         <div className="max-w-3xl mx-auto text-left md:text-center">
-          <p className="text-[var(--muted)] text-lg">
-          </p>
+          <p className="text-[var(--muted)] text-lg"></p>
         </div>
 
         <div className="mt-12 space-y-8">
           {items.map((x) => (
             <section
-  key={x.key}
-  id={x.key}
-  className="rounded-2xl bg-white border border-[var(--line)] soft-shadow overflow-hidden reveal scroll-mt-24"
->
-
+              key={x.key}
+              id={x.key}
+              className="rounded-2xl bg-white border border-[var(--line)] soft-shadow overflow-hidden reveal scroll-mt-24"
+            >
               <div className="grid md:grid-cols-12 gap-0">
                 <div className="md:col-span-5">
                   <img
@@ -1062,7 +1117,10 @@ function Pricing({ t }) {
                   <div className="mt-6">
                     <button
                       type="button"
-                      onClick={() => setActiveKey(x.key)}
+                      onClick={() => {
+                        setActiveKey(x.key);
+                        if (x.key === "roleta") setRoletaTypeIdx(0);
+                      }}
                       className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold border border-[var(--line)] bg-white hover:bg-[var(--bg2)] hover:border-[var(--sand)] transition"
                     >
                       Otevřít detail <span aria-hidden="true">→</span>
@@ -1083,17 +1141,21 @@ function Pricing({ t }) {
       <ModalLocal
         open={!!activeItem}
         onClose={() => setActiveKey(null)}
-        title={activeItem?.title || ""}
+        title={
+          activeItem?.key === "roleta"
+            ? `${activeItem?.title || ""} — ${currentItem?.label || ""}`
+            : (activeItem?.title || "")
+        }
         subtitle={activeItem?.vibe || ""}
       >
-        {activeItem && (
+        {activeItem && currentItem && (
           <div className="p-5 md:p-6">
             <div className="grid md:grid-cols-12 gap-6 items-start">
               <div className="md:col-span-5">
                 <div className="rounded-2xl overflow-hidden border border-[var(--line)] bg-white soft-shadow">
                   <img
-                    src={activeItem.img}
-                    alt={activeItem.title}
+                    src={currentItem?.img || activeItem.img}
+                    alt={currentItem?.label || activeItem.title}
                     className="w-full object-cover aspect-[4/5] md:aspect-[3/4]"
                     style={{ objectPosition: "center" }}
                   />
@@ -1103,76 +1165,95 @@ function Pricing({ t }) {
               <div className="md:col-span-7 space-y-5">
                 <div>
                   <div className="text-sm italic text-[var(--muted)]">
-                    {activeItem.micro}
+                    {currentItem.micro}
                   </div>
+
+                  {/* ✅ přepínač typů jen u rolet */}
+                  {activeItem?.key === "roleta" && (
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      {(activeItem.subtypes || []).map((st, idx) => (
+                        <button
+                          key={st.key}
+                          type="button"
+                          onClick={() => setRoletaTypeIdx(idx)}
+                          className={
+                            "px-3 py-1.5 rounded-full text-sm border transition " +
+                            (roletaTypeIdx === idx
+                              ? "border-[var(--sand)] bg-[var(--bg2)] font-semibold"
+                              : "border-[var(--line)] hover:bg-[var(--bg2)]")
+                          }
+                        >
+                          {st.label}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+
                   <p className="mt-2 text-[var(--muted)] text-sm leading-relaxed">
-                    {activeItem.intro}
+                    {currentItem.intro}
                   </p>
                 </div>
 
                 <div className="rounded-2xl border border-[var(--line)] bg-white px-4 py-4">
-                  <div className="text-sm font-semibold">{activeItem.rangesTitle}</div>
+                  <div className="text-sm font-semibold">{currentItem.rangesTitle}</div>
                   <div className="mt-3">
-                    <RangeChipsLocal items={activeItem.ranges} />
+                    <RangeChipsLocal items={currentItem.ranges} />
                   </div>
                 </div>
 
                 {/* ✅ jen pro servis – bez rámečku „Typy“ */}
-{activeItem?.key === "servis" ? (
-  <div className="mt-3 rounded-xl border border-[var(--line)] bg-[var(--bg2)] px-4 py-3">
-    <div className="flex items-center gap-2 text-sm font-semibold">
-      <span className="inline-block w-1.5 h-1.5 rounded-full bg-[var(--sand)]" />
-      Servis poskytujeme pouze na naše realizace.
-    </div>
-  </div>
-) : (
-  <div className="rounded-2xl border border-[var(--line)] bg-white px-4 py-4">
-    <div className="text-sm font-semibold">{activeItem.tiersTitle}</div>
-    <div className="grid sm:grid-cols-3 gap-4 mt-3">
-  {activeItem.tiers.map((t0, i) => (
-    <div
-      key={i}
-      className="rounded-xl bg-[var(--bg2)] px-4 py-3 flex flex-col h-full"
-    >
-      {/* nadpis: sjednotíme výšku, aby byly všechny ve stejné rovině */}
-      <div className="text-sm font-semibold leading-snug min-h-[2.6rem]">
-        {t0.name}
-      </div>
+                {activeItem?.key === "servis" ? (
+                  <div className="mt-3 rounded-xl border border-[var(--line)] bg-[var(--bg2)] px-4 py-3">
+                    <div className="flex items-center gap-2 text-sm font-semibold">
+                      <span className="inline-block w-1.5 h-1.5 rounded-full bg-[var(--sand)]" />
+                      Servis poskytujeme pouze na naše realizace.
+                    </div>
+                  </div>
+                ) : (
+                  <div className="rounded-2xl border border-[var(--line)] bg-white px-4 py-4">
+                    <div className="text-sm font-semibold">{currentItem.tiersTitle}</div>
 
-      {/* podtext: vyplní zbytek výšky, spodky budou zarovnané */}
-      <div className="text-[var(--muted)] text-sm mt-1 leading-relaxed flex-1 flex items-end">
-  <span>{t0.note}</span>
-</div>
-    </div>
-  ))}
-</div>
+                    <div className="grid sm:grid-cols-3 gap-4 mt-3">
+                      {(currentItem.tiers || []).map((t0, i) => (
+                        <div
+                          key={i}
+                          className="rounded-xl bg-[var(--bg2)] px-4 py-3 flex flex-col h-full"
+                        >
+                          {/* nadpis: sjednotíme výšku */}
+                          <div className="text-sm font-semibold leading-snug min-h-[2.6rem]">
+                            {t0.name}
+                          </div>
 
-  </div>
-)}
+                          {/* podtext: dorovnat spodní hranu */}
+                          <div className="text-[var(--muted)] text-sm mt-1 leading-relaxed flex-1 flex items-end">
+                            <span>{t0.note}</span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
 
+                <div className="pt-1 flex flex-wrap gap-3">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setActiveKey(null);
+                      go("/contact");
+                    }}
+                    className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold border border-[var(--line)] bg-white hover:bg-[var(--bg2)] hover:border-[var(--sand)] transition"
+                  >
+                    Napište mi <span aria-hidden="true">→</span>
+                  </button>
 
-
-               <div className="pt-1 flex flex-wrap gap-3">
-  <button
-    type="button"
-    onClick={() => {
-      setActiveKey(null);
-      go("/contact");
-    }}
-    className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold border border-[var(--line)] bg-white hover:bg-[var(--bg2)] hover:border-[var(--sand)] transition"
-  >
-    Napište mi <span aria-hidden="true">→</span>
-  </button>
-
-  <button
-    type="button"
-    onClick={() => setActiveKey(null)}
-    className="rounded-full px-5 py-2.5 text-sm border border-[var(--line)] hover:bg-[var(--bg2)] transition"
-  >
-    Zavřít
-  </button>
-</div>
-
+                  <button
+                    type="button"
+                    onClick={() => setActiveKey(null)}
+                    className="rounded-full px-5 py-2.5 text-sm border border-[var(--line)] hover:bg-[var(--bg2)] transition"
+                  >
+                    Zavřít
+                  </button>
+                </div>
               </div>
             </div>
           </div>
