@@ -1549,14 +1549,27 @@ function Essences({ t }) {
 function Contact({ t }) {
   useReveal();
 
+  const [name, setName] = React.useState("");
+  const [email, setEmail] = React.useState("");
+  const [phone, setPhone] = React.useState("");
+  const [message, setMessage] = React.useState("");
+  const [touched, setTouched] = React.useState(false);
+
+  const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
+  const phoneOk = phone.trim().length >= 6; // jednoduchá kontrola (neřeší formát)
+  const nameOk = name.trim().length >= 2;
+  const messageOk = message.trim().length >= 5;
+
+  const canSend = nameOk && emailOk && phoneOk && messageOk;
+
   return (
     <>
-     <Hero
-  t={t}
-  small
-  bg="assets/img/hero/contact-hero01.webp"
-  title={t.contactH}
-/>
+      <Hero
+        t={t}
+        small
+        bg="assets/img/hero/contact-hero01.webp"
+        title={t.contactH}
+      />
 
       <section className="max-w-6xl mx-auto px-4 py-16 reveal">
         <div className="grid md:grid-cols-2 gap-6">
@@ -1570,10 +1583,7 @@ function Contact({ t }) {
             <p className="mt-3">
               <strong>E-mail</strong>
               <br />
-              <a
-                href="mailto:hello@janasegelberg.com"
-                className="underline"
-              >
+              <a href="mailto:hello@janasegelberg.com" className="underline">
                 hello@janasegelberg.com
               </a>
             </p>
@@ -1601,12 +1611,26 @@ function Contact({ t }) {
             </p>
           </div>
 
-          <form className="rounded-2xl bg-white border border-[var(--line)] p-6 soft-shadow reveal">
+          <form
+            className="rounded-2xl bg-white border border-[var(--line)] p-6 soft-shadow reveal"
+            onSubmit={(e) => {
+              e.preventDefault();
+              setTouched(true);
+              if (!canSend) return;
+              // demo: bez odesílání
+            }}
+          >
             <div className="grid gap-4">
               <label className="text-sm">
-                {t.name}
+                Jméno a příjmení
                 <input
-                  className="mt-1 w-full border rounded-lg px-3 py-2 border-[var(--line)]"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  onBlur={() => setTouched(true)}
+                  className={
+                    "mt-1 w-full border rounded-lg px-3 py-2 border-[var(--line)] " +
+                    (touched && !nameOk ? "border-red-400" : "")
+                  }
                   required
                 />
               </label>
@@ -1615,7 +1639,28 @@ function Contact({ t }) {
                 {t.email}
                 <input
                   type="email"
-                  className="mt-1 w-full border rounded-lg px-3 py-2 border-[var(--line)]"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  onBlur={() => setTouched(true)}
+                  className={
+                    "mt-1 w-full border rounded-lg px-3 py-2 border-[var(--line)] " +
+                    (touched && !emailOk ? "border-red-400" : "")
+                  }
+                  required
+                />
+              </label>
+
+              <label className="text-sm">
+                Kontakt (telefon)
+                <input
+                  type="tel"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  onBlur={() => setTouched(true)}
+                  className={
+                    "mt-1 w-full border rounded-lg px-3 py-2 border-[var(--line)] " +
+                    (touched && !phoneOk ? "border-red-400" : "")
+                  }
                   required
                 />
               </label>
@@ -1624,9 +1669,15 @@ function Contact({ t }) {
                 {t.message}
                 <textarea
                   rows="5"
-                  className="mt-1 w-full border rounded-lg px-3 py-2 border-[var(--line)]"
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  onBlur={() => setTouched(true)}
+                  className={
+                    "mt-1 w-full border rounded-lg px-3 py-2 border-[var(--line)] " +
+                    (touched && !messageOk ? "border-red-400" : "")
+                  }
                   required
-                ></textarea>
+                />
               </label>
 
               <label className="text-sm">
@@ -1640,8 +1691,12 @@ function Contact({ t }) {
               </label>
 
               <button
-                type="button"
-                className="btn-cta px-5 py-3 rounded-full bg-[var(--sand)] text-[var(--text)] font-bold border border-black/5"
+                type="submit"
+                disabled={!canSend}
+                className={
+                  "btn-cta px-5 py-3 rounded-full bg-[var(--sand)] text-[var(--text)] font-bold border border-black/5 transition " +
+                  (!canSend ? "opacity-50 cursor-not-allowed" : "")
+                }
               >
                 {t.send}
               </button>
