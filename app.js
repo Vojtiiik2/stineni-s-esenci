@@ -943,8 +943,8 @@ function Pricing({ t }) {
           "Lehká vrstva, která propouští denní světlo a zároveň vytváří základní pocit soukromí.",
         rangesTitle: "Orientačně (pro představu)",
         ranges: [
-          { label: "malé okno (200 x 270cm)", value: "cca 8–18 tis. Kč" },
-          { label: "velké okno (500 x 290cm)", value: "cca 15–35 tis. Kč" }
+          { label: "malé okno (200 x 270cm)", value: "cca 3–16 tis. Kč" },
+          { label: "velké okno (500 x 290cm)", value: "cca 8–42 tis. Kč" }
         ],
         tiersTitle: "Typy",
         tiers: [
@@ -963,8 +963,8 @@ function Pricing({ t }) {
         intro: "Těžší vrstva, vytvoří plné soukromí a zatemnění.",
         rangesTitle: "Orientačně (pro představu)",
         ranges: [
-          { label: "malé okno (200 x 270cm)", value: "cca 12–28 tis. Kč" },
-          { label: "velké okno (500 x 290cm)", value: "cca 22–45 tis. Kč" }
+          { label: "malé okno (200 x 270cm)", value: "cca 6–21 tis. Kč" },
+          { label: "velké okno (500 x 290cm)", value: "cca 15–49 tis. Kč" }
         ],
         tiersTitle: "Typy",
         tiers: [
