@@ -324,29 +324,42 @@ const Header = ({ t, lang, setLang }) => {
         </nav>
 
         {/* LANG */}
-        <div className="flex gap-2">
-          <button
-            onClick={() => setLang("cs")}
-            className={
-              "px-3 py-1.5 text-sm rounded-lg border " +
-              (lang === "cs" ? "border-[var(--sand)]" : "border-[var(--line)]")
-            }
-            type="button"
-          >
-            CZ
-          </button>
+       {/* RIGHT ACTIONS: telefon + jazyk */}
+<div className="flex items-center gap-2">
+  {/* Telefon (desktop: ikona + číslo, mobil: jen ikona) */}
+  <a
+    href="tel:+420724379309"
+    className="inline-flex items-center gap-2 px-3 py-1.5 text-sm rounded-lg border border-[var(--line)] hover:border-[var(--sand)] hover:bg-[var(--bg2)] transition"
+    aria-label="Zavolat +420 724 379 309"
+  >
+    <span aria-hidden="true">📞</span>
+    <span className="hidden lg:inline">+420 724 379 309</span>
+  </a>
 
-          <button
-            onClick={() => setLang("en")}
-            className={
-              "px-3 py-1.5 text-sm rounded-lg border " +
-              (lang === "en" ? "border-[var(--sand)]" : "border-[var(--line)]")
-            }
-            type="button"
-          >
-            EN
-          </button>
-        </div>
+  {/* LANG */}
+  <button
+    onClick={() => setLang("cs")}
+    className={
+      "px-3 py-1.5 text-sm rounded-lg border " +
+      (lang === "cs" ? "border-[var(--sand)]" : "border-[var(--line)]")
+    }
+    type="button"
+  >
+    CZ
+  </button>
+
+  <button
+    onClick={() => setLang("en")}
+    className={
+      "px-3 py-1.5 text-sm rounded-lg border " +
+      (lang === "en" ? "border-[var(--sand)]" : "border-[var(--line)]")
+    }
+    type="button"
+  >
+    EN
+  </button>
+</div>
+
       </div>
     </header>
   );
