@@ -1384,11 +1384,12 @@ const bg = "assets/img/hero/finished-hero.webp";
       <Hero t={t} small bg={bg} title={t.finishedH} />
 
       <section className="max-w-6xl mx-auto px-4 py-16 reveal">
-        <p className="text-[var(--muted)] max-w-3xl mb-8">
-          Nabízíme několik základních typů hotového stínění, které umíme dále
-          přizpůsobit vašemu prostoru. Každý typ má své optimální použití od
-          ložnicového zatemnění až po jemné vrstvení ve společenských místnostech.
-        </p>
+       <p className="text-[var(--muted)] max-w-3xl mb-8 mx-auto text-center">
+  Nabízíme několik základních typů hotového stínění, které umíme dále
+  přizpůsobit vašemu prostoru. Každý typ má své optimální použití – od
+  ložnicového zatemnění až po jemné vrstvení ve společenských místnostech.
+</p>
+
 
        <div className="max-w-4xl mx-auto mt-10">
   <div className="rounded-2xl border border-dashed border-[var(--line)] bg-[var(--bg2)] p-10 text-center soft-shadow">
@@ -1434,11 +1435,12 @@ function Essences({ t }) {
       <Hero t={t} small bg={bg} title={t.essenceH} />
 
       <section className="max-w-6xl mx-auto px-4 py-16 reveal">
-        <p className="text-[var(--muted)] max-w-3xl mb-8">
-          Vůně jemně doplňuje vizuální dojem z prostoru. Pomáhá dotvořit atmosféru,
-          která se pojí se světlem, látkou i rytmem dne. Vybrané esence používáme
-          jako nenápadný, ale výrazný prvek celkového vnímání interiéru.
-        </p>
+       <p className="text-[var(--muted)] max-w-3xl mb-8 mx-auto text-center">
+  Vůně jemně doplňuje vizuální dojem z prostoru. Pomáhá dotvořit atmosféru,
+  která se pojí se světlem, látkou i rytmem dne. Vybrané esence používáme
+  jako nenápadný, ale výrazný prvek celkového vnímání interiéru.
+</p>
+
 
        <div className="max-w-3xl mx-auto mt-10">
   <div className="rounded-2xl border border-dashed border-[var(--line)] bg-[var(--bg2)] p-8 text-center soft-shadow">
