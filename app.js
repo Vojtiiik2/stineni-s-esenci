@@ -56,11 +56,27 @@ const STR = {
     heroSub: "Záclony · Závěsy · Rolety · Esence",
     cta: "Kontaktujte nás",
     
-   heroSlides: [
-  { h1: "Kde se světlo setká s emocí", bg: "assets/img/hero/hero-01.webp" },
-  { h1: "Stínění, které dává domovu klid", bg: "assets/img/hero/hero-02.webp" },
-  { h1: "Látka, světlo a detail v rovnováze", bg: "assets/img/hero/hero-03.webp" }
+  heroSlides: [
+  {
+    h1: "Kde se světlo setká s emocí",
+    bg: "assets/img/hero/hero-01.webp",
+    pos: "center",
+    posMobile: "center 60%"
+  },
+  {
+    h1: "Stínění, které dává domovu klid",
+    bg: "assets/img/hero/hero-02.webp",
+    pos: "center",
+    posMobile: "center 55%"
+  },
+  {
+    h1: "Látka, světlo a detail v rovnováze",
+    bg: "assets/img/hero/hero-03.webp",
+    pos: "center",
+    posMobile: "center 50%"
+  }
 ],
+
 
 
 
