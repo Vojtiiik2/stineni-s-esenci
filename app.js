@@ -990,7 +990,7 @@ function Pricing({ t }) {
           {
             key: "latkova",
             label: "Látková roleta",
-            img: (t.priceImgs && t.priceImgs[3]) || "assets/img/pricing/pricing-03.webp",
+           img: "assets/img/pricing/roleta-latkova.webp",
             micro: "Regulace světla, jednoduchost.",
             intro:
               "Praktické řešení s čistými liniemi. Vhodné pro kuchyně, koupelny, pracovny/kanceláře.",
@@ -1009,7 +1009,7 @@ function Pricing({ t }) {
           {
             key: "rimska",
             label: "Římská roleta",
-            img: (t.priceImgs && t.priceImgs[3]) || "assets/img/pricing/pricing-03.webp",
+            img: "assets/img/pricing/roleta-rimska.webp",
             micro: "Měkká textilní vrstva, dekor a klid.",
             intro:
               "Textilní roleta s výrazem závěsu. Hodí se tam, kde chcete měkký dojem a čistý tvar bez dlouhých záclon či závěsů.",
@@ -1028,7 +1028,7 @@ function Pricing({ t }) {
           {
             key: "plisse",
             label: "Plissé roleta",
-            img: (t.priceImgs && t.priceImgs[3]) || "assets/img/pricing/pricing-03.webp",
+           img: "assets/img/pricing/roleta-plisse.webp",
             micro: "Přesné dávkování světla. Skvělé i na atypy.",
             intro:
               "Plissé je skladaná roleta vhodná i na atypická okna. Umožňuje stínit shora i zdola a velmi přesně regulovat světlo.",
