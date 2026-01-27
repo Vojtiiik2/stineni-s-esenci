@@ -977,7 +977,7 @@ function Pricing({ t }) {
       {
         key: "roleta",
         title: "Rolety",
-        img: (t.priceImgs && t.priceImgs[3]) || "assets/img/pricing/pricing-03.webp",
+        img: "assets/img/pricing/roleta-latkova.webp",
         vibe: "Čisté linie. Funkce bez kompromisu.",
 
         // ✅ tyhle 2 řádky se používají na kartě v přehledu (necháváme stejné)
