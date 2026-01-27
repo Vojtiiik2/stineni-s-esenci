@@ -278,118 +278,223 @@ function go(path = "/") {
 
 
 const Header = ({ t, lang, setLang }) => {
+  const [open, setOpen] = React.useState(false);
+
+  // zavřít menu při přechodu (ať to nezůstává viset)
+  const navItems = t.nav.map((label, i) => ({
+    label,
+    path: ["/process", "/pricing", "/gallery", "/finished", "/essences", "/contact"][i],
+  }));
+
+  // ESC zavře drawer
+  React.useEffect(() => {
+    if (!open) return;
+    const onKey = (e) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [open]);
+
   return (
     <header className="fixed top-0 left-0 right-0 z-30 border-b border-[var(--line)]/70 bg-white/70 backdrop-blur-md">
       <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between reveal">
         {/* BRAND */}
-        <div className="leading-4 cursor-pointer" onClick={() => go("/")}>
-          <div
-            className="script text-2xl -mb-0.5"
-            style={{ color: "var(--brand-brown-dark)" }}
-          >
+        <div
+          className="leading-4 cursor-pointer select-none"
+          onClick={() => {
+            setOpen(false);
+            go("/");
+          }}
+        >
+          <div className="script text-2xl -mb-0.5" style={{ color: "var(--brand-brown-dark)" }}>
             {t.brand2}
           </div>
-
-          <div
-            className="text-xs tracking-wide"
-            style={{ color: "var(--brand-brown-light)" }}
-          >
+          <div className="text-xs tracking-wide" style={{ color: "var(--brand-brown-light)" }}>
             {t.brand1}
           </div>
         </div>
 
-        {/* NAV */}
+        {/* NAV (desktop) */}
         <nav className="hidden md:flex gap-6 text-sm font-semibold">
-          {t.nav.map((label, i) => {
-            const path = [
-              "/process",
-              "/pricing",
-              "/gallery",
-              "/finished",
-              "/essences",
-              "/contact"
-            ][i];
-
-            return (
-              <button
-                key={i}
-                onClick={() => go(path)}
-                className="relative group hover:text-[var(--text)]/90 text-[var(--text)]/75"
-                type="button"
-              >
-                <span>{label}</span>
-              </button>
-            );
-          })}
+          {navItems.map((x, i) => (
+            <button
+              key={i}
+              onClick={() => go(x.path)}
+              className="relative group hover:text-[var(--text)]/90 text-[var(--text)]/75"
+              type="button"
+            >
+              <span>{x.label}</span>
+            </button>
+          ))}
         </nav>
 
-        {/* LANG */}
-       {/* RIGHT ACTIONS: telefon + jazyk */}
-<div className="flex items-center gap-2">
-  {/* Telefon (desktop: ikona + číslo, mobil: jen ikona) */}
-  <a
-  href="tel:+420724379309"
-  className="inline-flex items-center gap-2 px-3 py-1.5 text-sm rounded-lg border border-[var(--line)] text-[var(--text)] hover:bg-[var(--bg2)] hover:border-[var(--sand)] transition"
-  aria-label="Zavolat +420 724 379 309"
->
-  {/* elegantní ikonka telefonu */}
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="1.5"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className="w-4 h-4"
-    aria-hidden="true"
-  >
-    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 
-    19.8 19.8 0 0 1-8.63-3.07 
-    19.5 19.5 0 0 1-6-6 
-    19.8 19.8 0 0 1-3.07-8.67 
-    A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 
-    12.3 12.3 0 0 0 .7 2.81 
-    2 2 0 0 1-.45 2.11L8.09 9.91 
-    a16 16 0 0 0 6 6l1.27-1.27 
-    a2 2 0 0 1 2.11-.45 
-    12.3 12.3 0 0 0 2.81.7 
-    A2 2 0 0 1 22 16.92z" />
-  </svg>
+        {/* RIGHT ACTIONS */}
+        <div className="flex items-center gap-2">
+          {/* Telefon */}
+          <a
+            href="tel:+420724379309"
+            className="inline-flex items-center gap-2 px-3 py-1.5 text-sm rounded-lg border border-[var(--line)] text-[var(--text)] hover:bg-[var(--bg2)] hover:border-[var(--sand)] transition"
+            aria-label="Zavolat +420 724 379 309"
+          >
+            {/* ikonka telefonu - bez červené, bere currentColor */}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="w-4 h-4"
+              aria-hidden="true"
+            >
+              <path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 
+                19.8 19.8 0 0 1-8.63-3.07 
+                19.5 19.5 0 0 1-6-6 
+                19.8 19.8 0 0 1-3.07-8.67 
+                A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 
+                12.3 12.3 0 0 0 .7 2.81 
+                2 2 0 0 1-.45 2.11L8.09 9.91 
+                a16 16 0 0 0 6 6l1.27-1.27 
+                a2 2 0 0 1 2.11-.45 
+                12.3 12.3 0 0 0 2.81.7 
+                A2 2 0 0 1 22 16.92z"
+              />
+            </svg>
+            <span className="hidden lg:inline">+420&nbsp;724&nbsp;379&nbsp;309</span>
+          </a>
 
-  {/* číslo jen na větších obrazovkách */}
-  <span className="hidden lg:inline">+420&nbsp;724&nbsp;379&nbsp;309</span>
-</a>
+          {/* LANG (desktop) */}
+          <div className="hidden md:flex items-center gap-2">
+            <button
+              onClick={() => setLang("cs")}
+              className={
+                "px-3 py-1.5 text-sm rounded-lg border " +
+                (lang === "cs" ? "border-[var(--sand)]" : "border-[var(--line)]")
+              }
+              type="button"
+            >
+              CZ
+            </button>
+            <button
+              onClick={() => setLang("en")}
+              className={
+                "px-3 py-1.5 text-sm rounded-lg border " +
+                (lang === "en" ? "border-[var(--sand)]" : "border-[var(--line)]")
+              }
+              type="button"
+            >
+              EN
+            </button>
+          </div>
 
-
-  {/* LANG */}
-  <button
-    onClick={() => setLang("cs")}
-    className={
-      "px-3 py-1.5 text-sm rounded-lg border " +
-      (lang === "cs" ? "border-[var(--sand)]" : "border-[var(--line)]")
-    }
-    type="button"
-  >
-    CZ
-  </button>
-
-  <button
-    onClick={() => setLang("en")}
-    className={
-      "px-3 py-1.5 text-sm rounded-lg border " +
-      (lang === "en" ? "border-[var(--sand)]" : "border-[var(--line)]")
-    }
-    type="button"
-  >
-    EN
-  </button>
-</div>
-
+          {/* HAMBURGER (mobile) */}
+          <button
+            type="button"
+            onClick={() => setOpen(true)}
+            className="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg border border-[var(--line)] hover:bg-[var(--bg2)] transition"
+            aria-label="Otevřít menu"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.6"
+              strokeLinecap="round"
+              className="w-5 h-5"
+              aria-hidden="true"
+            >
+              <path d="M4 7h16M4 12h16M4 17h16" />
+            </svg>
+          </button>
+        </div>
       </div>
+
+      {/* MOBILE DRAWER */}
+      {open ? (
+        <div className="md:hidden fixed inset-0 z-[999]">
+          {/* overlay */}
+          <div
+            className="absolute inset-0 bg-black/40"
+            onClick={() => setOpen(false)}
+            aria-hidden="true"
+          />
+
+          {/* panel */}
+          <div className="absolute top-0 right-0 h-full w-[86vw] max-w-sm bg-white border-l border-[var(--line)] soft-shadow">
+            <div className="h-16 px-4 flex items-center justify-between border-b border-[var(--line)]">
+              <div className="text-sm font-semibold">Menu</div>
+              <button
+                type="button"
+                onClick={() => setOpen(false)}
+                className="rounded-lg px-3 py-1.5 text-sm border border-[var(--line)] hover:bg-[var(--bg2)] transition"
+              >
+                Zavřít
+              </button>
+            </div>
+
+            <div className="p-4">
+              <div className="grid gap-2">
+                {navItems.map((x, i) => (
+                  <button
+                    key={i}
+                    type="button"
+                    onClick={() => {
+                      setOpen(false);
+                      go(x.path);
+                    }}
+                    className="text-left px-3 py-3 rounded-xl border border-[var(--line)] hover:bg-[var(--bg2)] transition text-[var(--text)]"
+                  >
+                    {x.label}
+                  </button>
+                ))}
+              </div>
+
+              <div className="mt-5 pt-5 border-t border-[var(--line)]">
+                <div className="text-xs uppercase tracking-wide text-[var(--muted)] mb-2">
+                  Jazyk
+                </div>
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => setLang("cs")}
+                    className={
+                      "flex-1 px-3 py-2.5 text-sm rounded-lg border " +
+                      (lang === "cs" ? "border-[var(--sand)]" : "border-[var(--line)]")
+                    }
+                    type="button"
+                  >
+                    CZ
+                  </button>
+                  <button
+                    onClick={() => setLang("en")}
+                    className={
+                      "flex-1 px-3 py-2.5 text-sm rounded-lg border " +
+                      (lang === "en" ? "border-[var(--sand)]" : "border-[var(--line)]")
+                    }
+                    type="button"
+                  >
+                    EN
+                  </button>
+                </div>
+
+                <a
+                  href="tel:+420724379309"
+                  className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold border border-[var(--line)] hover:bg-[var(--bg2)] transition"
+                >
+                  Zavolat +420&nbsp;724&nbsp;379&nbsp;309
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : null}
     </header>
   );
 };
+
 
 function Hero({ t, small = false, showCta = false, intervalMs = 8000, bg, title }) {
   const slides = t.heroSlides || [];
