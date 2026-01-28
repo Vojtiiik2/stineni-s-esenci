@@ -296,7 +296,14 @@ function go(path = "/") {
 const Header = ({ t, lang, setLang }) => {
   const [menuOpen, setMenuOpen] = React.useState(false);
 
-  const navPaths = [
+  React.useEffect(() => {
+    // zamknout scroll když je menu otevřené
+    if (menuOpen) document.body.style.overflow = "hidden";
+    else document.body.style.overflow = "";
+    return () => (document.body.style.overflow = "");
+  }, [menuOpen]);
+
+  const NAV_PATHS = [
     "/process",
     "/pricing",
     "/gallery",
@@ -306,178 +313,148 @@ const Header = ({ t, lang, setLang }) => {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-30 border-b border-[var(--line)]/70 bg-white/70 backdrop-blur-md">
-      <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between reveal">
-        {/* BRAND */}
-        <div className="leading-4 cursor-pointer" onClick={() => go("/")}>
-          <div
-            className="script text-2xl -mb-0.5"
-            style={{ color: "var(--brand-brown-dark)" }}
-          >
-            {t.brand2}
+    <>
+      <header className="fixed top-0 left-0 right-0 z-30 border-b border-[var(--line)]/70 bg-white/70 backdrop-blur-md">
+        <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between reveal">
+          {/* BRAND */}
+          <div className="leading-4 cursor-pointer" onClick={() => go("/")}>
+            <div className="script text-2xl -mb-0.5" style={{ color: "var(--brand-brown-dark)" }}>
+              {t.brand2}
+            </div>
+            <div className="text-xs tracking-wide" style={{ color: "var(--brand-brown-light)" }}>
+              {t.brand1}
+            </div>
           </div>
 
-          <div
-            className="text-xs tracking-wide"
-            style={{ color: "var(--brand-brown-light)" }}
-          >
-            {t.brand1}
-          </div>
-        </div>
+          {/* NAV (desktop) */}
+          <nav className="hidden md:flex gap-6 text-sm font-semibold">
+            {t.nav.map((label, i) => (
+              <button
+                key={i}
+                onClick={() => go(NAV_PATHS[i])}
+                className="relative group hover:text-[var(--text)]/90 text-[var(--text)]/75"
+                type="button"
+              >
+                <span>{label}</span>
+              </button>
+            ))}
+          </nav>
 
-        {/* NAV desktop */}
-        <nav className="hidden md:flex gap-6 text-sm font-semibold">
-          {t.nav.map((label, i) => (
+          {/* RIGHT ACTIONS (mobil i desktop) */}
+          <div className="flex items-center gap-2">
+            {/* Telefon */}
+            <a
+              href="tel:+420724379309"
+              className="inline-flex items-center gap-2 px-3 py-1.5 text-sm rounded-lg border border-[var(--line)] bg-white text-[var(--text)] hover:bg-[var(--bg2)] hover:border-[var(--sand)] transition"
+              aria-label="Zavolat +420 724 379 309"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="w-4 h-4"
+                aria-hidden="true"
+              >
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 
+                19.8 19.8 0 0 1-8.63-3.07 
+                19.5 19.5 0 0 1-6-6 
+                19.8 19.8 0 0 1-3.07-8.67 
+                A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 
+                12.3 12.3 0 0 0 .7 2.81 
+                2 2 0 0 1-.45 2.11L8.09 9.91 
+                a16 16 0 0 0 6 6l1.27-1.27 
+                a2 2 0 0 1 2.11-.45 
+                12.3 12.3 0 0 0 2.81.7 
+                A2 2 0 0 1 22 16.92z" />
+              </svg>
+              <span className="hidden lg:inline">+420&nbsp;724&nbsp;379&nbsp;309</span>
+            </a>
+
+            {/* ❌ jazyk pryč z lišty */}
+            {/* ✅ hamburger */}
             <button
-              key={i}
-              onClick={() => go(navPaths[i])}
-              className="relative group hover:text-[var(--text)]/90 text-[var(--text)]/75"
               type="button"
+              onClick={() => setMenuOpen(true)}
+              className="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-[var(--line)] bg-white hover:bg-[var(--bg2)] hover:border-[var(--sand)] transition"
+              aria-label="Otevřít menu"
             >
-              <span>{label}</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                <path d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
             </button>
-          ))}
-        </nav>
-
-        {/* RIGHT ACTIONS */}
-        <div className="flex items-center gap-2">
-          {/* Telefon – vždy ikona, číslo jen na velkých */}
-          <a
-            href="tel:+420724379309"
-            className="inline-flex items-center gap-2 px-3 py-1.5 text-sm rounded-lg border border-[var(--line)] text-[var(--text)] hover:bg-[var(--bg2)] hover:border-[var(--sand)] transition"
-            aria-label="Zavolat +420 724 379 309"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="w-4 h-4"
-              aria-hidden="true"
-            >
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 
-              19.8 19.8 0 0 1-8.63-3.07 
-              19.5 19.5 0 0 1-6-6 
-              19.8 19.8 0 0 1-3.07-8.67 
-              A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 
-              12.3 12.3 0 0 0 .7 2.81 
-              2 2 0 0 1-.45 2.11L8.09 9.91 
-              a16 16 0 0 0 6 6l1.27-1.27 
-              a2 2 0 0 1 2.11-.45 
-              12.3 12.3 0 0 0 2.81.7 
-              A2 2 0 0 1 22 16.92z" />
-            </svg>
-
-            <span className="hidden lg:inline">+420&nbsp;724&nbsp;379&nbsp;309</span>
-          </a>
-
-          {/* Hamburger – na mobilu hlavní navigace (a schovaný jazyk) */}
-          <button
-            type="button"
-            onClick={() => setMenuOpen(true)}
-            className="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-[var(--line)] hover:bg-[var(--bg2)] hover:border-[var(--sand)] transition md:hidden"
-            aria-label="Otevřít menu"
-          >
-            {/* ikonka menu */}
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.8"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="w-5 h-5"
-              aria-hidden="true"
-            >
-              <path d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
-
-          {/* Desktop: nechám jazyk schovaný úplně do menu taky (ať je všude stejné) */}
-          <button
-            type="button"
-            onClick={() => setMenuOpen(true)}
-            className="hidden md:inline-flex items-center justify-center rounded-lg border border-[var(--line)] px-3 py-1.5 text-sm hover:bg-[var(--bg2)] hover:border-[var(--sand)] transition"
-          >
-            Menu
-          </button>
+          </div>
         </div>
-      </div>
+      </header>
 
-      {/* MOBILE/DESKTOP MENU OVERLAY */}
+      {/* MOBILE MENU OVERLAY */}
       {menuOpen && (
-        <div className="fixed inset-0 z-40">
+        <div className="fixed inset-0 z-50">
           {/* backdrop */}
-          <button
+          <div
             className="absolute inset-0 bg-black/30"
             onClick={() => setMenuOpen(false)}
-            aria-label="Zavřít menu"
-            type="button"
           />
 
-          {/* panel */}
+          {/* panel – neprůhledně bílý */}
           <div className="absolute top-0 right-0 h-full w-[88%] max-w-sm bg-white shadow-xl border-l border-[var(--line)]">
             <div className="h-16 px-4 flex items-center justify-between border-b border-[var(--line)]">
               <div className="font-semibold">Menu</div>
               <button
                 type="button"
                 onClick={() => setMenuOpen(false)}
-                className="px-3 py-1.5 text-sm rounded-lg border border-[var(--line)] hover:bg-[var(--bg2)] transition"
+                className="px-3 py-1.5 text-sm rounded-lg border border-[var(--line)] bg-white hover:bg-[var(--bg2)] transition"
               >
                 Zavřít
               </button>
             </div>
 
-            <div className="p-4 space-y-4">
-              {/* NAV items */}
-              <div className="space-y-2">
-                {t.nav.map((label, i) => (
-                  <button
-                    key={i}
-                    type="button"
-                    onClick={() => {
-                      setMenuOpen(false);
-                      go(navPaths[i]);
-                    }}
-                    className="w-full text-left rounded-xl border border-[var(--line)] px-4 py-4 hover:bg-[var(--bg2)] transition"
-                  >
-                    {label}
-                  </button>
-                ))}
-              </div>
+            <div className="p-4 space-y-3">
+              {/* NAV */}
+              {t.nav.map((label, i) => (
+                <button
+                  key={i}
+                  type="button"
+                  onClick={() => {
+                    setMenuOpen(false);
+                    go(NAV_PATHS[i]);
+                  }}
+                  className="w-full text-left rounded-xl border border-[var(--line)] bg-white px-4 py-4 hover:bg-[var(--bg2)] transition"
+                >
+                  {label}
+                </button>
+              ))}
 
-              {/* LANG */}
-              <div className="rounded-2xl border border-[var(--line)] p-4">
-                <div className="text-xs tracking-widest text-[var(--muted)] mb-2">
+              {/* LANG BOX */}
+              <div className="rounded-2xl border border-[var(--line)] bg-white p-4">
+                <div className="text-xs tracking-widest text-[var(--muted)] mb-3">
                   JAZYK
                 </div>
-                <div className="grid grid-cols-2 gap-2">
+                <div className="grid grid-cols-2 gap-3">
                   <button
+                    type="button"
                     onClick={() => setLang("cs")}
                     className={
-                      "px-3 py-2 rounded-xl border text-sm " +
+                      "rounded-xl border px-4 py-3 font-semibold transition " +
                       (lang === "cs"
-                        ? "border-[var(--sand)] bg-[var(--bg2)] font-semibold"
-                        : "border-[var(--line)] hover:bg-[var(--bg2)]")
+                        ? "border-[var(--sand)] bg-[var(--bg2)]"
+                        : "border-[var(--line)] bg-white hover:bg-[var(--bg2)]")
                     }
-                    type="button"
                   >
                     CZ
                   </button>
-
                   <button
+                    type="button"
                     onClick={() => setLang("en")}
                     className={
-                      "px-3 py-2 rounded-xl border text-sm " +
+                      "rounded-xl border px-4 py-3 font-semibold transition " +
                       (lang === "en"
-                        ? "border-[var(--sand)] bg-[var(--bg2)] font-semibold"
-                        : "border-[var(--line)] hover:bg-[var(--bg2)]")
+                        ? "border-[var(--sand)] bg-[var(--bg2)]"
+                        : "border-[var(--line)] bg-white hover:bg-[var(--bg2)]")
                     }
-                    type="button"
                   >
                     EN
                   </button>
@@ -487,7 +464,7 @@ const Header = ({ t, lang, setLang }) => {
               {/* CALL */}
               <a
                 href="tel:+420724379309"
-                className="block text-center rounded-2xl border border-[var(--line)] px-4 py-4 font-semibold hover:bg-[var(--bg2)] hover:border-[var(--sand)] transition"
+                className="block text-center rounded-2xl border border-[var(--line)] bg-white px-4 py-4 font-semibold hover:bg-[var(--bg2)] hover:border-[var(--sand)] transition"
               >
                 Zavolat +420 724 379 309
               </a>
@@ -495,9 +472,10 @@ const Header = ({ t, lang, setLang }) => {
           </div>
         </div>
       )}
-    </header>
+    </>
   );
 };
+
 
 
 
