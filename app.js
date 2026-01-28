@@ -296,160 +296,209 @@ function go(path = "/") {
 const Header = ({ t, lang, setLang }) => {
   const [menuOpen, setMenuOpen] = React.useState(false);
 
-  // zamkni scroll pozadí, když je menu otevřené
-  React.useEffect(() => {
-    document.body.style.overflow = menuOpen ? "hidden" : "";
-    return () => (document.body.style.overflow = "");
-  }, [menuOpen]);
-
-  const navPaths = ["/process", "/pricing", "/gallery", "/finished", "/essences", "/contact"];
+  const navPaths = [
+    "/process",
+    "/pricing",
+    "/gallery",
+    "/finished",
+    "/essences",
+    "/contact"
+  ];
 
   return (
-    <>
-      <header className="fixed top-0 left-0 right-0 z-30 border-b border-[var(--line)]/70 bg-white/70 backdrop-blur-md">
-        <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-          {/* BRAND */}
-          <div className="leading-4 cursor-pointer" onClick={() => { setMenuOpen(false); go("/"); }}>
-            <div className="script text-2xl -mb-0.5" style={{ color: "var(--brand-brown-dark)" }}>
-              {t.brand2}
-            </div>
-            <div className="text-xs tracking-wide" style={{ color: "var(--brand-brown-light)" }}>
-              {t.brand1}
-            </div>
+    <header className="fixed top-0 left-0 right-0 z-30 border-b border-[var(--line)]/70 bg-white/70 backdrop-blur-md">
+      <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between reveal">
+        {/* BRAND */}
+        <div className="leading-4 cursor-pointer" onClick={() => go("/")}>
+          <div
+            className="script text-2xl -mb-0.5"
+            style={{ color: "var(--brand-brown-dark)" }}
+          >
+            {t.brand2}
           </div>
 
-          {/* NAV (desktop) */}
-          <nav className="hidden md:flex gap-6 text-sm font-semibold">
-            {t.nav.map((label, i) => (
-              <button
-                key={i}
-                onClick={() => go(navPaths[i])}
-                className="relative group hover:text-[var(--text)]/90 text-[var(--text)]/75"
-                type="button"
-              >
-                <span>{label}</span>
-              </button>
-            ))}
-          </nav>
-
-          {/* RIGHT ACTIONS */}
-          <div className="flex items-center gap-2">
-            {/* Telefon */}
-            <a
-              href="tel:+420724379309"
-              className="inline-flex items-center gap-2 px-3 py-1.5 text-sm rounded-lg border border-[var(--line)] text-[var(--text)] hover:bg-[var(--bg2)] hover:border-[var(--sand)] transition"
-              aria-label="Zavolat +420 724 379 309"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="w-4 h-4"
-                aria-hidden="true"
-              >
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 
-                19.8 19.8 0 0 1-8.63-3.07 
-                19.5 19.5 0 0 1-6-6 
-                19.8 19.8 0 0 1-3.07-8.67 
-                A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 
-                12.3 12.3 0 0 0 .7 2.81 
-                2 2 0 0 1-.45 2.11L8.09 9.91 
-                a16 16 0 0 0 6 6l1.27-1.27 
-                a2 2 0 0 1 2.11-.45 
-                12.3 12.3 0 0 0 2.81.7 
-                A2 2 0 0 1 22 16.92z" />
-              </svg>
-              <span className="hidden lg:inline">+420&nbsp;724&nbsp;379&nbsp;309</span>
-            </a>
-
-            {/* Jazyk – nech jen v headeru */}
-            <button
-              onClick={() => setLang("cs")}
-              className={"px-3 py-1.5 text-sm rounded-lg border " + (lang === "cs" ? "border-[var(--sand)]" : "border-[var(--line)]")}
-              type="button"
-            >
-              CZ
-            </button>
-            <button
-              onClick={() => setLang("en")}
-              className={"px-3 py-1.5 text-sm rounded-lg border " + (lang === "en" ? "border-[var(--sand)]" : "border-[var(--line)]")}
-              type="button"
-            >
-              EN
-            </button>
-
-            {/* Hamburger – jen na mobilu */}
-            <button
-              type="button"
-              onClick={() => setMenuOpen(true)}
-              className="md:hidden px-3 py-1.5 text-sm rounded-lg border border-[var(--line)] hover:bg-[var(--bg2)] transition"
-              aria-label="Otevřít menu"
-            >
-              ☰
-            </button>
+          <div
+            className="text-xs tracking-wide"
+            style={{ color: "var(--brand-brown-light)" }}
+          >
+            {t.brand1}
           </div>
         </div>
-      </header>
 
-      {/* MOBILE MENU OVERLAY */}
-      {menuOpen && (
-        <div className="fixed inset-0 z-[999]">
-          {/* backdrop */}
+        {/* NAV desktop */}
+        <nav className="hidden md:flex gap-6 text-sm font-semibold">
+          {t.nav.map((label, i) => (
+            <button
+              key={i}
+              onClick={() => go(navPaths[i])}
+              className="relative group hover:text-[var(--text)]/90 text-[var(--text)]/75"
+              type="button"
+            >
+              <span>{label}</span>
+            </button>
+          ))}
+        </nav>
+
+        {/* RIGHT ACTIONS */}
+        <div className="flex items-center gap-2">
+          {/* Telefon – vždy ikona, číslo jen na velkých */}
+          <a
+            href="tel:+420724379309"
+            className="inline-flex items-center gap-2 px-3 py-1.5 text-sm rounded-lg border border-[var(--line)] text-[var(--text)] hover:bg-[var(--bg2)] hover:border-[var(--sand)] transition"
+            aria-label="Zavolat +420 724 379 309"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="w-4 h-4"
+              aria-hidden="true"
+            >
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 
+              19.8 19.8 0 0 1-8.63-3.07 
+              19.5 19.5 0 0 1-6-6 
+              19.8 19.8 0 0 1-3.07-8.67 
+              A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 
+              12.3 12.3 0 0 0 .7 2.81 
+              2 2 0 0 1-.45 2.11L8.09 9.91 
+              a16 16 0 0 0 6 6l1.27-1.27 
+              a2 2 0 0 1 2.11-.45 
+              12.3 12.3 0 0 0 2.81.7 
+              A2 2 0 0 1 22 16.92z" />
+            </svg>
+
+            <span className="hidden lg:inline">+420&nbsp;724&nbsp;379&nbsp;309</span>
+          </a>
+
+          {/* Hamburger – na mobilu hlavní navigace (a schovaný jazyk) */}
           <button
             type="button"
-            className="absolute inset-0 bg-black/35"
+            onClick={() => setMenuOpen(true)}
+            className="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-[var(--line)] hover:bg-[var(--bg2)] hover:border-[var(--sand)] transition md:hidden"
+            aria-label="Otevřít menu"
+          >
+            {/* ikonka menu */}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="w-5 h-5"
+              aria-hidden="true"
+            >
+              <path d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+
+          {/* Desktop: nechám jazyk schovaný úplně do menu taky (ať je všude stejné) */}
+          <button
+            type="button"
+            onClick={() => setMenuOpen(true)}
+            className="hidden md:inline-flex items-center justify-center rounded-lg border border-[var(--line)] px-3 py-1.5 text-sm hover:bg-[var(--bg2)] hover:border-[var(--sand)] transition"
+          >
+            Menu
+          </button>
+        </div>
+      </div>
+
+      {/* MOBILE/DESKTOP MENU OVERLAY */}
+      {menuOpen && (
+        <div className="fixed inset-0 z-40">
+          {/* backdrop */}
+          <button
+            className="absolute inset-0 bg-black/30"
             onClick={() => setMenuOpen(false)}
             aria-label="Zavřít menu"
+            type="button"
           />
 
           {/* panel */}
-          <div
-            className="absolute left-0 right-0 top-0 bg-white border-b border-[var(--line)] soft-shadow"
-            style={{ paddingTop: "calc(env(safe-area-inset-top, 0px) + 12px)" }}
-          >
-            <div className="max-w-6xl mx-auto px-4 pb-4">
-              <div className="flex items-center justify-between">
-                <div className="font-semibold">Menu</div>
-                <button
-                  type="button"
-                  onClick={() => setMenuOpen(false)}
-                  className="px-3 py-1.5 text-sm rounded-lg border border-[var(--line)] hover:bg-[var(--bg2)] transition"
-                >
-                  Zavřít
-                </button>
-              </div>
+          <div className="absolute top-0 right-0 h-full w-[88%] max-w-sm bg-white shadow-xl border-l border-[var(--line)]">
+            <div className="h-16 px-4 flex items-center justify-between border-b border-[var(--line)]">
+              <div className="font-semibold">Menu</div>
+              <button
+                type="button"
+                onClick={() => setMenuOpen(false)}
+                className="px-3 py-1.5 text-sm rounded-lg border border-[var(--line)] hover:bg-[var(--bg2)] transition"
+              >
+                Zavřít
+              </button>
+            </div>
 
-              <div className="mt-4 grid gap-3">
+            <div className="p-4 space-y-4">
+              {/* NAV items */}
+              <div className="space-y-2">
                 {t.nav.map((label, i) => (
                   <button
                     key={i}
                     type="button"
-                    onClick={() => { setMenuOpen(false); go(navPaths[i]); }}
-                    className="w-full text-left px-4 py-4 rounded-2xl border border-[var(--line)] bg-white hover:bg-[var(--bg2)] transition font-semibold"
+                    onClick={() => {
+                      setMenuOpen(false);
+                      go(navPaths[i]);
+                    }}
+                    className="w-full text-left rounded-xl border border-[var(--line)] px-4 py-4 hover:bg-[var(--bg2)] transition"
                   >
                     {label}
                   </button>
                 ))}
-
-                <a
-                  href="tel:+420724379309"
-                  className="w-full text-center px-4 py-4 rounded-2xl border border-[var(--line)] bg-[var(--bg2)] hover:border-[var(--sand)] transition font-semibold"
-                  onClick={() => setMenuOpen(false)}
-                >
-                  Zavolat +420 724 379 309
-                </a>
               </div>
+
+              {/* LANG */}
+              <div className="rounded-2xl border border-[var(--line)] p-4">
+                <div className="text-xs tracking-widest text-[var(--muted)] mb-2">
+                  JAZYK
+                </div>
+                <div className="grid grid-cols-2 gap-2">
+                  <button
+                    onClick={() => setLang("cs")}
+                    className={
+                      "px-3 py-2 rounded-xl border text-sm " +
+                      (lang === "cs"
+                        ? "border-[var(--sand)] bg-[var(--bg2)] font-semibold"
+                        : "border-[var(--line)] hover:bg-[var(--bg2)]")
+                    }
+                    type="button"
+                  >
+                    CZ
+                  </button>
+
+                  <button
+                    onClick={() => setLang("en")}
+                    className={
+                      "px-3 py-2 rounded-xl border text-sm " +
+                      (lang === "en"
+                        ? "border-[var(--sand)] bg-[var(--bg2)] font-semibold"
+                        : "border-[var(--line)] hover:bg-[var(--bg2)]")
+                    }
+                    type="button"
+                  >
+                    EN
+                  </button>
+                </div>
+              </div>
+
+              {/* CALL */}
+              <a
+                href="tel:+420724379309"
+                className="block text-center rounded-2xl border border-[var(--line)] px-4 py-4 font-semibold hover:bg-[var(--bg2)] hover:border-[var(--sand)] transition"
+              >
+                Zavolat +420 724 379 309
+              </a>
             </div>
           </div>
         </div>
       )}
-    </>
+    </header>
   );
 };
+
 
 
 
@@ -529,9 +578,7 @@ function Hero({ t, small = false, showCta = false, intervalMs = 8000, bg, title 
     <section
       className={
         // ✅ výška: na mobilu ať to není brutálně vysoké, ale pořád hero
-        (small
-          ? "min-h-[42vh] md:min-h-[42vh]"
-          : "min-h-[78vh] md:min-h-[92vh]") +
+        (small ? "min-h-[42vh]" : "min-h-[70vh] md:min-h-[92vh]") +
         " relative flex items-center overflow-hidden"
       }
     >
