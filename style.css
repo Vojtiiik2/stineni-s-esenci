@@ -164,21 +164,6 @@ article,
   border-radius: 20px;
   overflow: hidden;
 }
-/* ===== HERO ===== */
-.hero {
-  min-height: 82vh;           /* mobil – hero je dominantní */
-}
-
-.hero--small {
-  min-height: 44vh;
-}
-
-/* desktop */
-@media (min-width: 768px) {
-  .hero {
-    min-height: 92vh;
-  }
-}
 
 
 
