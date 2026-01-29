@@ -1477,25 +1477,26 @@ function OurWorkModal({ open, onClose, images }) {
           </div>
 
           <div className="ourwork-modal-body">
-            <div className="ourwork-grid-modal">
-              {images.map((src, i) => (
-                <a
-                  key={i}
-                  href={src}
-                  onClick={(e) => openLightbox(e, src)}
-                  className="group relative"
-                >
-                  <img
-                    src={src}
-                    alt={`Realizace ${i + 1}`}
-                    className="rounded-xl object-cover w-full h-full soft-shadow"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition rounded-xl" />
-                </a>
-              ))}
-            </div>
+           <div className="ourwork-modal-strip">
+  {images.map((src, i) => (
+    <a
+      key={i}
+      href={src}
+      onClick={(e) => openLightbox(e, src)}
+      className="ourwork-modal-item group relative"
+    >
+      <img
+        src={src}
+        alt={`Realizace ${i + 1}`}
+        className="ourwork-modal-img soft-shadow"
+        loading="lazy"
+        decoding="async"
+      />
+      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition rounded-xl" />
+    </a>
+  ))}
+</div>
+
           </div>
         </div>
       </div>
