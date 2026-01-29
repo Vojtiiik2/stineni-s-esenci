@@ -488,22 +488,6 @@ function Hero({ t, small = false, showCta = false, intervalMs = 8000, bg, title 
   const [stage, setStage] = React.useState("show");
   const timerRef = React.useRef(null);
 
-  // ✅ spolehlivá responsivní výška (funguje i bez Tailwindu)
-  const [isMdUp, setIsMdUp] = React.useState(() =>
-    typeof window !== "undefined" ? window.matchMedia("(min-width: 768px)").matches : false
-  );
-
-  React.useEffect(() => {
-    const mq = window.matchMedia("(min-width: 768px)");
-    const onChange = () => setIsMdUp(mq.matches);
-    if (mq.addEventListener) mq.addEventListener("change", onChange);
-    else mq.addListener(onChange);
-    return () => {
-      if (mq.removeEventListener) mq.removeEventListener("change", onChange);
-      else mq.removeListener(onChange);
-    };
-  }, []);
-
   React.useEffect(() => {
     if (small || slides.length < 2) return;
 
@@ -540,14 +524,15 @@ function Hero({ t, small = false, showCta = false, intervalMs = 8000, bg, title 
       ? "opacity-0 translate-y-2"
       : "opacity-100 translate-y-0";
 
-  const heroMinH = small
-    ? "42vh"
-    : (isMdUp ? "92vh" : "70vh"); // ✅ mobil nižší, desktop velký
-
   return (
     <section
-      className={"relative flex items-center overflow-hidden"}
-      style={{ minHeight: heroMinH }}
+      className={
+        // ✅ menší hero na mobilu, velké hero od md výš
+        (small
+          ? "min-h-[34vh] md:min-h-[42vh]"
+          : "min-h-[68vh] md:min-h-[92vh]") +
+        " relative flex items-center overflow-hidden"
+      }
     >
       <div
         className={
@@ -557,14 +542,19 @@ function Hero({ t, small = false, showCta = false, intervalMs = 8000, bg, title 
         style={{
           backgroundImage: `linear-gradient(to right, rgba(0,0,0,.25), rgba(0,0,0,.05)), url('${effectiveBg || ""}')`,
           backgroundSize: "cover",
+
+          // ✅ mobil: ukáž víc ze scény (méně „záclona přes celý ekran“)
+          // ✅ desktop: klasicky center
           backgroundPosition:
             effectiveBg?.includes("essence-hero")
               ? "center 65%"
-              : "center"
+              : "center 35%",
+
+          // když chceš ještě víc „nahoře“, dej místo 35% třeba 25%
         }}
       />
 
-      <div className="absolute inset-0 bg-gradient-to-b from-black/15 via-transparent to-black/20"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/25"></div>
 
       <div className="relative max-w-6xl mx-auto px-4 w-full">
         <div
@@ -574,9 +564,8 @@ function Hero({ t, small = false, showCta = false, intervalMs = 8000, bg, title 
           }
         >
           <h1 className="script text-5xl md:text-6xl mb-3">
-  TEST HERO 123
-</h1>
-
+            {title || slide.h1 || ""}
+          </h1>
 
           <p className="text-lg opacity-95">{t.heroSub}</p>
 
@@ -594,6 +583,7 @@ function Hero({ t, small = false, showCta = false, intervalMs = 8000, bg, title 
     </section>
   );
 }
+
 
 
 function Home({ t }) {
