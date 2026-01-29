@@ -1433,60 +1433,132 @@ tiers: [
 
 
 
+function OurWorkModal({ open, onClose, images }) {
+  // zamkni scroll pozadí, když je modal otevřený
+  React.useEffect(() => {
+    if (!open) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [open]);
+
+  if (!open) return null;
+
+  return (
+    <div className="fixed inset-0 z-[999]">
+      {/* backdrop */}
+      <button
+        type="button"
+        className="absolute inset-0 bg-black/45"
+        onClick={onClose}
+        aria-label="Zavřít"
+      />
+
+      {/* modal panel */}
+      <div className="ourwork-modal">
+        <div className="ourwork-modal-inner">
+          <div className="flex items-start justify-between gap-4">
+            <div>
+              <div className="text-lg font-semibold">Naše realizace</div>
+              <div className="text-sm text-[var(--muted)] mt-1">
+                Procházejte fotky – můžete scrollovat dolů.
+              </div>
+            </div>
+
+            <button
+              type="button"
+              onClick={onClose}
+              className="px-3 py-1.5 text-sm rounded-lg border border-[var(--line)] hover:bg-[var(--bg2)] transition"
+            >
+              Zavřít
+            </button>
+          </div>
+
+          <div className="ourwork-modal-body">
+            <div className="ourwork-grid-modal">
+              {images.map((src, i) => (
+                <a
+                  key={i}
+                  href={src}
+                  onClick={(e) => openLightbox(e, src)}
+                  className="group relative"
+                >
+                  <img
+                    src={src}
+                    alt={`Realizace ${i + 1}`}
+                    className="rounded-xl object-cover w-full h-full soft-shadow"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition rounded-xl" />
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function Gallery({ t }) {
   useReveal();
 
- // ==== TVOJE REALIZACE (lokální soubory) ====
-// POZOR: název i přípona musí sedět 1:1 se souborem na disku
-const OUR_WORK = [
-  "assets/img/gallery/our-work/ourwork-01.webp",
-  "assets/img/gallery/our-work/ourwork-02.webp",
-  "assets/img/gallery/our-work/ourwork-03.webp",
-  "assets/img/gallery/our-work/ourwork-04.webp",
-  "assets/img/gallery/our-work/ourwork-05.webp",
-  "assets/img/gallery/our-work/ourwork-06.webp",
-];
+  // ✅ MODAL stav
+  const [ourWorkOpen, setOurWorkOpen] = React.useState(false);
 
-  // ==== PARTNEŘI (ilustrační fotky, reálně sem dáš jejich realizace / vizualizace) ====
- const PARTNERS = [
-  {
-    name: "ono.je",
-    url: "https://www.ono.je",
-    note:
-      "Architektura s citem pro atmosféru, materiál a detail. Dáváme tomu finální vrstvu.",
-   images: [
-  "assets/img/gallery/partners/onoje/ono-je-01.webp",
-  "assets/img/gallery/partners/onoje/ono-je-02.webp",
-  "assets/img/gallery/partners/onoje/ono-je-03.webp"
-]
+  // ==== TVOJE REALIZACE (lokální soubory) ====
+  // POZOR: název i přípona musí sedět 1:1 se souborem na disku
+  const OUR_WORK = [
+    "assets/img/gallery/our-work/ourwork-01.webp",
+    "assets/img/gallery/our-work/ourwork-02.webp",
+    "assets/img/gallery/our-work/ourwork-03.webp",
+    "assets/img/gallery/our-work/ourwork-04.webp",
+    "assets/img/gallery/our-work/ourwork-05.webp",
+    "assets/img/gallery/our-work/ourwork-06.webp",
+    // sem pak jen doplníš:
+    // "assets/img/gallery/our-work/ourwork-07.webp",
+    // ...
+  ];
 
-  },
-  {
-    name: "RichterDesign",
-    url: "https://www.richterdesign.cz",
-    note:
-      "Spolupráce na interiérech, kde hraje roli čistota linií, funkce a klid prostoru.",
-   images: [
-  "assets/img/gallery/partners/richter/richter-01.webp",
-  "assets/img/gallery/partners/richter/richter-02.webp",
-  "assets/img/gallery/partners/richter/richter-03.webp"
-]
-
-  },
-  {
-    name: "Epic Interior Studio",
-    url: "https://www.epicinteriorstudio.cz/",
-    note:
-      "Interiérové studio se zaměřením na atmosféru, funkci a detail. Společně ladíme finální vrstvu stínění tak, aby prostor působil přirozeně a harmonicky.",
-   images: [
-  "assets/img/gallery/partners/epic-interior-studio/epic-01.webp",
-  "assets/img/gallery/partners/epic-interior-studio/epic-02.webp",
-  "assets/img/gallery/partners/epic-interior-studio/epic-03.webp"
-]
-
-  }
-];
-
+  // ==== PARTNEŘI ====
+  const PARTNERS = [
+    {
+      name: "ono.je",
+      url: "https://www.ono.je",
+      note:
+        "Architektura s citem pro atmosféru, materiál a detail. Dáváme tomu finální vrstvu.",
+      images: [
+        "assets/img/gallery/partners/onoje/ono-je-01.webp",
+        "assets/img/gallery/partners/onoje/ono-je-02.webp",
+        "assets/img/gallery/partners/onoje/ono-je-03.webp"
+      ]
+    },
+    {
+      name: "RichterDesign",
+      url: "https://www.richterdesign.cz",
+      note:
+        "Spolupráce na interiérech, kde hraje roli čistota linií, funkce a klid prostoru.",
+      images: [
+        "assets/img/gallery/partners/richter/richter-01.webp",
+        "assets/img/gallery/partners/richter/richter-02.webp",
+        "assets/img/gallery/partners/richter/richter-03.webp"
+      ]
+    },
+    {
+      name: "Epic Interior Studio",
+      url: "https://www.epicinteriorstudio.cz/",
+      note:
+        "Interiérové studio se zaměřením na atmosféru, funkci a detail. Společně ladíme finální vrstvu stínění tak, aby prostor působil přirozeně a harmonicky.",
+      images: [
+        "assets/img/gallery/partners/epic-interior-studio/epic-01.webp",
+        "assets/img/gallery/partners/epic-interior-studio/epic-02.webp",
+        "assets/img/gallery/partners/epic-interior-studio/epic-03.webp"
+      ]
+    }
+  ];
 
   return (
     <>
@@ -1497,67 +1569,70 @@ const OUR_WORK = [
         bg="assets/img/hero/gallery-hero.webp"
       />
 
-     {/* ==== NAŠE PRÁCE ==== */}
-<section className="max-w-6xl mx-auto px-4 py-16 reveal">
-  <div className="flex items-end justify-between gap-4">
-    <div className="max-w-3xl">
-      <h3 className="script text-3xl mb-3">Naše realizace</h3>
-      <p className="text-[var(--muted)] text-sm leading-relaxed">
-        Výběr projektů, kde řešíme světlo, látku a proporce prostoru.
-      </p>
-    </div>
+      {/* ==== NAŠE PRÁCE ==== */}
+      <section className="max-w-6xl mx-auto px-4 py-16 reveal">
+        <div className="flex items-end justify-between gap-4">
+          <div className="max-w-3xl">
+            <h3 className="script text-3xl mb-3">Naše realizace</h3>
+            <p className="text-[var(--muted)] text-sm leading-relaxed">
+              Výběr projektů, kde řešíme světlo, látku a proporce prostoru.
+            </p>
+          </div>
 
-    <button
-      type="button"
-      onClick={() => {
-        // otevře první fotku z OUR_WORK a pak můžeš listovat (zatím jednoduché)
-        if (OUR_WORK?.[0]) openLightbox(null, OUR_WORK[0]);
-      }}
-      className="hidden md:inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold border border-[var(--line)] bg-white hover:bg-[var(--bg2)] hover:border-[var(--sand)] transition"
-    >
-      Zobrazit vše →
-    </button>
-  </div>
+          {/* desktop CTA */}
+          <button
+            type="button"
+            onClick={() => setOurWorkOpen(true)}
+            className="hidden md:inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold border border-[var(--line)] bg-white hover:bg-[var(--bg2)] hover:border-[var(--sand)] transition"
+          >
+            Zobrazit vše →
+          </button>
+        </div>
 
-  {/* pás – stejné výšky, šířka podle fotky */}
-  <div className="mt-8 ourwork-strip">
-    {OUR_WORK.map((src, i) => (
-      <a
-        key={i}
-        href={src}
-        onClick={(e) => openLightbox(e, src)}
-        className="ourwork-item group relative"
-      >
-        <img
-          src={src}
-          alt={`Realizace ${i + 1}`}
-          className="ourwork-img soft-shadow"
-          loading="lazy"
-          decoding="async"
-        />
-        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition rounded-xl" />
-      </a>
-    ))}
-  </div>
+        {/* pás – stejné výšky, šířka podle fotky */}
+        <div className="mt-8 ourwork-strip">
+          {OUR_WORK.map((src, i) => (
+            <a
+              key={i}
+              href={src}
+              onClick={(e) => openLightbox(e, src)}
+              className="ourwork-item group relative"
+            >
+              <img
+                src={src}
+                alt={`Realizace ${i + 1}`}
+                className="ourwork-img soft-shadow"
+                loading="lazy"
+                decoding="async"
+              />
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition rounded-xl" />
+            </a>
+          ))}
+        </div>
 
-  {/* mobilní CTA */}
-  <button
-    type="button"
-    onClick={() => {
-      if (OUR_WORK?.[0]) openLightbox(null, OUR_WORK[0]);
-    }}
-    className="mt-6 md:hidden w-full inline-flex justify-center items-center gap-2 rounded-2xl px-4 py-4 text-sm font-semibold border border-[var(--line)] bg-white hover:bg-[var(--bg2)] hover:border-[var(--sand)] transition"
-  >
-    Zobrazit vše →
-  </button>
-</section>
+        {/* mobilní CTA */}
+        <button
+          type="button"
+          onClick={() => setOurWorkOpen(true)}
+          className="mt-6 md:hidden w-full inline-flex justify-center items-center gap-2 rounded-2xl px-4 py-4 text-sm font-semibold border border-[var(--line)] bg-white hover:bg-[var(--bg2)] hover:border-[var(--sand)] transition"
+        >
+          Zobrazit vše →
+        </button>
+      </section>
+
+      {/* ✅ MODAL – zobrazit všechny realizace */}
+      <OurWorkModal
+        open={ourWorkOpen}
+        onClose={() => setOurWorkOpen(false)}
+        images={OUR_WORK}
+      />
 
       {/* ==== SPOLUPRACUJEME S ==== */}
       <section className="max-w-6xl mx-auto px-4 pb-20 reveal">
         <div className="max-w-3xl">
           <h3 className="script text-3xl mb-3">Spolupracujeme s</h3>
           <p className="text-[var(--muted)] text-sm leading-relaxed">
-            Architekti a designéři, se kterými často ladíme finální vrstvu stínění. 
+            Architekti a designéři, se kterými často ladíme finální vrstvu stínění.
           </p>
         </div>
 
