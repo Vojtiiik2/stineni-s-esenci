@@ -1496,34 +1496,60 @@ function Gallery({ t }) {
         bg="assets/img/hero/gallery-hero.webp"
       />
 
-      {/* ==== NAŠE PRÁCE ==== */}
-      <section className="max-w-6xl mx-auto px-4 py-16 reveal">
-        <div className="max-w-3xl">
-          <h3 className="script text-3xl mb-3">Naše realizace</h3>
-          <p className="text-[var(--muted)] text-sm leading-relaxed">
-            Výběr projektů, kde řešíme světlo, látku a proporce prostoru.
-          </p>
-        </div>
+     {/* ==== NAŠE PRÁCE ==== */}
+<section className="max-w-6xl mx-auto px-4 py-16 reveal">
+  <div className="flex items-end justify-between gap-4">
+    <div className="max-w-3xl">
+      <h3 className="script text-3xl mb-3">Naše realizace</h3>
+      <p className="text-[var(--muted)] text-sm leading-relaxed">
+        Výběr projektů, kde řešíme světlo, látku a proporce prostoru.
+      </p>
+    </div>
 
-        <div className="mt-8 grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-          {OUR_WORK.map((src, i) => (
-            <a
-              key={i}
-              href={src}
-              onClick={(e) => openLightbox(e, src)}
-              className="group relative reveal"
-            >
-              <img
-                src={src}
-                className="w-full h-full object-cover rounded-xl aspect-[4/3] soft-shadow"
-                loading="lazy"
-                alt="Realizace"
-              />
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition rounded-xl" />
-            </a>
-          ))}
-        </div>
-      </section>
+    <button
+      type="button"
+      onClick={() => {
+        // otevře první fotku z OUR_WORK a pak můžeš listovat (zatím jednoduché)
+        if (OUR_WORK?.[0]) openLightbox(null, OUR_WORK[0]);
+      }}
+      className="hidden md:inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold border border-[var(--line)] bg-white hover:bg-[var(--bg2)] hover:border-[var(--sand)] transition"
+    >
+      Zobrazit vše →
+    </button>
+  </div>
+
+  {/* pás – stejné výšky, šířka podle fotky */}
+  <div className="mt-8 ourwork-strip">
+    {OUR_WORK.map((src, i) => (
+      <a
+        key={i}
+        href={src}
+        onClick={(e) => openLightbox(e, src)}
+        className="ourwork-item group relative"
+      >
+        <img
+          src={src}
+          alt={`Realizace ${i + 1}`}
+          className="ourwork-img soft-shadow"
+          loading="lazy"
+          decoding="async"
+        />
+        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition rounded-xl" />
+      </a>
+    ))}
+  </div>
+
+  {/* mobilní CTA */}
+  <button
+    type="button"
+    onClick={() => {
+      if (OUR_WORK?.[0]) openLightbox(null, OUR_WORK[0]);
+    }}
+    className="mt-6 md:hidden w-full inline-flex justify-center items-center gap-2 rounded-2xl px-4 py-4 text-sm font-semibold border border-[var(--line)] bg-white hover:bg-[var(--bg2)] hover:border-[var(--sand)] transition"
+  >
+    Zobrazit vše →
+  </button>
+</section>
 
       {/* ==== SPOLUPRACUJEME S ==== */}
       <section className="max-w-6xl mx-auto px-4 pb-20 reveal">
