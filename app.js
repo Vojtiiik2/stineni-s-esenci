@@ -1513,16 +1513,42 @@ function Gallery({ t }) {
   // ==== TVOJE REALIZACE (lokální soubory) ====
   // POZOR: název i přípona musí sedět 1:1 se souborem na disku
   const OUR_WORK = [
-    "assets/img/gallery/our-work/ourwork-01.webp",
-    "assets/img/gallery/our-work/ourwork-02.webp",
-    "assets/img/gallery/our-work/ourwork-03.webp",
-    "assets/img/gallery/our-work/ourwork-04.webp",
-    "assets/img/gallery/our-work/ourwork-05.webp",
-    "assets/img/gallery/our-work/ourwork-06.webp",
-    // sem pak jen doplníš:
-    // "assets/img/gallery/our-work/ourwork-07.webp",
-    // ...
-  ];
+  "assets/img/gallery/our-work/ourwork-01.webp",
+  "assets/img/gallery/our-work/ourwork-02.webp",
+  "assets/img/gallery/our-work/ourwork-03.webp",
+  "assets/img/gallery/our-work/ourwork-04.webp",
+  "assets/img/gallery/our-work/ourwork-05.webp",
+  "assets/img/gallery/our-work/ourwork-06.webp",
+  "assets/img/gallery/our-work/ourwork-07.webp",
+  "assets/img/gallery/our-work/ourwork-08.webp",
+  "assets/img/gallery/our-work/ourwork-09.webp",
+  "assets/img/gallery/our-work/ourwork-10.webp",
+  "assets/img/gallery/our-work/ourwork-11.webp",
+  "assets/img/gallery/our-work/ourwork-12.webp",
+  "assets/img/gallery/our-work/ourwork-13.webp",
+  "assets/img/gallery/our-work/ourwork-14.webp",
+  "assets/img/gallery/our-work/ourwork-15.webp",
+  "assets/img/gallery/our-work/ourwork-16.webp",
+  "assets/img/gallery/our-work/ourwork-17.webp",
+  "assets/img/gallery/our-work/ourwork-18.webp",
+  "assets/img/gallery/our-work/ourwork-19.webp",
+  "assets/img/gallery/our-work/ourwork-20.webp",
+  "assets/img/gallery/our-work/ourwork-21.webp",
+  "assets/img/gallery/our-work/ourwork-22.webp",
+  "assets/img/gallery/our-work/ourwork-23.webp",
+  "assets/img/gallery/our-work/ourwork-24.webp",
+  "assets/img/gallery/our-work/ourwork-25.webp",
+  "assets/img/gallery/our-work/ourwork-26.webp",
+  "assets/img/gallery/our-work/ourwork-27.webp",
+  "assets/img/gallery/our-work/ourwork-28.webp",
+  "assets/img/gallery/our-work/ourwork-29.webp",
+  "assets/img/gallery/our-work/ourwork-30.webp",
+  "assets/img/gallery/our-work/ourwork-31.webp",
+  "assets/img/gallery/our-work/ourwork-32.webp",
+  "assets/img/gallery/our-work/ourwork-33.webp",
+  "assets/img/gallery/our-work/ourwork-34.webp",
+];
+
 
   // ==== PARTNEŘI ====
   const PARTNERS = [
