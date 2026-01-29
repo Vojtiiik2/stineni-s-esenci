@@ -392,85 +392,90 @@ const Header = ({ t, lang, setLang }) => {
             aria-label="Zavřít menu"
           />
 
-         <div
-  className="absolute top-0 left-1/2 -translate-x-1/2 bg-white border border-[var(--line)] soft-shadow rounded-2xl w-[92%] max-w-md"
+         {/* panel – drawer zprava (cca 62% šířky) */}
+<div
+  className={
+    "absolute top-0 right-0 h-full bg-white shadow-xl border-l border-[var(--line)] " +
+    "w-[62%] max-w-sm min-w-[320px] " +
+    "transform transition-transform duration-300 ease-out translate-x-0"
+  }
   style={{ paddingTop: "calc(env(safe-area-inset-top, 0px) + 12px)" }}
 >
+  <div className="px-4 pb-4">
+    <div className="flex items-center justify-between">
+      <div className="font-semibold">Menu</div>
+      <button
+        type="button"
+        onClick={() => setMenuOpen(false)}
+        className="px-3 py-1.5 text-sm rounded-lg border border-[var(--line)] hover:bg-[var(--bg2)] transition"
+      >
+        Zavřít
+      </button>
+    </div>
 
-            <div className="px-4 pb-4">
-              <div className="flex items-center justify-between">
-                <div className="font-semibold">Menu</div>
-                <button
-                  type="button"
-                  onClick={() => setMenuOpen(false)}
-                  className="px-3 py-1.5 text-sm rounded-lg border border-[var(--line)] hover:bg-[var(--bg2)] transition"
-                >
-                  Zavřít
-                </button>
-              </div>
+    <div className="mt-4 grid gap-3">
+      {t.nav.map((label, i) => (
+        <button
+          key={i}
+          type="button"
+          onClick={() => {
+            setMenuOpen(false);
+            go(navPaths[i]);
+          }}
+          className="w-full text-left px-4 py-4 rounded-2xl border border-[var(--line)] bg-white hover:bg-[var(--bg2)] transition font-semibold"
+        >
+          {label}
+        </button>
+      ))}
 
-              <div className="mt-4 grid gap-3">
-                {t.nav.map((label, i) => (
-                  <button
-                    key={i}
-                    type="button"
-                    onClick={() => { setMenuOpen(false); go(navPaths[i]); }}
-                    className="w-full text-left px-4 py-4 rounded-2xl border border-[var(--line)] bg-white hover:bg-[var(--bg2)] transition font-semibold"
-                  >
-                    {label}
-                  </button>
-                ))}
-
-                {/* JAZYK – jen v menu, NAD telefonem */}
-                <div className="rounded-2xl border border-[var(--line)] bg-white p-4">
-                  <div className="text-xs tracking-widest text-[var(--muted)] mb-3">
-                    JAZYK
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-3">
-                    <button
-                      type="button"
-                      onClick={() => setLang("cs")}
-                      className={
-                        "rounded-xl border px-4 py-3 font-semibold transition " +
-                        (lang === "cs"
-                          ? "border-[var(--sand)] bg-[var(--bg2)]"
-                          : "border-[var(--line)] bg-white hover:bg-[var(--bg2)]")
-                      }
-                    >
-                      CZ
-                    </button>
-
-                    <button
-                      type="button"
-                      onClick={() => setLang("en")}
-                      className={
-                        "rounded-xl border px-4 py-3 font-semibold transition " +
-                        (lang === "en"
-                          ? "border-[var(--sand)] bg-[var(--bg2)]"
-                          : "border-[var(--line)] bg-white hover:bg-[var(--bg2)]")
-                      }
-                    >
-                      EN
-                    </button>
-                  </div>
-                </div>
-
-                <a
-                  href="tel:+420724379309"
-                  className="w-full text-center px-4 py-4 rounded-2xl border border-[var(--line)] bg-[var(--bg2)] hover:border-[var(--sand)] transition font-semibold"
-                  onClick={() => setMenuOpen(false)}
-                >
-                  Zavolat +420 724 379 309
-                </a>
-              </div>
-            </div>
-          </div>
+      {/* JAZYK – jen v menu, NAD telefonem */}
+      <div className="rounded-2xl border border-[var(--line)] bg-white p-4">
+        <div className="text-xs tracking-widest text-[var(--muted)] mb-3">
+          JAZYK
         </div>
-      )}
-    </>
-  );
-};
+
+        <div className="grid grid-cols-2 gap-3">
+          <button
+            type="button"
+            onClick={() => setLang("cs")}
+            className={
+              "rounded-xl border px-4 py-3 font-semibold transition " +
+              (lang === "cs"
+                ? "border-[var(--sand)] bg-[var(--bg2)]"
+                : "border-[var(--line)] bg-white hover:bg-[var(--bg2)]")
+            }
+          >
+            CZ
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setLang("en")}
+            className={
+              "rounded-xl border px-4 py-3 font-semibold transition " +
+              (lang === "en"
+                ? "border-[var(--sand)] bg-[var(--bg2)]"
+                : "border-[var(--line)] bg-white hover:bg-[var(--bg2)]")
+            }
+          >
+            EN
+          </button>
+        </div>
+      </div>
+
+      <a
+        href="tel:+420724379309"
+        className="w-full text-center px-4 py-4 rounded-2xl border border-[var(--line)] bg-[var(--bg2)] hover:border-[var(--sand)] transition font-semibold"
+        onClick={() => setMenuOpen(false)}
+      >
+        Zavolat +420 724 379 309
+      </a>
+    </div>
+  </div>
+</div>
+
+         
+         
 
 
 
