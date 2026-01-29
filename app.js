@@ -523,7 +523,9 @@ function Hero({ t, small = false, showCta = false, intervalMs = 8000, bg, title 
   return (
     <section
       className={
-        (small ? "min-h-[42vh]" : "min-h-[92vh]") +
+        (small
+          ? "min-h-[42vh]"
+          : "min-h-[70vh] md:min-h-[92vh]") +
         " relative flex items-center overflow-hidden"
       }
     >
@@ -542,7 +544,7 @@ function Hero({ t, small = false, showCta = false, intervalMs = 8000, bg, title 
         }}
       />
 
-      <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/25"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-black/15 via-transparent to-black/20"></div>
 
       <div className="relative max-w-6xl mx-auto px-4 w-full">
         <div
@@ -551,7 +553,7 @@ function Hero({ t, small = false, showCta = false, intervalMs = 8000, bg, title 
             textClass
           }
         >
-          <h1 className="script text-5xl md:text-6xl mb-3">
+          <h1 className="script text-4xl md:text-6xl mb-3">
             {title || slide.h1 || ""}
           </h1>
 
@@ -571,6 +573,7 @@ function Hero({ t, small = false, showCta = false, intervalMs = 8000, bg, title 
     </section>
   );
 }
+
 
 
 
