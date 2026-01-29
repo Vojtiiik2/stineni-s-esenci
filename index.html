@@ -13,8 +13,6 @@
   <meta name="description" content="Kde se světlo setká s emocí. Záclony, závěsy, rolety a jemné esence.">
   <meta name="theme-color" content="#f1ece7" />
 
-<script src="app.js?v=20260129"></script>
-
   <link rel="stylesheet" href="./style.css" />
 </head>
 
@@ -25,7 +23,15 @@
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-  <script type="text/babel" src="./app.js"></script>
+  <!-- ✅ app.js se načte vždy čerstvý, bez ručního přepisování -->
+  <script>
+    (function () {
+      var s = document.createElement("script");
+      s.src = "./app.js?cb=" + Date.now();
+      s.type = "text/babel";
+      document.body.appendChild(s);
+    })();
+  </script>
 </body>
-</html>
+
 
