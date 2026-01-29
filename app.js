@@ -1436,15 +1436,16 @@ tiers: [
 function Gallery({ t }) {
   useReveal();
 
-  // ==== TVOJE REALIZACE (zatím ilustrační) ====
-  const OUR_WORK = [
-    "https://images.unsplash.com/photo-1501183638710-841dd1904471?q=80&w=1600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=1600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=1600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1484154218962-a197022b5858?q=80&w=1600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1505693416388-36a5ac3be353?q=80&w=1600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1600&auto=format&fit=crop"
-  ];
+ // ==== TVOJE REALIZACE (lokální soubory) ====
+// POZOR: název i přípona musí sedět 1:1 se souborem na disku
+const OUR_WORK = [
+  "assets/img/gallery/ourwork/ourwork-01.webp",
+  "assets/img/gallery/ourwork/ourwork-02.webp",
+  "assets/img/gallery/ourwork/ourwork-03.webp",
+  "assets/img/gallery/ourwork/ourwork-04.webp",
+  "assets/img/gallery/ourwork/ourwork-05.webp",
+  "assets/img/gallery/ourwork/ourwork-06.webp",
+];
 
   // ==== PARTNEŘI (ilustrační fotky, reálně sem dáš jejich realizace / vizualizace) ====
  const PARTNERS = [
