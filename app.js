@@ -297,11 +297,23 @@ function go(path = "/") {
 const Header = ({ t, lang, setLang }) => {
   const [menuOpen, setMenuOpen] = React.useState(false);
 
+  // ✅ iOS/Safari fix: zamykat scroll správně na html i body
   React.useEffect(() => {
-    // zamknout scroll když je menu otevřené
-    if (menuOpen) document.body.style.overflow = "hidden";
-    else document.body.style.overflow = "";
-    return () => (document.body.style.overflow = "");
+    if (menuOpen) {
+      document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
+      document.body.style.touchAction = "none";
+    } else {
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+      document.body.style.touchAction = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+      document.body.style.touchAction = "";
+    };
   }, [menuOpen]);
 
   const NAV_PATHS = [
@@ -315,14 +327,24 @@ const Header = ({ t, lang, setLang }) => {
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-30 border-b border-[var(--line)]/70 bg-white/70 backdrop-blur-md">
+      {/* ✅ vyšší z-index + iOS pojistka */}
+      <header
+        className="fixed top-0 left-0 right-0 z-[200] border-b border-[var(--line)]/70 bg-white/70 backdrop-blur-md"
+        style={{ transform: "translateZ(0)" }} // iOS fix pro fixed
+      >
         <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between reveal">
           {/* BRAND */}
           <div className="leading-4 cursor-pointer" onClick={() => go("/")}>
-            <div className="script text-2xl -mb-0.5" style={{ color: "var(--brand-brown-dark)" }}>
+            <div
+              className="script text-2xl -mb-0.5"
+              style={{ color: "var(--brand-brown-dark)" }}
+            >
               {t.brand2}
             </div>
-            <div className="text-xs tracking-wide" style={{ color: "var(--brand-brown-light)" }}>
+            <div
+              className="text-xs tracking-wide"
+              style={{ color: "var(--brand-brown-light)" }}
+            >
               {t.brand1}
             </div>
           </div>
@@ -341,7 +363,7 @@ const Header = ({ t, lang, setLang }) => {
             ))}
           </nav>
 
-          {/* RIGHT ACTIONS (mobil i desktop) */}
+          {/* RIGHT ACTIONS */}
           <div className="flex items-center gap-2">
             {/* Telefon */}
             <a
@@ -375,8 +397,7 @@ const Header = ({ t, lang, setLang }) => {
               <span className="hidden lg:inline">+420&nbsp;724&nbsp;379&nbsp;309</span>
             </a>
 
-            {/* ❌ jazyk pryč z lišty */}
-            {/* ✅ hamburger */}
+            {/* Hamburger */}
             <button
               type="button"
               onClick={() => setMenuOpen(true)}
@@ -393,14 +414,14 @@ const Header = ({ t, lang, setLang }) => {
 
       {/* MOBILE MENU OVERLAY */}
       {menuOpen && (
-        <div className="fixed inset-0 z-50">
+        <div className="fixed inset-0 z-[300]">
           {/* backdrop */}
           <div
             className="absolute inset-0 bg-black/30"
             onClick={() => setMenuOpen(false)}
           />
 
-          {/* panel – neprůhledně bílý */}
+          {/* panel */}
           <div className="absolute top-0 right-0 h-full w-[88%] max-w-sm bg-white shadow-xl border-l border-[var(--line)]">
             <div className="h-16 px-4 flex items-center justify-between border-b border-[var(--line)]">
               <div className="font-semibold">Menu</div>
@@ -476,6 +497,7 @@ const Header = ({ t, lang, setLang }) => {
     </>
   );
 };
+
 
 
 
