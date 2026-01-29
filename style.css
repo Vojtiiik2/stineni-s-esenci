@@ -172,6 +172,40 @@ article,
       0 24px 60px rgba(0,0,0,.16);
   }
 }
+/* ====== OUR WORK STRIP (Naše realizace) ====== */
+.ourwork-strip{
+  display:flex;
+  gap:14px;
+  overflow-x:auto;
+  padding-bottom:10px;
+  scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.ourwork-item{
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  background: white;
+}
+
+/* stejné výšky, šířka podle formátu */
+.ourwork-img{
+  height: 260px;         /* desktop výška */
+  width: auto;           /* šířka podle fotky */
+  display:block;
+  border-radius: 16px;
+  object-fit: contain;   /* NEořezává */
+  background: #fff;
+}
+
+@media (max-width: 768px){
+  .ourwork-img{
+    height: 200px;       /* mobil výška */
+  }
+}
 
 
 
