@@ -57,12 +57,13 @@ const STR = {
     cta: "Kontaktujte nás",
     
   heroSlides: [
-  {
-    h1: "Kde se světlo setká s emocí",
-    bg: "assets/img/hero/hero-01.webp",
-    pos: "center",
-    posMobile: "center 60%"
-  },
+ {
+  h1: "Kde se světlo setká s emocí",
+  bg: "assets/img/hero/hero-01.webp",
+  pos: "center",
+  posMobile: "center 35%" // <— zkus 35% / 40% / 45%
+},
+
   {
     h1: "Stínění, které dává domovu klid",
     bg: "assets/img/hero/hero-02.webp",
@@ -480,23 +481,36 @@ const Header = ({ t, lang, setLang }) => {
 function Hero({ t, small = false, showCta = false, intervalMs = 8000, bg, title }) {
   const slides = t.heroSlides || [];
   const [index, setIndex] = React.useState(0);
-
   const [stage, setStage] = React.useState("show");
   const timerRef = React.useRef(null);
+
+  // ✅ zjisti mobil/desktop
+  const [isMobile, setIsMobile] = React.useState(() =>
+    window.matchMedia ? window.matchMedia("(max-width: 768px)").matches : false
+  );
+
+  React.useEffect(() => {
+    if (!window.matchMedia) return;
+    const mq = window.matchMedia("(max-width: 768px)");
+    const onChange = () => setIsMobile(mq.matches);
+    // Safari/iOS kompatibilita
+    if (mq.addEventListener) mq.addEventListener("change", onChange);
+    else mq.addListener(onChange);
+    return () => {
+      if (mq.removeEventListener) mq.removeEventListener("change", onChange);
+      else mq.removeListener(onChange);
+    };
+  }, []);
 
   React.useEffect(() => {
     if (small || slides.length < 2) return;
 
     const run = () => {
       setStage("exit");
-
       timerRef.current = setTimeout(() => {
         setIndex((i) => (i + 1) % slides.length);
         setStage("enter");
-
-        timerRef.current = setTimeout(() => {
-          setStage("show");
-        }, 40);
+        timerRef.current = setTimeout(() => setStage("show"), 40);
       }, 650);
     };
 
@@ -510,22 +524,21 @@ function Hero({ t, small = false, showCta = false, intervalMs = 8000, bg, title 
   const slide = slides[index] || {};
   const effectiveBg = small && bg ? bg : slide.bg;
 
+  // ✅ tady je to důležité: position podle zařízení
+  const bgPos = isMobile
+    ? (slide.posMobile || slide.pos || "center")
+    : (slide.pos || "center");
+
   const bgClass =
-    stage === "exit"
-      ? "opacity-0 scale-[1.03]"
-      : "opacity-100 scale-100";
+    stage === "exit" ? "opacity-0 scale-[1.03]" : "opacity-100 scale-100";
 
   const textClass =
-    stage === "exit"
-      ? "opacity-0 translate-y-2"
-      : "opacity-100 translate-y-0";
+    stage === "exit" ? "opacity-0 translate-y-2" : "opacity-100 translate-y-0";
 
   return (
     <section
       className={
-        (small
-          ? "min-h-[42vh]"
-          : "min-h-[70vh] md:min-h-[92vh]") +
+        (small ? "min-h-[42vh]" : "min-h-[70vh] md:min-h-[92vh]") +
         " relative flex items-center overflow-hidden"
       }
     >
@@ -537,26 +550,15 @@ function Hero({ t, small = false, showCta = false, intervalMs = 8000, bg, title 
         style={{
           backgroundImage: `linear-gradient(to right, rgba(0,0,0,.25), rgba(0,0,0,.05)), url('${effectiveBg || ""}')`,
           backgroundSize: "cover",
-          backgroundPosition:
-            effectiveBg?.includes("essence-hero")
-              ? "center 65%"
-              : "center"
+          backgroundPosition: bgPos, // ✅ místo natvrdo "center"
         }}
       />
 
       <div className="absolute inset-0 bg-gradient-to-b from-black/15 via-transparent to-black/20"></div>
 
       <div className="relative max-w-6xl mx-auto px-4 w-full">
-        <div
-          className={
-            "max-w-2xl text-white transition-all duration-700 ease-in-out will-change-transform " +
-            textClass
-          }
-        >
-          <h1 className="script text-4xl md:text-6xl mb-3">
-            {title || slide.h1 || ""}
-          </h1>
-
+        <div className={"max-w-2xl text-white transition-all duration-700 ease-in-out will-change-transform " + textClass}>
+          <h1 className="script text-4xl md:text-6xl mb-3">{title || slide.h1 || ""}</h1>
           <p className="text-lg opacity-95">{t.heroSub}</p>
 
           {!small && showCta && (
@@ -573,6 +575,7 @@ function Hero({ t, small = false, showCta = false, intervalMs = 8000, bg, title 
     </section>
   );
 }
+
 
 
 
