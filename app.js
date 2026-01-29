@@ -573,9 +573,10 @@ function Hero({ t, small = false, showCta = false, intervalMs = 8000, bg, title 
             textClass
           }
         >
-          <h1 className="script text-4xl md:text-6xl mb-3">
-            {title || slide.h1 || ""}
-          </h1>
+          <h1 className="script text-5xl md:text-6xl mb-3">
+  TEST HERO 123
+</h1>
+
 
           <p className="text-lg opacity-95">{t.heroSub}</p>
 
