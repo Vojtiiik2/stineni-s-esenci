@@ -1439,12 +1439,12 @@ function Gallery({ t }) {
  // ==== TVOJE REALIZACE (lokální soubory) ====
 // POZOR: název i přípona musí sedět 1:1 se souborem na disku
 const OUR_WORK = [
-  "assets/img/gallery/ourwork/ourwork-01.webp",
-  "assets/img/gallery/ourwork/ourwork-02.webp",
-  "assets/img/gallery/ourwork/ourwork-03.webp",
-  "assets/img/gallery/ourwork/ourwork-04.webp",
-  "assets/img/gallery/ourwork/ourwork-05.webp",
-  "assets/img/gallery/ourwork/ourwork-06.webp",
+  "assets/img/gallery/our-work/ourwork-01.webp",
+  "assets/img/gallery/our-work/ourwork-02.webp",
+  "assets/img/gallery/our-work/ourwork-03.webp",
+  "assets/img/gallery/our-work/ourwork-04.webp",
+  "assets/img/gallery/our-work/ourwork-05.webp",
+  "assets/img/gallery/our-work/ourwork-06.webp",
 ];
 
   // ==== PARTNEŘI (ilustrační fotky, reálně sem dáš jejich realizace / vizualizace) ====
