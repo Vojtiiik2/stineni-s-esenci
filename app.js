@@ -553,13 +553,15 @@ function Hero({ t, small = false, showCta = false, intervalMs = 8000, bg, title 
     stage === "exit" ? "opacity-0 translate-y-2" : "opacity-100 translate-y-0";
 
   return (
-    <section
-      className={
-        // ✅ výška: na mobilu ať to není brutálně vysoké, ale pořád hero
-        (small ? "min-h-[42vh]" : "min-h-[70vh] md:min-h-[92vh]") +
-        " relative flex items-center overflow-hidden"
-      }
-    >
+   <section
+  className={
+    (small
+      ? "min-h-[42vh]"
+      : "min-h-[70vh] sm:min-h-[82vh] lg:min-h-[92vh]") +
+    " relative flex items-center overflow-hidden"
+  }
+>
+
       <div
         className={
           "absolute inset-0 transition-all duration-1000 ease-in-out will-change-transform " +
