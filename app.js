@@ -368,22 +368,6 @@ const Header = ({ t, lang, setLang }) => {
               <span className="hidden lg:inline">+420&nbsp;724&nbsp;379&nbsp;309</span>
             </a>
 
-            {/* Jazyk – nech jen v headeru */}
-            <button
-              onClick={() => setLang("cs")}
-              className={"px-3 py-1.5 text-sm rounded-lg border " + (lang === "cs" ? "border-[var(--sand)]" : "border-[var(--line)]")}
-              type="button"
-            >
-              CZ
-            </button>
-            <button
-              onClick={() => setLang("en")}
-              className={"px-3 py-1.5 text-sm rounded-lg border " + (lang === "en" ? "border-[var(--sand)]" : "border-[var(--line)]")}
-              type="button"
-            >
-              EN
-            </button>
-
             {/* Hamburger – jen na mobilu */}
             <button
               type="button"
@@ -437,6 +421,41 @@ const Header = ({ t, lang, setLang }) => {
                   </button>
                 ))}
 
+                {/* JAZYK – jen v menu, NAD telefonem */}
+                <div className="rounded-2xl border border-[var(--line)] bg-white p-4">
+                  <div className="text-xs tracking-widest text-[var(--muted)] mb-3">
+                    JAZYK
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-3">
+                    <button
+                      type="button"
+                      onClick={() => setLang("cs")}
+                      className={
+                        "rounded-xl border px-4 py-3 font-semibold transition " +
+                        (lang === "cs"
+                          ? "border-[var(--sand)] bg-[var(--bg2)]"
+                          : "border-[var(--line)] bg-white hover:bg-[var(--bg2)]")
+                      }
+                    >
+                      CZ
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => setLang("en")}
+                      className={
+                        "rounded-xl border px-4 py-3 font-semibold transition " +
+                        (lang === "en"
+                          ? "border-[var(--sand)] bg-[var(--bg2)]"
+                          : "border-[var(--line)] bg-white hover:bg-[var(--bg2)]")
+                      }
+                    >
+                      EN
+                    </button>
+                  </div>
+                </div>
+
                 <a
                   href="tel:+420724379309"
                   className="w-full text-center px-4 py-4 rounded-2xl border border-[var(--line)] bg-[var(--bg2)] hover:border-[var(--sand)] transition font-semibold"
@@ -452,6 +471,7 @@ const Header = ({ t, lang, setLang }) => {
     </>
   );
 };
+
 
 
 
