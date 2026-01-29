@@ -527,10 +527,8 @@ function Hero({ t, small = false, showCta = false, intervalMs = 8000, bg, title 
   return (
     <section
       className={
-        // ✅ menší hero na mobilu, velké hero od md výš
-        (small
-          ? "min-h-[34vh] md:min-h-[42vh]"
-          : "min-h-[68vh] md:min-h-[92vh]") +
+        "hero" +
+        (small ? " hero--small" : "") +
         " relative flex items-center overflow-hidden"
       }
     >
@@ -540,21 +538,13 @@ function Hero({ t, small = false, showCta = false, intervalMs = 8000, bg, title 
           bgClass
         }
         style={{
-          backgroundImage: `linear-gradient(to right, rgba(0,0,0,.25), rgba(0,0,0,.05)), url('${effectiveBg || ""}')`,
+          backgroundImage: `linear-gradient(to right, rgba(0,0,0,.22), rgba(0,0,0,.06)), url('${effectiveBg || ""}')`,
           backgroundSize: "cover",
-
-          // ✅ mobil: ukáž víc ze scény (méně „záclona přes celý ekran“)
-          // ✅ desktop: klasicky center
-          backgroundPosition:
-            effectiveBg?.includes("essence-hero")
-              ? "center 65%"
-              : "center 35%",
-
-          // když chceš ještě víc „nahoře“, dej místo 35% třeba 25%
+          backgroundPosition: "center 55%"
         }}
       />
 
-      <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/25"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-black/15 via-transparent to-black/25"></div>
 
       <div className="relative max-w-6xl mx-auto px-4 w-full">
         <div
@@ -583,6 +573,7 @@ function Hero({ t, small = false, showCta = false, intervalMs = 8000, bg, title 
     </section>
   );
 }
+
 
 
 
