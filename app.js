@@ -1504,51 +1504,49 @@ function OurWorkModal({ open, onClose, images }) {
   );
 }
 
+
+
 function Gallery({ t }) {
   useReveal();
-
-  // ✅ MODAL stav
-  const [ourWorkOpen, setOurWorkOpen] = React.useState(false);
 
   // ==== TVOJE REALIZACE (lokální soubory) ====
   // POZOR: název i přípona musí sedět 1:1 se souborem na disku
   const OUR_WORK = [
-  "assets/img/gallery/our-work/ourwork-01.webp",
-  "assets/img/gallery/our-work/ourwork-02.webp",
-  "assets/img/gallery/our-work/ourwork-03.webp",
-  "assets/img/gallery/our-work/ourwork-04.webp",
-  "assets/img/gallery/our-work/ourwork-05.webp",
-  "assets/img/gallery/our-work/ourwork-06.webp",
-  "assets/img/gallery/our-work/ourwork-07.webp",
-  "assets/img/gallery/our-work/ourwork-08.webp",
-  "assets/img/gallery/our-work/ourwork-09.webp",
-  "assets/img/gallery/our-work/ourwork-10.webp",
-  "assets/img/gallery/our-work/ourwork-11.webp",
-  "assets/img/gallery/our-work/ourwork-12.webp",
-  "assets/img/gallery/our-work/ourwork-13.webp",
-  "assets/img/gallery/our-work/ourwork-14.webp",
-  "assets/img/gallery/our-work/ourwork-15.webp",
-  "assets/img/gallery/our-work/ourwork-16.webp",
-  "assets/img/gallery/our-work/ourwork-17.webp",
-  "assets/img/gallery/our-work/ourwork-18.webp",
-  "assets/img/gallery/our-work/ourwork-19.webp",
-  "assets/img/gallery/our-work/ourwork-20.webp",
-  "assets/img/gallery/our-work/ourwork-21.webp",
-  "assets/img/gallery/our-work/ourwork-22.webp",
-  "assets/img/gallery/our-work/ourwork-23.webp",
-  "assets/img/gallery/our-work/ourwork-24.webp",
-  "assets/img/gallery/our-work/ourwork-25.webp",
-  "assets/img/gallery/our-work/ourwork-26.webp",
-  "assets/img/gallery/our-work/ourwork-27.webp",
-  "assets/img/gallery/our-work/ourwork-28.webp",
-  "assets/img/gallery/our-work/ourwork-29.webp",
-  "assets/img/gallery/our-work/ourwork-30.webp",
-  "assets/img/gallery/our-work/ourwork-31.webp",
-  "assets/img/gallery/our-work/ourwork-32.webp",
-  "assets/img/gallery/our-work/ourwork-33.webp",
-  "assets/img/gallery/our-work/ourwork-34.webp",
-];
-
+    "assets/img/gallery/our-work/ourwork-01.webp",
+    "assets/img/gallery/our-work/ourwork-02.webp",
+    "assets/img/gallery/our-work/ourwork-03.webp",
+    "assets/img/gallery/our-work/ourwork-04.webp",
+    "assets/img/gallery/our-work/ourwork-05.webp",
+    "assets/img/gallery/our-work/ourwork-06.webp",
+    "assets/img/gallery/our-work/ourwork-07.webp",
+    "assets/img/gallery/our-work/ourwork-08.webp",
+    "assets/img/gallery/our-work/ourwork-09.webp",
+    "assets/img/gallery/our-work/ourwork-10.webp",
+    "assets/img/gallery/our-work/ourwork-11.webp",
+    "assets/img/gallery/our-work/ourwork-12.webp",
+    "assets/img/gallery/our-work/ourwork-13.webp",
+    "assets/img/gallery/our-work/ourwork-14.webp",
+    "assets/img/gallery/our-work/ourwork-15.webp",
+    "assets/img/gallery/our-work/ourwork-16.webp",
+    "assets/img/gallery/our-work/ourwork-17.webp",
+    "assets/img/gallery/our-work/ourwork-18.webp",
+    "assets/img/gallery/our-work/ourwork-19.webp",
+    "assets/img/gallery/our-work/ourwork-20.webp",
+    "assets/img/gallery/our-work/ourwork-21.webp",
+    "assets/img/gallery/our-work/ourwork-22.webp",
+    "assets/img/gallery/our-work/ourwork-23.webp",
+    "assets/img/gallery/our-work/ourwork-24.webp",
+    "assets/img/gallery/our-work/ourwork-25.webp",
+    "assets/img/gallery/our-work/ourwork-26.webp",
+    "assets/img/gallery/our-work/ourwork-27.webp",
+    "assets/img/gallery/our-work/ourwork-28.webp",
+    "assets/img/gallery/our-work/ourwork-29.webp",
+    "assets/img/gallery/our-work/ourwork-30.webp",
+    "assets/img/gallery/our-work/ourwork-31.webp",
+    "assets/img/gallery/our-work/ourwork-32.webp",
+    "assets/img/gallery/our-work/ourwork-33.webp",
+    "assets/img/gallery/our-work/ourwork-34.webp",
+  ];
 
   // ==== PARTNEŘI ====
   const PARTNERS = [
@@ -1560,8 +1558,8 @@ function Gallery({ t }) {
       images: [
         "assets/img/gallery/partners/onoje/ono-je-01.webp",
         "assets/img/gallery/partners/onoje/ono-je-02.webp",
-        "assets/img/gallery/partners/onoje/ono-je-03.webp"
-      ]
+        "assets/img/gallery/partners/onoje/ono-je-03.webp",
+      ],
     },
     {
       name: "RichterDesign",
@@ -1571,8 +1569,8 @@ function Gallery({ t }) {
       images: [
         "assets/img/gallery/partners/richter/richter-01.webp",
         "assets/img/gallery/partners/richter/richter-02.webp",
-        "assets/img/gallery/partners/richter/richter-03.webp"
-      ]
+        "assets/img/gallery/partners/richter/richter-03.webp",
+      ],
     },
     {
       name: "Epic Interior Studio",
@@ -1582,19 +1580,27 @@ function Gallery({ t }) {
       images: [
         "assets/img/gallery/partners/epic-interior-studio/epic-01.webp",
         "assets/img/gallery/partners/epic-interior-studio/epic-02.webp",
-        "assets/img/gallery/partners/epic-interior-studio/epic-03.webp"
-      ]
-    }
+        "assets/img/gallery/partners/epic-interiorstudio/epic-03.webp",
+      ],
+    },
   ];
+
+  // ==== MODAL state (Naše realizace: zobrazit vše) ====
+  const [workOpen, setWorkOpen] = React.useState(false);
+
+  // zamkni scroll pozadí, když je modal otevřený
+  React.useEffect(() => {
+    if (!workOpen) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev || "";
+    };
+  }, [workOpen]);
 
   return (
     <>
-      <Hero
-        t={t}
-        small
-        title={t.galleryH}
-        bg="assets/img/hero/gallery-hero.webp"
-      />
+      <Hero t={t} small title={t.galleryH} bg="assets/img/hero/gallery-hero.webp" />
 
       {/* ==== NAŠE PRÁCE ==== */}
       <section className="max-w-6xl mx-auto px-4 py-16 reveal">
@@ -1606,19 +1612,18 @@ function Gallery({ t }) {
             </p>
           </div>
 
-          {/* desktop CTA */}
           <button
             type="button"
-            onClick={() => setOurWorkOpen(true)}
+            onClick={() => setWorkOpen(true)}
             className="hidden md:inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold border border-[var(--line)] bg-white hover:bg-[var(--bg2)] hover:border-[var(--sand)] transition"
           >
             Zobrazit vše →
           </button>
         </div>
 
-        {/* pás – stejné výšky, šířka podle fotky */}
+        {/* pás – stejné výšky, šířka podle fotky (přes tvé CSS ourwork-strip) */}
         <div className="mt-8 ourwork-strip">
-          {OUR_WORK.map((src, i) => (
+          {OUR_WORK.slice(0, 6).map((src, i) => (
             <a
               key={i}
               href={src}
@@ -1640,19 +1645,87 @@ function Gallery({ t }) {
         {/* mobilní CTA */}
         <button
           type="button"
-          onClick={() => setOurWorkOpen(true)}
+          onClick={() => setWorkOpen(true)}
           className="mt-6 md:hidden w-full inline-flex justify-center items-center gap-2 rounded-2xl px-4 py-4 text-sm font-semibold border border-[var(--line)] bg-white hover:bg-[var(--bg2)] hover:border-[var(--sand)] transition"
         >
           Zobrazit vše →
         </button>
       </section>
 
-      {/* ✅ MODAL – zobrazit všechny realizace */}
-      <OurWorkModal
-        open={ourWorkOpen}
-        onClose={() => setOurWorkOpen(false)}
-        images={OUR_WORK}
-      />
+      {/* ==== MODAL: Naše realizace (scroll uvnitř) ==== */}
+      {workOpen && (
+        <div className="fixed inset-0 z-[999]">
+          {/* backdrop */}
+          <button
+            type="button"
+            className="absolute inset-0 bg-black/35"
+            onClick={() => setWorkOpen(false)}
+            aria-label="Zavřít"
+          />
+
+          {/* modal panel */}
+          <div
+            className="absolute left-4 right-4 top-6 bottom-6 md:left-10 md:right-10 md:top-10 md:bottom-10 bg-white rounded-2xl border border-[var(--line)] soft-shadow overflow-hidden"
+            style={{ paddingTop: "env(safe-area-inset-top, 0px)" }}
+          >
+            <div className="flex items-start justify-between gap-4 px-6 py-5 border-b border-[var(--line)]">
+              <div>
+                <div className="text-xl font-semibold">Naše realizace</div>
+                <div className="text-sm text-[var(--muted)] mt-1">
+                  Procházejte fotky – můžete scrollovat dolů.
+                </div>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => setWorkOpen(false)}
+                className="px-4 py-2 text-sm rounded-lg border border-[var(--line)] hover:bg-[var(--bg2)] transition"
+              >
+                Zavřít
+              </button>
+            </div>
+
+            {/* scroll content */}
+            <div className="ourwork-modal-scroll">
+              <div className="ourwork-modal-grid">
+                {Array.from({ length: Math.ceil(OUR_WORK.length / 3) }, (_, rowIndex) => {
+                  const row = OUR_WORK.slice(rowIndex * 3, rowIndex * 3 + 3);
+
+                  return (
+                    <div key={rowIndex} className="ourwork-modal-row">
+                      {row.map((src, i) => (
+                        <a
+                          key={src}
+                          href={src}
+                          onClick={(e) => openLightbox(e, src)}
+                          className="ourwork-modal-item group"
+                          style={{ flexGrow: 1 }}
+                        >
+                          <img
+                            src={src}
+                            alt={`Realizace ${rowIndex * 3 + i + 1}`}
+                            className="ourwork-modal-img"
+                            loading="lazy"
+                            decoding="async"
+                            onLoad={(e) => {
+                              const w = e.currentTarget.naturalWidth || 1;
+                              const h = e.currentTarget.naturalHeight || 1;
+                              const ratio = w / h;
+                              const item = e.currentTarget.closest(".ourwork-modal-item");
+                              if (item) item.style.flexGrow = String(ratio);
+                            }}
+                          />
+                          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition rounded-xl" />
+                        </a>
+                      ))}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* ==== SPOLUPRACUJEME S ==== */}
       <section className="max-w-6xl mx-auto px-4 pb-20 reveal">
@@ -1720,7 +1793,6 @@ function Gallery({ t }) {
     </>
   );
 }
-
 
 
 
