@@ -1509,7 +1509,7 @@ function OurWorkModal({ open, onClose, images }) {
 function Gallery({ t }) {
   useReveal();
 
-  // ==== TVOJE REALIZACE (lokální soubory) ====
+  // ==== NAŠE REALIZACE (lokální soubory) ====
   // POZOR: název i přípona musí sedět 1:1 se souborem na disku
   const OUR_WORK = [
     "assets/img/gallery/our-work/ourwork-01.webp",
@@ -1580,29 +1580,31 @@ function Gallery({ t }) {
       images: [
         "assets/img/gallery/partners/epic-interior-studio/epic-01.webp",
         "assets/img/gallery/partners/epic-interior-studio/epic-02.webp",
-        "assets/img/gallery/partners/epic-interiorstudio/epic-03.webp",
+        "assets/img/gallery/partners/epic-interior-studio/epic-03.webp",
       ],
     },
   ];
 
-  // ==== MODAL state (Naše realizace: zobrazit vše) ====
-  const [workOpen, setWorkOpen] = React.useState(false);
+  // ==== MODAL: Naše realizace (Zobrazit vše) ====
+  const [ourWorkOpen, setOurWorkOpen] = React.useState(false);
 
   // zamkni scroll pozadí, když je modal otevřený
   React.useEffect(() => {
-    if (!workOpen) return;
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = prev || "";
-    };
-  }, [workOpen]);
+    document.body.style.overflow = ourWorkOpen ? "hidden" : "";
+    return () => (document.body.style.overflow = "");
+  }, [ourWorkOpen]);
+
+  const openOurWork = () => setOurWorkOpen(true);
+  const closeOurWork = () => setOurWorkOpen(false);
+
+  // v pásu ukazujeme jen 6 (rychlý „teaser“)
+  const OUR_WORK_TEASER = OUR_WORK.slice(0, 6);
 
   return (
     <>
       <Hero t={t} small title={t.galleryH} bg="assets/img/hero/gallery-hero.webp" />
 
-      {/* ==== NAŠE PRÁCE ==== */}
+      {/* ==== NAŠE REALIZACE (TEASER) ==== */}
       <section className="max-w-6xl mx-auto px-4 py-16 reveal">
         <div className="flex items-end justify-between gap-4">
           <div className="max-w-3xl">
@@ -1614,21 +1616,22 @@ function Gallery({ t }) {
 
           <button
             type="button"
-            onClick={() => setWorkOpen(true)}
+            onClick={openOurWork}
             className="hidden md:inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold border border-[var(--line)] bg-white hover:bg-[var(--bg2)] hover:border-[var(--sand)] transition"
           >
             Zobrazit vše →
           </button>
         </div>
 
-        {/* pás – stejné výšky, šířka podle fotky (přes tvé CSS ourwork-strip) */}
+        {/* pás – stejná výška, šířka podle fotky, bez ořezu */}
         <div className="mt-8 ourwork-strip">
-          {OUR_WORK.slice(0, 6).map((src, i) => (
+          {OUR_WORK_TEASER.map((src, i) => (
             <a
               key={i}
               href={src}
               onClick={(e) => openLightbox(e, src)}
               className="ourwork-item group relative"
+              title="Otevřít fotku"
             >
               <img
                 src={src}
@@ -1645,82 +1648,64 @@ function Gallery({ t }) {
         {/* mobilní CTA */}
         <button
           type="button"
-          onClick={() => setWorkOpen(true)}
+          onClick={openOurWork}
           className="mt-6 md:hidden w-full inline-flex justify-center items-center gap-2 rounded-2xl px-4 py-4 text-sm font-semibold border border-[var(--line)] bg-white hover:bg-[var(--bg2)] hover:border-[var(--sand)] transition"
         >
           Zobrazit vše →
         </button>
       </section>
 
-      {/* ==== MODAL: Naše realizace (scroll uvnitř) ==== */}
-      {workOpen && (
+      {/* ==== MODAL: NAŠE REALIZACE (Zobrazit vše) ==== */}
+      {ourWorkOpen && (
         <div className="fixed inset-0 z-[999]">
           {/* backdrop */}
           <button
             type="button"
             className="absolute inset-0 bg-black/35"
-            onClick={() => setWorkOpen(false)}
+            onClick={closeOurWork}
             aria-label="Zavřít"
           />
 
-          {/* modal panel */}
-          <div
-            className="absolute left-4 right-4 top-6 bottom-6 md:left-10 md:right-10 md:top-10 md:bottom-10 bg-white rounded-2xl border border-[var(--line)] soft-shadow overflow-hidden"
-            style={{ paddingTop: "env(safe-area-inset-top, 0px)" }}
-          >
-            <div className="flex items-start justify-between gap-4 px-6 py-5 border-b border-[var(--line)]">
+          {/* panel */}
+          <div className="ourwork-modal" role="dialog" aria-modal="true">
+            <div className="ourwork-modal-head">
               <div>
-                <div className="text-xl font-semibold">Naše realizace</div>
-                <div className="text-sm text-[var(--muted)] mt-1">
+                <div className="text-lg font-semibold">Naše realizace</div>
+                <div className="text-sm text-[var(--muted)]">
                   Procházejte fotky – můžete scrollovat dolů.
                 </div>
               </div>
 
               <button
                 type="button"
-                onClick={() => setWorkOpen(false)}
-                className="px-4 py-2 text-sm rounded-lg border border-[var(--line)] hover:bg-[var(--bg2)] transition"
+                onClick={closeOurWork}
+                className="px-3 py-1.5 text-sm rounded-lg border border-[var(--line)] hover:bg-[var(--bg2)] transition"
               >
                 Zavřít
               </button>
             </div>
 
-            {/* scroll content */}
-            <div className="ourwork-modal-scroll">
-              <div className="ourwork-modal-grid">
-                {Array.from({ length: Math.ceil(OUR_WORK.length / 3) }, (_, rowIndex) => {
-                  const row = OUR_WORK.slice(rowIndex * 3, rowIndex * 3 + 3);
-
-                  return (
-                    <div key={rowIndex} className="ourwork-modal-row">
-                      {row.map((src, i) => (
-                        <a
-                          key={src}
-                          href={src}
-                          onClick={(e) => openLightbox(e, src)}
-                          className="ourwork-modal-item group"
-                          style={{ flexGrow: 1 }}
-                        >
-                          <img
-                            src={src}
-                            alt={`Realizace ${rowIndex * 3 + i + 1}`}
-                            className="ourwork-modal-img"
-                            loading="lazy"
-                            decoding="async"
-                            onLoad={(e) => {
-                              const w = e.currentTarget.naturalWidth || 1;
-                              const h = e.currentTarget.naturalHeight || 1;
-                              const ratio = w / h;
-                              const item = e.currentTarget.closest(".ourwork-modal-item");
-                              if (item) item.style.flexGrow = String(ratio);
-                            }}
-                          />
-                          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition rounded-xl" />
-                        </a>
-                      ))}
-                    </div>
-                  );
-                })}
+            <div className="ourwork-modal-body">
+              {/* 3 v řádku, zarovnané na kraje, mezery se přizpůsobují */}
+              <div className="ourwork-grid">
+                {OUR_WORK.map((src, i) => (
+                  <a
+                    key={i}
+                    href={src}
+                    onClick={(e) => openLightbox(e, src)}
+                    className="ourwork-tile group"
+                    title="Otevřít fotku"
+                  >
+                    <img
+                      src={src}
+                      alt={`Realizace ${i + 1}`}
+                      className="ourwork-tile-img"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <div className="ourwork-tile-hover" />
+                  </a>
+                ))}
               </div>
             </div>
           </div>
@@ -1793,6 +1778,7 @@ function Gallery({ t }) {
     </>
   );
 }
+
 
 
 
