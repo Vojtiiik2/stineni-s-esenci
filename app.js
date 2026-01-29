@@ -507,107 +507,226 @@ const Header = ({ t, lang, setLang }) => {
 
 
 
-function Hero({ t, small = false, showCta = false, intervalMs = 8000, bg, title }) {
-  const slides = t.heroSlides || [];
-  const [index, setIndex] = React.useState(0);
+const Header = ({ t, lang, setLang }) => {
+  const [open, setOpen] = React.useState(false);
 
-  const [stage, setStage] = React.useState("show");
-  const timerRef = React.useRef(null);
+  // zavřít menu při přechodu (ať to nezůstává viset)
+  const navItems = t.nav.map((label, i) => ({
+    label,
+    path: ["/process", "/pricing", "/gallery", "/finished", "/essences", "/contact"][i],
+  }));
 
+  // ESC zavře drawer
   React.useEffect(() => {
-    if (small || slides.length < 2) return;
-
-    const run = () => {
-      setStage("exit");
-
-      timerRef.current = setTimeout(() => {
-        setIndex((i) => (i + 1) % slides.length);
-        setStage("enter");
-
-        timerRef.current = setTimeout(() => {
-          setStage("show");
-        }, 40);
-      }, 650);
+    if (!open) return;
+    const onKey = (e) => {
+      if (e.key === "Escape") setOpen(false);
     };
-
-    const id = setInterval(run, intervalMs);
-    return () => {
-      clearInterval(id);
-      clearTimeout(timerRef.current);
-    };
-  }, [small, slides.length, intervalMs]);
-
-  const slide = slides[index] || {};
-  const effectiveBg = small && bg ? bg : slide.bg;
-
-  const bgClass =
-    stage === "exit"
-      ? "opacity-0 scale-[1.03]"
-      : "opacity-100 scale-100";
-
-  const textClass =
-    stage === "exit"
-      ? "opacity-0 translate-y-2"
-      : "opacity-100 translate-y-0";
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [open]);
 
   return (
-    <section
-      className={
-        (small ? "min-h-[42vh]" : "min-h-[92vh]") +
-        " relative flex items-center overflow-hidden"
-      }
-    >
-      <div
-        className={
-          "absolute inset-0 transition-all duration-1000 ease-in-out will-change-transform " +
-          bgClass
-        }
-        style={{
-          backgroundImage: `linear-gradient(to right, rgba(0,0,0,.25), rgba(0,0,0,.05)), url('${effectiveBg || ""}')`,
-          backgroundSize: "cover",
-          backgroundPosition:
-            effectiveBg?.includes("essence-hero")
-              ? "center 65%"
-              : "center"
-        }}
-      />
-
-      <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/25"></div>
-
-      <div className="relative max-w-6xl mx-auto px-4 w-full">
+    <header className="fixed top-0 left-0 right-0 z-30 border-b border-[var(--line)]/70 bg-white/70 backdrop-blur-md">
+      <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between reveal">
+        {/* BRAND */}
         <div
-          className={
-            "max-w-2xl text-white transition-all duration-700 ease-in-out will-change-transform " +
-            textClass
-          }
+          className="leading-4 cursor-pointer select-none"
+          onClick={() => {
+            setOpen(false);
+            go("/");
+          }}
         >
-          <h1 className="script text-5xl md:text-6xl mb-3">
-            {title || slide.h1 || ""}
-          </h1>
+          <div className="script text-2xl -mb-0.5" style={{ color: "var(--brand-brown-dark)" }}>
+            {t.brand2}
+          </div>
+          <div className="text-xs tracking-wide" style={{ color: "var(--brand-brown-light)" }}>
+            {t.brand1}
+          </div>
+        </div>
 
-          <p className="text-lg opacity-95">{t.heroSub}</p>
-
-          {!small && showCta && (
+        {/* NAV (desktop) */}
+        <nav className="hidden md:flex gap-6 text-sm font-semibold">
+          {navItems.map((x, i) => (
             <button
-              onClick={() => go("/contact")}
-              className="btn-cta inline-block mt-6 px-5 py-3 rounded-full bg-[var(--sand)] text-[var(--text)] font-bold border border-black/5"
+              key={i}
+              onClick={() => go(x.path)}
+              className="relative group hover:text-[var(--text)]/90 text-[var(--text)]/75"
               type="button"
             >
-              {t.cta}
+              <span>{x.label}</span>
             </button>
-          )}
+          ))}
+        </nav>
+
+        {/* RIGHT ACTIONS */}
+        <div className="flex items-center gap-2">
+          {/* Telefon */}
+          <a
+            href="tel:+420724379309"
+            className="inline-flex items-center gap-2 px-3 py-1.5 text-sm rounded-lg border border-[var(--line)] text-[var(--text)] hover:bg-[var(--bg2)] hover:border-[var(--sand)] transition"
+            aria-label="Zavolat +420 724 379 309"
+          >
+            {/* ikonka telefonu - bez červené, bere currentColor */}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="w-4 h-4"
+              aria-hidden="true"
+            >
+              <path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 
+                19.8 19.8 0 0 1-8.63-3.07 
+                19.5 19.5 0 0 1-6-6 
+                19.8 19.8 0 0 1-3.07-8.67 
+                A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 
+                12.3 12.3 0 0 0 .7 2.81 
+                2 2 0 0 1-.45 2.11L8.09 9.91 
+                a16 16 0 0 0 6 6l1.27-1.27 
+                a2 2 0 0 1 2.11-.45 
+                12.3 12.3 0 0 0 2.81.7 
+                A2 2 0 0 1 22 16.92z"
+              />
+            </svg>
+            <span className="hidden lg:inline">+420&nbsp;724&nbsp;379&nbsp;309</span>
+          </a>
+
+          {/* LANG (desktop) */}
+          <div className="hidden md:flex items-center gap-2">
+            <button
+              onClick={() => setLang("cs")}
+              className={
+                "px-3 py-1.5 text-sm rounded-lg border " +
+                (lang === "cs" ? "border-[var(--sand)]" : "border-[var(--line)]")
+              }
+              type="button"
+            >
+              CZ
+            </button>
+            <button
+              onClick={() => setLang("en")}
+              className={
+                "px-3 py-1.5 text-sm rounded-lg border " +
+                (lang === "en" ? "border-[var(--sand)]" : "border-[var(--line)]")
+              }
+              type="button"
+            >
+              EN
+            </button>
+          </div>
+
+          {/* HAMBURGER (mobile) */}
+          <button
+            type="button"
+            onClick={() => setOpen(true)}
+            className="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg border border-[var(--line)] hover:bg-[var(--bg2)] transition"
+            aria-label="Otevřít menu"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.6"
+              strokeLinecap="round"
+              className="w-5 h-5"
+              aria-hidden="true"
+            >
+              <path d="M4 7h16M4 12h16M4 17h16" />
+            </svg>
+          </button>
         </div>
       </div>
-    </section>
+
+      {/* MOBILE DRAWER */}
+      {open ? (
+        <div className="md:hidden fixed inset-0 z-[999]">
+          {/* overlay */}
+          <div
+            className="absolute inset-0 bg-black/40"
+            onClick={() => setOpen(false)}
+            aria-hidden="true"
+          />
+
+          {/* panel */}
+          <div className="absolute top-0 right-0 h-full w-[86vw] max-w-sm bg-white border-l border-[var(--line)] soft-shadow">
+            <div className="h-16 px-4 flex items-center justify-between border-b border-[var(--line)]">
+              <div className="text-sm font-semibold">Menu</div>
+              <button
+                type="button"
+                onClick={() => setOpen(false)}
+                className="rounded-lg px-3 py-1.5 text-sm border border-[var(--line)] hover:bg-[var(--bg2)] transition"
+              >
+                Zavřít
+              </button>
+            </div>
+
+            <div className="p-4">
+              <div className="grid gap-2">
+                {navItems.map((x, i) => (
+                  <button
+                    key={i}
+                    type="button"
+                    onClick={() => {
+                      setOpen(false);
+                      go(x.path);
+                    }}
+                    className="text-left px-3 py-3 rounded-xl border border-[var(--line)] hover:bg-[var(--bg2)] transition text-[var(--text)]"
+                  >
+                    {x.label}
+                  </button>
+                ))}
+              </div>
+
+              <div className="mt-5 pt-5 border-t border-[var(--line)]">
+                <div className="text-xs uppercase tracking-wide text-[var(--muted)] mb-2">
+                  Jazyk
+                </div>
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => setLang("cs")}
+                    className={
+                      "flex-1 px-3 py-2.5 text-sm rounded-lg border " +
+                      (lang === "cs" ? "border-[var(--sand)]" : "border-[var(--line)]")
+                    }
+                    type="button"
+                  >
+                    CZ
+                  </button>
+                  <button
+                    onClick={() => setLang("en")}
+                    className={
+                      "flex-1 px-3 py-2.5 text-sm rounded-lg border " +
+                      (lang === "en" ? "border-[var(--sand)]" : "border-[var(--line)]")
+                    }
+                    type="button"
+                  >
+                    EN
+                  </button>
+                </div>
+
+                <a
+                  href="tel:+420724379309"
+                  className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold border border-[var(--line)] hover:bg-[var(--bg2)] transition"
+                >
+                  Zavolat +420&nbsp;724&nbsp;379&nbsp;309
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : null}
+    </header>
   );
-}
+};
 
 
-
-
-
-
-tady mas cely home function Home({ t }) {
+function Home({ t }) {
   useReveal();
 
   return (
