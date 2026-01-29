@@ -36,11 +36,12 @@ body.reveal {
 
 [data-first],
 .section-swap,
-section {
+.reveal {
   opacity: 0;
   transform: translateY(25px);
   animation: revealSection 1s ease-out forwards;
 }
+
 
 @keyframes revealSection {
   to {
