@@ -605,7 +605,9 @@ function Hero({ t, small = false, showCta = false, intervalMs = 8000, bg, title 
 
 
 
-function Home({ t }) {
+
+
+tady mas cely home function Home({ t }) {
   useReveal();
 
   return (
@@ -779,9 +781,6 @@ function Home({ t }) {
     </>
   );
 }
-
-
-
 
 
 function Process({ t }) {
