@@ -392,12 +392,12 @@ const Header = ({ t, lang, setLang }) => {
             aria-label="Zavřít menu"
           />
 
-          {/* panel */}
-          <div
-            className="absolute left-0 right-0 top-0 bg-white border-b border-[var(--line)] soft-shadow"
-            style={{ paddingTop: "calc(env(safe-area-inset-top, 0px) + 12px)" }}
-          >
-            <div className="max-w-6xl mx-auto px-4 pb-4">
+         <div
+  className="absolute top-0 left-1/2 -translate-x-1/2 bg-white border border-[var(--line)] soft-shadow rounded-2xl w-[92%] max-w-md"
+  style={{ paddingTop: "calc(env(safe-area-inset-top, 0px) + 12px)" }}
+>
+
+            <div className="px-4 pb-4">
               <div className="flex items-center justify-between">
                 <div className="font-semibold">Menu</div>
                 <button
