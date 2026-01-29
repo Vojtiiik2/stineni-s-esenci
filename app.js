@@ -481,10 +481,16 @@ const Header = ({ t, lang, setLang }) => {
 
 
 
-function Hero({ t, small = false, showCta = false, intervalMs = 8000, bg, title }) {
+function Hero({
+  t,
+  small = false,
+  showCta = false,
+  intervalMs = 8000,
+  bg,
+  title
+}) {
   const slides = t.heroSlides || [];
   const [index, setIndex] = React.useState(0);
-
   const [stage, setStage] = React.useState("show");
   const timerRef = React.useRef(null);
 
@@ -526,26 +532,30 @@ function Hero({ t, small = false, showCta = false, intervalMs = 8000, bg, title 
 
   return (
     <section
-      className={
-        "hero" +
-        (small ? " hero--small" : "") +
-        " relative flex items-center overflow-hidden"
-      }
+      className={`hero ${small ? "hero--small" : ""} relative flex items-center overflow-hidden`}
     >
+      {/* BACKGROUND */}
       <div
         className={
           "absolute inset-0 transition-all duration-1000 ease-in-out will-change-transform " +
           bgClass
         }
         style={{
-          backgroundImage: `linear-gradient(to right, rgba(0,0,0,.22), rgba(0,0,0,.06)), url('${effectiveBg || ""}')`,
+          backgroundImage: `
+            linear-gradient(
+              to bottom,
+              rgba(0,0,0,0.25),
+              rgba(0,0,0,0.15),
+              rgba(0,0,0,0.25)
+            ),
+            url('${effectiveBg || ""}')
+          `,
           backgroundSize: "cover",
           backgroundPosition: "center 55%"
         }}
       />
 
-      <div className="absolute inset-0 bg-gradient-to-b from-black/15 via-transparent to-black/25"></div>
-
+      {/* TEXT */}
       <div className="relative max-w-6xl mx-auto px-4 w-full">
         <div
           className={
@@ -553,16 +563,18 @@ function Hero({ t, small = false, showCta = false, intervalMs = 8000, bg, title 
             textClass
           }
         >
-          <h1 className="script text-5xl md:text-6xl mb-3">
+          <h1 className="script text-4xl sm:text-5xl md:text-6xl mb-4 leading-tight">
             {title || slide.h1 || ""}
           </h1>
 
-          <p className="text-lg opacity-95">{t.heroSub}</p>
+          <p className="text-base sm:text-lg opacity-95">
+            {t.heroSub}
+          </p>
 
           {!small && showCta && (
             <button
               onClick={() => go("/contact")}
-              className="btn-cta inline-block mt-6 px-5 py-3 rounded-full bg-[var(--sand)] text-[var(--text)] font-bold border border-black/5"
+              className="btn-cta inline-block mt-6 px-6 py-3 rounded-full bg-[var(--sand)] text-[var(--text)] font-bold border border-black/5"
               type="button"
             >
               {t.cta}
@@ -573,6 +585,7 @@ function Hero({ t, small = false, showCta = false, intervalMs = 8000, bg, title 
     </section>
   );
 }
+
 
 
 
