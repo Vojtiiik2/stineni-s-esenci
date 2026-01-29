@@ -462,6 +462,11 @@ const Header = ({ t, lang, setLang }) => {
     </div>
   </div>
 </div>
+        </div>
+      )} 
+    </>
+  );
+};
 
 
 
