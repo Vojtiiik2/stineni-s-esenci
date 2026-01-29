@@ -207,6 +207,49 @@ article,
   }
 }
 
+/* ===== Our Work Modal (like pricing/detail modal) ===== */
+.ourwork-modal{
+  position:absolute;
+  inset: 0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding: 18px;
+}
+
+.ourwork-modal-inner{
+  width: min(1100px, 96vw);
+  max-height: min(86vh, 860px);
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  box-shadow: 0 20px 70px rgba(0,0,0,.25);
+  padding: 18px;
+  display:flex;
+  flex-direction:column;
+}
+
+/* scroll jen uvnitř */
+.ourwork-modal-body{
+  margin-top: 14px;
+  overflow:auto;
+  padding-right: 4px;
+}
+
+/* grid v modalu */
+.ourwork-grid-modal{
+  display:grid;
+  gap: 12px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (min-width: 768px){
+  .ourwork-grid-modal{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (min-width: 1024px){
+  .ourwork-grid-modal{ grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
 
 
 
