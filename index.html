@@ -2,16 +2,18 @@
 <html lang="cs">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <title>Jana Segelberg – Stínění s esencí</title>
 
   <link rel="icon" href="data:,">
-
 
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600;700&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
 
   <meta name="description" content="Kde se světlo setká s emocí. Záclony, závěsy, rolety a jemné esence.">
   <meta name="theme-color" content="#f1ece7" />
+
+  <!-- ✅ Tohle ti vrátí „tailwind-like“ třídy (hidden, md:flex, px-4, atd.) -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
   <link rel="stylesheet" href="./style.css" />
 </head>
@@ -23,7 +25,7 @@
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-  <!-- ✅ app.js se načte vždy čerstvý, bez ručního přepisování -->
+  <!-- ✅ app.js načti jen jednou + vždy čerstvý (bez ručního přepisování) -->
   <script>
     (function () {
       var s = document.createElement("script");
@@ -33,5 +35,7 @@
     })();
   </script>
 </body>
+</html>
+
 
 
