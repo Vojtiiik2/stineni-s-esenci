@@ -458,10 +458,30 @@ const Header = ({ t, lang, setLang }) => {
 function Hero({ t, small = false, showCta = false, intervalMs = 8000, bg, title }) {
   const slides = t.heroSlides || [];
   const [index, setIndex] = React.useState(0);
-
   const [stage, setStage] = React.useState("show");
   const timerRef = React.useRef(null);
 
+  // ✅ mobil / desktop (kvůli posMobile)
+  const [isMobile, setIsMobile] = React.useState(() =>
+    window.matchMedia ? window.matchMedia("(max-width: 768px)").matches : false
+  );
+
+  React.useEffect(() => {
+    if (!window.matchMedia) return;
+    const mq = window.matchMedia("(max-width: 768px)");
+    const onChange = () => setIsMobile(mq.matches);
+
+    // iOS/Safari kompatibilita
+    if (mq.addEventListener) mq.addEventListener("change", onChange);
+    else mq.addListener(onChange);
+
+    return () => {
+      if (mq.removeEventListener) mq.removeEventListener("change", onChange);
+      else mq.removeListener(onChange);
+    };
+  }, []);
+
+  // slideshow
   React.useEffect(() => {
     if (small || slides.length < 2) return;
 
@@ -488,6 +508,11 @@ function Hero({ t, small = false, showCta = false, intervalMs = 8000, bg, title 
   const slide = slides[index] || {};
   const effectiveBg = small && bg ? bg : slide.bg;
 
+  // ✅ tady se konečně použije posMobile / pos
+  const bgPos = isMobile
+    ? (slide.posMobile || slide.pos || "center")
+    : (slide.pos || "center");
+
   const bgClass =
     stage === "exit"
       ? "opacity-0 scale-[1.03]"
@@ -501,7 +526,9 @@ function Hero({ t, small = false, showCta = false, intervalMs = 8000, bg, title 
   return (
     <section
       className={
-        (small ? "min-h-[42vh]" : "min-h-[92vh]") +
+        (small
+          ? "min-h-[42vh]"
+          : "min-h-[60svh] md:min-h-[92vh]") +   // ✅ trochu menší na mobilu
         " relative flex items-center overflow-hidden"
       }
     >
@@ -510,19 +537,14 @@ function Hero({ t, small = false, showCta = false, intervalMs = 8000, bg, title 
           "absolute inset-0 transition-all duration-1000 ease-in-out will-change-transform " +
           bgClass
         }
-      style={{
-  backgroundImage: `linear-gradient(to right, rgba(0,0,0,.25), rgba(0,0,0,.05)), url('${effectiveBg || ""}')`,
-  backgroundSize: "cover",
-  backgroundPosition:
-    effectiveBg?.includes("essence-hero")
-      ? "center 65%"
-      : "center"
-}}
-
-
+        style={{
+          backgroundImage: `linear-gradient(to right, rgba(0,0,0,.25), rgba(0,0,0,.05)), url('${effectiveBg || ""}')`,
+          backgroundSize: "cover",
+          backgroundPosition: bgPos // ✅ mobil dostane posMobile
+        }}
       />
 
-      <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/25"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-black/15 via-transparent to-black/20"></div>
 
       <div className="relative max-w-6xl mx-auto px-4 w-full">
         <div
@@ -531,7 +553,7 @@ function Hero({ t, small = false, showCta = false, intervalMs = 8000, bg, title 
             textClass
           }
         >
-          <h1 className="script text-5xl md:text-6xl mb-3">
+          <h1 className="script text-4xl md:text-6xl mb-3">
             {title || slide.h1 || ""}
           </h1>
 
