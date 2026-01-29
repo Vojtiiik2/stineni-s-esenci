@@ -279,4 +279,51 @@ article,
   .ourwork-modal-item{ height: 160px; max-width: 92vw; }
 }
 
+/* ===== OUR WORK MODAL (Zobrazit vše) ===== */
+
+.ourwork-modal-scroll{
+  height: calc(100% - 74px); /* odečte header modalu */
+  overflow: auto;
+  padding: 18px;            /* stejný “okraj” kolem fotek */
+}
+
+/* řádek = vždy 3 fotky, zarovnané na kraje */
+.ourwork-modal-row{
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  gap: 14px;          /* mezera mezi fotkami (mění se jen mezery vizuálně) */
+  margin-bottom: 14px;
+}
+
+.ourwork-modal-item{
+  position: relative;
+  flex-basis: 0;      /* klíčové: rozděluje šířku podle flexGrow */
+  min-width: 0;       /* Safari fix */
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* všechny stejně vysoké, šířka se dopočítá z poměru fotky */
+.ourwork-modal-img{
+  height: 210px;
+  width: 100%;
+  display: block;
+  object-fit: cover;  /* designově čisté, bez děr */
+  border-radius: 16px;
+}
+
+/* mobil */
+@media (max-width: 768px){
+  .ourwork-modal-scroll{
+    padding: 14px;
+  }
+  .ourwork-modal-row{
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .ourwork-modal-img{
+    height: 170px;
+  }
+}
 
