@@ -328,9 +328,15 @@ const Header = ({ t, lang, setLang }) => {
   return (
     <>
       {/* ✅ vyšší z-index + iOS pojistka */}
-      <header
-        className="fixed top-0 left-0 right-0 z-[200] border-b border-[var(--line)]/70 bg-white/70 backdrop-blur-md"
-        style={{ transform: "translateZ(0)" }} // iOS fix pro fixed
+     <header
+  className="fixed top-0 left-0 right-0 z-[9999] border-b border-[var(--line)]/70 bg-white/70 backdrop-blur-md"
+  style={{
+    WebkitTransform: "translate3d(0,0,0)", // iOS fix pro fixed
+    transform: "translate3d(0,0,0)",
+    willChange: "transform"
+  }}
+>
+
       >
         <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between reveal">
           {/* BRAND */}
@@ -504,30 +510,10 @@ const Header = ({ t, lang, setLang }) => {
 function Hero({ t, small = false, showCta = false, intervalMs = 8000, bg, title }) {
   const slides = t.heroSlides || [];
   const [index, setIndex] = React.useState(0);
+
   const [stage, setStage] = React.useState("show");
   const timerRef = React.useRef(null);
 
-  // ✅ mobil / desktop (kvůli posMobile)
-  const [isMobile, setIsMobile] = React.useState(() =>
-    window.matchMedia ? window.matchMedia("(max-width: 768px)").matches : false
-  );
-
-  React.useEffect(() => {
-    if (!window.matchMedia) return;
-    const mq = window.matchMedia("(max-width: 768px)");
-    const onChange = () => setIsMobile(mq.matches);
-
-    // iOS/Safari kompatibilita
-    if (mq.addEventListener) mq.addEventListener("change", onChange);
-    else mq.addListener(onChange);
-
-    return () => {
-      if (mq.removeEventListener) mq.removeEventListener("change", onChange);
-      else mq.removeListener(onChange);
-    };
-  }, []);
-
-  // slideshow
   React.useEffect(() => {
     if (small || slides.length < 2) return;
 
@@ -554,11 +540,6 @@ function Hero({ t, small = false, showCta = false, intervalMs = 8000, bg, title 
   const slide = slides[index] || {};
   const effectiveBg = small && bg ? bg : slide.bg;
 
-  // ✅ tady se konečně použije posMobile / pos
-  const bgPos = isMobile
-    ? (slide.posMobile || slide.pos || "center")
-    : (slide.pos || "center");
-
   const bgClass =
     stage === "exit"
       ? "opacity-0 scale-[1.03]"
@@ -572,9 +553,7 @@ function Hero({ t, small = false, showCta = false, intervalMs = 8000, bg, title 
   return (
     <section
       className={
-        (small
-          ? "min-h-[42vh]"
-          : "min-h-[60svh] md:min-h-[92vh]") +   // ✅ trochu menší na mobilu
+        (small ? "min-h-[42vh]" : "min-h-[92vh]") +
         " relative flex items-center overflow-hidden"
       }
     >
@@ -586,11 +565,14 @@ function Hero({ t, small = false, showCta = false, intervalMs = 8000, bg, title 
         style={{
           backgroundImage: `linear-gradient(to right, rgba(0,0,0,.25), rgba(0,0,0,.05)), url('${effectiveBg || ""}')`,
           backgroundSize: "cover",
-          backgroundPosition: bgPos // ✅ mobil dostane posMobile
+          backgroundPosition:
+            effectiveBg?.includes("essence-hero")
+              ? "center 65%"
+              : "center"
         }}
       />
 
-      <div className="absolute inset-0 bg-gradient-to-b from-black/15 via-transparent to-black/20"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/25"></div>
 
       <div className="relative max-w-6xl mx-auto px-4 w-full">
         <div
@@ -599,7 +581,7 @@ function Hero({ t, small = false, showCta = false, intervalMs = 8000, bg, title 
             textClass
           }
         >
-          <h1 className="script text-4xl md:text-6xl mb-3">
+          <h1 className="script text-5xl md:text-6xl mb-3">
             {title || slide.h1 || ""}
           </h1>
 
@@ -619,7 +601,6 @@ function Hero({ t, small = false, showCta = false, intervalMs = 8000, bg, title 
     </section>
   );
 }
-
 
 
 
