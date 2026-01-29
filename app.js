@@ -488,6 +488,22 @@ function Hero({ t, small = false, showCta = false, intervalMs = 8000, bg, title 
   const [stage, setStage] = React.useState("show");
   const timerRef = React.useRef(null);
 
+  // ✅ spolehlivá responsivní výška (funguje i bez Tailwindu)
+  const [isMdUp, setIsMdUp] = React.useState(() =>
+    typeof window !== "undefined" ? window.matchMedia("(min-width: 768px)").matches : false
+  );
+
+  React.useEffect(() => {
+    const mq = window.matchMedia("(min-width: 768px)");
+    const onChange = () => setIsMdUp(mq.matches);
+    if (mq.addEventListener) mq.addEventListener("change", onChange);
+    else mq.addListener(onChange);
+    return () => {
+      if (mq.removeEventListener) mq.removeEventListener("change", onChange);
+      else mq.removeListener(onChange);
+    };
+  }, []);
+
   React.useEffect(() => {
     if (small || slides.length < 2) return;
 
@@ -524,14 +540,14 @@ function Hero({ t, small = false, showCta = false, intervalMs = 8000, bg, title 
       ? "opacity-0 translate-y-2"
       : "opacity-100 translate-y-0";
 
+  const heroMinH = small
+    ? "42vh"
+    : (isMdUp ? "92vh" : "70vh"); // ✅ mobil nižší, desktop velký
+
   return (
     <section
-      className={
-        (small
-          ? "min-h-[42vh]"
-          : "min-h-[70vh] md:min-h-[92vh]") +
-        " relative flex items-center overflow-hidden"
-      }
+      className={"relative flex items-center overflow-hidden"}
+      style={{ minHeight: heroMinH }}
     >
       <div
         className={
@@ -577,6 +593,7 @@ function Hero({ t, small = false, showCta = false, intervalMs = 8000, bg, title 
     </section>
   );
 }
+
 
 function Home({ t }) {
   useReveal();
