@@ -251,5 +251,32 @@ article,
   .ourwork-grid-modal{ grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
 
+/* ===== Our Work Modal – fotky jako pás (stejná výška, šířka dle formátu) ===== */
+.ourwork-modal-strip{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  align-items:flex-start;
+}
+
+/* jedna položka – výška pevná, šířka se přizpůsobí */
+.ourwork-modal-item{
+  height: 210px;          /* desktop výška fotek v modalu */
+  flex: 0 0 auto;
+  max-width: 520px;       /* aby ultrawide nebyly přehnaně dlouhé */
+}
+
+.ourwork-modal-img{
+  height:100%;
+  width:auto;             /* ✅ zachová poměr stran */
+  display:block;
+  border-radius:12px;
+  object-fit:cover;       /* ořez jen když by fotka byla extrémní */
+}
+
+/* mobil – menší výška */
+@media (max-width: 640px){
+  .ourwork-modal-item{ height: 160px; max-width: 92vw; }
+}
 
 
