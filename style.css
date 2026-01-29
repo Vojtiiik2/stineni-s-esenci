@@ -327,3 +327,129 @@ article,
   }
 }
 
+/* =========================
+   OUR WORK (teaser strip)
+   ========================= */
+
+.ourwork-strip{
+  display:flex;
+  gap:16px;
+  overflow:auto;
+  padding-bottom:10px;
+  scroll-snap-type:x mandatory;
+}
+
+.ourwork-item{
+  flex:0 0 auto;
+  border-radius:16px;
+  overflow:hidden;
+  scroll-snap-align:start;
+}
+
+.ourwork-img{
+  height:240px;        /* stejná výška */
+  width:auto;          /* šířka podle fotky */
+  display:block;
+  object-fit:contain;  /* NEořezává, zachová formát */
+  background:#fff;
+  border-radius:16px;
+}
+
+/* menší výška na mobilu */
+@media (max-width: 768px){
+  .ourwork-img{ height:180px; }
+}
+
+/* =========================
+   OUR WORK MODAL
+   ========================= */
+
+.ourwork-modal{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%, -50%);
+  width:min(1200px, calc(100vw - 64px));
+  height:min(84vh, 860px);
+  background:#fff;
+  border:1px solid rgba(0,0,0,.08);
+  border-radius:18px;
+  box-shadow:0 20px 60px rgba(0,0,0,.25);
+  overflow:hidden;
+}
+
+@media (max-width: 768px){
+  .ourwork-modal{
+    width:calc(100vw - 24px);
+    height:86vh;
+    border-radius:16px;
+  }
+}
+
+.ourwork-modal-head{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:16px;
+  padding:16px 18px;
+  border-bottom:1px solid rgba(0,0,0,.08);
+}
+
+.ourwork-modal-body{
+  height:calc(100% - 62px);
+  overflow:auto;
+  padding:16px 18px 22px;
+}
+
+/* =========================
+   3-per-row, aligned edges,
+   keep original aspect (no crop)
+   ========================= */
+
+.ourwork-grid{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between; /* levá na kraj, pravá na kraj */
+  row-gap:16px;
+}
+
+/* dlaždice = rám, výška stejná, šířka se přizpůsobí fotce */
+.ourwork-tile{
+  height:210px;               /* stejná výška v modalu */
+  width:fit-content;
+  max-width:calc((100% - 32px) / 3); /* aby se vešly 3 ks na řádek */
+  border-radius:16px;
+  overflow:hidden;
+  position:relative;
+  background:#fff;
+  border:1px solid rgba(0,0,0,.06);
+}
+
+/* obrázek uvnitř se NEnatahuje, NEořezává */
+.ourwork-tile-img{
+  height:100%;
+  width:auto;
+  max-width:100%;
+  display:block;
+  object-fit:contain;
+}
+
+/* hover overlay */
+.ourwork-tile-hover{
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0);
+  transition:background .2s ease;
+}
+.ourwork-tile:hover .ourwork-tile-hover{
+  background:rgba(0,0,0,.08);
+}
+
+/* na mobilu radši 2 v řádku */
+@media (max-width: 768px){
+  .ourwork-tile{
+    height:170px;
+    max-width:calc((100% - 16px) / 2);
+    border-radius:14px;
+  }
+}
