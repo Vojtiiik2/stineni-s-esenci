@@ -392,13 +392,9 @@ const Header = ({ t, lang, setLang }) => {
             aria-label="Zavřít menu"
           />
 
-         {/* panel – drawer zprava (cca 62% šířky) */}
+       {/* panel – drawer zprava (cca 62% šířky) */}
 <div
-  className={
-    "absolute top-0 right-0 h-full bg-white shadow-xl border-l border-[var(--line)] " +
-    "w-[62%] max-w-sm min-w-[320px] " +
-    "transform transition-transform duration-300 ease-out translate-x-0"
-  }
+  className="absolute top-0 right-0 h-full bg-white shadow-xl border-l border-[var(--line)] w-[62%] max-w-sm min-w-[320px]"
   style={{ paddingTop: "calc(env(safe-area-inset-top, 0px) + 12px)" }}
 >
   <div className="px-4 pb-4">
@@ -418,10 +414,7 @@ const Header = ({ t, lang, setLang }) => {
         <button
           key={i}
           type="button"
-          onClick={() => {
-            setMenuOpen(false);
-            go(navPaths[i]);
-          }}
+          onClick={() => { setMenuOpen(false); go(navPaths[i]); }}
           className="w-full text-left px-4 py-4 rounded-2xl border border-[var(--line)] bg-white hover:bg-[var(--bg2)] transition font-semibold"
         >
           {label}
@@ -430,10 +423,7 @@ const Header = ({ t, lang, setLang }) => {
 
       {/* JAZYK – jen v menu, NAD telefonem */}
       <div className="rounded-2xl border border-[var(--line)] bg-white p-4">
-        <div className="text-xs tracking-widest text-[var(--muted)] mb-3">
-          JAZYK
-        </div>
-
+        <div className="text-xs tracking-widest text-[var(--muted)] mb-3">JAZYK</div>
         <div className="grid grid-cols-2 gap-3">
           <button
             type="button"
@@ -447,7 +437,6 @@ const Header = ({ t, lang, setLang }) => {
           >
             CZ
           </button>
-
           <button
             type="button"
             onClick={() => setLang("en")}
@@ -473,9 +462,6 @@ const Header = ({ t, lang, setLang }) => {
     </div>
   </div>
 </div>
-
-         
-         
 
 
 
