@@ -484,22 +484,9 @@ const Header = ({ t, lang, setLang }) => {
 function Hero({ t, small = false, showCta = false, intervalMs = 8000, bg, title }) {
   const slides = t.heroSlides || [];
   const [index, setIndex] = React.useState(0);
+
   const [stage, setStage] = React.useState("show");
   const timerRef = React.useRef(null);
-
-  // ✅ detekce mobilu (kvůli výběru bgMobile / posMobile)
-  const [isMobile, setIsMobile] = React.useState(false);
-  React.useEffect(() => {
-    const mq = window.matchMedia("(max-width: 767px)");
-    const apply = () => setIsMobile(!!mq.matches);
-    apply();
-    if (mq.addEventListener) mq.addEventListener("change", apply);
-    else mq.addListener(apply);
-    return () => {
-      if (mq.removeEventListener) mq.removeEventListener("change", apply);
-      else mq.removeListener(apply);
-    };
-  }, []);
 
   React.useEffect(() => {
     if (small || slides.length < 2) return;
@@ -525,43 +512,27 @@ function Hero({ t, small = false, showCta = false, intervalMs = 8000, bg, title 
   }, [small, slides.length, intervalMs]);
 
   const slide = slides[index] || {};
-
-  // ✅ desktop/mobil pozadí:
-  // - pro small hero: bere bg / bgMobile (pokud ho přidáš)
-  // - pro home hero: bere slide.bg / slide.bgMobile
-  const effectiveBgDesktop = small && bg ? bg : slide.bg;
-  const effectiveBgMobile =
-    (small && (t.heroBgMobile || null)) || // volitelně můžeš dát do t třeba heroBgMobile pro small hera
-    slide.bgMobile ||
-    null;
-
-  const effectiveBg = isMobile && effectiveBgMobile ? effectiveBgMobile : effectiveBgDesktop;
-
-  // ✅ pozice (když nechceš fotku navíc, aspoň posuň crop)
-  const bgPosDesktop =
-    slide.pos ||
-    (effectiveBg?.includes("essence-hero") ? "center 65%" : "center");
-
-  const bgPosMobile =
-    slide.posMobile ||
-    (effectiveBg?.includes("essence-hero") ? "center 70%" : "center");
+  const effectiveBg = small && bg ? bg : slide.bg;
 
   const bgClass =
-    stage === "exit" ? "opacity-0 scale-[1.03]" : "opacity-100 scale-100";
+    stage === "exit"
+      ? "opacity-0 scale-[1.03]"
+      : "opacity-100 scale-100";
 
   const textClass =
-    stage === "exit" ? "opacity-0 translate-y-2" : "opacity-100 translate-y-0";
+    stage === "exit"
+      ? "opacity-0 translate-y-2"
+      : "opacity-100 translate-y-0";
 
   return (
-   <section
-  className={
-    (small
-      ? "min-h-[42vh]"
-      : "min-h-[70vh] sm:min-h-[82vh] lg:min-h-[92vh]") +
-    " relative flex items-center overflow-hidden"
-  }
->
-
+    <section
+      className={
+        (small
+          ? "min-h-[42vh]"
+          : "min-h-[70vh] md:min-h-[92vh]") +
+        " relative flex items-center overflow-hidden"
+      }
+    >
       <div
         className={
           "absolute inset-0 transition-all duration-1000 ease-in-out will-change-transform " +
@@ -570,11 +541,14 @@ function Hero({ t, small = false, showCta = false, intervalMs = 8000, bg, title 
         style={{
           backgroundImage: `linear-gradient(to right, rgba(0,0,0,.25), rgba(0,0,0,.05)), url('${effectiveBg || ""}')`,
           backgroundSize: "cover",
-          backgroundPosition: isMobile ? bgPosMobile : bgPosDesktop
+          backgroundPosition:
+            effectiveBg?.includes("essence-hero")
+              ? "center 65%"
+              : "center"
         }}
       />
 
-      <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/25"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-black/15 via-transparent to-black/20"></div>
 
       <div className="relative max-w-6xl mx-auto px-4 w-full">
         <div
@@ -583,7 +557,7 @@ function Hero({ t, small = false, showCta = false, intervalMs = 8000, bg, title 
             textClass
           }
         >
-          <h1 className="script text-5xl md:text-6xl mb-3">
+          <h1 className="script text-4xl md:text-6xl mb-3">
             {title || slide.h1 || ""}
           </h1>
 
