@@ -1125,8 +1125,8 @@ function Pricing({ t }) {
               "Praktické řešení s čistými liniemi. Vhodné pro kuchyně, koupelny, pracovny/kanceláře.",
             rangesTitle: "Orientačně (pro představu)",
             ranges: [
-              { label: "malé okno (130 x 200cm)", value: "cca 4–12 tis. Kč / ks" },
-              { label: "velké okno (350 x 300cm)", value: "cca 10–22 tis. Kč / ks" }
+              { label: "malé okno (130 x 200cm)", value: "cca 10–35 tis. Kč / ks" },
+              { label: "velké okno (350 x 300cm)", value: "cca 32–85 tis. Kč / ks" }
             ],
             tiersTitle: "Typy",
             tiers: [
@@ -1144,8 +1144,8 @@ function Pricing({ t }) {
               "Textilní roleta s výrazem závěsu. Hodí se tam, kde chcete měkký dojem a čistý tvar bez dlouhých záclon či závěsů.",
             rangesTitle: "Orientačně (pro představu)",
             ranges: [
-              { label: "malé okno (130 x 200cm)", value: "cca 4–12 tis. Kč / ks" },
-              { label: "velké okno (200 x 250cm)", value: "cca 10–22 tis. Kč / ks" }
+              { label: "malé okno (110 x 150cm)", value: "cca 6–11 tis. Kč / ks" },
+              { label: "velké okno (180 x 250cm)", value: "cca 14–19 tis. Kč / ks" }
             ],
             tiersTitle: "Typy",
             tiers: [
@@ -1163,8 +1163,8 @@ function Pricing({ t }) {
               "Plissé je skladaná roleta vhodná i na atypická okna. Umožňuje stínit shora i zdola a velmi přesně regulovat světlo.",
             rangesTitle: "Orientačně (pro představu)",
             ranges: [
-              { label: "malé okno (90 x 150cm)", value: "cca 4–12 tis. Kč / ks" },
-              { label: "velké okno (200 x 220cm)", value: "cca 10–22 tis. Kč / ks" }
+              { label: "malé okno (80 x 100cm)", value: "cca 3,3–6 tis. Kč / ks" },
+              { label: "velké okno (120 x 220cm)", value: "cca 7–16 tis. Kč / ks" }
             ],
             tiersTitle: "Typy",
 tiers: [
