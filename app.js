@@ -1546,6 +1546,8 @@ function Gallery({ t }) {
     "assets/img/gallery/our-work/ourwork-32.webp",
     "assets/img/gallery/our-work/ourwork-33.webp",
     "assets/img/gallery/our-work/ourwork-34.webp",
+    "assets/img/gallery/our-work/ourwork-35.webp",
+    "assets/img/gallery/our-work/ourwork-36.webp",
   ];
 
   // ==== PARTNEŘI ====
