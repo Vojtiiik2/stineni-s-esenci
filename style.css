@@ -10,7 +10,6 @@
   --brand-brown-light: #9b846d;  /* Jana Segelberg */
 }
 
-
 body {
   margin: 0;
   font-family: "Source Sans 3", sans-serif;
@@ -29,9 +28,7 @@ body.reveal {
 }
 
 @keyframes fadeInBody {
-  to {
-    opacity: 1;
-  }
+  to { opacity: 1; }
 }
 
 [data-first],
@@ -60,9 +57,7 @@ section[style*="background-image"]::after {
 }
 
 @keyframes heroFade {
-  to {
-    opacity: 1;
-  }
+  to { opacity: 1; }
 }
 
 nav button span {
@@ -89,7 +84,6 @@ nav button:hover span::after {
   transform: scaleX(1);
 }
 
-
 .btn-cta {
   transition: background 0.25s ease, transform 0.25s ease;
 }
@@ -110,6 +104,7 @@ article,
   transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
+/* ===== Lightbox (tvůj původní) ===== */
 .lb {
   display: none;
   position: fixed;
@@ -119,7 +114,7 @@ article,
   align-items: center;
   z-index: 999;
 }
-/* Lightbox otevřený stav */
+
 .lb.open {
   display: flex;
 }
@@ -137,7 +132,6 @@ article,
     animation-duration: 0.8s;
   }
 }
-  
 
 .service-card {
   border: 1px solid var(--line);
@@ -145,7 +139,7 @@ article,
   background: white;
   padding: 24px;
   text-align: left;
-  }
+}
 
 .benefit-card {
   background: var(--bg2);
@@ -162,7 +156,7 @@ article,
 .inspiration-img {
   border-radius: 20px;
   overflow: hidden;
-}                                                      
+}
 
 /* drawer menu: hezčí pocit na mobilech */
 @media (max-width: 768px) {
@@ -172,58 +166,80 @@ article,
       0 24px 60px rgba(0,0,0,.16);
   }
 }
+
 /* =========================
-   OUR WORK STRIP (6 fotek)
+   OUR WORK (teaser strip) – 6 fotek na stránce
    ========================= */
 .ourwork-strip{
   display:flex;
-  gap:14px;
-  overflow-x:auto;
+  gap:16px;
+  overflow:auto;
   padding-bottom:10px;
   scroll-snap-type:x mandatory;
   -webkit-overflow-scrolling: touch;
 }
 
 .ourwork-item{
-  flex: 0 0 auto;
-  scroll-snap-align: start;
-  border-radius: 16px;
-  overflow: hidden;
+  flex:0 0 auto;
+  border-radius:16px;
+  overflow:hidden;
+  scroll-snap-align:start;
   position: relative;
-  background: #fff;
+  background:#fff;
 }
 
+/* stejné výšky, šířka podle fotky, nic neřezat */
 .ourwork-img{
-  height: 240px;
-  width: auto;
+  height:240px;
+  width:auto;
   display:block;
-  border-radius: 16px;
-  object-fit: contain;   /* zachová formát */
-  background: #fff;
+  object-fit:contain;  /* ✅ zachová formát */
+  background:#fff;
+  border-radius:16px;
 }
 
 @media (max-width: 768px){
-  .ourwork-img{ height: 180px; }
+  .ourwork-img{ height:180px; }
 }
 
 /* =========================
-   OUR WORK MODAL (Zobrazit vše)
+   OW MODAL (Zobrazit vše) – izolované třídy ow-*
+   nic jiného neovlivní
    ========================= */
-.ow-modal { position: fixed; inset: 0; z-index: 999; }
-.ow-backdrop { position:absolute; inset:0; background: rgba(0,0,0,.35); }
+.ow-modal{
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+}
+
+.ow-backdrop{
+  background: rgba(0,0,0,.35);
+  border: 0;
+  padding: 0;
+}
 
 .ow-panel{
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%,-50%);
-  width: min(1200px, calc(100vw - 32px));
-  height: min(760px, calc(100vh - 32px));
+  transform: translate(-50%, -50%);
+  width: min(1200px, calc(100vw - 64px));
+  height: min(84vh, 860px);
   background: #fff;
   border: 1px solid var(--line);
-  border-radius: 24px;
-  box-shadow: 0 30px 80px rgba(0,0,0,.25);
+  border-radius: 18px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.25);
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 768px){
+  .ow-panel{
+    width: calc(100vw - 24px);
+    height: 86vh;
+    border-radius: 16px;
+  }
 }
 
 .ow-head{
@@ -231,63 +247,78 @@ article,
   align-items:flex-start;
   justify-content:space-between;
   gap:16px;
-  padding:18px;
-  border-bottom:1px solid rgba(0,0,0,.08);
+  padding:16px 18px;
+  border-bottom: 1px solid var(--line);
 }
 
-.ow-title{ font-weight:700; font-size:18px; }
-.ow-sub{ margin-top:4px; color: var(--muted); font-size:13px; }
+.ow-title{
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.ow-sub{
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 13px;
+}
 
 .ow-close{
-  padding: 8px 14px;
-  border-radius: 999px;
-  border: 1px solid rgba(0,0,0,.12);
+  border: 1px solid var(--line);
   background: #fff;
+  border-radius: 999px;
+  padding: 8px 14px;
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 700;
+  cursor: pointer;
 }
-.ow-close:hover{ background: var(--bg2); border-color: var(--sand); }
+
+.ow-close:hover{
+  background: var(--bg2);
+  border-color: var(--sand);
+}
 
 .ow-body{
-  height: calc(100% - 70px);
-  overflow:auto;
-  padding:18px;
+  flex: 1;
+  overflow: auto;
+  padding: 16px 18px 22px;
 }
 
+/* 3 na řádek desktop, 2 tablet, 1 mobil */
 .ow-grid{
   display:grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap:14px;
-  align-items:start;
+  gap: 14px;
 }
 
-@media (max-width: 980px){
+@media (max-width: 900px){
   .ow-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
-@media (max-width: 640px){
-  .ow-panel{
-    width: calc(100vw - 16px);
-    height: calc(100vh - 16px);
-    border-radius: 18px;
-  }
-  .ow-body{ padding: 14px; }
-  .ow-grid{ grid-template-columns: 1fr; gap: 12px; }
+@media (max-width: 520px){
+  .ow-grid{ grid-template-columns: 1fr; }
 }
 
+/* karta má pevnou výšku, obrázek se neřeže */
 .ow-card{
-  display:block;
-  border-radius:18px;
-  overflow:hidden;
-  border:1px solid rgba(0,0,0,.10);
-  background:#fff;
-  position:relative;
+  position: relative;
+  border: 1px solid rgba(0,0,0,.08);
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  height: 210px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+@media (max-width: 768px){
+  .ow-card{ height:170px; border-radius:14px; }
 }
 
 .ow-img{
   width:100%;
-  height:240px;
-  object-fit: contain;  /* ✅ bez ořezu */
+  height:100%;
+  object-fit: contain; /* ✅ zachová skutečný formát (na výšku zůstane na výšku) */
   background:#fff;
   display:block;
 }
@@ -298,4 +329,8 @@ article,
   background: rgba(0,0,0,0);
   transition: background .2s ease;
 }
-.ow-card:hover .ow-hover{ background: rgba(0,0,0,.08); }
+
+.ow-card:hover .ow-hover{
+  background: rgba(0,0,0,.06);
+}
+
