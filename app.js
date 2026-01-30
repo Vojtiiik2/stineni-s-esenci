@@ -1615,7 +1615,7 @@ function Gallery({ t }) {
           </button>
         </div>
 
-        {/* pás – stejné výšky, šířka podle fotky */}
+        {/* pás – 6 vybraných, zachová formát */}
         <div className="mt-8 ourwork-strip">
           {OUR_WORK.slice(0, 6).map((src, i) => (
             <a
@@ -1648,7 +1648,7 @@ function Gallery({ t }) {
 
       {/* ==== MODAL: NAŠE REALIZACE (VŠE) ==== */}
       {ourWorkOpen && (
-        <div className="ow-modal fixed inset-0 z-[999]">
+        <div className="ow-modal">
           <button
             type="button"
             className="ow-backdrop absolute inset-0"
@@ -1763,6 +1763,7 @@ function Gallery({ t }) {
     </>
   );
 }
+
 
 
 
