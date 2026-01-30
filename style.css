@@ -299,32 +299,29 @@ article,
   width:100%;
 }
 
-/* karta – šířka se počítá přes flexGrow z JS (poměr stran) */
 .ow-card{
   position: relative;
   flex: 1 1 0;
-  height: 230px;
   border-radius: 16px;
   overflow: hidden;
-  background: #fff;
+  background: transparent;        /* ❗ pryč bílý podklad */
   border: 1px solid rgba(0,0,0,.08);
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  display: block;                 /* ❗ žádné flex centrování */
 }
+
 
 @media (max-width: 768px){
   .ow-row{ gap:12px; }
   .ow-card{ height: 190px; border-radius: 14px; }
 }
 
-/* ✅ zachovat formát fotky, žádný ořez, žádná deformace */
 .ow-img{
   width: 100%;
-  height: 100%;
+  height: auto;          /* ❗ výška podle reálného poměru */
+  display: block;
   object-fit: contain;
-  display:block;
 }
+
 
 /* hover */
 .ow-hover{
