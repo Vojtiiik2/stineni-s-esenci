@@ -1510,7 +1510,6 @@ function Gallery({ t }) {
   useReveal();
 
   // ==== NAŠE REALIZACE (lokální soubory) ====
-  // POZOR: název i přípona musí sedět 1:1 se souborem na disku
   const OUR_WORK = [
     "assets/img/gallery/our-work/ourwork-01.webp",
     "assets/img/gallery/our-work/ourwork-02.webp",
@@ -1585,26 +1584,19 @@ function Gallery({ t }) {
     },
   ];
 
-  // ==== MODAL: Naše realizace (Zobrazit vše) ====
   const [ourWorkOpen, setOurWorkOpen] = React.useState(false);
 
-  // zamkni scroll pozadí, když je modal otevřený
+  // zamkni scroll pozadí, když je otevřený modal
   React.useEffect(() => {
     document.body.style.overflow = ourWorkOpen ? "hidden" : "";
     return () => (document.body.style.overflow = "");
   }, [ourWorkOpen]);
 
-  const openOurWork = () => setOurWorkOpen(true);
-  const closeOurWork = () => setOurWorkOpen(false);
-
-  // v pásu ukazujeme jen 6 (rychlý „teaser“)
-  const OUR_WORK_TEASER = OUR_WORK.slice(0, 6);
-
   return (
     <>
       <Hero t={t} small title={t.galleryH} bg="assets/img/hero/gallery-hero.webp" />
 
-      {/* ==== NAŠE REALIZACE (TEASER) ==== */}
+      {/* ==== NAŠE PRÁCE ==== */}
       <section className="max-w-6xl mx-auto px-4 py-16 reveal">
         <div className="flex items-end justify-between gap-4">
           <div className="max-w-3xl">
@@ -1616,22 +1608,21 @@ function Gallery({ t }) {
 
           <button
             type="button"
-            onClick={openOurWork}
+            onClick={() => setOurWorkOpen(true)}
             className="hidden md:inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold border border-[var(--line)] bg-white hover:bg-[var(--bg2)] hover:border-[var(--sand)] transition"
           >
             Zobrazit vše →
           </button>
         </div>
 
-        {/* pás – stejná výška, šířka podle fotky, bez ořezu */}
+        {/* pás – stejné výšky, šířka podle fotky */}
         <div className="mt-8 ourwork-strip">
-          {OUR_WORK_TEASER.map((src, i) => (
+          {OUR_WORK.slice(0, 6).map((src, i) => (
             <a
               key={i}
               href={src}
               onClick={(e) => openLightbox(e, src)}
               className="ourwork-item group relative"
-              title="Otevřít fotku"
             >
               <img
                 src={src}
@@ -1648,62 +1639,56 @@ function Gallery({ t }) {
         {/* mobilní CTA */}
         <button
           type="button"
-          onClick={openOurWork}
+          onClick={() => setOurWorkOpen(true)}
           className="mt-6 md:hidden w-full inline-flex justify-center items-center gap-2 rounded-2xl px-4 py-4 text-sm font-semibold border border-[var(--line)] bg-white hover:bg-[var(--bg2)] hover:border-[var(--sand)] transition"
         >
           Zobrazit vše →
         </button>
       </section>
 
-      {/* ==== MODAL: NAŠE REALIZACE (Zobrazit vše) ==== */}
+      {/* ==== MODAL: NAŠE REALIZACE (VŠE) ==== */}
       {ourWorkOpen && (
-        <div className="fixed inset-0 z-[999]">
-          {/* backdrop */}
+        <div className="ow-modal fixed inset-0 z-[999]">
           <button
             type="button"
-            className="absolute inset-0 bg-black/35"
-            onClick={closeOurWork}
+            className="ow-backdrop absolute inset-0"
+            onClick={() => setOurWorkOpen(false)}
             aria-label="Zavřít"
           />
 
-          {/* panel */}
-          <div className="ourwork-modal" role="dialog" aria-modal="true">
-            <div className="ourwork-modal-head">
+          <div className="ow-panel" role="dialog" aria-modal="true">
+            <div className="ow-head">
               <div>
-                <div className="text-lg font-semibold">Naše realizace</div>
-                <div className="text-sm text-[var(--muted)]">
-                  Procházejte fotky – můžete scrollovat dolů.
-                </div>
+                <div className="ow-title">Naše realizace</div>
+                <div className="ow-sub">Procházejte fotky – můžete scrollovat dolů.</div>
               </div>
 
               <button
                 type="button"
-                onClick={closeOurWork}
-                className="px-3 py-1.5 text-sm rounded-lg border border-[var(--line)] hover:bg-[var(--bg2)] transition"
+                onClick={() => setOurWorkOpen(false)}
+                className="ow-close"
               >
                 Zavřít
               </button>
             </div>
 
-            <div className="ourwork-modal-body">
-              {/* 3 v řádku, zarovnané na kraje, mezery se přizpůsobují */}
-              <div className="ourwork-grid">
+            <div className="ow-body">
+              <div className="ow-grid">
                 {OUR_WORK.map((src, i) => (
                   <a
                     key={i}
                     href={src}
                     onClick={(e) => openLightbox(e, src)}
-                    className="ourwork-tile group"
-                    title="Otevřít fotku"
+                    className="ow-card group"
                   >
                     <img
                       src={src}
                       alt={`Realizace ${i + 1}`}
-                      className="ourwork-tile-img"
+                      className="ow-img"
                       loading="lazy"
                       decoding="async"
                     />
-                    <div className="ourwork-tile-hover" />
+                    <div className="ow-hover" />
                   </a>
                 ))}
               </div>
