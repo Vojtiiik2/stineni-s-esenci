@@ -292,36 +292,31 @@ article,
   gap:16px;
 }
 
-/* ✅ jeden řádek = přesně perRow (2 nebo 3), vyplní celou šířku */
+/* jeden řádek = 2/3 karty vedle sebe */
 .ow-row{
   display:flex;
   gap:16px;
   width:100%;
 }
 
+/* karta */
 .ow-card{
   position: relative;
   flex: 1 1 0;
   border-radius: 16px;
   overflow: hidden;
-  background: transparent;        /* ❗ pryč bílý podklad */
+  background: transparent;
   border: 1px solid rgba(0,0,0,.08);
-  display: block;                 /* ❗ žádné flex centrování */
+  display: block;
 }
 
-
-@media (max-width: 768px){
-  .ow-row{ gap:12px; }
-  .ow-card{ height: 190px; border-radius: 14px; }
-}
-
+/* obrázek – zachovat poměr stran */
 .ow-img{
   width: 100%;
-  height: auto;          /* ❗ výška podle reálného poměru */
+  height: auto;
   display: block;
   object-fit: contain;
 }
-
 
 /* hover */
 .ow-hover{
@@ -335,29 +330,18 @@ article,
   background: rgba(0,0,0,.08);
 }
 
-/* === OW MODAL: mobil fix (2 na řádek, bez bílého pruhu dole) === */
+/* ✅ MOBIL: fix bílého spodku (nic se nenatahuje) */
 @media (max-width: 768px){
-  /* zůstává 2 sloupce */
-  .ow-grid{
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
+  .ow-row{
+    gap:12px;
+    align-items:flex-start;
   }
 
-  /* NECHCEME pevnou výšku -> karta se přizpůsobí fotce */
   .ow-card{
-    height: auto !important;
-    display: block !important;
-    background: transparent !important;
-    padding: 0 !important;
-  }
-
-  /* fotka určuje výšku (bez ořezu, bez natažení) */
-  .ow-img{
-    width: 100% !important;
-    height: auto !important;
-    max-height: none !important;
-    object-fit: contain !important;
-    display: block;
+    height:auto;
+    align-self:flex-start;
+    border-radius:14px;
   }
 }
+
 
