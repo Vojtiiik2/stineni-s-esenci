@@ -283,40 +283,35 @@ article,
   padding: 16px 18px 22px;
 }
 
-/* --- OW MODAL: 3 na řádek, zarovnat na okraje, zachovat formát --- */
+/* ===== OW MODAL – VŽDY 3 NA ŘÁDEK ===== */
 
 .ow-grid{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:space-between; /* levá na kraj, pravá na kraj */
-  row-gap:14px;
-  align-items:flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
 }
 
-/* "rámeček" se přizpůsobí fotce (výška fix, šířka auto) */
+/* každá karta = 1/3 šířky */
 .ow-card{
-  height:210px;                     /* stejná výška všech */
-  width: fit-content;               /* ✅ šířka podle fotky */
-  max-width: calc((100% - 28px) / 3); /* aby se vešly 3 kusy */
-  border: 1px solid rgba(0,0,0,.08);
-  background: #fff;
+  width: calc((100% - 28px) / 3); /* přesně 3 kusy */
+  height: 210px;
   border-radius: 16px;
   overflow: hidden;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,.08);
   position: relative;
-  display:block;                    /* žádné centrování */
 }
 
-/* obrázek se NEnatahuje, NEořezává */
+/* obraz zachová skutečný poměr */
 .ow-img{
-  height:100%;
-  width:auto;                       /* ✅ zachová poměr */
-  max-width:100%;                   /* ✅ nepřeteče z karty */
-  display:block;
-  object-fit:contain;               /* ✅ žádný crop */
-  background:#fff;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;  /* ❗ klíčové */
+  display: block;
+  background: #fff;
 }
 
-/* hover overlay nech */
+/* hover */
 .ow-hover{
   position:absolute;
   inset:0;
@@ -327,19 +322,21 @@ article,
   background: rgba(0,0,0,.06);
 }
 
-/* tablet 2 na řádek */
+/* ===== RESPONSIVE ===== */
+
+/* tablet → 2 na řádek */
 @media (max-width: 900px){
   .ow-card{
-    height:170px;
-    max-width: calc((100% - 14px) / 2);
-    border-radius: 14px;
+    width: calc((100% - 14px) / 2);
+    height: 180px;
   }
 }
 
-/* mobil 1 na řádek */
+/* mobil → 1 na řádek */
 @media (max-width: 520px){
   .ow-card{
-    max-width: 100%;
+    width: 100%;
+    height: 180px;
   }
 }
 
