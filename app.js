@@ -1587,32 +1587,37 @@ function Gallery({ t }) {
 
   const [ourWorkOpen, setOurWorkOpen] = React.useState(false);
 
+  // poměry stran fotek pro layout v modalu (index -> ratio)
+  const [ratios, setRatios] = React.useState({});
+
+  // 3 na desktopu, 2 na mobilu
+  const [perRow, setPerRow] = React.useState(
+    typeof window !== "undefined" && window.innerWidth <= 768 ? 2 : 3
+  );
+
+  React.useEffect(() => {
+    const onResize = () => setPerRow(window.innerWidth <= 768 ? 2 : 3);
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+
   // zamkni scroll pozadí, když je otevřený modal
   React.useEffect(() => {
     document.body.style.overflow = ourWorkOpen ? "hidden" : "";
     return () => (document.body.style.overflow = "");
   }, [ourWorkOpen]);
 
-  // ESC zavře modal
-  React.useEffect(() => {
-    if (!ourWorkOpen) return;
-    const onKey = (e) => {
-      if (e.key === "Escape") setOurWorkOpen(false);
-    };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [ourWorkOpen]);
+  const chunk = (arr, size) => {
+    const out = [];
+    for (let i = 0; i < arr.length; i += size) out.push(arr.slice(i, i + size));
+    return out;
+  };
 
   return (
     <>
-      <Hero
-        t={t}
-        small
-        title={t.galleryH}
-        bg="assets/img/hero/gallery-hero.webp"
-      />
+      <Hero t={t} small title={t.galleryH} bg="assets/img/hero/gallery-hero.webp" />
 
-      {/* ==== NAŠE PRÁCE (teaser pás 6 fotek) ==== */}
+      {/* ==== NAŠE PRÁCE ==== */}
       <section className="max-w-6xl mx-auto px-4 py-16 reveal">
         <div className="flex items-end justify-between gap-4">
           <div className="max-w-3xl">
@@ -1631,6 +1636,7 @@ function Gallery({ t }) {
           </button>
         </div>
 
+        {/* pás – stejné výšky, šířka podle fotky */}
         <div className="mt-8 ourwork-strip">
           {OUR_WORK.slice(0, 6).map((src, i) => (
             <a
@@ -1651,6 +1657,7 @@ function Gallery({ t }) {
           ))}
         </div>
 
+        {/* mobilní CTA */}
         <button
           type="button"
           onClick={() => setOurWorkOpen(true)}
@@ -1662,48 +1669,62 @@ function Gallery({ t }) {
 
       {/* ==== MODAL: NAŠE REALIZACE (VŠE) ==== */}
       {ourWorkOpen && (
-        <div className="ow-modal" role="dialog" aria-modal="true">
+        <div className="ow-modal">
           <button
             type="button"
             className="ow-backdrop"
-            aria-label="Zavřít"
             onClick={() => setOurWorkOpen(false)}
+            aria-label="Zavřít"
           />
 
-          <div className="ow-panel">
+          <div className="ow-panel" role="dialog" aria-modal="true">
             <div className="ow-head">
               <div>
                 <div className="ow-title">Naše realizace</div>
                 <div className="ow-sub">Procházejte fotky – můžete scrollovat dolů.</div>
               </div>
 
-              <button
-                type="button"
-                onClick={() => setOurWorkOpen(false)}
-                className="ow-close"
-              >
+              <button type="button" onClick={() => setOurWorkOpen(false)} className="ow-close">
                 Zavřít
               </button>
             </div>
 
             <div className="ow-body">
-              <div className="ow-grid">
-                {OUR_WORK.map((src, i) => (
-                  <a
-                    key={i}
-                    href={src}
-                    onClick={(e) => openLightbox(e, src)}
-                    className="ow-card group"
-                  >
-                    <img
-                      src={src}
-                      alt={`Realizace ${i + 1}`}
-                      className="ow-img"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                    <span className="ow-hover" />
-                  </a>
+              <div className="ow-rows">
+                {chunk(OUR_WORK, perRow).map((row, rIdx) => (
+                  <div className="ow-row" key={rIdx}>
+                    {row.map((src, i) => {
+                      const absoluteIndex = rIdx * perRow + i;
+                      const grow = ratios[absoluteIndex] || 1.6; // fallback než se načte
+                      return (
+                        <a
+                          key={src}
+                          href={src}
+                          onClick={(e) => openLightbox(e, src)}
+                          className="ow-card group"
+                          style={{ flexGrow: grow }}
+                        >
+                          <img
+                            src={src}
+                            alt={`Realizace ${absoluteIndex + 1}`}
+                            className="ow-img"
+                            loading="lazy"
+                            decoding="async"
+                            onLoad={(e) => {
+                              const img = e.currentTarget;
+                              const w = img.naturalWidth || 1;
+                              const h = img.naturalHeight || 1;
+                              const ratio = Math.max(0.7, Math.min(3.2, w / h)); // omez extrémy
+                              setRatios((prev) =>
+                                prev[absoluteIndex] ? prev : { ...prev, [absoluteIndex]: ratio }
+                              );
+                            }}
+                          />
+                          <div className="ow-hover" />
+                        </a>
+                      );
+                    })}
+                  </div>
                 ))}
               </div>
             </div>
