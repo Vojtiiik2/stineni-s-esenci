@@ -207,249 +207,34 @@ article,
   }
 }
 
-/* ===== Our Work Modal (like pricing/detail modal) ===== */
-.ourwork-modal{
-  position:absolute;
-  inset: 0;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding: 18px;
-}
-
-.ourwork-modal-inner{
-  width: min(1100px, 96vw);
-  max-height: min(86vh, 860px);
-  background: white;
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  box-shadow: 0 20px 70px rgba(0,0,0,.25);
-  padding: 18px;
-  display:flex;
-  flex-direction:column;
-}
-
-/* scroll jen uvnitř */
-.ourwork-modal-body{
-  margin-top: 14px;
-  overflow:auto;
-  padding-right: 4px;
-}
-
-/* grid v modalu */
-.ourwork-grid-modal{
-  display:grid;
-  gap: 12px;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-@media (min-width: 768px){
-  .ourwork-grid-modal{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
-}
-
-@media (min-width: 1024px){
-  .ourwork-grid-modal{ grid-template-columns: repeat(4, minmax(0, 1fr)); }
-}
-
-/* ===== Our Work Modal – fotky jako pás (stejná výška, šířka dle formátu) ===== */
-.ourwork-modal-strip{
-  display:flex;
-  flex-wrap:wrap;
-  gap:12px;
-  align-items:flex-start;
-}
-
-/* jedna položka – výška pevná, šířka se přizpůsobí */
-.ourwork-modal-item{
-  height: 210px;          /* desktop výška fotek v modalu */
-  flex: 0 0 auto;
-  max-width: 520px;       /* aby ultrawide nebyly přehnaně dlouhé */
-}
-
-.ourwork-modal-img{
-  height:100%;
-  width:auto;             /* ✅ zachová poměr stran */
-  display:block;
-  border-radius:12px;
-  object-fit:cover;       /* ořez jen když by fotka byla extrémní */
-}
-
-/* mobil – menší výška */
-@media (max-width: 640px){
-  .ourwork-modal-item{ height: 160px; max-width: 92vw; }
-}
-
-/* ===== OUR WORK MODAL (Zobrazit vše) ===== */
-
-.ourwork-modal-scroll{
-  height: calc(100% - 74px); /* odečte header modalu */
-  overflow: auto;
-  padding: 18px;            /* stejný “okraj” kolem fotek */
-}
-
-/* řádek = vždy 3 fotky, zarovnané na kraje */
-.ourwork-modal-row{
-  display: flex;
-  align-items: stretch;
-  width: 100%;
-  gap: 14px;          /* mezera mezi fotkami (mění se jen mezery vizuálně) */
-  margin-bottom: 14px;
-}
-
-.ourwork-modal-item{
-  position: relative;
-  flex-basis: 0;      /* klíčové: rozděluje šířku podle flexGrow */
-  min-width: 0;       /* Safari fix */
-  border-radius: 16px;
-  overflow: hidden;
-}
-
-/* všechny stejně vysoké, šířka se dopočítá z poměru fotky */
-.ourwork-modal-img{
-  height: 210px;
-  width: 100%;
-  display: block;
-  object-fit: cover;  /* designově čisté, bez děr */
-  border-radius: 16px;
-}
-
-/* mobil */
-@media (max-width: 768px){
-  .ourwork-modal-scroll{
-    padding: 14px;
-  }
-  .ourwork-modal-row{
-    gap: 12px;
-    margin-bottom: 12px;
-  }
-  .ourwork-modal-img{
-    height: 170px;
-  }
-}
-
-/* =========================
-   OUR WORK (teaser strip)
-   ========================= */
-
+/* ====== OUR WORK STRIP (Naše realizace) ====== */
 .ourwork-strip{
   display:flex;
-  gap:16px;
-  overflow:auto;
+  gap:14px;
+  overflow-x:auto;
   padding-bottom:10px;
   scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling: touch;
 }
 
 .ourwork-item{
-  flex:0 0 auto;
-  border-radius:16px;
-  overflow:hidden;
-  scroll-snap-align:start;
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  background: white;
 }
 
 .ourwork-img{
-  height:240px;        /* stejná výška */
-  width:auto;          /* šířka podle fotky */
+  height: 240px;
+  width: auto;
   display:block;
-  object-fit:contain;  /* NEořezává, zachová formát */
-  background:#fff;
-  border-radius:16px;
-}
-
-/* menší výška na mobilu */
-@media (max-width: 768px){
-  .ourwork-img{ height:180px; }
-}
-
-/* =========================
-   OUR WORK MODAL
-   ========================= */
-
-.ourwork-modal{
-  position:absolute;
-  left:50%;
-  top:50%;
-  transform:translate(-50%, -50%);
-  width:min(1200px, calc(100vw - 64px));
-  height:min(84vh, 860px);
-  background:#fff;
-  border:1px solid rgba(0,0,0,.08);
-  border-radius:18px;
-  box-shadow:0 20px 60px rgba(0,0,0,.25);
-  overflow:hidden;
+  border-radius: 16px;
+  object-fit: contain;   /* zachová formát */
+  background: #fff;
 }
 
 @media (max-width: 768px){
-  .ourwork-modal{
-    width:calc(100vw - 24px);
-    height:86vh;
-    border-radius:16px;
-  }
-}
-
-.ourwork-modal-head{
-  display:flex;
-  align-items:flex-start;
-  justify-content:space-between;
-  gap:16px;
-  padding:16px 18px;
-  border-bottom:1px solid rgba(0,0,0,.08);
-}
-
-.ourwork-modal-body{
-  height:calc(100% - 62px);
-  overflow:auto;
-  padding:16px 18px 22px;
-}
-
-/* =========================
-   3-per-row, aligned edges,
-   keep original aspect (no crop)
-   ========================= */
-
-.ourwork-grid{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:space-between; /* levá na kraj, pravá na kraj */
-  row-gap:16px;
-}
-
-/* dlaždice = rám, výška stejná, šířka se přizpůsobí fotce */
-.ourwork-tile{
-  height:210px;               /* stejná výška v modalu */
-  width:fit-content;
-  max-width:calc((100% - 32px) / 3); /* aby se vešly 3 ks na řádek */
-  border-radius:16px;
-  overflow:hidden;
-  position:relative;
-  background:#fff;
-  border:1px solid rgba(0,0,0,.06);
-}
-
-/* obrázek uvnitř se NEnatahuje, NEořezává */
-.ourwork-tile-img{
-  height:100%;
-  width:auto;
-  max-width:100%;
-  display:block;
-  object-fit:contain;
-}
-
-/* hover overlay */
-.ourwork-tile-hover{
-  position:absolute;
-  inset:0;
-  background:rgba(0,0,0,0);
-  transition:background .2s ease;
-}
-.ourwork-tile:hover .ourwork-tile-hover{
-  background:rgba(0,0,0,.08);
-}
-
-/* na mobilu radši 2 v řádku */
-@media (max-width: 768px){
-  .ourwork-tile{
-    height:170px;
-    max-width:calc((100% - 16px) / 2);
-    border-radius:14px;
-  }
+  .ourwork-img{ height: 180px; }
 }
