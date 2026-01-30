@@ -172,7 +172,9 @@ article,
       0 24px 60px rgba(0,0,0,.16);
   }
 }
-/* ====== OUR WORK STRIP (Naše realizace) ====== */
+/* =========================
+   OUR WORK STRIP (6 fotek)
+   ========================= */
 .ourwork-strip{
   display:flex;
   gap:14px;
@@ -188,42 +190,7 @@ article,
   border-radius: 16px;
   overflow: hidden;
   position: relative;
-  background: white;
-}
-
-/* stejné výšky, šířka podle formátu */
-.ourwork-img{
-  height: 260px;         /* desktop výška */
-  width: auto;           /* šířka podle fotky */
-  display:block;
-  border-radius: 16px;
-  object-fit: contain;   /* NEořezává */
   background: #fff;
-}
-
-@media (max-width: 768px){
-  .ourwork-img{
-    height: 200px;       /* mobil výška */
-  }
-}
-
-/* ====== OUR WORK STRIP (Naše realizace) ====== */
-.ourwork-strip{
-  display:flex;
-  gap:14px;
-  overflow-x:auto;
-  padding-bottom:10px;
-  scroll-snap-type:x mandatory;
-  -webkit-overflow-scrolling: touch;
-}
-
-.ourwork-item{
-  flex: 0 0 auto;
-  scroll-snap-align: start;
-  border-radius: 16px;
-  overflow: hidden;
-  position: relative;
-  background: white;
 }
 
 .ourwork-img{
@@ -238,3 +205,97 @@ article,
 @media (max-width: 768px){
   .ourwork-img{ height: 180px; }
 }
+
+/* =========================
+   OUR WORK MODAL (Zobrazit vše)
+   ========================= */
+.ow-modal { position: fixed; inset: 0; z-index: 999; }
+.ow-backdrop { position:absolute; inset:0; background: rgba(0,0,0,.35); }
+
+.ow-panel{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  width: min(1200px, calc(100vw - 32px));
+  height: min(760px, calc(100vh - 32px));
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  box-shadow: 0 30px 80px rgba(0,0,0,.25);
+  overflow: hidden;
+}
+
+.ow-head{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:16px;
+  padding:18px;
+  border-bottom:1px solid rgba(0,0,0,.08);
+}
+
+.ow-title{ font-weight:700; font-size:18px; }
+.ow-sub{ margin-top:4px; color: var(--muted); font-size:13px; }
+
+.ow-close{
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,.12);
+  background: #fff;
+  font-size: 13px;
+  font-weight: 600;
+}
+.ow-close:hover{ background: var(--bg2); border-color: var(--sand); }
+
+.ow-body{
+  height: calc(100% - 70px);
+  overflow:auto;
+  padding:18px;
+}
+
+.ow-grid{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap:14px;
+  align-items:start;
+}
+
+@media (max-width: 980px){
+  .ow-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 640px){
+  .ow-panel{
+    width: calc(100vw - 16px);
+    height: calc(100vh - 16px);
+    border-radius: 18px;
+  }
+  .ow-body{ padding: 14px; }
+  .ow-grid{ grid-template-columns: 1fr; gap: 12px; }
+}
+
+.ow-card{
+  display:block;
+  border-radius:18px;
+  overflow:hidden;
+  border:1px solid rgba(0,0,0,.10);
+  background:#fff;
+  position:relative;
+}
+
+.ow-img{
+  width:100%;
+  height:240px;
+  object-fit: contain;  /* ✅ bez ořezu */
+  background:#fff;
+  display:block;
+}
+
+.ow-hover{
+  position:absolute;
+  inset:0;
+  background: rgba(0,0,0,0);
+  transition: background .2s ease;
+}
+.ow-card:hover .ow-hover{ background: rgba(0,0,0,.08); }
