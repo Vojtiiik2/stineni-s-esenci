@@ -193,7 +193,7 @@ article,
   height:240px;
   width:auto;
   display:block;
-  object-fit:contain;  /* ✅ zachová formát */
+  object-fit:contain;
   background:#fff;
   border-radius:16px;
 }
@@ -203,28 +203,23 @@ article,
 }
 
 /* =========================================================
-   OUR WORK MODAL (Zobrazit vše) – izolované třídy ow-*
-   Cíl:
-   - desktop: vždy 3 fotky na řádek
-   - mobil: 2 fotky na řádek
-   - zachovat reálný formát fotek (bez ořezu) -> contain
-   - levá i pravá fotka zarovnané na okraj (grid)
+   OW MODAL (Zobrazit vše) – jen ow-*, neovlivní nic jinde
    ========================================================= */
-
 .ow-modal{
   position: fixed;
   inset: 0;
   z-index: 999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   padding: 18px;
 }
 
 .ow-backdrop{
-  position: absolute;
-  inset: 0;
-  border: 0;
+  position:absolute;
+  inset:0;
+  border:0;
+  padding:0;
   background: rgba(0,0,0,.35);
 }
 
@@ -237,8 +232,8 @@ article,
   border-radius: 18px;
   box-shadow: 0 20px 60px rgba(0,0,0,.25);
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
+  display:flex;
+  flex-direction:column;
 }
 
 @media (max-width: 768px){
@@ -250,11 +245,11 @@ article,
 }
 
 .ow-head{
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 16px 18px;
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:16px;
+  padding:16px 18px;
   border-bottom: 1px solid rgba(0,0,0,.10);
 }
 
@@ -276,7 +271,7 @@ article,
   padding: 8px 14px;
   font-weight: 600;
   font-size: 13px;
-  cursor: pointer;
+  cursor:pointer;
 }
 
 .ow-close:hover{
@@ -285,62 +280,56 @@ article,
 }
 
 .ow-body{
-  flex: 1;
-  overflow: auto;
+  flex:1;
+  overflow:auto;
   padding: 16px 18px 22px;
 }
 
-/* ✅ desktop: přesně 3 sloupce */
-.ow-grid{
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
+/* řádky */
+.ow-rows{
+  display:flex;
+  flex-direction:column;
+  gap:16px;
 }
 
-/* ✅ mobil: 2 sloupce */
-@media (max-width: 768px){
-  .ow-grid{
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
-  }
+/* ✅ jeden řádek = přesně perRow (2 nebo 3), vyplní celou šířku */
+.ow-row{
+  display:flex;
+  gap:16px;
+  width:100%;
 }
 
-/* karta: jednotná výška, fotka se vejde bez ořezu (contain) */
+/* karta – šířka se počítá přes flexGrow z JS (poměr stran) */
 .ow-card{
   position: relative;
+  flex: 1 1 0;
+  height: 230px;
   border-radius: 16px;
   overflow: hidden;
   background: #fff;
   border: 1px solid rgba(0,0,0,.08);
-
-  height: 230px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
 @media (max-width: 768px){
-  .ow-card{
-    height: 190px;
-    border-radius: 14px;
-  }
+  .ow-row{ gap:12px; }
+  .ow-card{ height: 190px; border-radius: 14px; }
 }
 
-/* ✅ zachová formát fotky: žádné natažení, žádný ořez */
+/* ✅ zachovat formát fotky, žádný ořez, žádná deformace */
 .ow-img{
-  max-width: 100%;
-  max-height: 100%;
-  width: auto;
-  height: auto;
-  display: block;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
+  display:block;
 }
 
-/* jemný hover */
+/* hover */
 .ow-hover{
-  position: absolute;
-  inset: 0;
+  position:absolute;
+  inset:0;
   background: rgba(0,0,0,0);
   transition: background .2s ease;
 }
