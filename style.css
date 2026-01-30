@@ -202,137 +202,13 @@ article,
   .ourwork-img{ height:180px; }
 }
 
-/* =========================
-   OW MODAL (Zobrazit vše) – izolované třídy ow-*
-   nic jiného neovlivní
-   ========================= */
-.ow-modal{
-  position: fixed;
-  inset: 0;
-  z-index: 999;
-}
-
-.ow-backdrop{
-  background: rgba(0,0,0,.35);
-  border: 0;
-  padding: 0;
-}
-
-.ow-panel{
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: min(1200px, calc(100vw - 64px));
-  height: min(84vh, 860px);
-  background: #fff;
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  box-shadow: 0 20px 60px rgba(0,0,0,.25);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}
-
-@media (max-width: 768px){
-  .ow-panel{
-    width: calc(100vw - 24px);
-    height: 86vh;
-    border-radius: 16px;
-  }
-}
-
-.ow-head{
-  display:flex;
-  align-items:flex-start;
-  justify-content:space-between;
-  gap:16px;
-  padding:16px 18px;
-  border-bottom: 1px solid var(--line);
-}
-
-.ow-title{
-  font-weight: 700;
-  font-size: 18px;
-}
-
-.ow-sub{
-  margin-top: 4px;
-  color: var(--muted);
-  font-size: 13px;
-}
-
-.ow-close{
-  border: 1px solid var(--line);
-  background: #fff;
-  border-radius: 999px;
-  padding: 8px 14px;
-  font-size: 13px;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-.ow-close:hover{
-  background: var(--bg2);
-  border-color: var(--sand);
-}
-
-.ow-body{
-  flex: 1;
-  overflow: auto;
-  padding: 16px 18px 22px;
-}
-
-/* ===== OW MODAL – 3 na řádek + zachovat poměr stran ===== */
-
-.ow-grid{
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr)); /* vždy 3 */
-  gap: 14px;
-}
-
-.ow-card{
-  border-radius: 16px;
-  overflow: hidden;
-  background: #fff;
-  border: 1px solid rgba(0,0,0,.08);
-  position: relative;
-}
-
-/* klíčové: žádná pevná výška, obrázek určuje výšku podle svého formátu */
-.ow-img{
-  width: 100%;
-  height: auto;          /* ✅ zachová skutečný formát */
-  display: block;
-}
-
-.ow-hover{
-  position:absolute;
-  inset:0;
-  background: rgba(0,0,0,0);
-  transition: background .2s ease;
-}
-.ow-card:hover .ow-hover{
-  background: rgba(0,0,0,.06);
-}
-
-/* tablet → 2 */
-@media (max-width: 900px){
-  .ow-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
-}
-
-/* mobil → 1 */
-@media (max-width: 520px){
-  .ow-grid{ grid-template-columns: 1fr; }
-}
-
 /* =========================================================
    OUR WORK MODAL (Zobrazit vše) – izolované třídy ow-*
    Cíl:
-   - vždy 3 fotky na řádek (desktop)
-   - mobil 2 fotky na řádek
-   - zachovat reálný formát fotek (bez ořezu) -> object-fit: contain
-   - levá i pravá fotka jsou zarovnané na okraj (grid)
+   - desktop: vždy 3 fotky na řádek
+   - mobil: 2 fotky na řádek
+   - zachovat reálný formát fotek (bez ořezu) -> contain
+   - levá i pravá fotka zarovnané na okraj (grid)
    ========================================================= */
 
 .ow-modal{
@@ -361,6 +237,8 @@ article,
   border-radius: 18px;
   box-shadow: 0 20px 60px rgba(0,0,0,.25);
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 @media (max-width: 768px){
@@ -398,22 +276,28 @@ article,
   padding: 8px 14px;
   font-weight: 600;
   font-size: 13px;
+  cursor: pointer;
+}
+
+.ow-close:hover{
+  background: var(--bg2);
+  border-color: var(--sand);
 }
 
 .ow-body{
-  height: calc(100% - 62px);
+  flex: 1;
   overflow: auto;
   padding: 16px 18px 22px;
 }
 
-/* ✅ přesně 3 sloupce -> levá na kraj, pravá na kraj */
+/* ✅ desktop: přesně 3 sloupce */
 .ow-grid{
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
 }
 
-/* mobil: 2 sloupce */
+/* ✅ mobil: 2 sloupce */
 @media (max-width: 768px){
   .ow-grid{
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -421,7 +305,7 @@ article,
   }
 }
 
-/* karta: fixní výška, image se vejde bez ořezu */
+/* karta: jednotná výška, fotka se vejde bez ořezu (contain) */
 .ow-card{
   position: relative;
   border-radius: 16px;
@@ -429,7 +313,6 @@ article,
   background: #fff;
   border: 1px solid rgba(0,0,0,.08);
 
-  /* jednotná výška karet, ať je mřížka čistá */
   height: 230px;
 
   display: flex;
@@ -438,7 +321,10 @@ article,
 }
 
 @media (max-width: 768px){
-  .ow-card{ height: 190px; border-radius: 14px; }
+  .ow-card{
+    height: 190px;
+    border-radius: 14px;
+  }
 }
 
 /* ✅ zachová formát fotky: žádné natažení, žádný ořez */
@@ -458,6 +344,7 @@ article,
   background: rgba(0,0,0,0);
   transition: background .2s ease;
 }
+
 .ow-card:hover .ow-hover{
   background: rgba(0,0,0,.08);
 }
