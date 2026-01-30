@@ -1506,6 +1506,7 @@ function OurWorkModal({ open, onClose, images }) {
 
 
 
+
 function Gallery({ t }) {
   useReveal();
 
@@ -1592,11 +1593,26 @@ function Gallery({ t }) {
     return () => (document.body.style.overflow = "");
   }, [ourWorkOpen]);
 
+  // ESC zavře modal
+  React.useEffect(() => {
+    if (!ourWorkOpen) return;
+    const onKey = (e) => {
+      if (e.key === "Escape") setOurWorkOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [ourWorkOpen]);
+
   return (
     <>
-      <Hero t={t} small title={t.galleryH} bg="assets/img/hero/gallery-hero.webp" />
+      <Hero
+        t={t}
+        small
+        title={t.galleryH}
+        bg="assets/img/hero/gallery-hero.webp"
+      />
 
-      {/* ==== NAŠE PRÁCE ==== */}
+      {/* ==== NAŠE PRÁCE (teaser pás 6 fotek) ==== */}
       <section className="max-w-6xl mx-auto px-4 py-16 reveal">
         <div className="flex items-end justify-between gap-4">
           <div className="max-w-3xl">
@@ -1615,7 +1631,6 @@ function Gallery({ t }) {
           </button>
         </div>
 
-        {/* pás – 6 vybraných, zachová formát */}
         <div className="mt-8 ourwork-strip">
           {OUR_WORK.slice(0, 6).map((src, i) => (
             <a
@@ -1636,7 +1651,6 @@ function Gallery({ t }) {
           ))}
         </div>
 
-        {/* mobilní CTA */}
         <button
           type="button"
           onClick={() => setOurWorkOpen(true)}
@@ -1648,15 +1662,15 @@ function Gallery({ t }) {
 
       {/* ==== MODAL: NAŠE REALIZACE (VŠE) ==== */}
       {ourWorkOpen && (
-        <div className="ow-modal">
+        <div className="ow-modal" role="dialog" aria-modal="true">
           <button
             type="button"
-            className="ow-backdrop absolute inset-0"
-            onClick={() => setOurWorkOpen(false)}
+            className="ow-backdrop"
             aria-label="Zavřít"
+            onClick={() => setOurWorkOpen(false)}
           />
 
-          <div className="ow-panel" role="dialog" aria-modal="true">
+          <div className="ow-panel">
             <div className="ow-head">
               <div>
                 <div className="ow-title">Naše realizace</div>
@@ -1688,7 +1702,7 @@ function Gallery({ t }) {
                       loading="lazy"
                       decoding="async"
                     />
-                    <div className="ow-hover" />
+                    <span className="ow-hover" />
                   </a>
                 ))}
               </div>
@@ -1713,7 +1727,6 @@ function Gallery({ t }) {
               className="rounded-2xl border border-[var(--line)] bg-white soft-shadow overflow-hidden reveal"
             >
               <div className="grid md:grid-cols-12 gap-0">
-                {/* TEXT */}
                 <div className="md:col-span-5 p-6 flex flex-col justify-between">
                   <div>
                     <div className="text-xl font-semibold">{p.name}</div>
@@ -1734,7 +1747,6 @@ function Gallery({ t }) {
                   </div>
                 </div>
 
-                {/* IMAGES */}
                 <div className="md:col-span-7 p-4 md:p-5">
                   <div className="grid grid-cols-3 gap-3">
                     {p.images.map((img, i) => (
