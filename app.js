@@ -1187,8 +1187,8 @@ tiers: [
         intro: "Kolejnice, garnýže, ohyby, motory – řešení pro každý interiér.",
         rangesTitle: "Orientačně (pro představu)",
         ranges: [
-          { label: "malé okno (200 x 270cm)", value: "cca 2–8 tis. Kč" },
-          { label: "velké okno (500 x 290cm)", value: "cca 6–18 tis. Kč" }
+          { label: "malé okno (200 x 270cm)", value: "cca 1–13 tis. Kč" },
+          { label: "velké okno (500 x 290cm)", value: "cca 2.5–18 tis. Kč" }
         ],
         tiersTitle: "Typy",
         tiers: [
@@ -1209,8 +1209,8 @@ tiers: [
         intro: "Sundání textilu, praní/čištění, věšení a žehlení.",
         rangesTitle: "Orientačně podle rozsahu",
         ranges: [
-          { label: "malé okno (200 x 270cm)", value: "cca 800–3 500 Kč" },
-          { label: "velké okno (500 x 290cm)", value: "cca 2 500–9 000 Kč" }
+          { label: "malé okno (200 x 270cm)", value: "cca 6–8 tis. Kč" },
+          { label: "velké okno (500 x 290cm)", value: "cca 17–20 tis. Kč" }
         ],
         tiersTitle: "Typy",
         tiers: [
