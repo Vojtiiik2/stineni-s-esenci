@@ -317,7 +317,7 @@ const Header = ({ t, lang, setLang }) => {
 >
   <img
     className="brand-logo"
-    src="assets/img/logo-symbol.svg"
+    src="assets/img/logo/logo-symbol.svg"
     alt="Stínění s esencí – logo"
     loading="eager"
     decoding="async"
