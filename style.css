@@ -343,22 +343,23 @@ article,
   }
 }
 
+/* jen zarovnání brandu – BEZ zásahu do fontů a barev */
 .brand-wrap{
   display:flex;
   align-items:center;
   gap:10px;
 }
 
+/* logo se přizpůsobí výšce dvou řádků textu */
 .brand-logo{
-  width:34px;
-  height:34px;
+  height: 2.2em;   /* drží se velikosti písma -> nezkazí text */
+  width: auto;
   display:block;
-  flex:0 0 auto;
+  flex: 0 0 auto;
 }
 
-.brand-text{
-  display:flex;
-  flex-direction:column;
-  line-height:1.05;
-}    
+@media (max-width: 768px){
+  .brand-logo{ height: 2.0em; }
+}
+
 
