@@ -2356,16 +2356,26 @@ function App() {
       <footer className="bg-[#222] text-[#ddd] mt-10 reveal">
         <div className="max-w-6xl mx-auto px-4 py-10 grid md:grid-cols-3 gap-8">
           {/* BRAND */}
-          <div>
-            <div className="script text-2xl text-white">{t.brand2}</div>
-            <div className="text-sm text-[#bdbdbd]">{t.brand1}</div>
+<div className="footer-brand">
+  <img
+    src="assets/img/logo-symbol.svg"
+    alt="Stínění s esencí – logo"
+    className="footer-logo"
+    loading="lazy"
+    decoding="async"
+  />
 
-            <p className="text-sm text-[#bdbdbd] mt-4 leading-relaxed">
-              Návrh a realizace vnitřního stínění na míru.
-              <br />
-              Záclony · Závěsy · Rolety · Technické systémy
-            </p>
-          </div>
+  <div>
+    <div className="script text-2xl text-white">{t.brand2}</div>
+    <div className="text-sm text-[#bdbdbd]">{t.brand1}</div>
+
+    <p className="text-sm text-[#bdbdbd] mt-4 leading-relaxed">
+      Návrh a realizace vnitřního stínění na míru.
+      <br />
+      Záclony · Závěsy · Rolety · Technické systémy
+    </p>
+  </div>
+</div>
 
           {/* KONTAKT */}
           <div>
