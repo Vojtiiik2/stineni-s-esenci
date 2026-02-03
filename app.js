@@ -1866,9 +1866,7 @@ const bg = "assets/img/hero/finished-hero.webp";
 
       <section className="max-w-6xl mx-auto px-4 py-16 reveal">
        <p className="text-[var(--muted)] max-w-3xl mb-8 mx-auto text-center">
-  Nabízíme několik základních typů hotového stínění, které umíme dále
-  přizpůsobit vašemu prostoru. Každý typ má své optimální použití – od
-  ložnicového zatemnění až po jemné vrstvení ve společenských místnostech.
+ 
 </p>
 
 
