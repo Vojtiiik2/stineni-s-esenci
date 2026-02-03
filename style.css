@@ -351,7 +351,7 @@ article,
 }
 
 .brand-logo{
-  height: 44px;   /* odpovídá dvouřádkovému brand bloku v headeru */
+  height: 48px;          /* ← tohle je ten správný rozměr */
   width: auto;
   display: block;
   flex: 0 0 auto;
@@ -359,12 +359,9 @@ article,
 }
 
 @media (max-width: 768px){
-  .brand-logo{ height: 40px; }
-}
-
-
-@media (max-width: 768px){
-  .brand-logo{ height: 2.0em; }
+  .brand-logo{
+    height: 42px;
+  }
 }
 
 
