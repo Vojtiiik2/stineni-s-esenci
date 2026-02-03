@@ -391,25 +391,25 @@ footer .footer-brand{
   gap:14px;
 }
 
-/* POZOR: tohle platí jen ve footeru */
 footer .footer-logo{
-  height: 26px;
+  height: 22px;          /* jemnější */
   width: auto;
   display:block;
   flex: 0 0 auto;
-  opacity: .55;          /* neruší */
+  opacity: .65;          /* čitelnější, ale klidné */
   object-fit: contain;
 }
 
 footer .footer-logo:hover{
-  opacity: .75;
+  opacity: .85;
 }
 
 @media (max-width: 768px){
   footer .footer-logo{
-    height: 24px;
+    height: 20px;
   }
 }
+
 
 
 
