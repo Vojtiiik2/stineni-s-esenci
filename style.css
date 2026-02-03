@@ -355,6 +355,10 @@ article,
   }
 }
 
+/* =========================
+   BRAND (HEADER)
+   ========================= */
+
 /* jen zarovnání brandu – BEZ zásahu do fontů a barev */
 .brand-wrap{
   display:flex;
@@ -363,9 +367,9 @@ article,
 }
 
 .brand-logo{
-  height: 36px;          /* IDEÁL pro desktop */
+  height: 36px;          /* desktop */
   width: auto;
-  display: block;
+  display:block;
   flex: 0 0 auto;
   object-fit: contain;
 }
@@ -376,28 +380,37 @@ article,
   }
 }
 
-/* ===== FOOTER BRAND ===== */
+
+/* =========================
+   BRAND (FOOTER)
+   ========================= */
+
 footer .footer-brand{
   display:flex;
   align-items:flex-start;
   gap:14px;
 }
 
-footer img.footer-logo{
+/* POZOR: tohle platí jen ve footeru */
+footer .footer-logo{
   height: 26px;
   width: auto;
   display:block;
   flex: 0 0 auto;
-  opacity: .55;      /* neruší */
+  opacity: .55;          /* neruší */
+  object-fit: contain;
 }
 
-footer img.footer-logo:hover{
+footer .footer-logo:hover{
   opacity: .75;
 }
 
 @media (max-width: 768px){
-  footer img.footer-logo{ height: 24px; }
+  footer .footer-logo{
+    height: 24px;
+  }
 }
+
 
 
 
