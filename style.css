@@ -344,22 +344,37 @@ article,
   }
 }
 
+/* =========================================================
+   BRAND (logo + text) – pouze zarovnání a responsivita loga
+   ========================================================= */
+
 .brand-wrap{
   display:flex;
   align-items:center;
   gap:10px;
 }
 
-.brand-logo{
-  width:34px;
-  height:34px;
-  display:block;
-  flex:0 0 auto;
-}
-
+/* textový blok (2 řádky) */
 .brand-text{
   display:flex;
   flex-direction:column;
+  justify-content:center;
   line-height:1.05;
 }
+
+/* logo: výškově sladěné s blokem textu */
+.brand-logo{
+  height: 42px;      /* desktop: cca výška 2 řádků */
+  width: auto;
+  display:block;
+  flex: 0 0 auto;
+}
+
+/* mobil: o chlup menší, aby se vešlo do headeru */
+@media (max-width: 768px){
+  .brand-logo{
+    height: 36px;
+  }
+}
+
 
