@@ -351,15 +351,17 @@ article,
 }
 
 .brand-logo{
-  height: 48px !important;
-  width: auto !important;
-  display:block;
+  height: 36px;          /* IDEÁL pro desktop */
+  width: auto;
+  display: block;
+  flex: 0 0 auto;
   object-fit: contain;
 }
 
 @media (max-width: 768px){
-  .brand-logo{ height: 42px !important; }
+  .brand-logo{
+    height: 32px;        /* mobil */
+  }
 }
-
 
 
