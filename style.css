@@ -388,32 +388,32 @@ article,
 footer .footer-brand{
   display: flex;
   align-items: flex-start;
-  gap: 14px;
+  gap: 16px; /* klidně o chlup víc, ať logo dýchá */
 }
 
-/* optické zarovnání vůči script textu */
 footer .footer-brand > .footer-logo{
-  margin-top: 6px;
+  margin-top: 4px;   /* menší posun, protože logo je vyšší */
 }
 
 footer .footer-logo{
-  height: 32px;          /* 🔹 větší – blíž headeru */
+  height: 40px;      /* 🔥 VIDITELNĚ VĚTŠÍ – téměř header pocit */
   width: auto;
   display: block;
   flex: 0 0 auto;
   object-fit: contain;
-  opacity: .65;          /* footerový klid */
+  opacity: .7;       /* footerově klidné, ale čitelné */
 }
 
 footer .footer-logo:hover{
-  opacity: .85;
+  opacity: .9;
 }
 
 @media (max-width: 768px){
   footer .footer-logo{
-    height: 28px;
+    height: 34px;
   }
 }
+
 
 
 
