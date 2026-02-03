@@ -6,14 +6,9 @@
   --sand: #d7c7b4;
 
   /* brand */
-  --brand-brown-dark: #5f4a36;
-  --brand-brown-light: #9b846d;
-
-  /* footer logo */
-  --footer-logo: rgba(215,199,180,.55);
-  --footer-logo-hover: rgba(215,199,180,.85);
+  --brand-brown-dark: #5f4a36;   /* STÍNĚNÍ S ESENCÍ */
+  --brand-brown-light: #9b846d;  /* Jana Segelberg */
 }
-
 
 body {
   margin: 0;
@@ -369,27 +364,8 @@ article,
   }
 }
 
-/* ===== FOOTER LOGO (jemné, neruší) ===== */
-.footer-brand{
-  display:flex;
-  align-items:flex-start;
-  gap:14px;
-}
 
-.footer-logo{
-  height: 28px;        /* jemné, neruší */
-  width: auto;
-  display:block;
-  flex: 0 0 auto;
-  opacity: .95;
-  filter: grayscale(100%) brightness(1.25);
-}
 
-.footer-logo:hover{
-  filter: grayscale(0%) brightness(1.35);
-}
 
-@media (max-width: 768px){
-  .footer-logo{ height: 26px; }
-}
+
 
