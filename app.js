@@ -314,7 +314,7 @@ const Header = ({ t, lang, setLang }) => {
 {/* BRAND (header) */}
 <div className="brand-wrap">
   <img
-    src="assets/img/logo/logo.svg"   // nebo pokud chceš jen symbol, dej logo-symbol.svg
+    src="assets/img/logo/logo-symbol.svg"   // nebo pokud chceš jen symbol, dej logo-symbol.svg
     alt="Stínění s esencí – logo"
     className="brand-logo"
     loading="lazy"
