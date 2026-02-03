@@ -312,27 +312,27 @@ const Header = ({ t, lang, setLang }) => {
         <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
          
 {/* BRAND */}
-<div
-  className="brand-wrap leading-4 cursor-pointer"
-  onClick={() => { setMenuOpen(false); go("/"); }}
->
+<div className="footer-brand">
   <img
-    className="brand-logo"
     src="assets/img/logo/logo-symbol.svg"
     alt="Stínění s esencí – logo"
-    loading="eager"
+    className="footer-logo"
+    loading="lazy"
     decoding="async"
   />
 
-  <div className="brand-text">
-    <div className="script text-2xl -mb-0.5" style={{ color: "var(--brand-brown-dark)" }}>
-      {t.brand2}
-    </div>
-    <div className="text-xs tracking-wide" style={{ color: "var(--brand-brown-light)" }}>
-      {t.brand1}
-    </div>
+  <div>
+    <div className="script text-2xl text-white">{t.brand2}</div>
+    <div className="text-sm text-[#bdbdbd]">{t.brand1}</div>
+
+    <p className="text-sm text-[#bdbdbd] mt-4 leading-relaxed">
+      Návrh a realizace vnitřního stínění na míru.
+      <br />
+      Záclony · Závěsy · Rolety · Technické systémy
+    </p>
   </div>
 </div>
+
 
 
 
