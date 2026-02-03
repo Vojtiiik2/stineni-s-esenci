@@ -1917,7 +1917,7 @@ function Essences({ t }) {
        <p className="text-[var(--muted)] max-w-3xl mb-8 mx-auto text-center">
   Vůně jemně doplňuje vizuální dojem z prostoru. Pomáhá dotvořit atmosféru,
   která se pojí se světlem, látkou i rytmem dne. Vybrané esence používáme
-  jako nenápadný, ale výrazný prvek celkového vnímání interiéru.
+  jako nenápadný, ale účinný prvek celkového vnímání interiéru.
 </p>
 
 
@@ -1927,10 +1927,10 @@ function Essences({ t }) {
 
     <p className="text-[var(--muted)] text-sm leading-relaxed">
       Vůně budou samostatnou kapitolou navázanou na prostor,
-      denní světlo a atmosféru interiéru.
+      a atmosféru v něm.
       <br /><br />
-      Aktuálně ladíme koncepci tak, aby esence nebyly jen „produktem“,
-      ale přirozeným doplňkem celkového návrhu.
+      Esence budou laděny tak, aby odpovídali potřebám a aktivitám vykonávaným
+      v daném prostoru.
     </p>
 
     <p className="text-xs tracking-wide text-[var(--muted)] mt-4">
