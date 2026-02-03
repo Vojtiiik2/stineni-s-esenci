@@ -311,27 +311,26 @@ const Header = ({ t, lang, setLang }) => {
       <header className="fixed top-0 left-0 right-0 z-30 border-b border-[var(--line)]/70 bg-white/70 backdrop-blur-md">
         <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
          
-{/* BRAND */}
-<div className="footer-brand">
+{/* BRAND (header) */}
+<div className="brand-wrap">
   <img
-    src="assets/img/logo/logo-symbol.svg"
+    src="assets/img/logo/logo.svg"   // nebo pokud chceš jen symbol, dej logo-symbol.svg
     alt="Stínění s esencí – logo"
-    className="footer-logo"
+    className="brand-logo"
     loading="lazy"
     decoding="async"
   />
 
-  <div>
-    <div className="script text-2xl text-white">{t.brand2}</div>
-    <div className="text-sm text-[#bdbdbd]">{t.brand1}</div>
-
-    <p className="text-sm text-[#bdbdbd] mt-4 leading-relaxed">
-      Návrh a realizace vnitřního stínění na míru.
-      <br />
-      Záclony · Závěsy · Rolety · Technické systémy
-    </p>
+  <div style={{ lineHeight: 1.05 }}>
+    <div className="script" style={{ fontSize: 22, color: "var(--brand-brown-dark)" }}>
+      {t.brand2}
+    </div>
+    <div style={{ fontSize: 12, color: "var(--brand-brown-light)", marginTop: 2 }}>
+      {t.brand1}
+    </div>
   </div>
 </div>
+
 
 
 
