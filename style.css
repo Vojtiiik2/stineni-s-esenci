@@ -344,4 +344,22 @@ article,
   }
 }
 
+.brand-wrap{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.brand-logo{
+  width:34px;
+  height:34px;
+  display:block;
+  flex:0 0 auto;
+}
+
+.brand-text{
+  display:flex;
+  flex-direction:column;
+  line-height:1.05;
+}
 
