@@ -734,7 +734,7 @@ function Home({ t }) {
             },
             {
               src: "assets/img/atmosfera/atmosfera-03.webp",
-              tags: "Hloubka · Ticho · Domov"
+              tags: "Funkčnost · Ticho · Domov"
             }
           ].map((item, i) => (
             <div
@@ -2413,7 +2413,7 @@ function App() {
 
           {/* PRÁVNÍ */}
           <div>
-            <div className="text-white font-semibold mb-3">Právní a informace</div>
+            <div className="text-white font-semibold mb-3">Práva a informace</div>
 
             <div className="text-sm text-[#bdbdbd] space-y-2">
               <div>
