@@ -386,22 +386,23 @@ article,
    ========================= */
 
 footer .footer-brand{
-  display:flex;
-  align-items:flex-start;
-  gap:14px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
 }
 
+/* optické zarovnání vůči script textu */
 footer .footer-brand > .footer-logo{
-  margin-top: 6px;   /* dorovná optickou baseline script textu */
+  margin-top: 6px;
 }
 
 footer .footer-logo{
-  height: 22px;          /* jemnější */
+  height: 32px;          /* 🔹 větší – blíž headeru */
   width: auto;
-  display:block;
+  display: block;
   flex: 0 0 auto;
-  opacity: .65;          /* čitelnější, ale klidné */
   object-fit: contain;
+  opacity: .65;          /* footerový klid */
 }
 
 footer .footer-logo:hover{
@@ -410,10 +411,9 @@ footer .footer-logo:hover{
 
 @media (max-width: 768px){
   footer .footer-logo{
-    height: 20px;
+    height: 28px;
   }
 }
-
 
 
 
