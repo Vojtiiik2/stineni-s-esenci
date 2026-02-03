@@ -376,6 +376,28 @@ article,
   }
 }
 
+/* ===== FOOTER BRAND ===== */
+footer .footer-brand{
+  display:flex;
+  align-items:flex-start;
+  gap:14px;
+}
+
+footer img.footer-logo{
+  height: 26px;
+  width: auto;
+  display:block;
+  flex: 0 0 auto;
+  opacity: .55;      /* neruší */
+}
+
+footer img.footer-logo:hover{
+  opacity: .75;
+}
+
+@media (max-width: 768px){
+  footer img.footer-logo{ height: 24px; }
+}
 
 
 
