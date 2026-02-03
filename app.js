@@ -310,23 +310,30 @@ const Header = ({ t, lang, setLang }) => {
     <>
       <header className="fixed top-0 left-0 right-0 z-30 border-b border-[var(--line)]/70 bg-white/70 backdrop-blur-md">
         <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-         {/* BRAND */}
-<div className="brand-wrap" onClick={() => { setMenuOpen(false); go("/"); }}>
+         
+{/* BRAND */}
+<div
+  className="brand-wrap leading-4 cursor-pointer"
+  onClick={() => { setMenuOpen(false); go("/"); }}
+>
   <img
     className="brand-logo"
     src="assets/img/logo-symbol.svg"
     alt="Stínění s esencí – logo"
+    loading="eager"
+    decoding="async"
   />
 
   <div className="brand-text">
-    <div className="script brand-title">
+    <div className="script text-2xl -mb-0.5" style={{ color: "var(--brand-brown-dark)" }}>
       {t.brand2}
     </div>
-    <div className="brand-sub">
+    <div className="text-xs tracking-wide" style={{ color: "var(--brand-brown-light)" }}>
       {t.brand1}
     </div>
   </div>
 </div>
+
 
 
 
