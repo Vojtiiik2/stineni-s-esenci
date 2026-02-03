@@ -8,7 +8,19 @@
   /* brand */
   --brand-brown-dark: #5f4a36;   /* STÍNĚNÍ S ESENCÍ */
   --brand-brown-light: #9b846d;  /* Jana Segelberg */
+
+  /* footer logo (pokud je chceš) */
+  --footer-logo: rgba(215,199,180,.55);
+  --footer-logo-hover: rgba(215,199,180,.85);
 }
+
+.brand-logo{
+  height: 36px !important;
+  width: auto !important;
+  display: block;
+}
+
+
 
 body {
   margin: 0;
