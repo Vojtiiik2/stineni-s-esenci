@@ -2358,7 +2358,7 @@ function App() {
           {/* BRAND */}
 <div className="footer-brand">
   <img
-    src="assets/img/logo-symbol.svg"
+    src="assets/img/logo/logo-symbol.svg"
     alt="Stínění s esencí – logo"
     className="footer-logo"
     loading="lazy"
