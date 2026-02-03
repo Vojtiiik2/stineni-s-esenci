@@ -351,17 +351,15 @@ article,
 }
 
 .brand-logo{
-  height: 48px;          /* ← tohle je ten správný rozměr */
-  width: auto;
-  display: block;
-  flex: 0 0 auto;
+  height: 48px !important;
+  width: auto !important;
+  display:block;
   object-fit: contain;
 }
 
 @media (max-width: 768px){
-  .brand-logo{
-    height: 42px;
-  }
+  .brand-logo{ height: 42px !important; }
 }
+
 
 
