@@ -350,13 +350,18 @@ article,
   gap:10px;
 }
 
-/* logo se přizpůsobí výšce dvou řádků textu */
 .brand-logo{
-  height: 2.2em;   /* drží se velikosti písma -> nezkazí text */
+  height: 44px;   /* odpovídá dvouřádkovému brand bloku v headeru */
   width: auto;
-  display:block;
+  display: block;
   flex: 0 0 auto;
+  object-fit: contain;
 }
+
+@media (max-width: 768px){
+  .brand-logo{ height: 40px; }
+}
+
 
 @media (max-width: 768px){
   .brand-logo{ height: 2.0em; }
