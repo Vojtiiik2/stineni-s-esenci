@@ -1879,7 +1879,7 @@ const bg = "assets/img/hero/finished-hero.webp";
     <p className="text-[var(--muted)] text-sm leading-relaxed max-w-2xl mx-auto">
       Nabídku hotových řešení stínění aktuálně připravujeme.
       <br /><br />
-      Každý prostor řešíme individuálně pokud vás zajímá,
+      Každý prostor řešíme individuálně. Pokud vás zajímá,
       jaké řešení by dávalo smysl právě u vás,
       ozvěte se nám a připravíme návrh na míru.
     </p>
