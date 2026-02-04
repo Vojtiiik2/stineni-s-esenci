@@ -1225,27 +1225,30 @@ tiers: [
         ]
       },
 
-      {
-        key: "servis",
-        title: "Servis",
-        img:
-          (t.priceImgs && t.priceImgs[5]) ||
-          "https://images.unsplash.com/photo-1590698933947-a202b069a861?q=80&w=1800&auto=format&fit=crop",
-        vibe: "Profesionální údržba ve třech krocích.",
-        micro: "Znovu jako nové.",
-        intro: "Sundání textilu, praní/čištění, věšení a žehlení.",
-        rangesTitle: "Orientačně podle rozsahu",
-        ranges: [
-          { label: "malé okno (200 x 270cm)", value: "cca 6–8 tis. Kč" },
-          { label: "velké okno (500 x 290cm)", value: "cca 17–20 tis. Kč" }
-        ],
-        tiersTitle: "Typy",
-        tiers: [
-          { name: "Běžná údržba", note: "Sundání, praní/čištění, žehlení a pověšení." },
-          { name: "Velké plochy", note: "Více dílů, větší náročnost manipulace." },
-          { name: "Atyp / výšky", note: "Speciální přístup, lešení/plošina dle situace." }
-        ]
-      }
+     {
+  key: "servis",
+  title: "Servis",
+  img:
+    (t.priceImgs && t.priceImgs[5]) ||
+    "https://images.unsplash.com/photo-1590698933947-a202b069a861?q=80&w=1800&auto=format&fit=crop",
+  vibe: "Profesionální údržba ve třech krocích.",
+  micro: "Znovu jako nové.",
+  intro: "Sundání textilu, praní/čištění, věšení a žehlení.",
+  rangesTitle: "Orientačně podle rozsahu",
+ranges: [
+  { label: "malé okno (200 x 270cm)", value: "cca 6–8 tis. Kč" },
+  { label: "velké okno (500 x 290cm)", value: "cca 17–20 tis. Kč" }
+],
+rangesNote:
+  "Orientační cena zahrnuje obě vrstvy textilu, tedy záclonu i závěs.",
+  tiersTitle: "Typy",
+  tiers: [
+    { name: "Běžná údržba", note: "Sundání, praní/čištění, žehlení a pověšení." },
+    { name: "Velké plochy", note: "Více dílů, větší náročnost manipulace." },
+    { name: "Atyp / výšky", note: "Speciální přístup, lešení/plošina dle situace." }
+  ]
+}
+
     ],
     [t]
   );
