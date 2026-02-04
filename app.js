@@ -1609,6 +1609,18 @@ function Gallery({ t }) {
         "assets/img/gallery/partners/epic-interior-studio/epic-03.webp",
       ],
     },
+    {
+  name: "Broda interiér",
+  url: "https://brodainterier.cz/",
+  note:
+    "Interiérový design zaměřený na nadčasovost, práci s prostorem a materiály. Spolupracujeme na projektech, kde stínění dotváří klid a charakter interiéru.",
+  images: [
+    "assets/img/gallery/partners/broda/broda-01.webp",
+    "assets/img/gallery/partners/broda/broda-02.webp",
+    "assets/img/gallery/partners/broda/broda-03.webp",
+  ],
+},
+
   ];
 
   const [ourWorkOpen, setOurWorkOpen] = React.useState(false);
