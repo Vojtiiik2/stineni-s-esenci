@@ -125,10 +125,14 @@ article,
   justify-content: center;
   align-items: center;
   z-index: 999;
+
+  /* ✅ nesmí blokovat kliky, když není otevřený */
+  pointer-events: none;
 }
 
 .lb.open {
   display: flex;
+  pointer-events: auto;
 }
 
 #lbimg {
@@ -144,6 +148,7 @@ article,
     animation-duration: 0.8s;
   }
 }
+
 
 .service-card {
   border: 1px solid var(--line);
