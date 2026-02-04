@@ -1272,7 +1272,7 @@ tiers: [
   title: "Servis",
   img:
     (t.priceImgs && t.priceImgs[5]) ||
-    "https://images.unsplash.com/photo-1590698933947-a202b069a861?q=80&w=1800&auto=format&fit=crop",
+   "assets/img/pricing/pricing-05.webp",
   vibe: "Profesionální údržba ve třech krocích.",
   micro: "Znovu jako nové.",
   intro: "Sundání textilu, praní/čištění, věšení a žehlení.",
