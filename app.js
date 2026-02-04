@@ -2362,6 +2362,7 @@ function App() {
       <main className="pt-16">
         {Page}
       </main>
+
 <footer className="bg-[#222] text-[#ddd] mt-10 reveal">
   <div className="max-w-6xl mx-auto px-4 py-10 grid md:grid-cols-3 gap-8">
     {/* BRAND */}
@@ -2393,10 +2394,7 @@ function App() {
       <div className="text-sm text-[#bdbdbd] space-y-2">
         <div>
           E-mail:{" "}
-          <a
-            className="underline hover:text-white"
-            href="mailto:hello@janasegelberg.com"
-          >
+          <a className="underline hover:text-white" href="mailto:hello@janasegelberg.com">
             hello@janasegelberg.com
           </a>
         </div>
@@ -2426,59 +2424,43 @@ function App() {
 
       <div className="text-sm text-[#bdbdbd] space-y-2">
         <div>
-          <button
-            type="button"
-            onClick={() => go("/terms")}
-            className="underline hover:text-white"
-          >
+          <button type="button" onClick={() => go("/terms")} className="underline hover:text-white">
             Obchodní podmínky
           </button>
         </div>
 
         <div>
-          <button
-            type="button"
-            onClick={() => go("/privacy")}
-            className="underline hover:text-white"
-          >
+          <button type="button" onClick={() => go("/privacy")} className="underline hover:text-white">
             Ochrana osobních údajů
           </button>
         </div>
 
         <div>
-          <button
-            type="button"
-            onClick={() => go("/cookies")}
-            className="underline hover:text-white"
-          >
+          <button type="button" onClick={() => go("/cookies")} className="underline hover:text-white">
             Cookies
           </button>
         </div>
 
-        <div className="pt-3 text-xs text-[#9a9a9a]">
-          {t.rights}
-        </div>
+        <div className="pt-3 text-xs text-[#9a9a9a]">{t.rights}</div>
       </div>
     </div>
   </div>
 
- <a
-  href="#/"
-  className="underline hover:text-white"
-  style={{ position: "relative", zIndex: 1, pointerEvents: "auto" }}
-  onMouseDown={() => {
-    // nejspolehlivější – proběhne i když se click někde cestou “ztratí”
-    window.location.hash = "#/";
-  }}
-  onClick={(e) => {
-    // fallback, kdyby mouseDown neproběhl (např. klávesnice)
-    e.preventDefault();
-    window.location.hash = "#/";
-  }}
->
-  Zpět na úvod
-</a>
+  {/* spodní proužek */}
+  <div className="border-t border-[#333]">
+    <div className="max-w-6xl mx-auto px-4 py-4 text-xs text-[#9a9a9a] flex flex-col md:flex-row gap-2 md:items-center md:justify-between">
+      <div>
+        © {new Date().getFullYear()} {t.brand2} — {t.brand1}
+      </div>
 
+      <div>
+        <button
+          type="button"
+          onClick={() => go("/")}
+          className="underline hover:text-white"
+        >
+          Zpět na úvod
+        </button>
       </div>
     </div>
   </div>
