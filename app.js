@@ -2471,13 +2471,13 @@ function App() {
 
       <div>
         <button
-          type="button"
-          onClick={() => go("/")}
-          className="underline hover:text-white relative z-[10000]"
-          style={{ pointerEvents: "auto" }}
-        >
-          Zpět na úvod
-        </button>
+  type="button"
+  onClick={() => go("/")}
+  className="underline hover:text-white"
+>
+  Zpět na úvod
+</button>
+
       </div>
     </div>
   </div>
