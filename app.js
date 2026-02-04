@@ -1210,7 +1210,7 @@ tiers: [
         title: "Technické systémy",
         img:
           (t.priceImgs && t.priceImgs[4]) ||
-          "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=1800&auto=format&fit=crop",
+          "assets/img/pricing/systemy-kolejnice.webp",
         vibe: "Základ který vše řídí.",
         micro: "Funkční i dekorativní.",
         intro: "Kolejnice, garnýže, ohyby, motory – řešení pro každý interiér.",
