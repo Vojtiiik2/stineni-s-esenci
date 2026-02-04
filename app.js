@@ -2462,21 +2462,22 @@ function App() {
     </div>
   </div>
 
-  {/* spodní proužek */}
-  <div className="border-t border-[#333]">
-    <div className="max-w-6xl mx-auto px-4 py-4 text-xs text-[#9a9a9a] flex flex-col md:flex-row gap-2 md:items-center md:justify-between">
-      <div>
-        © {new Date().getFullYear()} {t.brand2} — {t.brand1}
-      </div>
-
-      <div>
-        <button
-  type="button"
-  onClick={() => go("/")}
+ <a
+  href="#/"
   className="underline hover:text-white"
+  style={{ position: "relative", zIndex: 1, pointerEvents: "auto" }}
+  onMouseDown={() => {
+    // nejspolehlivější – proběhne i když se click někde cestou “ztratí”
+    window.location.hash = "#/";
+  }}
+  onClick={(e) => {
+    // fallback, kdyby mouseDown neproběhl (např. klávesnice)
+    e.preventDefault();
+    window.location.hash = "#/";
+  }}
 >
   Zpět na úvod
-</button>
+</a>
 
       </div>
     </div>
