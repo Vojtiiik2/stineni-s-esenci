@@ -2469,12 +2469,13 @@ function App() {
             </div>
             <div>
               <button
-                type="button"
-                onClick={() => go("/")}
-                className="underline hover:text-white"
-              >
-                Zpět na úvod
-              </button>
+  type="button"
+  onClick={() => { window.location.hash = "#/"; }}
+  className="underline hover:text-white"
+>
+  Zpět na úvod
+</button>
+
             </div>
           </div>
         </div>
