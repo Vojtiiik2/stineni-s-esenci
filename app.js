@@ -2452,16 +2452,6 @@ function App() {
       <div>
         © {new Date().getFullYear()} {t.brand2} — {t.brand1}
       </div>
-
-      <div>
-        <button
-          type="button"
-          onClick={() => go("/")}
-          className="underline hover:text-white"
-        >
-          Zpět na úvod
-        </button>
-      </div>
     </div>
   </div>
 </footer>
