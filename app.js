@@ -1002,6 +1002,8 @@ function Pricing({ t }) {
   // ✅ pro přepínání typů rolet v modalu
   const [roletaTypeIdx, setRoletaTypeIdx] = useState(0);
 
+  const [systemyTypeIdx, setSystemyTypeIdx] = useState(0);
+
   // ====== Modal lokálně ======
   function ModalLocal({ open, onClose, title, subtitle, children }) {
     useEffect(() => {
@@ -1212,6 +1214,46 @@ tiers: [
         vibe: "Základ který vše řídí.",
         micro: "Funkční i dekorativní.",
         intro: "Kolejnice, garnýže, ohyby, motory – řešení pro každý interiér.",
+        subtypes: [
+  {
+    key: "kolejnice",
+    label: "Kolejnice",
+    // můžeš později vyměnit obrázek (teď klidně nech stejné jako má systemy)
+    img: (t.priceImgs && t.priceImgs[4]) || "assets/img/pricing/systemy-kolejnice.webp",
+    micro: "Čistá linie. Funkce a přesnost.",
+    intro: "Kolejnice jsou minimalistické a univerzální. Řeší rovné i ohýbané varianty, stropy i stěny, ruční i motorové ovládání.",
+    rangesTitle: "Orientačně (pro představu)",
+    ranges: [
+      { label: "malé okno (200 x 270cm)", value: "cca 1–13 tis. Kč" },
+      { label: "velké okno (500 x 290cm)", value: "cca 2.5–18 tis. Kč" }
+    ],
+    tiersTitle: "Typy",
+    tiers: [
+      { name: "Rovná", note: "Jednoduché, čisté řešení." },
+      { name: "Ohýbaná", note: "Na míru prostoru a dispozici." },
+      { name: "Motor", note: "Komfort a automatizace." }
+    ]
+  },
+  {
+    key: "garnyze",
+    label: "Garnýže",
+    img: (t.priceImgs && t.priceImgs[4]) || "assets/img/pricing/systemy-garnyze.webp",
+    micro: "Dekor. Detail, který je vidět.",
+    intro: "Garnýže tvoří viditelnou součást interiéru. Volíme materiály, barvy a koncovky tak, aby ladily s látkou i prostorem.",
+    rangesTitle: "Orientačně (pro představu)",
+    ranges: [
+      { label: "malé okno (200 x 270cm)", value: "cca 1–13 tis. Kč" },
+      { label: "velké okno (500 x 290cm)", value: "cca 2.5–18 tis. Kč" }
+    ],
+    tiersTitle: "Typy",
+    tiers: [
+      { name: "Klasická", note: "Dekorativní řešení do bytů i domů." },
+      { name: "Designová", note: "Výraznější materiál, povrch, detail." },
+      { name: "Na míru", note: "Specifické uchycení, délky, rohy." }
+    ]
+  }
+],
+
         rangesTitle: "Orientačně (pro představu)",
         ranges: [
           { label: "malé okno (200 x 270cm)", value: "cca 1–13 tis. Kč" },
@@ -1256,10 +1298,13 @@ rangesNote:
   const activeItem = activeKey ? items.find((i) => i.key === activeKey) : null;
 
   // ✅ co se reálně zobrazuje v modalu (u rolet podle zvoleného typu)
-  const currentItem =
-    activeItem?.key === "roleta"
-      ? activeItem.subtypes?.[roletaTypeIdx] || activeItem.subtypes?.[0] || activeItem
+ const currentItem =
+  activeItem?.key === "roleta"
+    ? (activeItem.subtypes?.[roletaTypeIdx] || activeItem.subtypes?.[0] || activeItem)
+    : activeItem?.key === "systemy"
+      ? (activeItem.subtypes?.[systemyTypeIdx] || activeItem.subtypes?.[0] || activeItem)
       : activeItem;
+
 
   return (
     <>
@@ -1316,9 +1361,11 @@ rangesNote:
                     <button
                       type="button"
                       onClick={() => {
-                        setActiveKey(x.key);
-                        if (x.key === "roleta") setRoletaTypeIdx(0);
-                      }}
+  setActiveKey(x.key);
+  if (x.key === "roleta") setRoletaTypeIdx(0);
+  if (x.key === "systemy") setSystemyTypeIdx(0);
+}}
+
                       className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold border border-[var(--line)] bg-white hover:bg-[var(--bg2)] hover:border-[var(--sand)] transition"
                     >
                       Otevřít detail <span aria-hidden="true">→</span>
@@ -1340,10 +1387,11 @@ rangesNote:
         open={!!activeItem}
         onClose={() => setActiveKey(null)}
         title={
-          activeItem?.key === "roleta"
-            ? `${activeItem?.title || ""} — ${currentItem?.label || ""}`
-            : (activeItem?.title || "")
-        }
+  (activeItem?.key === "roleta" || activeItem?.key === "systemy")
+    ? `${activeItem?.title || ""} — ${currentItem?.label || ""}`
+    : (activeItem?.title || "")
+}
+
         subtitle={activeItem?.vibe || ""}
       >
         {activeItem && currentItem && (
@@ -1366,26 +1414,36 @@ rangesNote:
                     {currentItem.micro}
                   </div>
 
-                  {/* ✅ přepínač typů jen u rolet */}
-                  {activeItem?.key === "roleta" && (
-                    <div className="mt-3 flex flex-wrap gap-2">
-                      {(activeItem.subtypes || []).map((st, idx) => (
-                        <button
-                          key={st.key}
-                          type="button"
-                          onClick={() => setRoletaTypeIdx(idx)}
-                          className={
-                            "px-3 py-1.5 rounded-full text-sm border transition " +
-                            (roletaTypeIdx === idx
-                              ? "border-[var(--sand)] bg-[var(--bg2)] font-semibold"
-                              : "border-[var(--line)] hover:bg-[var(--bg2)]")
-                          }
-                        >
-                          {st.label}
-                        </button>
-                      ))}
-                    </div>
-                  )}
+                {/* ✅ přepínač typů (rolety + technické systémy) */}
+{(activeItem?.key === "roleta" || activeItem?.key === "systemy") && (
+  <div className="mt-3 flex flex-wrap gap-2">
+    {(activeItem.subtypes || []).map((st, idx) => {
+      const isActive =
+        activeItem.key === "roleta" ? roletaTypeIdx === idx : systemyTypeIdx === idx;
+
+      const onPick = () => {
+        if (activeItem.key === "roleta") setRoletaTypeIdx(idx);
+        if (activeItem.key === "systemy") setSystemyTypeIdx(idx);
+      };
+
+      return (
+        <button
+          key={st.key}
+          type="button"
+          onClick={onPick}
+          className={
+            "px-3 py-1.5 rounded-full text-sm border transition " +
+            (isActive
+              ? "border-[var(--sand)] bg-[var(--bg2)] font-semibold"
+              : "border-[var(--line)] hover:bg-[var(--bg2)]")
+          }
+        >
+          {st.label}
+        </button>
+      );
+    })}
+  </div>
+)}
 
                   <p className="mt-2 text-[var(--muted)] text-sm leading-relaxed">
                     {currentItem.intro}
