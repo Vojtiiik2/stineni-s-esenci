@@ -2461,16 +2461,17 @@ function App() {
           </div>
         </div>
 
-        {/* spodní proužek */}
-        <div className="border-t border-[#333]">
-          <div className="max-w-6xl mx-auto px-4 py-4 text-xs text-[#9a9a9a] flex flex-col md:flex-row gap-2 md:items-center md:justify-between">
-            <div>
-              © {new Date().getFullYear()} {t.brand2} — {t.brand1}
-            </div>
-            <div>
-              <a href="#/" className="underline hover:text-white">
-  Zpět na úvod
-</a>
+       <div>
+  <button
+    type="button"
+    onClick={() => go("/")}
+    className="underline hover:text-white relative z-[10000]"
+    style={{ pointerEvents: "auto" }}
+  >
+    Zpět na úvod
+  </button>
+</div>
+
 
 
             </div>
