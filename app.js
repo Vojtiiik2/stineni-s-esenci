@@ -2362,123 +2362,128 @@ function App() {
       <main className="pt-16">
         {Page}
       </main>
+<footer className="bg-[#222] text-[#ddd] mt-10 reveal">
+  <div className="max-w-6xl mx-auto px-4 py-10 grid md:grid-cols-3 gap-8">
+    {/* BRAND */}
+    <div className="footer-brand">
+      <img
+        src="assets/img/logo/logo-symbol.svg"
+        alt="Stínění s esencí – logo"
+        className="footer-logo"
+        loading="lazy"
+        decoding="async"
+      />
 
-      <footer className="bg-[#222] text-[#ddd] mt-10 reveal">
-        <div className="max-w-6xl mx-auto px-4 py-10 grid md:grid-cols-3 gap-8">
-          {/* BRAND */}
-<div className="footer-brand">
-  <img
-    src="assets/img/logo/logo-symbol.svg"
-    alt="Stínění s esencí – logo"
-    className="footer-logo"
-    loading="lazy"
-    decoding="async"
-  />
+      <div>
+        <div className="script text-2xl text-white">{t.brand2}</div>
+        <div className="text-sm text-[#bdbdbd]">{t.brand1}</div>
 
-  <div>
-    <div className="script text-2xl text-white">{t.brand2}</div>
-    <div className="text-sm text-[#bdbdbd]">{t.brand1}</div>
+        <p className="text-sm text-[#bdbdbd] mt-4 leading-relaxed">
+          Návrh a realizace vnitřního stínění na míru.
+          <br />
+          Záclony · Závěsy · Rolety · Technické systémy
+        </p>
+      </div>
+    </div>
 
-    <p className="text-sm text-[#bdbdbd] mt-4 leading-relaxed">
-      Návrh a realizace vnitřního stínění na míru.
-      <br />
-      Záclony · Závěsy · Rolety · Technické systémy
-    </p>
+    {/* KONTAKT */}
+    <div>
+      <div className="text-white font-semibold mb-3">Kontakt</div>
+
+      <div className="text-sm text-[#bdbdbd] space-y-2">
+        <div>
+          E-mail:{" "}
+          <a
+            className="underline hover:text-white"
+            href="mailto:hello@janasegelberg.com"
+          >
+            hello@janasegelberg.com
+          </a>
+        </div>
+
+        <div>
+          Telefon:{" "}
+          <a className="underline hover:text-white" href="tel:+420724379309">
+            +420 724 379 309
+          </a>
+        </div>
+
+        <div className="pt-2">
+          <button
+            type="button"
+            onClick={() => go("/contact")}
+            className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold border border-[#444] hover:border-[#666] hover:bg-[#2a2a2a] transition"
+          >
+            Napište mi <span aria-hidden="true">→</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    {/* PRÁVNÍ */}
+    <div>
+      <div className="text-white font-semibold mb-3">Práva a informace</div>
+
+      <div className="text-sm text-[#bdbdbd] space-y-2">
+        <div>
+          <button
+            type="button"
+            onClick={() => go("/terms")}
+            className="underline hover:text-white"
+          >
+            Obchodní podmínky
+          </button>
+        </div>
+
+        <div>
+          <button
+            type="button"
+            onClick={() => go("/privacy")}
+            className="underline hover:text-white"
+          >
+            Ochrana osobních údajů
+          </button>
+        </div>
+
+        <div>
+          <button
+            type="button"
+            onClick={() => go("/cookies")}
+            className="underline hover:text-white"
+          >
+            Cookies
+          </button>
+        </div>
+
+        <div className="pt-3 text-xs text-[#9a9a9a]">
+          {t.rights}
+        </div>
+      </div>
+    </div>
   </div>
-</div>
 
-          {/* KONTAKT */}
-          <div>
-            <div className="text-white font-semibold mb-3">Kontakt</div>
+  {/* spodní proužek */}
+  <div className="border-t border-[#333]">
+    <div className="max-w-6xl mx-auto px-4 py-4 text-xs text-[#9a9a9a] flex flex-col md:flex-row gap-2 md:items-center md:justify-between">
+      <div>
+        © {new Date().getFullYear()} {t.brand2} — {t.brand1}
+      </div>
 
-            <div className="text-sm text-[#bdbdbd] space-y-2">
-              <div>
-                E-mail:{" "}
-                <a
-                  className="underline hover:text-white"
-                  href="mailto:hello@janasegelberg.com"
-                >
-                  hello@janasegelberg.com
-                </a>
-              </div>
+      <div>
+        <button
+          type="button"
+          onClick={() => go("/")}
+          className="underline hover:text-white relative z-[10000]"
+          style={{ pointerEvents: "auto" }}
+        >
+          Zpět na úvod
+        </button>
+      </div>
+    </div>
+  </div>
+</footer>
 
-              <div>
-                Telefon:{" "}
-                <a className="underline hover:text-white" href="tel:+420724379309">
-                  +420 724 379 309
-                </a>
-              </div>
-
-              <div className="pt-2">
-                <button
-                  type="button"
-                  onClick={() => go("/contact")}
-                  className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold border border-[#444] hover:border-[#666] hover:bg-[#2a2a2a] transition"
-                >
-                  Napište mi <span aria-hidden="true">→</span>
-                </button>
-              </div>
-            </div>
-          </div>
-
-          {/* PRÁVNÍ */}
-          <div>
-            <div className="text-white font-semibold mb-3">Práva a informace</div>
-
-            <div className="text-sm text-[#bdbdbd] space-y-2">
-              <div>
-                <button
-                  type="button"
-                  onClick={() => go("/terms")}
-                  className="underline hover:text-white"
-                >
-                  Obchodní podmínky
-                </button>
-              </div>
-
-              <div>
-                <button
-                  type="button"
-                  onClick={() => go("/privacy")}
-                  className="underline hover:text-white"
-                >
-                  Ochrana osobních údajů
-                </button>
-              </div>
-
-              <div>
-                <button
-                  type="button"
-                  onClick={() => go("/cookies")}
-                  className="underline hover:text-white"
-                >
-                  Cookies
-                </button>
-              </div>
-
-              <div className="pt-3 text-xs text-[#9a9a9a]">{t.rights}</div>
-            </div>
-          </div>
-        </div>
-
-       <div>
-  <button
-    type="button"
-    onClick={() => go("/")}
-    className="underline hover:text-white relative z-[10000]"
-    style={{ pointerEvents: "auto" }}
-  >
-    Zpět na úvod
-  </button>
-</div>
-
-
-
-            </div>
-          </div>
-        </div>
-      </footer>
-
+      
       {/* LIGHTBOX – tohle ti často při úpravách zmizí a pak se rozbije JSX */}
       <div
         id="lb"
