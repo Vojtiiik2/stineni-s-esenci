@@ -1087,45 +1087,48 @@ function Pricing({ t }) {
   const items = useMemo(
     () => [
       {
-        key: "zaclon",
-        title: "Záclony",
-        img: (t.priceImgs && t.priceImgs[1]) || "assets/img/pricing/pricing-01.webp",
-        vibe: "Světlo zůstává. Prostor se zjemní a zútulní.",
-        micro: "Světlo, proporce, jemnost.",
-        intro:
-          "Lehká vrstva, která propouští denní světlo a zároveň vytváří základní pocit soukromí.",
-        rangesTitle: "Orientačně (pro představu)",
-        ranges: [
-          { label: "malé okno (200 x 270cm)", value: "cca 3–16 tis. Kč" },
-          { label: "velké okno (500 x 290cm)", value: "cca 8–42 tis. Kč" }
-        ],
-        tiersTitle: "Typy",
-        tiers: [
-          { name: "Základní lehké voály", note: "Vzdušné látky s nižší pořizovací cenou." },
-          { name: "Střední kategorie", note: "Vyvážený poměr ceny, vzhledu a funkce." },
-          { name: "Prémiové tkaniny", note: "Exkluzivní textura, přírodní materiály." }
-        ]
-      },
+  key: "zaclon",
+  title: "Záclony",
+  img: (t.priceImgs && t.priceImgs[1]) || "assets/img/pricing/pricing-01.webp",
+  vibe: "Světlo zůstává. Prostor se zjemní a zútulní.",
+  micro: "Světlo, proporce, jemnost.",
+  intro:
+    "Lehká vrstva, která propouští denní světlo a zároveň vytváří základní pocit soukromí.",
+  rangesTitle: "Orientačně (pro představu)",
+  ranges: [
+    { label: "malé okno (200 x 270cm)", value: "cca 3–16 tis. Kč" },
+    { label: "velké okno (500 x 290cm)", value: "cca 8–42 tis. Kč" }
+  ],
+  rangesNote: "Orientační cena zahrnuje látku, zpracování a drobnou galanterii.",
+  tiersTitle: "Typy",
+  tiers: [
+    { name: "Základní lehké voály", note: "Vzdušné látky s nižší pořizovací cenou." },
+    { name: "Střední kategorie", note: "Vyvážený poměr ceny, vzhledu a funkce." },
+    { name: "Prémiové tkaniny", note: "Exkluzivní textura, přírodní materiály." }
+  ]
+},
 
-      {
-        key: "zaves",
-        title: "Závěsy",
-        img: (t.priceImgs && t.priceImgs[2]) || "assets/img/pricing/pricing-02.webp",
-        vibe: "Vytvoří soukromí. Večer zklidní. Ráno ochrání.",
-        micro: "Materiál, ticho, komfort.",
-        intro: "Těžší vrstva, vytvoří plné soukromí a zatemnění.",
-        rangesTitle: "Orientačně (pro představu)",
-        ranges: [
-          { label: "malé okno (200 x 270cm)", value: "cca 6–21 tis. Kč" },
-          { label: "velké okno (500 x 290cm)", value: "cca 15–49 tis. Kč" }
-        ],
-        tiersTitle: "Typy",
-        tiers: [
-          { name: "Dekorativní závěs", note: "Primárně vzhled a soukromí." },
-          { name: "Dim-out", note: "Ztlumí světlo, ale úplnou tmu neudělá." },
-          { name: "Blackout", note: "Maximální zatemnění, částečná tepelná izolace." }
-        ]
-      },
+{
+  key: "zaves",
+  title: "Závěsy",
+  img: (t.priceImgs && t.priceImgs[2]) || "assets/img/pricing/pricing-02.webp",
+  vibe: "Vytvoří soukromí. Večer zklidní. Ráno ochrání.",
+  micro: "Materiál, ticho, komfort.",
+  intro: "Těžší vrstva, vytvoří plné soukromí a zatemnění.",
+  rangesTitle: "Orientačně (pro představu)",
+  ranges: [
+    { label: "malé okno (200 x 270cm)", value: "cca 6–21 tis. Kč" },
+    { label: "velké okno (500 x 290cm)", value: "cca 15–49 tis. Kč" }
+  ],
+  rangesNote: "Orientační cena zahrnuje látku, zpracování a drobnou galanterii.",
+  tiersTitle: "Typy",
+  tiers: [
+    { name: "Dekorativní závěs", note: "Primárně vzhled a soukromí." },
+    { name: "Dim-out", note: "Ztlumí světlo, ale úplnou tmu neudělá." },
+    { name: "Blackout", note: "Maximální zatemnění, částečná tepelná izolace." }
+  ]
+},
+
 
       {
         key: "roleta",
@@ -1387,11 +1390,19 @@ tiers: [
                 </div>
 
                 <div className="rounded-2xl border border-[var(--line)] bg-white px-4 py-4">
-                  <div className="text-sm font-semibold">{currentItem.rangesTitle}</div>
-                  <div className="mt-3">
-                    <RangeChipsLocal items={currentItem.ranges} />
-                  </div>
-                </div>
+  <div className="text-sm font-semibold">{currentItem.rangesTitle}</div>
+
+  <div className="mt-3">
+    <RangeChipsLocal items={currentItem.ranges} />
+  </div>
+
+  {currentItem.rangesNote ? (
+    <p className="mt-3 text-xs text-[var(--muted)] leading-relaxed">
+      {currentItem.rangesNote}
+    </p>
+  ) : null}
+</div>
+
 
                 {/* ✅ jen pro servis – bez rámečku „Typy“ */}
                 {activeItem?.key === "servis" ? (
