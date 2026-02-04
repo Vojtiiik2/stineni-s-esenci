@@ -116,38 +116,33 @@ article,
   transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
-/* ===== Lightbox (tvůj původní) ===== */
-.lb {
+/* ===== Lightbox ===== */
+.lb{
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(0,0,0,.9);
   justify-content: center;
   align-items: center;
-  z-index: 999;
 
-  /* ✅ nesmí blokovat kliky, když není otevřený */
+  /* ✅ když je zavřený, nesmí být “nad stránkou” */
+  z-index: -1;
   pointer-events: none;
 }
 
-.lb.open {
+.lb.open{
   display: flex;
+  z-index: 9999;
   pointer-events: auto;
 }
 
-#lbimg {
+#lbimg{
   max-width: 90%;
   max-height: 90%;
   border-radius: 12px;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 24px rgba(0,0,0,.4);
 }
 
-@media (max-width: 768px) {
-  section,
-  .section-swap {
-    animation-duration: 0.8s;
-  }
-}
 
 
 .service-card {
