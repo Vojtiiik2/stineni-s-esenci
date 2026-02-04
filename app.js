@@ -2468,13 +2468,10 @@ function App() {
               © {new Date().getFullYear()} {t.brand2} — {t.brand1}
             </div>
             <div>
-              <button
-  type="button"
-  onClick={() => { window.location.hash = "#/"; }}
-  className="underline hover:text-white"
->
+              <a href="#/" className="underline hover:text-white">
   Zpět na úvod
-</button>
+</a>
+
 
             </div>
           </div>
