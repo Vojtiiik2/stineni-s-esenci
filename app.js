@@ -1066,40 +1066,49 @@ function Gallery({ t }) {
     "assets/img/gallery/our-work/ourwork-36.webp"
   ];
 
-  const PARTNERS = [
+ const PARTNERS = [
   {
     key: "onoje",
     name: "ono.je",
     url: "https://www.ono.je",
-   images: [ "assets/img/gallery/partners/onoje/ono-je-01.webp", 
-            "assets/img/gallery/partners/onoje/ono-je-02.webp", 
-            "assets/img/gallery/partners/onoje/ono-je-03.webp", 
-           ],
+    images: [
+      "assets/img/gallery/partners/onoje/ono-je-01.webp",
+      "assets/img/gallery/partners/onoje/ono-je-02.webp",
+      "assets/img/gallery/partners/onoje/ono-je-03.webp"
+    ]
+  },
   {
     key: "richter",
     name: "RichterDesign",
     url: "https://www.richterdesign.cz",
-   images: [ "assets/img/gallery/partners/richter/richter-01.webp", 
-            "assets/img/gallery/partners/richter/richter-02.webp", 
-            "assets/img/gallery/partners/richter/richter-03.webp", 
-           ],
+    images: [
+      "assets/img/gallery/partners/richter/richter-01.webp",
+      "assets/img/gallery/partners/richter/richter-02.webp",
+      "assets/img/gallery/partners/richter/richter-03.webp"
+    ]
+  },
   {
     key: "epic",
     name: "Epic Interior Studio",
     url: "https://www.epicinteriorstudio.cz/",
-    images: [ "assets/img/gallery/partners/epic-interior-studio/epic-01.webp", 
-             "assets/img/gallery/partners/epic-interior-studio/epic-02.webp", 
-             "assets/img/gallery/partners/epic-interior-studio/epic-03.webp", 
-            ],
+    images: [
+      "assets/img/gallery/partners/epic-interior-studio/epic-01.webp",
+      "assets/img/gallery/partners/epic-interior-studio/epic-02.webp",
+      "assets/img/gallery/partners/epic-interior-studio/epic-03.webp"
+    ]
+  },
   {
     key: "broda",
     name: "Broda interiér",
     url: "https://brodainterier.cz/",
-    images: [ "assets/img/gallery/partners/broda/broda-01.webp", 
-             "assets/img/gallery/partners/broda/broda-02.webp", 
-             "assets/img/gallery/partners/broda/broda-03.webp", 
-            ],
+    images: [
+      "assets/img/gallery/partners/broda/broda-01.webp",
+      "assets/img/gallery/partners/broda/broda-02.webp",
+      "assets/img/gallery/partners/broda/broda-03.webp"
+    ]
+  }
 ];
+
 
 
   const [ourWorkOpen, setOurWorkOpen] = React.useState(false);
