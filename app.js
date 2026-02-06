@@ -1246,7 +1246,9 @@ function Gallery({ t }) {
                 <div className="md:col-span-5 p-6 flex flex-col justify-between">
                   <div>
                     <div className="text-xl font-semibold">{p.name}</div>
-                    <p className="text-[var(--muted)] text-sm mt-2 leading-relaxed">{p.note}</p>
+                   <p className="text-[var(--muted)] text-sm mt-2 leading-relaxed">
+  {(t.galleryPartnersNotes && t.galleryPartnersNotes[p.key]) || ""}
+</p>
                   </div>
 
                   <div className="mt-5">
