@@ -297,17 +297,26 @@ window.STR = {
       }
     ],
 
-    // Gallery
-    galleryH: "Galerie",
-    galleryOurWorkH: "Naše realizace",
-    galleryOurWorkP: "Výběr projektů, kde řešíme světlo, látku a proporce prostoru.",
-    galleryShowAll: "Zobrazit vše →",
-    galleryModalH: "Naše realizace",
-    galleryModalSub: "Procházejte fotky – můžete scrollovat dolů.",
-    galleryPartnersH: "Spolupracujeme s",
-    galleryPartnersP: "Architekti a designéři, se kterými často ladíme finální vrstvu stínění.",
-    galleryVisitWeb: "Navštívit web →",
+   // Gallery
+galleryH: "Galerie",
+galleryOurWorkH: "Naše realizace",
+galleryOurWorkP: "Výběr projektů, kde řešíme světlo, látku a proporce prostoru.",
+galleryShowAll: "Zobrazit vše →",
+galleryModalH: "Naše realizace",
+galleryModalSub: "Procházejte fotky – můžete scrollovat dolů.",
+galleryPartnersH: "Spolupracujeme s",
+galleryPartnersP: "Architekti a designéři, se kterými často ladíme finální vrstvu stínění.",
+galleryVisitWeb: "Navštívit web →",
 
+galleryPartnersNotes: {
+  onoje: "Architektura s citem pro atmosféru, materiál a detail. Dáváme tomu finální vrstvu.",
+  richter: "Spolupráce na interiérech, kde hraje roli čistota linií, funkce a klid prostoru.",
+  epic: "Interiérové studio se zaměřením na atmosféru, funkci a detail. Společně ladíme finální vrstvu stínění tak, aby prostor působil přirozeně a harmonicky.",
+  broda: "Interiérový design zaměřený na nadčasovost, práci s prostorem a materiály. Spolupracujeme na projektech, kde stínění dotváří klid a charakter interiéru."
+}
+
+
+    
     // Finished
     finishedH: "Hotové stínění",
     finishedBoxH: "Hotová řešení připravujeme",
@@ -740,16 +749,25 @@ window.STR = {
       }
     ],
 
-    galleryH: "Gallery",
-    galleryOurWorkH: "Our projects",
-    galleryOurWorkP: "A selection of projects where we work with light, fabric and spatial proportions.",
-    galleryShowAll: "Show all →",
-    galleryModalH: "Our projects",
-    galleryModalSub: "Browse photos — you can scroll down.",
-    galleryPartnersH: "We collaborate with",
-    galleryPartnersP: "Architects and designers with whom we often fine-tune the final layer of window treatments.",
-    galleryVisitWeb: "Visit website →",
+   // Gallery
+galleryH: "Gallery",
+galleryOurWorkH: "Our projects",
+galleryOurWorkP: "A selection of projects where we work with light, fabric and spatial proportions.",
+galleryShowAll: "Show all →",
+galleryModalH: "Our projects",
+galleryModalSub: "Browse photos — you can scroll down.",
+galleryPartnersH: "We collaborate with",
+galleryPartnersP: "Architects and designers we often work with to fine-tune the final layer of window treatments.",
+galleryVisitWeb: "Visit website →",
 
+galleryPartnersNotes: {
+  onoje: "Architecture with a feel for atmosphere, materials, and detail. We add the final layer.",
+  richter: "Collaboration on interiors where clean lines, function, and a calm atmosphere matter.",
+  epic: "An interior studio focused on atmosphere, function, and detail. Together we fine-tune the final layer of shading so the space feels natural and harmonious.",
+  broda: "Interior design focused on timeless solutions, space planning, and materials. We collaborate on projects where shading completes the calm and character of the interior."
+}
+
+        
     finishedH: "Ready-made",
     finishedBoxH: "Ready-made solutions are coming",
     finishedBoxP:
