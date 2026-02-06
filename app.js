@@ -1067,51 +1067,32 @@ function Gallery({ t }) {
   ];
 
   const PARTNERS = [
-    {
-      name: "ono.je",
-      url: "https://www.ono.je",
-      note:
-        "Architektura s citem pro atmosféru, materiál a detail. Dáváme tomu finální vrstvu.",
-      images: [
-        "assets/img/gallery/partners/onoje/ono-je-01.webp",
-        "assets/img/gallery/partners/onoje/ono-je-02.webp",
-        "assets/img/gallery/partners/onoje/ono-je-03.webp"
-      ]
-    },
-    {
-      name: "RichterDesign",
-      url: "https://www.richterdesign.cz",
-      note:
-        "Spolupráce na interiérech, kde hraje roli čistota linií, funkce a klid prostoru.",
-      images: [
-        "assets/img/gallery/partners/richter/richter-01.webp",
-        "assets/img/gallery/partners/richter/richter-02.webp",
-        "assets/img/gallery/partners/richter/richter-03.webp"
-      ]
-    },
-    {
-      name: "Epic Interior Studio",
-      url: "https://www.epicinteriorstudio.cz/",
-      note:
-        "Interiérové studio se zaměřením na atmosféru, funkci a detail. Společně ladíme finální vrstvu stínění tak, aby prostor působil přirozeně a harmonicky.",
-      images: [
-        "assets/img/gallery/partners/epic-interior-studio/epic-01.webp",
-        "assets/img/gallery/partners/epic-interior-studio/epic-02.webp",
-        "assets/img/gallery/partners/epic-interior-studio/epic-03.webp"
-      ]
-    },
-    {
-      name: "Broda interiér",
-      url: "https://brodainterier.cz/",
-      note:
-        "Interiérový design zaměřený na nadčasovost, práci s prostorem a materiály. Spolupracujeme na projektech, kde stínění dotváří klid a charakter interiéru.",
-      images: [
-        "assets/img/gallery/partners/broda/broda-01.webp",
-        "assets/img/gallery/partners/broda/broda-02.webp",
-        "assets/img/gallery/partners/broda/broda-03.webp"
-      ]
-    }
-  ];
+  {
+    key: "onoje",
+    name: "ono.je",
+    url: "https://www.ono.je",
+    images: [ ... ],
+  },
+  {
+    key: "richter",
+    name: "RichterDesign",
+    url: "https://www.richterdesign.cz",
+    images: [ ... ],
+  },
+  {
+    key: "epic",
+    name: "Epic Interior Studio",
+    url: "https://www.epicinteriorstudio.cz/",
+    images: [ ... ],
+  },
+  {
+    key: "broda",
+    name: "Broda interiér",
+    url: "https://brodainterier.cz/",
+    images: [ ... ],
+  },
+];
+
 
   const [ourWorkOpen, setOurWorkOpen] = React.useState(false);
   const [ratios, setRatios] = React.useState({});
