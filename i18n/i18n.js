@@ -313,7 +313,7 @@ galleryPartnersNotes: {
   richter: "Spolupráce na interiérech, kde hraje roli čistota linií, funkce a klid prostoru.",
   epic: "Interiérové studio se zaměřením na atmosféru, funkci a detail. Společně ladíme finální vrstvu stínění tak, aby prostor působil přirozeně a harmonicky.",
   broda: "Interiérový design zaměřený na nadčasovost, práci s prostorem a materiály. Spolupracujeme na projektech, kde stínění dotváří klid a charakter interiéru."
-}
+},
 
 
     
@@ -765,7 +765,7 @@ galleryPartnersNotes: {
   richter: "Collaboration on interiors where clean lines, function, and a calm atmosphere matter.",
   epic: "An interior studio focused on atmosphere, function, and detail. Together we fine-tune the final layer of shading so the space feels natural and harmonious.",
   broda: "Interior design focused on timeless solutions, space planning, and materials. We collaborate on projects where shading completes the calm and character of the interior."
-}
+},
 
         
     finishedH: "Ready-made",
