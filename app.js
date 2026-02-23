@@ -1370,7 +1370,7 @@ function Essences({ t }) {
   );
 }
 
-function Contact({ t }) {
+function Contact({ t }) { 
   useReveal();
 
   const [name, setName] = React.useState("");
@@ -1379,13 +1379,12 @@ function Contact({ t }) {
   const [message, setMessage] = React.useState("");
   const [touched, setTouched] = React.useState(false);
 
-  // NEW
   const [sending, setSending] = React.useState(false);
   const [statusMsg, setStatusMsg] = React.useState("");
   const [statusKind, setStatusKind] = React.useState(""); // "", "success", "error"
   const [showModal, setShowModal] = React.useState(false);
 
-  // NEW — soubory (více fotek)
+  // soubory (více fotek)
   const [files, setFiles] = React.useState([]);
 
   const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
@@ -1397,12 +1396,11 @@ function Contact({ t }) {
 
   const SCRIPT_URL = "https://hook.eu1.make.com/o1lk627xrpjl8d6exq9sh5yrplr58sw8";
 
-  // NEW — přidání více fotek (nepřepíše předchozí)
+  // přidání více fotek (nepřepíše předchozí)
   function handleFilesChange(e) {
     const picked = Array.from(e.target.files || []);
     if (!picked.length) return;
 
-    // přidáme k existujícím a odstraníme duplicity (stejné jméno+velikost+čas)
     setFiles((prev) => {
       const merged = [...prev, ...picked];
       const seen = new Set();
@@ -1414,7 +1412,6 @@ function Contact({ t }) {
       });
     });
 
-    // umožní vybrat znovu stejné soubory (jinak onChange někdy nespustí)
     e.target.value = "";
   }
 
@@ -1434,20 +1431,20 @@ function Contact({ t }) {
     try {
       setSending(true);
 
-      // posíláme multipart/form-data kvůli souborům
+      // multipart/form-data kvůli souborům
       const fd = new FormData();
       fd.append("name", name.trim());
       fd.append("email", email.trim());
       fd.append("phone", phone.trim());
       fd.append("message", message.trim());
 
-      // důležité: klíč "files" – Make webhook to pak vidí jako files[]
-      files.forEach((f) => fd.append("files", f, f.name));
+      // ✅ DŮLEŽITÉ: klíč musí být "photos" (a ne "files"),
+      // aby to Make viděl jako photos / photos[] / photos.files[]
+      files.forEach((f) => fd.append("photos", f, f.name));
 
       const res = await fetch(SCRIPT_URL, {
         method: "POST",
         body: fd
-        // NEPOSÍLEJ Content-Type header ručně – FormData si ho nastaví sama
       });
 
       if (!res.ok) throw new Error("HTTP " + res.status);
@@ -1456,7 +1453,6 @@ function Contact({ t }) {
       setStatusMsg("Děkuji! Zpráva byla odeslána.");
       setShowModal(true);
 
-      // reset formuláře
       setName("");
       setEmail("");
       setPhone("");
@@ -1464,7 +1460,6 @@ function Contact({ t }) {
       setFiles([]);
       setTouched(false);
 
-      // po chvilce můžeš modal schovat automaticky (volitelné)
       setTimeout(() => setShowModal(false), 2200);
     } catch (err) {
       console.error(err);
@@ -1592,13 +1587,15 @@ function Contact({ t }) {
                 />
               </label>
 
-              {/* seznam vybraných souborů */}
               {files.length > 0 && (
                 <div className="text-sm text-[var(--muted)]">
                   <div className="font-semibold mb-2">Vybrané fotografie:</div>
                   <ul className="space-y-1">
                     {files.map((f, idx) => (
-                      <li key={`${f.name}-${f.size}-${f.lastModified}`} className="flex items-center justify-between gap-3">
+                      <li
+                        key={`${f.name}-${f.size}-${f.lastModified}`}
+                        className="flex items-center justify-between gap-3"
+                      >
                         <span className="truncate">{f.name}</span>
                         <button
                           type="button"
@@ -1632,7 +1629,6 @@ function Contact({ t }) {
         </div>
       </section>
 
-      {/* malé okénko / modal */}
       {showModal && (
         <div
           className="fixed inset-0 z-[999] flex items-center justify-center bg-black/40 px-4"
