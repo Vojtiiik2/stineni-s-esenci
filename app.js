@@ -1379,12 +1379,60 @@ function Contact({ t }) {
   const [message, setMessage] = React.useState("");
   const [touched, setTouched] = React.useState(false);
 
+  // NEW
+  const [sending, setSending] = React.useState(false);
+  const [statusMsg, setStatusMsg] = React.useState("");
+
   const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
   const phoneOk = phone.trim().length >= 6;
   const nameOk = name.trim().length >= 2;
   const messageOk = message.trim().length >= 5;
 
   const canSend = nameOk && emailOk && phoneOk && messageOk;
+
+  // NEW — vlož sem "Adresa URI" z Apps Script nasazení (Webová aplikace)
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyN1Uy2bzW5-RaGvmyzLu-1Kf6HBYB3vkFw2BEOKbLvAUqLb1cpnwhLroXlCat4Ey-1/exec";
+
+  // NEW
+  async function handleSubmit(e) {
+    e.preventDefault();
+    setTouched(true);
+    setStatusMsg("");
+
+    if (!canSend || sending) return;
+
+    try {
+      setSending(true);
+
+      const payload = {
+        name: name.trim(),
+        email: email.trim(),
+        phone: phone.trim(),
+        message: message.trim(),
+        photos: "" // zatím neřešíme upload souborů
+      };
+
+      const res = await fetch(SCRIPT_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+
+      if (!res.ok) throw new Error("HTTP " + res.status);
+
+      setStatusMsg("Děkuji! Zpráva byla odeslána.");
+      setName("");
+      setEmail("");
+      setPhone("");
+      setMessage("");
+      setTouched(false);
+    } catch (err) {
+      console.error(err);
+      setStatusMsg("Nepodařilo se odeslat. Zkuste to prosím znovu, nebo napište na email.");
+    } finally {
+      setSending(false);
+    }
+  }
 
   return (
     <>
@@ -1429,12 +1477,7 @@ function Contact({ t }) {
 
           <form
             className="rounded-2xl bg-white border border-[var(--line)] p-6 soft-shadow reveal"
-            onSubmit={(e) => {
-              e.preventDefault();
-              setTouched(true);
-              if (!canSend) return;
-              // demo: no sending
-            }}
+            onSubmit={handleSubmit}
           >
             <div className="grid gap-4">
               <label className="text-sm">
@@ -1508,14 +1551,16 @@ function Contact({ t }) {
 
               <button
                 type="submit"
-                disabled={!canSend}
+                disabled={!canSend || sending}
                 className={
                   "btn-cta px-5 py-3 rounded-full bg-[var(--sand)] text-[var(--text)] font-bold border border-black/5 transition " +
-                  (!canSend ? "opacity-50 cursor-not-allowed" : "")
+                  (!canSend || sending ? "opacity-50 cursor-not-allowed" : "")
                 }
               >
-                {t.send}
+                {sending ? "Odesílám…" : t.send}
               </button>
+
+              {statusMsg && <p className="text-sm mt-2">{statusMsg}</p>}
 
               <p className="text-[var(--muted)] text-sm">{t.contactDemo}</p>
             </div>
@@ -1525,7 +1570,6 @@ function Contact({ t }) {
     </>
   );
 }
-
 function Terms({ t }) {
   useReveal();
   return (
