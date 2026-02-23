@@ -1370,7 +1370,7 @@ function Essences({ t }) {
   );
 }
 
-function Contact({ t }) { 
+function Contact({ t }) {
   useReveal();
 
   const [name, setName] = React.useState("");
@@ -1384,7 +1384,6 @@ function Contact({ t }) {
   const [statusKind, setStatusKind] = React.useState(""); // "", "success", "error"
   const [showModal, setShowModal] = React.useState(false);
 
-  // soubory (více fotek)
   const [files, setFiles] = React.useState([]);
 
   const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
@@ -1396,7 +1395,6 @@ function Contact({ t }) {
 
   const SCRIPT_URL = "https://hook.eu1.make.com/o1lk627xrpjl8d6exq9sh5yrplr58sw8";
 
-  // přidání více fotek (nepřepíše předchozí)
   function handleFilesChange(e) {
     const picked = Array.from(e.target.files || []);
     if (!picked.length) return;
@@ -1431,16 +1429,22 @@ function Contact({ t }) {
     try {
       setSending(true);
 
-      // multipart/form-data kvůli souborům
       const fd = new FormData();
       fd.append("name", name.trim());
       fd.append("email", email.trim());
       fd.append("phone", phone.trim());
       fd.append("message", message.trim());
 
-      // ✅ DŮLEŽITÉ: klíč musí být "photos" (a ne "files"),
-      // aby to Make viděl jako photos / photos[] / photos.files[]
-     files.forEach((f) => fd.append("files[]", f, f.name));
+      // ✅ KLÍČOVÁ ZMĚNA:
+      // místo "files/files[]" posíláme file1, file2, file3...
+      const MAX_FILES = 10; // změň si podle potřeby
+      const selected = files.slice(0, MAX_FILES);
+
+      fd.append("filesCount", String(selected.length)); // Make si můžeš zapsat do Sheets
+
+      selected.forEach((f, idx) => {
+        fd.append(`file${idx + 1}`, f, f.name);
+      });
 
       const res = await fetch(SCRIPT_URL, {
         method: "POST",
