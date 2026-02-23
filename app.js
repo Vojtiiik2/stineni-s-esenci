@@ -1391,7 +1391,7 @@ function Contact({ t }) {
   const canSend = nameOk && emailOk && phoneOk && messageOk;
 
   // NEW — vlož sem "Adresa URI" z Apps Script nasazení (Webová aplikace)
-  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyN1Uy2bzW5-RaGvmyzLu-1Kf6HBYB3vkFw2BEOKbLvAUqLb1cpnwhLroXlCat4Ey-1/exec";
+  const SCRIPT_URL = "https://script.google.com/macros/u/2/s/AKfycbyN1Uy2bzW5-RaGvmyzLu-1Kf6HBYB3vkFw2BEOKbLvAUqLb1cpnwhLroXlCat4Ey-1/exec";
 
   // NEW
   async function handleSubmit(e) {
@@ -1450,8 +1450,8 @@ function Contact({ t }) {
             <p className="mt-3">
               <strong>{t.email}</strong>
               <br />
-              <a href="mailto:hello@janasegelberg.com" className="underline">
-                hello@janasegelberg.com
+              <a href="mailto:info@stinenisesenci.cz" className="underline">
+                info@stinenisesenci.cz
               </a>
             </p>
 
