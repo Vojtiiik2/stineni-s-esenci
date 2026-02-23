@@ -1410,6 +1410,7 @@ function Contact({ t }) {
       });
     });
 
+    // umožní znovu vybrat stejné soubory
     e.target.value = "";
   }
 
@@ -1435,23 +1436,40 @@ function Contact({ t }) {
       fd.append("phone", phone.trim());
       fd.append("message", message.trim());
 
-      // ✅ KLÍČOVÁ ZMĚNA:
-      // místo "files/files[]" posíláme file1, file2, file3...
-      const MAX_FILES = 10; // změň si podle potřeby
+      const MAX_FILES = 10;
       const selected = files.slice(0, MAX_FILES);
 
-      fd.append("filesCount", String(selected.length)); // Make si můžeš zapsat do Sheets
+      // počet souborů pro Make/Sheets
+      fd.append("filesCount", String(selected.length));
 
+      // ✅ 1) pošleme jednotlivě file1..fileN (kvůli tomu, že Make občas vezme jen první)
       selected.forEach((f, idx) => {
         fd.append(`file${idx + 1}`, f, f.name);
       });
 
-      const res = await fetch(SCRIPT_URL, {
-        method: "POST",
-        body: fd
+      // ✅ 2) zároveň pošleme i jako pole files[] (aby se dalo snadno iterovat)
+      // (Make si někdy vezme jen 1 soubor z pole, ale když ne, je to bonus)
+      selected.forEach((f) => {
+        fd.append("files[]", f, f.name);
       });
 
-      if (!res.ok) throw new Error("HTTP " + res.status);
+      // timeout + ověření odpovědi (žádné falešné "odesláno")
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 20000);
+
+      const res = await fetch(SCRIPT_URL, {
+        method: "POST",
+        body: fd,
+        signal: controller.signal
+      });
+
+      clearTimeout(timeout);
+
+      const text = await res.text().catch(() => "");
+
+      if (!res.ok) {
+        throw new Error(`HTTP ${res.status}${text ? `: ${text}` : ""}`);
+      }
 
       setStatusKind("success");
       setStatusMsg("Děkuji! Zpráva byla odeslána.");
@@ -1468,7 +1486,11 @@ function Contact({ t }) {
     } catch (err) {
       console.error(err);
       setStatusKind("error");
-      setStatusMsg("Nepodařilo se odeslat. Zkuste to prosím znovu, nebo napište na email.");
+      setStatusMsg(
+        err?.name === "AbortError"
+          ? "Odeslání trvalo moc dlouho. Zkuste to prosím znovu."
+          : `Nepodařilo se odeslat: ${String(err?.message || err)}`
+      );
       setShowModal(true);
     } finally {
       setSending(false);
@@ -1650,7 +1672,7 @@ function Contact({ t }) {
             <p className="text-sm text-[var(--muted)]">
               {statusKind === "success"
                 ? "Děkujeme! Ozveme se vám co nejdříve."
-                : "Nepodařilo se odeslat. Zkuste to prosím znovu, nebo napište na email."}
+                : statusMsg}
             </p>
 
             <div className="pt-4 flex justify-end">
