@@ -1440,7 +1440,7 @@ function Contact({ t }) {
 
       // ✅ DŮLEŽITÉ: klíč musí být "photos" (a ne "files"),
       // aby to Make viděl jako photos / photos[] / photos.files[]
-      files.forEach((f) => fd.append("photos", f, f.name));
+     files.forEach((f) => fd.append("files[]", f, f.name));
 
       const res = await fetch(SCRIPT_URL, {
         method: "POST",
