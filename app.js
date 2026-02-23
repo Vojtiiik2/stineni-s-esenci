@@ -1391,7 +1391,7 @@ function Contact({ t }) {
   const canSend = nameOk && emailOk && phoneOk && messageOk;
 
   // NEW — vlož sem "Adresa URI" z Apps Script nasazení (Webová aplikace)
-  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxQs6klzTF343h9TECGqtP5z2rV8KdMlTrpKkTuQ4VJo5fIT5YSIUxORCOm8fovAMiFjA/exec";
+  const SCRIPT_URL = "https://hook.eu1.make.com/o1lk627xrpjl8d6exq9sh5yrplr58sw8";
 
   // NEW
   async function handleSubmit(e) {
