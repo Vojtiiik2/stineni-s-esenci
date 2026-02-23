@@ -1383,6 +1383,9 @@ function Contact({ t }) {
   const [sending, setSending] = React.useState(false);
   const [statusMsg, setStatusMsg] = React.useState("");
 
+  // NEW — files from <input type="file" />
+  const [files, setFiles] = React.useState([]);
+
   const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
   const phoneOk = phone.trim().length >= 6;
   const nameOk = name.trim().length >= 2;
@@ -1390,10 +1393,8 @@ function Contact({ t }) {
 
   const canSend = nameOk && emailOk && phoneOk && messageOk;
 
-  // NEW — vlož sem "Adresa URI" z Apps Script nasazení (Webová aplikace)
   const SCRIPT_URL = "https://hook.eu1.make.com/o1lk627xrpjl8d6exq9sh5yrplr58sw8";
 
-  // NEW
   async function handleSubmit(e) {
     e.preventDefault();
     setTouched(true);
@@ -1404,18 +1405,19 @@ function Contact({ t }) {
     try {
       setSending(true);
 
-      const payload = {
-        name: name.trim(),
-        email: email.trim(),
-        phone: phone.trim(),
-        message: message.trim(),
-        photos: "" // zatím neřešíme upload souborů
-      };
+      // Send as multipart/form-data so photos actually go through
+      const fd = new FormData();
+      fd.append("name", name.trim());
+      fd.append("email", email.trim());
+      fd.append("phone", phone.trim());
+      fd.append("message", message.trim());
+
+      // multiple photos
+      (files || []).forEach((f) => fd.append("photos", f));
 
       const res = await fetch(SCRIPT_URL, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
+        body: fd
       });
 
       if (!res.ok) throw new Error("HTTP " + res.status);
@@ -1425,6 +1427,7 @@ function Contact({ t }) {
       setEmail("");
       setPhone("");
       setMessage("");
+      setFiles([]);
       setTouched(false);
     } catch (err) {
       console.error(err);
@@ -1545,6 +1548,7 @@ function Contact({ t }) {
                   type="file"
                   accept="image/*"
                   multiple
+                  onChange={(e) => setFiles(Array.from(e.target.files || []))}
                   className="mt-1 w-full border rounded-lg px-3 py-2 border-[var(--line)] bg-white"
                 />
               </label>
