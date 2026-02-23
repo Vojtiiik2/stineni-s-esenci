@@ -1382,8 +1382,10 @@ function Contact({ t }) {
   // NEW
   const [sending, setSending] = React.useState(false);
   const [statusMsg, setStatusMsg] = React.useState("");
+  const [statusKind, setStatusKind] = React.useState(""); // "", "success", "error"
+  const [showModal, setShowModal] = React.useState(false);
 
-  // NEW — files from <input type="file" />
+  // NEW — soubory (více fotek)
   const [files, setFiles] = React.useState([]);
 
   const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
@@ -1395,43 +1397,80 @@ function Contact({ t }) {
 
   const SCRIPT_URL = "https://hook.eu1.make.com/o1lk627xrpjl8d6exq9sh5yrplr58sw8";
 
+  // NEW — přidání více fotek (nepřepíše předchozí)
+  function handleFilesChange(e) {
+    const picked = Array.from(e.target.files || []);
+    if (!picked.length) return;
+
+    // přidáme k existujícím a odstraníme duplicity (stejné jméno+velikost+čas)
+    setFiles((prev) => {
+      const merged = [...prev, ...picked];
+      const seen = new Set();
+      return merged.filter((f) => {
+        const key = `${f.name}|${f.size}|${f.lastModified}`;
+        if (seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      });
+    });
+
+    // umožní vybrat znovu stejné soubory (jinak onChange někdy nespustí)
+    e.target.value = "";
+  }
+
+  function removeFile(idx) {
+    setFiles((prev) => prev.filter((_, i) => i !== idx));
+  }
+
   async function handleSubmit(e) {
     e.preventDefault();
     setTouched(true);
     setStatusMsg("");
+    setStatusKind("");
+    setShowModal(false);
 
     if (!canSend || sending) return;
 
     try {
       setSending(true);
 
-      // Send as multipart/form-data so photos actually go through
+      // posíláme multipart/form-data kvůli souborům
       const fd = new FormData();
       fd.append("name", name.trim());
       fd.append("email", email.trim());
       fd.append("phone", phone.trim());
       fd.append("message", message.trim());
 
-      // multiple photos
-      (files || []).forEach((f) => fd.append("photos", f));
+      // důležité: klíč "files" – Make webhook to pak vidí jako files[]
+      files.forEach((f) => fd.append("files", f, f.name));
 
       const res = await fetch(SCRIPT_URL, {
         method: "POST",
         body: fd
+        // NEPOSÍLEJ Content-Type header ručně – FormData si ho nastaví sama
       });
 
       if (!res.ok) throw new Error("HTTP " + res.status);
 
+      setStatusKind("success");
       setStatusMsg("Děkuji! Zpráva byla odeslána.");
+      setShowModal(true);
+
+      // reset formuláře
       setName("");
       setEmail("");
       setPhone("");
       setMessage("");
       setFiles([]);
       setTouched(false);
+
+      // po chvilce můžeš modal schovat automaticky (volitelné)
+      setTimeout(() => setShowModal(false), 2200);
     } catch (err) {
       console.error(err);
+      setStatusKind("error");
       setStatusMsg("Nepodařilo se odeslat. Zkuste to prosím znovu, nebo napište na email.");
+      setShowModal(true);
     } finally {
       setSending(false);
     }
@@ -1548,10 +1587,31 @@ function Contact({ t }) {
                   type="file"
                   accept="image/*"
                   multiple
-                  onChange={(e) => setFiles(Array.from(e.target.files || []))}
+                  onChange={handleFilesChange}
                   className="mt-1 w-full border rounded-lg px-3 py-2 border-[var(--line)] bg-white"
                 />
               </label>
+
+              {/* seznam vybraných souborů */}
+              {files.length > 0 && (
+                <div className="text-sm text-[var(--muted)]">
+                  <div className="font-semibold mb-2">Vybrané fotografie:</div>
+                  <ul className="space-y-1">
+                    {files.map((f, idx) => (
+                      <li key={`${f.name}-${f.size}-${f.lastModified}`} className="flex items-center justify-between gap-3">
+                        <span className="truncate">{f.name}</span>
+                        <button
+                          type="button"
+                          onClick={() => removeFile(idx)}
+                          className="text-xs underline hover:opacity-80"
+                        >
+                          Odebrat
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
 
               <button
                 type="submit"
@@ -1561,7 +1621,7 @@ function Contact({ t }) {
                   (!canSend || sending ? "opacity-50 cursor-not-allowed" : "")
                 }
               >
-                {sending ? "Odesílám…" : t.send}
+                {sending ? "Odesílám…" : statusKind === "success" ? "Odesláno" : t.send}
               </button>
 
               {statusMsg && <p className="text-sm mt-2">{statusMsg}</p>}
@@ -1571,6 +1631,40 @@ function Contact({ t }) {
           </form>
         </div>
       </section>
+
+      {/* malé okénko / modal */}
+      {showModal && (
+        <div
+          className="fixed inset-0 z-[999] flex items-center justify-center bg-black/40 px-4"
+          onClick={() => setShowModal(false)}
+          role="dialog"
+          aria-modal="true"
+        >
+          <div
+            className="w-full max-w-md rounded-2xl bg-white p-6 soft-shadow border border-[var(--line)]"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="text-lg font-semibold mb-2">
+              {statusKind === "success" ? "Odesláno" : "Něco se nepovedlo"}
+            </div>
+            <p className="text-sm text-[var(--muted)]">
+              {statusKind === "success"
+                ? "Děkujeme! Ozveme se vám co nejdříve."
+                : "Nepodařilo se odeslat. Zkuste to prosím znovu, nebo napište na email."}
+            </p>
+
+            <div className="pt-4 flex justify-end">
+              <button
+                type="button"
+                className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold border border-[var(--line)] hover:bg-black/5 transition"
+                onClick={() => setShowModal(false)}
+              >
+                Zavřít
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }
