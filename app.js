@@ -1516,10 +1516,9 @@ function Contact({ t }) {
       fd.append("filesCount", String(compressed.length));
 
       // ✅ posíláme JEN JEDNOU jako files[] (NE file1.. a NE duplicitně)
-      compressed.forEach((f) => {
-        fd.append("files[]", f, f.name);
-      });
-
+     compressed.forEach((f) => {
+  fd.append("files", f);
+});
       const controller = new AbortController();
       const timeout = setTimeout(() => controller.abort(), 60000); // 60s (u uploadu dává smysl víc)
 
