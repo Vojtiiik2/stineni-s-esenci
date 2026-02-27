@@ -1380,7 +1380,8 @@ function Contact({ t }) {
   const [touched, setTouched] = React.useState(false);
 
   const [sending, setSending] = React.useState(false);
-  const [statusKind, setStatusKind] = React.useState("");
+  const [statusMsg, setStatusMsg] = React.useState("");
+  const [statusKind, setStatusKind] = React.useState(""); // "", "success", "error"
   const [showModal, setShowModal] = React.useState(false);
 
   const [files, setFiles] = React.useState([]);
@@ -1392,66 +1393,177 @@ function Contact({ t }) {
 
   const canSend = nameOk && emailOk && phoneOk && messageOk;
 
-  const SCRIPT_URL =
-    "https://hook.eu1.make.com/o1lk627xrpjl8d6exq9sh5yrplr58sw8";
+  const SCRIPT_URL = "https://hook.eu1.make.com/o1lk627xrpjl8d6exq9sh5yrplr58sw8";
 
-  const IFRAME_NAME = "make_webhook_iframe";
+  // ✅ limity
   const MAX_FILES = 10;
+  const MAX_EDGE = 2200;        // px (delší strana)
+  const JPEG_QUALITY = 0.82;    // 0..1
+  const MAX_TOTAL_MB = 25;      // bezpečné pro Make webhook (lepší držet níž)
+
+  function bytesToMB(b) {
+    return b / (1024 * 1024);
+  }
+
+  // ✅ komprese (jen pro image/*)
+  async function compressImage(file) {
+    if (!file.type.startsWith("image/")) return file;
+
+    // některé prohlížeče neumí createImageBitmap pro HEIC apod.
+    // když to selže, pošleme originál
+    try {
+      const img = await createImageBitmap(file);
+
+      let w = img.width;
+      let h = img.height;
+
+      const scale = Math.min(1, MAX_EDGE / Math.max(w, h));
+      w = Math.round(w * scale);
+      h = Math.round(h * scale);
+
+      const canvas = document.createElement("canvas");
+      canvas.width = w;
+      canvas.height = h;
+
+      const ctx = canvas.getContext("2d");
+      ctx.drawImage(img, 0, 0, w, h);
+
+      const blob = await new Promise((resolve) =>
+        canvas.toBlob(resolve, "image/jpeg", JPEG_QUALITY)
+      );
+
+      if (!blob) return file;
+
+      // zachováme původní jméno, ale raději dáme .jpg aby to sedělo typu
+      const safeName = file.name.replace(/\.[^.]+$/, "") + ".jpg";
+      return new File([blob], safeName, { type: "image/jpeg" });
+    } catch {
+      return file;
+    }
+  }
 
   function handleFilesChange(e) {
     const picked = Array.from(e.target.files || []);
     if (!picked.length) return;
 
-    const limited = picked.slice(0, MAX_FILES);
+    setStatusMsg("");
+    setStatusKind("");
 
-    if (picked.length > MAX_FILES) {
-      alert(`Můžeš nahrát maximálně ${MAX_FILES} fotografií.`);
-    }
+    setFiles((prev) => {
+      const merged = [...prev, ...picked];
 
-    setFiles(limited);
+      // dedupe
+      const seen = new Set();
+      const deduped = merged.filter((f) => {
+        const key = `${f.name}|${f.size}|${f.lastModified}`;
+        if (seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      });
+
+      // limit 10
+      const limited = deduped.slice(0, MAX_FILES);
+
+      if (deduped.length > MAX_FILES) {
+        setStatusKind("error");
+        setStatusMsg(`Můžeš nahrát maximálně ${MAX_FILES} fotografií.`);
+      }
+
+      return limited;
+    });
+
+    // umožní znovu vybrat stejné soubory
+    e.target.value = "";
   }
 
   function removeFile(idx) {
     setFiles((prev) => prev.filter((_, i) => i !== idx));
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
     setTouched(true);
+    setStatusMsg("");
+    setStatusKind("");
+    setShowModal(false);
 
     if (!canSend || sending) return;
 
-    setSending(true);
+    try {
+      setSending(true);
 
-    // klasický submit do iframe (bez CORS)
-    e.currentTarget.submit();
-  }
+      // ✅ limit 10
+      const selected = files.slice(0, MAX_FILES);
 
-  function handleIframeLoad() {
-    if (!sending) return;
+      // ✅ komprimujeme před odesláním (ať se vejdeš do limitů)
+      const compressed = [];
+      for (const f of selected) {
+        compressed.push(await compressImage(f));
+      }
 
-    setSending(false);
-    setStatusKind("success");
-    setShowModal(true);
+      // ✅ kontrola celkové velikosti (po kompresi)
+      const totalBytes = compressed.reduce((s, f) => s + (f?.size || 0), 0);
+      if (bytesToMB(totalBytes) > MAX_TOTAL_MB) {
+        throw new Error(
+          `Přílohy jsou moc velké (${bytesToMB(totalBytes).toFixed(1)} MB). Zkus vybrat méně fotek nebo menší.`
+        );
+      }
 
-    setName("");
-    setEmail("");
-    setPhone("");
-    setMessage("");
-    setFiles([]);
-    setTouched(false);
+      const fd = new FormData();
+      fd.append("name", name.trim());
+      fd.append("email", email.trim());
+      fd.append("phone", phone.trim());
+      fd.append("message", message.trim());
+      fd.append("filesCount", String(compressed.length));
 
-    setTimeout(() => setShowModal(false), 2500);
+      // ✅ posíláme jako "files" opakovaně (multipart)
+      compressed.forEach((f) => {
+        fd.append("files", f, f.name);
+      });
+
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 180000); // 180s
+
+      // ✅ CORS bypass: Make webhook nepouští CORS → posíláme no-cors
+      await fetch(SCRIPT_URL, {
+        method: "POST",
+        body: fd,
+        mode: "no-cors",
+        signal: controller.signal
+      });
+
+      clearTimeout(timeout);
+
+      // ✅ u no-cors je response "opaque" → nečteme res.ok ani text
+      setStatusKind("success");
+      setStatusMsg("Děkuji! Zpráva byla odeslána.");
+      setShowModal(true);
+
+      setName("");
+      setEmail("");
+      setPhone("");
+      setMessage("");
+      setFiles([]);
+      setTouched(false);
+
+      setTimeout(() => setShowModal(false), 2200);
+    } catch (err) {
+      console.error(err);
+      setStatusKind("error");
+      setStatusMsg(
+        err?.name === "AbortError"
+          ? "Odeslání trvalo moc dlouho. Zkuste to prosím znovu."
+          : `Nepodařilo se odeslat: ${String(err?.message || err)}`
+      );
+      setShowModal(true);
+    } finally {
+      setSending(false);
+    }
   }
 
   return (
     <>
-      <Hero
-        t={t}
-        small
-        bg="assets/img/hero/contact-hero01.webp"
-        title={t.contactH}
-      />
+      <Hero t={t} small bg="assets/img/hero/contact-hero01.webp" title={t.contactH} />
 
       <section className="max-w-6xl mx-auto px-4 py-16 reveal">
         <div className="grid md:grid-cols-2 gap-6">
@@ -1465,10 +1577,7 @@ function Contact({ t }) {
             <p className="mt-3">
               <strong>{t.email}</strong>
               <br />
-              <a
-                href="mailto:info@stinenisesenci.cz"
-                className="underline"
-              >
+              <a href="mailto:info@stinenisesenci.cz" className="underline">
                 info@stinenisesenci.cz
               </a>
             </p>
@@ -1476,31 +1585,38 @@ function Contact({ t }) {
             <p className="mt-3">
               <strong>{t.contactPhone}</strong>
               <br />
-              <a
-                href="tel:+420724379309"
-                className="underline"
-              >
+              <a href="tel:+420724379309" className="underline">
                 +420 724 379 309
               </a>
             </p>
+
+            <div className="text-[var(--muted)] text-sm mt-6 space-y-2">
+              <div className="font-semibold">{t.contactHowH}</div>
+              <ol className="list-decimal pl-5 space-y-1">
+                {(t.contactHow || []).map((x, i) => (
+                  <li key={i}>{x}</li>
+                ))}
+              </ol>
+            </div>
+
+            <p className="text-[var(--muted)] text-sm mt-4">{t.contactNote}</p>
           </div>
 
           <form
             className="rounded-2xl bg-white border border-[var(--line)] p-6 soft-shadow reveal"
             onSubmit={handleSubmit}
-            action={SCRIPT_URL}
-            method="POST"
-            encType="multipart/form-data"
-            target={IFRAME_NAME}
           >
             <div className="grid gap-4">
               <label className="text-sm">
                 {t.contactFullName}
                 <input
-                  name="name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="mt-1 w-full border rounded-lg px-3 py-2"
+                  onBlur={() => setTouched(true)}
+                  className={
+                    "mt-1 w-full border rounded-lg px-3 py-2 border-[var(--line)] " +
+                    (touched && !nameOk ? "border-red-400" : "")
+                  }
                   required
                 />
               </label>
@@ -1508,11 +1624,14 @@ function Contact({ t }) {
               <label className="text-sm">
                 {t.email}
                 <input
-                  name="email"
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="mt-1 w-full border rounded-lg px-3 py-2"
+                  onBlur={() => setTouched(true)}
+                  className={
+                    "mt-1 w-full border rounded-lg px-3 py-2 border-[var(--line)] " +
+                    (touched && !emailOk ? "border-red-400" : "")
+                  }
                   required
                 />
               </label>
@@ -1520,11 +1639,14 @@ function Contact({ t }) {
               <label className="text-sm">
                 {t.contactPhone}
                 <input
-                  name="phone"
                   type="tel"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  className="mt-1 w-full border rounded-lg px-3 py-2"
+                  onBlur={() => setTouched(true)}
+                  className={
+                    "mt-1 w-full border rounded-lg px-3 py-2 border-[var(--line)] " +
+                    (touched && !phoneOk ? "border-red-400" : "")
+                  }
                   required
                 />
               </label>
@@ -1532,11 +1654,14 @@ function Contact({ t }) {
               <label className="text-sm">
                 {t.message}
                 <textarea
-                  name="message"
                   rows="5"
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
-                  className="mt-1 w-full border rounded-lg px-3 py-2"
+                  onBlur={() => setTouched(true)}
+                  className={
+                    "mt-1 w-full border rounded-lg px-3 py-2 border-[var(--line)] " +
+                    (touched && !messageOk ? "border-red-400" : "")
+                  }
                   required
                 />
               </label>
@@ -1544,31 +1669,28 @@ function Contact({ t }) {
               <label className="text-sm">
                 {t.contactPhotos}
                 <input
-                  name="files"
                   type="file"
                   accept="image/*"
                   multiple
                   onChange={handleFilesChange}
-                  className="mt-1 w-full border rounded-lg px-3 py-2 bg-white"
+                  className="mt-1 w-full border rounded-lg px-3 py-2 border-[var(--line)] bg-white"
                 />
               </label>
 
               {files.length > 0 && (
-                <div className="text-sm">
-                  <div className="font-semibold mb-2">
-                    Vybrané fotografie:
-                  </div>
+                <div className="text-sm text-[var(--muted)]">
+                  <div className="font-semibold mb-2">Vybrané fotografie:</div>
                   <ul className="space-y-1">
                     {files.map((f, idx) => (
                       <li
-                        key={idx}
-                        className="flex justify-between items-center"
+                        key={`${f.name}-${f.size}-${f.lastModified}`}
+                        className="flex items-center justify-between gap-3"
                       >
-                        <span>{f.name}</span>
+                        <span className="truncate">{f.name}</span>
                         <button
                           type="button"
                           onClick={() => removeFile(idx)}
-                          className="text-xs underline"
+                          className="text-xs underline hover:opacity-80"
                         >
                           Odebrat
                         </button>
@@ -1578,36 +1700,55 @@ function Contact({ t }) {
                 </div>
               )}
 
-              <input
-                type="hidden"
-                name="filesCount"
-                value={files.length}
-              />
-
               <button
                 type="submit"
                 disabled={!canSend || sending}
-                className="btn-cta px-5 py-3 rounded-full"
+                className={
+                  "px-5 py-3 rounded-full font-bold border border-black/5 transition " +
+                  "bg-[var(--sand)] text-[var(--text)] hover:brightness-95 " +
+                  (!canSend || sending ? "opacity-50 cursor-not-allowed" : "")
+                }
               >
-                {sending ? "Odesílám…" : t.send}
+                {sending ? "Odesílám…" : statusKind === "success" ? "Odesláno" : t.send}
               </button>
+
+              {statusMsg && <p className="text-sm mt-2">{statusMsg}</p>}
+
+              <p className="text-[var(--muted)] text-sm">{t.contactDemo}</p>
             </div>
           </form>
         </div>
       </section>
 
-      {/* hidden iframe */}
-      <iframe
-        name={IFRAME_NAME}
-        style={{ display: "none" }}
-        onLoad={handleIframeLoad}
-      />
-
       {showModal && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black/40">
-          <div className="bg-white p-6 rounded-2xl">
-            <div className="font-semibold mb-2">Odesláno</div>
-            <p>Děkujeme! Ozveme se vám co nejdříve.</p>
+        <div
+          className="fixed inset-0 z-[999] flex items-center justify-center bg-black/40 px-4"
+          onClick={() => setShowModal(false)}
+          role="dialog"
+          aria-modal="true"
+        >
+          <div
+            className="w-full max-w-md rounded-2xl bg-white p-6 soft-shadow border border-[var(--line)]"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="text-lg font-semibold mb-2">
+              {statusKind === "success" ? "Odesláno" : "Něco se nepovedlo"}
+            </div>
+            <p className="text-sm text-[var(--muted)]">
+              {statusKind === "success"
+                ? "Děkujeme! Ozveme se vám co nejdříve."
+                : statusMsg}
+            </p>
+
+            <div className="pt-4 flex justify-end">
+              <button
+                type="button"
+                className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold border border-[var(--line)] hover:bg-black/5 transition"
+                onClick={() => setShowModal(false)}
+              >
+                Zavřít
+              </button>
+            </div>
           </div>
         </div>
       )}
