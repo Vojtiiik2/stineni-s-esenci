@@ -1395,22 +1395,21 @@ function Contact({ t }) {
 
   const SCRIPT_URL = "https://hook.eu1.make.com/o1lk627xrpjl8d6exq9sh5yrplr58sw8";
 
-  // ✅ limity
-  const MAX_FILES = 10;
-  const MAX_EDGE = 2200;        // px (delší strana)
-  const JPEG_QUALITY = 0.82;    // 0..1
-  const MAX_TOTAL_MB = 25;      // bezpečné pro Make webhook (lepší držet níž)
+  // ✅ limity (max 5 fotek)
+  const MAX_FILES = 5;
+
+  // ✅ komprese = rychlejší upload do Make/Drive
+  const MAX_EDGE = 1600;       // px
+  const JPEG_QUALITY = 0.75;   // 0..1
+  const MAX_TOTAL_MB = 12;     // bezpečně nízko
 
   function bytesToMB(b) {
     return b / (1024 * 1024);
   }
 
-  // ✅ komprese (jen pro image/*)
   async function compressImage(file) {
     if (!file.type.startsWith("image/")) return file;
 
-    // některé prohlížeče neumí createImageBitmap pro HEIC apod.
-    // když to selže, pošleme originál
     try {
       const img = await createImageBitmap(file);
 
@@ -1434,7 +1433,6 @@ function Contact({ t }) {
 
       if (!blob) return file;
 
-      // zachováme původní jméno, ale raději dáme .jpg aby to sedělo typu
       const safeName = file.name.replace(/\.[^.]+$/, "") + ".jpg";
       return new File([blob], safeName, { type: "image/jpeg" });
     } catch {
@@ -1449,28 +1447,15 @@ function Contact({ t }) {
     setStatusMsg("");
     setStatusKind("");
 
-    setFiles((prev) => {
-      const merged = [...prev, ...picked];
+    // vezmeme max 5 (záměrně NE “přidávání”, ať je to jednoduché a předvídatelné)
+    const limited = picked.slice(0, MAX_FILES);
 
-      // dedupe
-      const seen = new Set();
-      const deduped = merged.filter((f) => {
-        const key = `${f.name}|${f.size}|${f.lastModified}`;
-        if (seen.has(key)) return false;
-        seen.add(key);
-        return true;
-      });
+    if (picked.length > MAX_FILES) {
+      setStatusKind("error");
+      setStatusMsg(`Můžeš nahrát maximálně ${MAX_FILES} fotografií.`);
+    }
 
-      // limit 10
-      const limited = deduped.slice(0, MAX_FILES);
-
-      if (deduped.length > MAX_FILES) {
-        setStatusKind("error");
-        setStatusMsg(`Můžeš nahrát maximálně ${MAX_FILES} fotografií.`);
-      }
-
-      return limited;
-    });
+    setFiles(limited);
 
     // umožní znovu vybrat stejné soubory
     e.target.value = "";
@@ -1492,16 +1477,13 @@ function Contact({ t }) {
     try {
       setSending(true);
 
-      // ✅ limit 10
       const selected = files.slice(0, MAX_FILES);
 
-      // ✅ komprimujeme před odesláním (ať se vejdeš do limitů)
       const compressed = [];
       for (const f of selected) {
         compressed.push(await compressImage(f));
       }
 
-      // ✅ kontrola celkové velikosti (po kompresi)
       const totalBytes = compressed.reduce((s, f) => s + (f?.size || 0), 0);
       if (bytesToMB(totalBytes) > MAX_TOTAL_MB) {
         throw new Error(
@@ -1516,7 +1498,7 @@ function Contact({ t }) {
       fd.append("message", message.trim());
       fd.append("filesCount", String(compressed.length));
 
-      // ✅ posíláme jako "files" opakovaně (multipart)
+      // ✅ posíláme opakovaně pod stejným názvem "files" → Make z toho umí udělat array
       compressed.forEach((f) => {
         fd.append("files", f, f.name);
       });
@@ -1524,7 +1506,7 @@ function Contact({ t }) {
       const controller = new AbortController();
       const timeout = setTimeout(() => controller.abort(), 180000); // 180s
 
-      // ✅ CORS bypass: Make webhook nepouští CORS → posíláme no-cors
+      // ✅ no-cors = obejde CORS u Make webhooku
       await fetch(SCRIPT_URL, {
         method: "POST",
         body: fd,
@@ -1534,7 +1516,7 @@ function Contact({ t }) {
 
       clearTimeout(timeout);
 
-      // ✅ u no-cors je response "opaque" → nečteme res.ok ani text
+      // no-cors = odpověď je opaque → neověřujeme res.ok
       setStatusKind("success");
       setStatusMsg("Děkuji! Zpráva byla odeslána.");
       setShowModal(true);
