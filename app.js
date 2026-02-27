@@ -1395,22 +1395,83 @@ function Contact({ t }) {
 
   const SCRIPT_URL = "https://hook.eu1.make.com/o1lk627xrpjl8d6exq9sh5yrplr58sw8";
 
+  // ✅ limity
+  const MAX_FILES = 10;
+  const MAX_EDGE = 2200;        // px (delší strana)
+  const JPEG_QUALITY = 0.82;    // 0..1
+  const MAX_TOTAL_MB = 25;      // bezpečné pro Make webhook (lepší držet níž)
+
+  function bytesToMB(b) {
+    return b / (1024 * 1024);
+  }
+
+  // ✅ komprese (jen pro image/*)
+  async function compressImage(file) {
+    if (!file.type.startsWith("image/")) return file;
+
+    // některé prohlížeče neumí createImageBitmap pro HEIC apod.
+    // když to selže, pošleme originál
+    try {
+      const img = await createImageBitmap(file);
+
+      let w = img.width;
+      let h = img.height;
+
+      const scale = Math.min(1, MAX_EDGE / Math.max(w, h));
+      w = Math.round(w * scale);
+      h = Math.round(h * scale);
+
+      const canvas = document.createElement("canvas");
+      canvas.width = w;
+      canvas.height = h;
+
+      const ctx = canvas.getContext("2d");
+      ctx.drawImage(img, 0, 0, w, h);
+
+      const blob = await new Promise((resolve) =>
+        canvas.toBlob(resolve, "image/jpeg", JPEG_QUALITY)
+      );
+
+      if (!blob) return file;
+
+      // zachováme původní jméno, ale raději dáme .jpg aby to sedělo typu
+      const safeName = file.name.replace(/\.[^.]+$/, "") + ".jpg";
+      return new File([blob], safeName, { type: "image/jpeg" });
+    } catch {
+      return file;
+    }
+  }
+
   function handleFilesChange(e) {
     const picked = Array.from(e.target.files || []);
     if (!picked.length) return;
 
+    setStatusMsg("");
+    setStatusKind("");
+
     setFiles((prev) => {
       const merged = [...prev, ...picked];
+
+      // dedupe
       const seen = new Set();
-      return merged.filter((f) => {
+      const deduped = merged.filter((f) => {
         const key = `${f.name}|${f.size}|${f.lastModified}`;
         if (seen.has(key)) return false;
         seen.add(key);
         return true;
       });
+
+      // limit 10
+      const limited = deduped.slice(0, MAX_FILES);
+
+      if (deduped.length > MAX_FILES) {
+        setStatusKind("error");
+        setStatusMsg(`Můžeš nahrát maximálně ${MAX_FILES} fotografií.`);
+      }
+
+      return limited;
     });
 
-    // umožní znovu vybrat stejné soubory
     e.target.value = "";
   }
 
@@ -1430,32 +1491,37 @@ function Contact({ t }) {
     try {
       setSending(true);
 
+      // ✅ limit 10
+      const selected = files.slice(0, MAX_FILES);
+
+      // ✅ komprimujeme před odesláním (ať se vejdeš do limitů)
+      const compressed = [];
+      for (const f of selected) {
+        compressed.push(await compressImage(f));
+      }
+
+      // ✅ kontrola celkové velikosti (po kompresi)
+      const totalBytes = compressed.reduce((s, f) => s + (f?.size || 0), 0);
+      if (bytesToMB(totalBytes) > MAX_TOTAL_MB) {
+        throw new Error(
+          `Přílohy jsou moc velké (${bytesToMB(totalBytes).toFixed(1)} MB). Zkus vybrat méně fotek nebo menší.`
+        );
+      }
+
       const fd = new FormData();
       fd.append("name", name.trim());
       fd.append("email", email.trim());
       fd.append("phone", phone.trim());
       fd.append("message", message.trim());
+      fd.append("filesCount", String(compressed.length));
 
-      const MAX_FILES = 10;
-      const selected = files.slice(0, MAX_FILES);
-
-      // počet souborů pro Make/Sheets
-      fd.append("filesCount", String(selected.length));
-
-      // ✅ 1) pošleme jednotlivě file1..fileN (kvůli tomu, že Make občas vezme jen první)
-      selected.forEach((f, idx) => {
-        fd.append(`file${idx + 1}`, f, f.name);
-      });
-
-      // ✅ 2) zároveň pošleme i jako pole files[] (aby se dalo snadno iterovat)
-      // (Make si někdy vezme jen 1 soubor z pole, ale když ne, je to bonus)
-      selected.forEach((f) => {
+      // ✅ posíláme JEN JEDNOU jako files[] (NE file1.. a NE duplicitně)
+      compressed.forEach((f) => {
         fd.append("files[]", f, f.name);
       });
 
-      // timeout + ověření odpovědi (žádné falešné "odesláno")
       const controller = new AbortController();
-      const timeout = setTimeout(() => controller.abort(), 20000);
+      const timeout = setTimeout(() => controller.abort(), 60000); // 60s (u uploadu dává smysl víc)
 
       const res = await fetch(SCRIPT_URL, {
         method: "POST",
@@ -1466,7 +1532,6 @@ function Contact({ t }) {
       clearTimeout(timeout);
 
       const text = await res.text().catch(() => "");
-
       if (!res.ok) {
         throw new Error(`HTTP ${res.status}${text ? `: ${text}` : ""}`);
       }
