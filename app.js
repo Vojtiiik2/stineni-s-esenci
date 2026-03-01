@@ -1826,7 +1826,7 @@ function App() {
           {/* BRAND */}
           <div className="footer-brand">
             <img
-              src="assets/img/logo/logo-symbol.svg"
+              src="assets/img/logo/Logo-symbol.svg"
               alt={`${t.brand2} – logo`}
               className="footer-logo"
               loading="lazy"
