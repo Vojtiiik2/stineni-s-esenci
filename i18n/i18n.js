@@ -351,7 +351,7 @@ galleryPartnersNotes: {
     contactFullName: "Jméno a příjmení",
     contactPhone: "Kontakt (telefon)",
     contactPhotos: "Fotografie (volitelné)",
-    contactDemo: "* Demo formulář – bez odesílání.",
+    
 
     // Footer
     footerContactH: "Kontakt",
