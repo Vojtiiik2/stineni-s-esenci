@@ -1851,7 +1851,7 @@ function App() {
               <div>
                 {t.email}:{" "}
                 <a className="underline hover:text-white" href="mailto:hello@janasegelberg.com">
-                  hello@janasegelberg.com
+                 info@stinenisesenci.cz
                 </a>
               </div>
 
