@@ -347,7 +347,6 @@ galleryPartnersNotes: {
       "Na místě společně doladíme řešení, které pro vás připravím."
     ],
     contactNote:
-      "Po schválení vizuálu je možné napojit formulář na systém pro zpracování poptávek a potvrzení termínů.",
     contactFullName: "Jméno a příjmení",
     contactPhone: "Kontakt (telefon)",
     contactPhotos: "Fotografie (volitelné)",
@@ -795,7 +794,6 @@ galleryPartnersNotes: {
       "On site, we fine-tune the solution and I prepare a tailored proposal."
     ],
     contactNote:
-      "After visual approval, the form can be connected to a system for handling inquiries and confirming appointments.",
     contactFullName: "Full name",
     contactPhone: "Phone",
     contactPhotos: "Photos (optional)",
