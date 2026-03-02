@@ -346,10 +346,10 @@ galleryPartnersNotes: {
       "Ozvu se vám s návrhem termínu konzultace.",
       "Na místě společně doladíme řešení, které pro vás připravím."
     ],
-    contactNote:
-    contactFullName: "Jméno a příjmení",
-    contactPhone: "Kontakt (telefon)",
-    contactPhotos: "Fotografie (volitelné)",
+   contactNote: "",
+contactFullName: "Jméno a příjmení",
+contactPhone: "Kontakt (telefon)",
+contactPhotos: "Fotografie (volitelné)",
     
 
     // Footer
@@ -793,11 +793,10 @@ galleryPartnersNotes: {
       "I will reply with suggested consultation dates.",
       "On site, we fine-tune the solution and I prepare a tailored proposal."
     ],
-    contactNote:
-    contactFullName: "Full name",
-    contactPhone: "Phone",
-    contactPhotos: "Photos (optional)",
-  
+   contactNote: "",
+contactFullName: "Full name",
+contactPhone: "Phone",
+contactPhotos: "Photos (optional)",
 
     footerContactH: "Contact",
     footerLegalH: "Legal",
