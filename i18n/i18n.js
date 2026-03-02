@@ -479,7 +479,7 @@ galleryPartnersNotes: {
     homeAbout: [
       "We design window treatments to fit your space and the way you truly live in it. It’s not just fabric and a system. It’s the daylight throughout the day, privacy in the evening, and the feeling you want to have at home.",
       "We fine-tune every detail around you. We respect your needs and adapt to what matters most to you. Some want calm and soft light; others need functional blackout or a clean solution without extras. We always look for a direction that makes sense specifically for you.",
-      "We are a Czech family business focused on quality and precise execution. With over twenty years of experience in fabrics, sewing and technical systems, we deliver made-to-measure solutions from the first consultation to the final installation—built to work for years."
+      "We are a Czech family business focused on quality and precise execution. With over twenty years of experience in fabrics, sewing and technical systems, we deliver made-to-measure solutions from the first consultation to the final installation built to work for years."
     ],
 
     servicesH: "Services",
