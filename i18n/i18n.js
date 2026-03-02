@@ -525,8 +525,8 @@ galleryPartnersNotes: {
     processH: "How we work",
     steps: ["Consultation", "Design proposal", "Preparation & production", "Installation"],
     stepsTxt: [
-      "We visit you, walk through the space on site and measure everything precisely.\n\nTogether we clarify what you expect—privacy, blackout, or a purely decorative layer.\n\nWe show you fabric samples and explain what makes sense (and what doesn’t) technically, functionally and visually.\n\nAfter the meeting you know the direction: which types of window treatments and materials are suitable.",
-      "Based on the selected materials and technical system we prepare a price quote. It is a starting point—if adjustments are needed, we look for alternatives together (materials, hardware or composition). Our goal is balance between quality, function and budget.",
+      "We visit you, walk through the space on site and measure everything precisely.\n\nTogether we clarify what you expect privacy, blackout, or a purely decorative layer.\n\nWe show you fabric samples and explain what makes sense (and what doesn’t) technically, functionally and visually.\n\nAfter the meeting you know the direction and which types of window treatments and materials are suitable.",
+      "Based on the selected materials and technical system we prepare a price quote. It is a starting point if adjustments are needed, we look for alternatives together (materials, hardware or composition). Our goal is balance between quality, function and budget.",
       "After the budget is approved and the deposit is paid, we start production.\n\nDuring the individual processing phases we also plan the installation date.",
       "We deliver the finished solution, install it professionally and hang the textiles carefully.\n\nWe steam/iron, style and fine-tune so it works visually and technically.\n\nWhen finished, we always clean up and hand over the space ready to use.\n\nOn site we explain how everything works and recommend proper care so the result performs long-term."
     ],
@@ -549,7 +549,7 @@ galleryPartnersNotes: {
         id: "individualni-navrh",
         title: "Tailored design",
         p1: "Every space has different light, proportions and a different rhythm throughout the day.",
-        p2: "The design is created on site—through conversation with you, observing the light, how you use the space, and what you truly expect from the solution.",
+        p2: "The design is created on site through conversation with you, observing the light, how you use the space, and what you truly expect from the solution.",
         p3: "For us, tailored design means finding the right choice together."
       },
       {
@@ -557,21 +557,21 @@ galleryPartnersNotes: {
         title: "20 years of experience",
         p1: "Experience gives us perspective and confidence in decisions.",
         p2: "We help you navigate the options and align function with aesthetics.",
-        p3: "The result is not a compromise—it’s the confidence that the chosen solution makes sense for you and your space."
+        p3: "The result is not a compromise it’s the confidence that the chosen solution makes sense for you and your space."
       },
       {
         id: "detail",
         title: "Precision and softness in detail",
-        p1: "Craft quality and technical execution decide whether the solution will work long-term and look great even after years.",
+        p1: "Craft quality and technical execution decide whether the solution will work long term and look great even after years.",
         p2: "Details show the difference between something that only looks good and something that stands the test of time.",
-        p3: "Precision is visible at first glance—this is where your expectations meet our experience with materials."
+        p3: "Precision is visible at first glance this is where your expectations meet our experience with materials."
       }
     ],
     processEnding: "The goal is for you to feel naturally comfortable in your space.",
 
     priceH: "Pricing",
     pricingDisclaimer:
-      "These amounts are illustrative ranges. A specific proposal and budget will always be confirmed after an on-site consultation based on measurements, chosen materials and technical solution.",
+      "These amounts are illustrative ranges. A specific proposal and budget will always be confirmed after an on site consultation based on measurements, chosen materials and technical solution.",
     openDetail: "Open details",
     writeMe: "Message me",
     close: "Close",
@@ -648,7 +648,7 @@ galleryPartnersNotes: {
             label: "Roman blind",
             img: "assets/img/pricing/roleta-rimska.webp",
             micro: "Soft textile layer, décor and calm.",
-            intro: "A textile blind with a curtain-like character. Great when you want a soft look and a clean shape without long sheers or curtains.",
+            intro: "A textile blind with a curtain like character. Great when you want a soft look and a clean shape without long sheers or curtains.",
             rangesTitle: "Estimated (for orientation)",
             ranges: [
               { label: "small window (110 × 150 cm)", value: "approx. CZK 6k–11k / pc" },
@@ -666,7 +666,7 @@ galleryPartnersNotes: {
             label: "Pleated blind (Plissé)",
             img: "assets/img/pricing/roleta-plisse.webp",
             micro: "Precise light control. Great for atypical windows.",
-            intro: "A pleated blind suitable also for non-standard window shapes. It can shade from top or bottom and allows very precise control of light.",
+            intro: "A pleated blind suitable also for non standard window shapes. It can shade from top or bottom and allows very precise control of light.",
             rangesTitle: "Estimated (for orientation)",
             ranges: [
               { label: "small window (80 × 100 cm)", value: "approx. CZK 3.3k–6k / pc" },
@@ -693,7 +693,7 @@ galleryPartnersNotes: {
             label: "Tracks",
             img: "assets/img/pricing/systemy-kolejnice.webp",
             micro: "Clean line. Function and precision.",
-            intro: "Tracks are minimal and versatile—straight or bent, ceiling or wall mounted, manual or motorized.",
+            intro: "Tracks are minimal and versatile, straight or bent, ceiling or wall mounted, manual or motorized.",
             rangesTitle: "Estimated (for orientation)",
             ranges: [
               { label: "small window (200 × 270 cm)", value: "approx. CZK 1k–13k" },
@@ -702,7 +702,7 @@ galleryPartnersNotes: {
             tiersTitle: "Types",
             tiers: [
               { name: "Straight", note: "Simple, clean solution." },
-              { name: "Bent", note: "Made-to-measure for the layout." },
+              { name: "Bent", note: "Made to measure for the layout." },
               { name: "Motorized", note: "Comfort and automation." }
             ]
           },
@@ -738,7 +738,7 @@ galleryPartnersNotes: {
           { label: "small window (200 × 270 cm)", value: "approx. CZK 6k–8k" },
           { label: "large window (500 × 290 cm)", value: "approx. CZK 17k–20k" }
         ],
-        rangesNote: "Estimated price includes both textile layers: sheers and curtains.",
+        rangesNote: "Estimated price includes both textile layers, sheers and curtains.",
         tiersTitle: "Types",
         tiers: [
           { name: "Standard maintenance", note: "Take down, wash/clean, iron/steam and rehang." },
@@ -755,15 +755,15 @@ galleryOurWorkH: "Our projects",
 galleryOurWorkP: "A selection of projects where we work with light, fabric and spatial proportions.",
 galleryShowAll: "Show all →",
 galleryModalH: "Our projects",
-galleryModalSub: "Browse photos — you can scroll down.",
+galleryModalSub: "Browse photos, you can scroll down.",
 galleryPartnersH: "We collaborate with",
-galleryPartnersP: "Architects and designers we often work with to fine-tune the final layer of window treatments.",
+galleryPartnersP: "Architects and designers we often work with to fine tune the final layer of window treatments.",
 galleryVisitWeb: "Visit website →",
 
 galleryPartnersNotes: {
   onoje: "Architecture with a feel for atmosphere, materials, and detail. We add the final layer.",
   richter: "Collaboration on interiors where clean lines, function, and a calm atmosphere matter.",
-  epic: "An interior studio focused on atmosphere, function, and detail. Together we fine-tune the final layer of shading so the space feels natural and harmonious.",
+  epic: "An interior studio focused on atmosphere, function, and detail. Together we fine tune the final layer of shading so the space feels natural and harmonious.",
   broda: "Interior design focused on timeless solutions, space planning, and materials. We collaborate on projects where shading completes the calm and character of the interior."
 },
 
@@ -799,7 +799,7 @@ galleryPartnersNotes: {
     contactFullName: "Full name",
     contactPhone: "Phone",
     contactPhotos: "Photos (optional)",
-    contactDemo: "* Demo form — not sending.",
+  
 
     footerContactH: "Contact",
     footerLegalH: "Legal",
