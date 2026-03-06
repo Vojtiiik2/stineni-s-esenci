@@ -215,7 +215,7 @@ const Header = ({ t, lang, setLang }) => {
             <a
               href="tel:+420724379309"
               className="inline-flex items-center gap-2 px-3 py-1.5 text-sm rounded-lg border border-[var(--line)] text-[var(--text)] hover:bg-[var(--bg2)] hover:border-[var(--sand)] transition"
-              aria-label="Call +420 724 379 309"
+              aria-label="Zavolat +420 724 379 309"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
