@@ -1530,7 +1530,6 @@ function Essences({ t }) {
     </>
   );
 }
-
 function Contact({ t }) {
   useReveal();
 
@@ -1732,6 +1731,36 @@ function Contact({ t }) {
                 +420 724 379 309
               </a>
             </p>
+
+            <div className="mt-6 space-y-6 text-sm">
+              <div className="rounded-2xl border border-[var(--line)] bg-white p-6 soft-shadow">
+                <div className="font-semibold text-base mb-2">Jana Segelberg</div>
+                <div className="text-[var(--muted)] leading-relaxed">
+                  Navrátilova 1334/16
+                  <br />
+                  110 00 Praha 1
+                  <br />
+                  <br />
+                  IČO 61289345
+                  <br />
+                  DIČ CZ7259060062
+                </div>
+              </div>
+
+              <div className="rounded-2xl border border-[var(--line)] bg-white p-6 soft-shadow">
+                <div className="font-semibold text-base mb-2">Segelberg &amp; Co. s.r.o.</div>
+                <div className="text-[var(--muted)] leading-relaxed">
+                  Sarajevská 1051/10
+                  <br />
+                  120 00 Praha 2
+                  <br />
+                  <br />
+                  IČO 08619263
+                  <br />
+                  DIČ CZ08619263
+                </div>
+              </div>
+            </div>
 
             <div className="text-[var(--muted)] text-sm mt-6 space-y-2">
               <div className="font-semibold">{t.contactHowH}</div>
