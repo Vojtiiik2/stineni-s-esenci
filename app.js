@@ -1087,7 +1087,7 @@ function Gallery({ t }) {
     "assets/img/gallery/our-work/ourwork-57.webp",
     "assets/img/gallery/our-work/ourwork-58.webp",
     "assets/img/gallery/our-work/ourwork-59.webp",
-    "assets/img/gallery/our-work/ourwork-60.webp",
+    "assets/img/gallery/our-work/ourwork-60-2.webp",
     "assets/img/gallery/our-work/ourwork-61.webp",
     "assets/img/gallery/our-work/ourwork-62.webp",
     "assets/img/gallery/our-work/ourwork-63.webp",
@@ -1099,7 +1099,7 @@ function Gallery({ t }) {
     "assets/img/gallery/our-work/ourwork-69.webp",
     "assets/img/gallery/our-work/ourwork-70.webp",
     "assets/img/gallery/our-work/ourwork-71.webp",
-    "assets/img/gallery/our-work/ourwork-72.webp"
+    "assets/img/gallery/our-work/ourwork-72-2.webp"
   ];
 
  const PARTNERS = [
