@@ -1086,7 +1086,7 @@ function Gallery({ t }) {
     "assets/img/gallery/our-work/ourwork-56.webp",
     "assets/img/gallery/our-work/ourwork-57.webp",
     "assets/img/gallery/our-work/ourwork-58-2.webp",
-    "assets/img/gallery/our-work/ourwork-59-2.webp",
+    "assets/img/gallery/our-work/ourwork-59-3.webp",
     "assets/img/gallery/our-work/ourwork-60-2.webp",
     "assets/img/gallery/our-work/ourwork-61.webp",
     "assets/img/gallery/our-work/ourwork-62.webp",
