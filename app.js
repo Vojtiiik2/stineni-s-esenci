@@ -1091,7 +1091,7 @@ function Gallery({ t }) {
     "assets/img/gallery/our-work/ourwork-61.webp",
     "assets/img/gallery/our-work/ourwork-62.webp",
     "assets/img/gallery/our-work/ourwork-63.webp",
-    "assets/img/gallery/our-work/ourwork-64-3.webp",
+    "assets/img/gallery/our-work/ourwork-64.webp",
     "assets/img/gallery/our-work/ourwork-65.webp",
     "assets/img/gallery/our-work/ourwork-66.webp",
     "assets/img/gallery/our-work/ourwork-67.webp",
@@ -1102,56 +1102,60 @@ function Gallery({ t }) {
     "assets/img/gallery/our-work/ourwork-72-2.webp"
   ];
 
- const PARTNERS = [
-  {
-    key: "onoje",
-    name: "ono.je",
-    url: "https://www.ono.je",
-    images: [
-      "assets/img/gallery/partners/onoje/ono-je-01.webp",
-      "assets/img/gallery/partners/onoje/ono-je-02.webp",
-      "assets/img/gallery/partners/onoje/ono-je-03.webp"
-    ]
-  },
-  {
-    key: "richter",
-    name: "RichterDesign",
-    url: "https://www.richterdesign.cz",
-    images: [
-      "assets/img/gallery/partners/richter/richter-01.webp",
-      "assets/img/gallery/partners/richter/richter-02.webp",
-      "assets/img/gallery/partners/richter/richter-03.webp"
-    ]
-  },
-  {
-    key: "epic",
-    name: "Epic Interior Studio",
-    url: "https://www.epicinteriorstudio.cz/",
-    images: [
-      "assets/img/gallery/partners/epic-interior-studio/epic-01.webp",
-      "assets/img/gallery/partners/epic-interior-studio/epic-02.webp",
-      "assets/img/gallery/partners/epic-interior-studio/epic-03.webp"
-    ]
-  },
-  {
-    key: "broda",
-    name: "Broda interiér",
-    url: "https://brodainterier.cz/",
-    images: [
-      "assets/img/gallery/partners/broda/broda-01.webp",
-      "assets/img/gallery/partners/broda/broda-02.webp",
-      "assets/img/gallery/partners/broda/broda-03.webp"
-    ]
-  }
-];
-
-
+  const PARTNERS = [
+    {
+      key: "onoje",
+      name: "ono.je",
+      url: "https://www.ono.je",
+      images: [
+        "assets/img/gallery/partners/onoje/ono-je-01.webp",
+        "assets/img/gallery/partners/onoje/ono-je-02.webp",
+        "assets/img/gallery/partners/onoje/ono-je-03.webp"
+      ]
+    },
+    {
+      key: "richter",
+      name: "RichterDesign",
+      url: "https://www.richterdesign.cz",
+      images: [
+        "assets/img/gallery/partners/richter/richter-01.webp",
+        "assets/img/gallery/partners/richter/richter-02.webp",
+        "assets/img/gallery/partners/richter/richter-03.webp"
+      ]
+    },
+    {
+      key: "epic",
+      name: "Epic Interior Studio",
+      url: "https://www.epicinteriorstudio.cz/",
+      images: [
+        "assets/img/gallery/partners/epic-interior-studio/epic-01.webp",
+        "assets/img/gallery/partners/epic-interior-studio/epic-02.webp",
+        "assets/img/gallery/partners/epic-interior-studio/epic-03.webp"
+      ]
+    },
+    {
+      key: "broda",
+      name: "Broda interiér",
+      url: "https://brodainterier.cz/",
+      images: [
+        "assets/img/gallery/partners/broda/broda-01.webp",
+        "assets/img/gallery/partners/broda/broda-02.webp",
+        "assets/img/gallery/partners/broda/broda-03.webp"
+      ]
+    }
+  ];
 
   const [ourWorkOpen, setOurWorkOpen] = React.useState(false);
   const [ratios, setRatios] = React.useState({});
   const [perRow, setPerRow] = React.useState(
     typeof window !== "undefined" && window.innerWidth <= 768 ? 2 : 3
   );
+
+  // NOVÉ: custom lightbox jen pro OUR_WORK
+  const [ourWorkLightboxOpen, setOurWorkLightboxOpen] = React.useState(false);
+  const [ourWorkLightboxIndex, setOurWorkLightboxIndex] = React.useState(0);
+  const touchStartXRef = React.useRef(0);
+  const touchEndXRef = React.useRef(0);
 
   React.useEffect(() => {
     const onResize = () => setPerRow(window.innerWidth <= 768 ? 2 : 3);
@@ -1160,14 +1164,76 @@ function Gallery({ t }) {
   }, []);
 
   React.useEffect(() => {
-    document.body.style.overflow = ourWorkOpen ? "hidden" : "";
+    document.body.style.overflow = ourWorkOpen || ourWorkLightboxOpen ? "hidden" : "";
     return () => (document.body.style.overflow = "");
-  }, [ourWorkOpen]);
+  }, [ourWorkOpen, ourWorkLightboxOpen]);
+
+  // NOVÉ: klávesnice pro lightbox
+  React.useEffect(() => {
+    if (!ourWorkLightboxOpen) return;
+
+    const onKeyDown = (e) => {
+      if (e.key === "Escape") {
+        setOurWorkLightboxOpen(false);
+      } else if (e.key === "ArrowLeft") {
+        setOurWorkLightboxIndex((prev) =>
+          prev === 0 ? OUR_WORK.length - 1 : prev - 1
+        );
+      } else if (e.key === "ArrowRight") {
+        setOurWorkLightboxIndex((prev) =>
+          prev === OUR_WORK.length - 1 ? 0 : prev + 1
+        );
+      }
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [ourWorkLightboxOpen, OUR_WORK.length]);
 
   const chunk = (arr, size) => {
     const out = [];
     for (let i = 0; i < arr.length; i += size) out.push(arr.slice(i, i + size));
     return out;
+  };
+
+  // NOVÉ: helpery pro Our Work lightbox
+  const openOurWorkLightbox = (e, index) => {
+    e.preventDefault();
+    setOurWorkLightboxIndex(index);
+    setOurWorkLightboxOpen(true);
+  };
+
+  const closeOurWorkLightbox = () => {
+    setOurWorkLightboxOpen(false);
+  };
+
+  const showPrevOurWork = () => {
+    setOurWorkLightboxIndex((prev) =>
+      prev === 0 ? OUR_WORK.length - 1 : prev - 1
+    );
+  };
+
+  const showNextOurWork = () => {
+    setOurWorkLightboxIndex((prev) =>
+      prev === OUR_WORK.length - 1 ? 0 : prev + 1
+    );
+  };
+
+  const onTouchStartOurWork = (e) => {
+    touchStartXRef.current = e.changedTouches[0].clientX;
+  };
+
+  const onTouchEndOurWork = (e) => {
+    touchEndXRef.current = e.changedTouches[0].clientX;
+    const diff = touchStartXRef.current - touchEndXRef.current;
+
+    if (Math.abs(diff) < 40) return;
+
+    if (diff > 0) {
+      showNextOurWork();
+    } else {
+      showPrevOurWork();
+    }
   };
 
   return (
@@ -1195,7 +1261,7 @@ function Gallery({ t }) {
             <a
               key={i}
               href={src}
-              onClick={(e) => openLightbox(e, src)}
+              onClick={(e) => openOurWorkLightbox(e, i)}
               className="ourwork-item group relative"
             >
               <img
@@ -1251,7 +1317,7 @@ function Gallery({ t }) {
                         <a
                           key={src}
                           href={src}
-                          onClick={(e) => openLightbox(e, src)}
+                          onClick={(e) => openOurWorkLightbox(e, absoluteIndex)}
                           className="ow-card group"
                           style={{ flexGrow: grow }}
                         >
@@ -1283,6 +1349,65 @@ function Gallery({ t }) {
         </div>
       )}
 
+      {/* NOVÉ: lightbox jen pro Our Work */}
+      {ourWorkLightboxOpen && (
+        <div className="owlb-modal" role="dialog" aria-modal="true">
+          <button
+            type="button"
+            className="owlb-backdrop"
+            onClick={closeOurWorkLightbox}
+            aria-label="Close"
+          />
+
+          <div className="owlb-panel">
+            <button
+              type="button"
+              className="owlb-close"
+              onClick={closeOurWorkLightbox}
+              aria-label="Close"
+            >
+              ×
+            </button>
+
+            <button
+              type="button"
+              className="owlb-arrow owlb-arrow-left"
+              onClick={showPrevOurWork}
+              aria-label="Previous image"
+            >
+              ‹
+            </button>
+
+            <div
+              className="owlb-stage"
+              onTouchStart={onTouchStartOurWork}
+              onTouchEnd={onTouchEndOurWork}
+            >
+              <img
+                src={OUR_WORK[ourWorkLightboxIndex]}
+                alt={`Work ${ourWorkLightboxIndex + 1}`}
+                className="owlb-img"
+                loading="eager"
+                decoding="async"
+              />
+            </div>
+
+            <button
+              type="button"
+              className="owlb-arrow owlb-arrow-right"
+              onClick={showNextOurWork}
+              aria-label="Next image"
+            >
+              ›
+            </button>
+
+            <div className="owlb-counter">
+              {ourWorkLightboxIndex + 1} / {OUR_WORK.length}
+            </div>
+          </div>
+        </div>
+      )}
+
       <section className="max-w-6xl mx-auto px-4 pb-20 reveal">
         <div className="max-w-3xl">
           <h3 className="script text-3xl mb-3">{t.galleryPartnersH}</h3>
@@ -1299,9 +1424,9 @@ function Gallery({ t }) {
                 <div className="md:col-span-5 p-6 flex flex-col justify-between">
                   <div>
                     <div className="text-xl font-semibold">{p.name}</div>
-                   <p className="text-[var(--muted)] text-sm mt-2 leading-relaxed">
-  {(t.galleryPartnersNotes && t.galleryPartnersNotes[p.key]) || ""}
-</p>
+                    <p className="text-[var(--muted)] text-sm mt-2 leading-relaxed">
+                      {(t.galleryPartnersNotes && t.galleryPartnersNotes[p.key]) || ""}
+                    </p>
                   </div>
 
                   <div className="mt-5">
