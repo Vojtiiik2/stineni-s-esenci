@@ -1091,7 +1091,7 @@ function Gallery({ t }) {
     "assets/img/gallery/our-work/ourwork-61.webp",
     "assets/img/gallery/our-work/ourwork-62.webp",
     "assets/img/gallery/our-work/ourwork-63.webp",
-    "assets/img/gallery/our-work/ourwork-64.webp",
+    "assets/img/gallery/our-work/ourwork-64-3.webp",
     "assets/img/gallery/our-work/ourwork-65.webp",
     "assets/img/gallery/our-work/ourwork-66.webp",
     "assets/img/gallery/our-work/ourwork-67.webp",
