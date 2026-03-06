@@ -1097,7 +1097,8 @@ function Gallery({ t }) {
     "assets/img/gallery/our-work/ourwork-67.webp",
     "assets/img/gallery/our-work/ourwork-68.webp",
     "assets/img/gallery/our-work/ourwork-69.webp",
-    "assets/img/gallery/our-work/ourwork-70.webp"
+    "assets/img/gallery/our-work/ourwork-70.webp",
+    "assets/img/gallery/our-work/ourwork-71.webp"
   ];
 
  const PARTNERS = [
