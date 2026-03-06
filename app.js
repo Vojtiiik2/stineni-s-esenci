@@ -359,11 +359,12 @@ const Header = ({ t, lang, setLang }) => {
                 </div>
 
                 <a
-                  href="tel:+420724379309"
-                  className="w-full text-center px-4 py-4 rounded-2xl border border-[var(--line)] bg-[var(--bg2)] hover:border-[var(--sand)] transition font-semibold"
-                  onClick={() => setMenuOpen(false)}
-                >
-                  Call +420 724 379 309
+  href="tel:+420724379309"
+  className="w-full text-center px-4 py-4 rounded-2xl border border-[var(--line)] bg-[var(--bg2)] hover:border-[var(--sand)] transition font-semibold"
+  onClick={() => setMenuOpen(false)}
+>
+  {lang === "cs" ? "Zavolat" : "Call"} +420 724 379 309
+</a>
                 </a>
               </div>
             </div>
