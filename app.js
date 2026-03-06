@@ -365,7 +365,6 @@ const Header = ({ t, lang, setLang }) => {
 >
   {lang === "cs" ? "Zavolat" : "Call"} +420 724 379 309
 </a>
-                </a>
               </div>
             </div>
           </div>
