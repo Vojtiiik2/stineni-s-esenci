@@ -476,10 +476,10 @@ contactPhotos: "Fotografie (volitelné)",
 
     homeAboutH: "About us",
     homeAbout: [
-      "We design window treatments to fit your space and the way you truly live in it. It’s not just fabric and a system. It’s the daylight throughout the day, privacy in the evening, and the feeling you want to have at home.",
-      "We fine-tune every detail around you. We respect your needs and adapt to what matters most to you. Some want calm and soft light; others need functional blackout or a clean solution without extras. We always look for a direction that makes sense specifically for you.",
-      "We are a Czech family business focused on quality and precise execution. With over twenty years of experience in fabrics, sewing and technical systems, we deliver made-to-measure solutions from the first consultation to the final installation built to work for years."
-    ],
+  "We design window treatments to suit both your space and the way you truly live in it. It’s not just about the fabric or the system it’s about the light during the day, privacy in the evening, and the feeling you want your home to have.",
+  "Every detail is tailored to you. We respect your needs and adapt to what matters most to you. Some people prefer calm and soft natural light, others need full blackout or a simple, practical solution without unnecessary elements. Our goal is always to find the approach that makes the most sense for you.",
+  "We are a Czech family company and take pride in quality and precise craftsmanship. With more than twenty years of experience in fabrics, tailoring, and technical solutions, we design custom window treatments from the initial consultation through to the final installation, ensuring the result works beautifully for years to come."
+],
 
     servicesH: "Services",
     services: [
@@ -523,12 +523,12 @@ contactPhotos: "Fotografie (volitelné)",
 
     processH: "How we work",
     steps: ["Consultation", "Design proposal", "Preparation & production", "Installation"],
-    stepsTxt: [
-      "We visit you, walk through the space on site and measure everything precisely.\n\nTogether we clarify what you expect privacy, blackout, or a purely decorative layer.\n\nWe show you fabric samples and explain what makes sense (and what doesn’t) technically, functionally and visually.\n\nAfter the meeting you know the direction and which types of window treatments and materials are suitable.",
-      "Based on the selected materials and technical system we prepare a price quote. It is a starting point if adjustments are needed, we look for alternatives together (materials, hardware or composition). Our goal is balance between quality, function and budget.",
-      "After the budget is approved and the deposit is paid, we start production.\n\nDuring the individual processing phases we also plan the installation date.",
-      "We deliver the finished solution, install it professionally and hang the textiles carefully.\n\nWe steam/iron, style and fine-tune so it works visually and technically.\n\nWhen finished, we always clean up and hand over the space ready to use.\n\nOn site we explain how everything works and recommend proper care so the result performs long-term."
-    ],
+   stepsTxt: [
+  "We visit you on site, review the space together, and take precise measurements.\n\nWe discuss what you expect from the window treatments whether privacy, blackout functionality, or purely decorative elements.\n\nWe present fabric samples and advise you on what works best in the space, as well as what might not make sense from a technical, functional, or visual perspective.\n\nAfter the meeting, you will have a clear understanding of the direction of the proposal and which types of window treatments and materials are most suitable.",
+  "Based on the selected materials and technical system, we prepare a price quotation. This serves as a starting point for further discussion. If adjustments are needed, we work together to explore alternatives, whether by modifying materials, technical solutions, or the overall composition of the design. Our goal is always to find the right balance between quality, functionality, and price.",
+  "Once the budget is approved and the deposit is paid, we begin the production process.\n\nDuring the individual phases of the process, we simultaneously plan the implementation timeline.",
+  "We deliver the finished window treatments, professionally install them, and carefully hang all textiles.\n\nBoth sheer curtains and drapes are steamed, styled, and adjusted so that everything works perfectly not only visually, but also technically.\n\nAfter completing the installation, we always tidy up the space and leave it clean and ready for use.\n\nOn site, we will explain how to operate all elements and recommend proper textile care so that the window treatments function beautifully for years to come."
+],
     processImgs: [
       "assets/img/process/process-01.webp",
       "assets/img/process/process-02.webp",
@@ -542,30 +542,30 @@ contactPhotos: "Fotografie (volitelné)",
       "Craft, accuracy, patience.",
       "Installation, finishing, calm."
     ],
-    processBehindH: "What stands behind our work",
-    processBehindCards: [
-      {
-        id: "individualni-navrh",
-        title: "Tailored design",
-        p1: "Every space has different light, proportions and a different rhythm throughout the day.",
-        p2: "The design is created on site through conversation with you, observing the light, how you use the space, and what you truly expect from the solution.",
-        p3: "For us, tailored design means finding the right choice together."
-      },
-      {
-        id: "zkusenosti",
-        title: "20 years of experience",
-        p1: "Experience gives us perspective and confidence in decisions.",
-        p2: "We help you navigate the options and align function with aesthetics.",
-        p3: "The result is not a compromise it’s the confidence that the chosen solution makes sense for you and your space."
-      },
-      {
-        id: "detail",
-        title: "Precision and softness in detail",
-        p1: "Craft quality and technical execution decide whether the solution will work long term and look great even after years.",
-        p2: "Details show the difference between something that only looks good and something that stands the test of time.",
-        p3: "Precision is visible at first glance this is where your expectations meet our experience with materials."
-      }
-    ],
+    processBehindH: "What stands behind our work?",
+   processBehindCards: [
+  {
+    id: "individualni navrh",
+    title: "Individual Design",
+    p1: "Every space has different light, different proportions, and its own rhythm throughout the day.",
+    p2: "Each design takes shape on site through conversation with you by observing the light, understanding how you use the space, and learning what you truly expect from your window treatments.",
+    p3: "For us, an individual design means working together to find the solution that fits your space best."
+  },
+  {
+    id: "zkusenosti",
+    title: "20 Years of Experience",
+    p1: "Our experience gives us perspective and confidence when making decisions.",
+    p2: "We help you navigate the many possibilities and bring together functionality and aesthetics.",
+    p3: "The result is not a compromise, but the confidence that the chosen solution truly makes sense for you and your space."
+  },
+  {
+    id: "detail",
+    title: "Precision and Attention to Detail",
+    p1: "The quality of craftsmanship and technical execution determines whether window treatments will function well and continue to look beautiful for years to come.",
+    p2: "It is in the details that the difference becomes clear between a solution that simply looks good and one that truly stands the test of time.",
+    p3: "Precision and attention to detail are visible at first glance. It is here that your expectations meet our experience in working with materials."
+  }
+],
     processEnding: "The goal is for you to feel naturally comfortable in your space.",
 
     priceH: "Pricing",
