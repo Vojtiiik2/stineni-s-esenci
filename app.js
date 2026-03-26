@@ -457,7 +457,9 @@ function Hero({ t, small = false, showCta = false, intervalMs = 8000, bg, title 
             textClass
           }
         >
-          <h1 className="script text-4xl md:text-6xl mb-3">{title || slide.h1 || ""}</h1>
+         <h1 className="text-4xl md:text-5xl font-semibold leading-tight mb-3 max-w-3xl">
+  {title || slide.h1 || ""}
+</h1>
           <p className="text-lg opacity-95">{t.heroSub}</p>
 
           {!small && showCta && (
@@ -517,7 +519,7 @@ function Home({ t }) {
           </div>
 
           <div>
-            <h2 className="script text-4xl mb-4">{t.homeAboutH}</h2>
+           <h2 className="text-3xl md:text-4xl font-semibold leading-tight mb-4">{t.homeAboutH}</h2>
             {(t.homeAbout || []).map((p, idx) => (
               <p
                 key={idx}
@@ -532,8 +534,8 @@ function Home({ t }) {
 
       {/* ===== SERVICES ===== */}
       <section className="py-16 max-w-6xl mx-auto px-4 reveal">
-        <h2 className="script text-4xl mb-8">{t.servicesH}</h2>
-
+       <h2 className="text-3xl md:text-4xl font-semibold leading-tight mb-8">{t.servicesH}</h2>
+        
         <div className="grid sm:grid-cols-2 md:grid-cols-5 gap-6">
           {(t.services || []).map((s, i) => {
             const hash = ["zaclon", "zaves", "roleta", "systemy", "servis"][i];
@@ -562,7 +564,7 @@ function Home({ t }) {
 
       {/* ===== ATMOSPHERE ===== */}
       <section className="py-16 max-w-6xl mx-auto px-4 reveal">
-        <h2 className="script text-4xl mb-3">{t.inspH}</h2>
+       className="script text-4xl mb-3">{t.inspH}</h2>
 
         <p className="text-[var(--text)]/80 text-lg md:text-xl leading-relaxed mb-6 max-w-3xl whitespace-pre-line">
           {t.inspLead}
@@ -593,8 +595,8 @@ function Home({ t }) {
 
       {/* ===== BENEFITS ===== */}
       <section className="py-16 max-w-6xl mx-auto px-4 reveal">
-        <h2 className="script text-4xl mb-8">{t.benefitsH}</h2>
-
+ className="text-3xl md:text-4xl font-semibold leading-tight mb-8">{t.benefitsH}</h2>
+        
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
           {(t.benefits || []).map((b, i) => {
             const hash = ["individualni-navrh", "zkusenosti", "detail"][i];
@@ -623,7 +625,7 @@ function Home({ t }) {
 
       {/* ===== FAQ ===== */}
       <section className="py-16 max-w-4xl mx-auto px-4 reveal">
-        <h2 className="script text-4xl mb-6">{t.faqH}</h2>
+className="text-3xl md:text-4xl font-semibold leading-tight mb-6">{t.faqH}</h2>
 
         {(t.faq || []).map((f, i) => (
           <div key={i} className="faq-item">
