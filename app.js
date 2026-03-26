@@ -482,11 +482,6 @@ function Home({ t }) {
     <>
       <Hero t={t} showCta intervalMs={8000} />
 
-
-return (
-  <>
-    <Hero t={t} showCta intervalMs={8000} />
-
     {/* TRUST BLOK */}
     <section className="py-10 max-w-6xl mx-auto px-4 reveal">
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
