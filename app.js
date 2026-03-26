@@ -3,11 +3,9 @@ const { useState, useEffect, useMemo, useRef } = React;
 // ===== LIGHTBOX (nutné pro Gallery + zavírání v App) =====
 function openLightbox(e, src) {
   if (e) e.preventDefault();
-
   const lb = document.getElementById("lb");
   const img = document.getElementById("lbimg");
   if (!lb || !img) return;
-
   img.src = src;
   lb.classList.add("open");
   document.body.style.overflow = "hidden";
@@ -17,7 +15,6 @@ function closeLightbox() {
   const lb = document.getElementById("lb");
   const img = document.getElementById("lbimg");
   if (!lb || !img) return;
-
   lb.classList.remove("open");
   img.src = "";
   document.body.style.overflow = "";
@@ -26,7 +23,6 @@ function closeLightbox() {
 function useReveal() {
   useEffect(() => {
     const els = document.querySelectorAll(".reveal");
-
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
@@ -39,7 +35,8 @@ function useReveal() {
     els.forEach((el) => io.observe(el));
 
     return () => {
-      io.disconnect(); // proti „sekání“ při přepínání stránek
+      io.disconnect();
+      // proti „sekání“ při přepínání stránek
     };
   }, []);
 }
@@ -91,7 +88,6 @@ function useRoute() {
       // 2) Back/Forward → až PO renderu obnov scroll a zablokuj smooth scroll
       if (!wasGo) {
         isPopRef.current = true;
-
         requestAnimationFrame(() => {
           const st = window.history.state || {};
           const y = typeof st.__scrollY === "number" ? st.__scrollY : 0;
@@ -138,7 +134,6 @@ function go(path = "/") {
   // uložit scroll pozici pro Back (do aktuální history entry)
   const st = window.history.state || {};
   window.history.replaceState({ ...st, __scrollY: window.scrollY }, "");
-
   __navByGo = true;
 
   let p = String(path || "/");
@@ -169,13 +164,7 @@ const Header = ({ t, lang, setLang }) => {
             onClick={() => go("/")}
             className="brand-wrap"
             aria-label="Go to home"
-            style={{
-              background: "transparent",
-              border: 0,
-              padding: 0,
-              cursor: "pointer",
-              textAlign: "left"
-            }}
+            style={{ background: "transparent", border: 0, padding: 0, cursor: "pointer", textAlign: "left" }}
           >
             <img
               src="assets/img/logo/Logo-symbol.svg"
@@ -184,7 +173,6 @@ const Header = ({ t, lang, setLang }) => {
               loading="lazy"
               decoding="async"
             />
-
             <div>
               <div className="script text-2xl text-[var(--brand-brown-dark)] leading-none">
                 {t.brand2}
@@ -228,17 +216,7 @@ const Header = ({ t, lang, setLang }) => {
                 className="w-4 h-4"
                 aria-hidden="true"
               >
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 
-                19.8 19.8 0 0 1-8.63-3.07 
-                19.5 19.5 0 0 1-6-6 
-                19.8 19.8 0 0 1-3.07-8.67 
-                A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 
-                12.3 12.3 0 0 0 .7 2.81 
-                2 2 0 0 1-.45 2.11L8.09 9.91 
-                a16 16 0 0 0 6 6l1.27-1.27 
-                a2 2 0 0 1 2.11-.45 
-                12.3 12.3 0 0 0 2.81.7 
-                A2 2 0 0 1 22 16.92z" />
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67 A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.3 12.3 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91 a16 16 0 0 0 6 6l1.27-1.27 a2 2 0 0 1 2.11-.45 12.3 12.3 0 0 0 2.81.7 A2 2 0 0 1 22 16.92z" />
               </svg>
               <span className="hidden lg:inline">+420&nbsp;724&nbsp;379&nbsp;309</span>
             </a>
@@ -257,6 +235,7 @@ const Header = ({ t, lang, setLang }) => {
               >
                 CZ
               </button>
+
               <button
                 onClick={() => setLang("en")}
                 className={
@@ -343,6 +322,7 @@ const Header = ({ t, lang, setLang }) => {
                     >
                       CZ
                     </button>
+
                     <button
                       type="button"
                       onClick={() => setLang("en")}
@@ -359,12 +339,12 @@ const Header = ({ t, lang, setLang }) => {
                 </div>
 
                 <a
-  href="tel:+420724379309"
-  className="w-full text-center px-4 py-4 rounded-2xl border border-[var(--line)] bg-[var(--bg2)] hover:border-[var(--sand)] transition font-semibold"
-  onClick={() => setMenuOpen(false)}
->
-  {lang === "cs" ? "Zavolat" : "Call"} +420 724 379 309
-</a>
+                  href="tel:+420724379309"
+                  className="w-full text-center px-4 py-4 rounded-2xl border border-[var(--line)] bg-[var(--bg2)] hover:border-[var(--sand)] transition font-semibold"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {lang === "cs" ? "Zavolat" : "Call"} +420 724 379 309
+                </a>
               </div>
             </div>
           </div>
@@ -403,11 +383,9 @@ function Hero({ t, small = false, showCta = false, intervalMs = 8000, bg, title 
 
     const run = () => {
       setStage("exit");
-
       timerRef.current = setTimeout(() => {
         setIndex((i) => (i + 1) % slides.length);
         setStage("enter");
-
         timerRef.current = setTimeout(() => {
           setStage("show");
         }, 40);
@@ -423,9 +401,7 @@ function Hero({ t, small = false, showCta = false, intervalMs = 8000, bg, title 
 
   const slide = slides[index] || {};
   const effectiveBg = small && bg ? bg : slide.bg;
-
   const bgPos = isMobile ? slide.posMobile || slide.pos || "center" : slide.pos || "center";
-
   const bgClass = stage === "exit" ? "opacity-0 scale-[1.03]" : "opacity-100 scale-100";
   const textClass = stage === "exit" ? "opacity-0 translate-y-2" : "opacity-100 translate-y-0";
 
@@ -438,8 +414,7 @@ function Hero({ t, small = false, showCta = false, intervalMs = 8000, bg, title 
     >
       <div
         className={
-          "absolute inset-0 transition-all duration-1000 ease-in-out will-change-transform " +
-          bgClass
+          "absolute inset-0 transition-all duration-1000 ease-in-out will-change-transform " + bgClass
         }
         style={{
           backgroundImage: `linear-gradient(to right, rgba(0,0,0,.25), rgba(0,0,0,.05)), url('${effectiveBg || ""}')`,
@@ -457,26 +432,17 @@ function Hero({ t, small = false, showCta = false, intervalMs = 8000, bg, title 
             textClass
           }
         >
-          <h1 className="script text-3xl md:text-5xl leading-tight mb-3 max-w-3xl">
-            {title || slide.h1 || ""}
-          </h1>
-
+          <h1 className="script text-4xl md:text-6xl mb-3">{title || slide.h1 || ""}</h1>
           <p className="text-lg opacity-95">{t.heroSub}</p>
 
           {!small && showCta && (
-            <>
-              <button
-                onClick={() => go("/contact")}
-                className="btn-cta inline-block mt-6 px-5 py-3 rounded-full bg-[var(--sand)] text-[var(--text)] font-bold border border-black/5"
-                type="button"
-              >
-                {t.cta}
-              </button>
-
-              <p className="mt-4 text-sm text-white/80 max-w-md leading-relaxed">
-                Zakázkové záclony, závěsy, rolety a garnýže na míru. Návrh, výroba i montáž.
-              </p>
-            </>
+            <button
+              onClick={() => go("/contact")}
+              className="btn-cta inline-block mt-6 px-5 py-3 rounded-full bg-[var(--sand)] text-[var(--text)] font-bold border border-black/5"
+              type="button"
+            >
+              {t.cta}
+            </button>
           )}
         </div>
       </div>
@@ -491,149 +457,118 @@ function Home({ t }) {
     <>
       <Hero t={t} showCta intervalMs={8000} />
 
-    {/* TRUST BLOK */}
-    <section className="py-10 max-w-6xl mx-auto px-4 reveal">
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        {(t.homeTrust || []).map((item, i) => (
-          <div
-            key={i}
-            className="rounded-2xl border border-[var(--line)] bg-white soft-shadow px-5 py-5 text-center"
-          >
-            <div className="text-2xl md:text-3xl font-semibold text-[var(--brand-brown-dark)]">
-              {item.value}
-            </div>
-            <div className="text-sm text-[var(--muted)] mt-1">
-              {item.label}
-            </div>
-          </div>
-        ))}
-      </div>
-    </section>
-
-    {/* dál pokračuje tvůj původní obsah */}
-
       {/* ===== ABOUT ===== */}
-     <section className="py-16 max-w-6xl mx-auto px-4 reveal">
-  <div className="grid md:grid-cols-2 gap-8 items-center">
-    <div className="soft-shadow rounded-2xl overflow-hidden">
-      <img
-        src="assets/img/Onas/onas-01.webp"
-        alt="Interior"
-        className="w-full h-full object-cover"
-        loading="lazy"
-        decoding="async"
-      />
-    </div>
-
-    <div>
-      <h2 className="text-3xl md:text-4xl font-semibold leading-tight mb-4">{t.homeAboutH}</h2>
-      {(t.homeAbout || []).map((p, idx) => (
-        <p
-          key={idx}
-          className={"text-[var(--muted)] text-lg leading-relaxed" + (idx > 0 ? " mt-4" : "")}
-        >
-          {p}
-        </p>
-      ))}
-    </div>
-  </div>
-</section>
-
-{/* ===== SERVICES ===== */}
-<section className="py-16 max-w-6xl mx-auto px-4 reveal">
-  <h2 className="text-3xl md:text-4xl font-semibold leading-tight mb-8">{t.servicesH}</h2>
-
-  <div className="grid sm:grid-cols-2 md:grid-cols-5 gap-6">
-    {(t.services || []).map((s, i) => {
-      const hash = ["zaclon", "zaves", "roleta", "systemy", "servis"][i];
-
-      return (
-        <button
-          key={i}
-          onClick={() => go(`/pricing#${hash}?mode=center`)}
-          className="service-card soft-shadow reveal text-left hover:translate-y-[-1px] transition flex flex-col"
-          type="button"
-        >
-          <div className="text-lg font-semibold mb-2">{s.name}</div>
-
-          <p className="text-[var(--muted)] text-sm leading-relaxed flex-grow flex items-center">
-            {s.note}
-          </p>
-
-          <div className="mt-3 text-xs tracking-widest text-[var(--muted)]">
-            {t.serviceCardCta}
+      <section className="py-16 max-w-6xl mx-auto px-4 reveal">
+        <div className="grid md:grid-cols-2 gap-8 items-center">
+          <div className="soft-shadow rounded-2xl overflow-hidden">
+            <img
+              src="assets/img/Onas/onas-01.webp"
+              alt="Interior"
+              className="w-full h-full object-cover"
+              loading="lazy"
+              decoding="async"
+            />
           </div>
-        </button>
-      );
-    })}
-  </div>
-</section>
 
-{/* ===== ATMOSPHERE ===== */}
-<section className="py-16 max-w-6xl mx-auto px-4 reveal">
-  <h2 className="script text-4xl mb-3">{t.inspH}</h2>
-
-  <p className="text-[var(--text)]/80 text-lg md:text-xl leading-relaxed mb-6 max-w-3xl whitespace-pre-line">
-    {t.inspLead}
-  </p>
-
-  <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-    {[
-      { src: "assets/img/atmosfera/atmosfera-01.webp", tags: (t.inspTags || [])[0] || "" },
-      { src: "assets/img/atmosfera/atmosfera-02.webp", tags: (t.inspTags || [])[1] || "" },
-      { src: "assets/img/atmosfera/atmosfera-03.webp", tags: (t.inspTags || [])[2] || "" }
-    ].map((item, i) => (
-      <div key={i} className="relative inspiration-img soft-shadow overflow-hidden">
-        <img
-          src={item.src}
-          alt={`Atmosphere ${i + 1}`}
-          className="w-full h-full object-cover aspect-[4/3]"
-          loading="lazy"
-          decoding="async"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/0 to-transparent" />
-        <div className="absolute bottom-3 left-4 text-xs tracking-wide text-white/90">
-          {item.tags}
+          <div>
+            <h2 className="script text-4xl mb-4">{t.homeAboutH}</h2>
+            {(t.homeAbout || []).map((p, idx) => (
+              <p
+                key={idx}
+                className={"text-[var(--muted)] text-lg leading-relaxed" + (idx > 0 ? " mt-4" : "")}
+              >
+                {p}
+              </p>
+            ))}
+          </div>
         </div>
-      </div>
-    ))}
-  </div>
-</section>
+      </section>
 
-{/* ===== BENEFITS ===== */}
-<section className="py-16 max-w-6xl mx-auto px-4 reveal">
-  <h2 className="text-3xl md:text-4xl font-semibold leading-tight mb-8">{t.benefitsH}</h2>
+      {/* ===== SERVICES ===== */}
+      <section className="py-16 max-w-6xl mx-auto px-4 reveal">
+        <h2 className="script text-4xl mb-8">{t.servicesH}</h2>
+        <div className="grid sm:grid-cols-2 md:grid-cols-5 gap-6">
+          {(t.services || []).map((s, i) => {
+            const hash = ["zaclon", "zaves", "roleta", "systemy", "servis"][i];
+            return (
+              <button
+                key={i}
+                onClick={() => go(`/pricing#${hash}?mode=center`)}
+                className="service-card soft-shadow reveal text-left hover:translate-y-[-1px] transition flex flex-col"
+                type="button"
+              >
+                <div className="text-lg font-semibold mb-2">{s.name}</div>
+                <p className="text-[var(--muted)] text-sm leading-relaxed flex-grow flex items-center">
+                  {s.note}
+                </p>
+                <div className="mt-3 text-xs tracking-widest text-[var(--muted)]">
+                  {t.serviceCardCta}
+                </div>
+              </button>
+            );
+          })}
+        </div>
+      </section>
 
-  <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
-    {(t.benefits || []).map((b, i) => {
-      const hash = ["individualni-navrh", "zkusenosti", "detail"][i];
+      {/* ===== ATMOSPHERE ===== */}
+      <section className="py-16 max-w-6xl mx-auto px-4 reveal">
+        <h2 className="script text-4xl mb-3">{t.inspH}</h2>
+        <p className="text-[var(--text)]/80 text-lg md:text-xl leading-relaxed mb-6 max-w-3xl whitespace-pre-line">
+          {t.inspLead}
+        </p>
 
-      return (
-        <button
-          key={i}
-          onClick={() => go(`/process#${hash}?mode=center`)}
-          className="benefit-card soft-shadow reveal text-left hover:translate-y-[-1px] transition flex flex-col"
-          type="button"
-        >
-          <div className="text-lg font-semibold mb-2">{b.name}</div>
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+          {[
+            { src: "assets/img/atmosfera/atmosfera-01.webp", tags: (t.inspTags || [])[0] || "" },
+            { src: "assets/img/atmosfera/atmosfera-02.webp", tags: (t.inspTags || [])[1] || "" },
+            { src: "assets/img/atmosfera/atmosfera-03.webp", tags: (t.inspTags || [])[2] || "" }
+          ].map((item, i) => (
+            <div key={i} className="relative inspiration-img soft-shadow overflow-hidden">
+              <img
+                src={item.src}
+                alt={`Atmosphere ${i + 1}`}
+                className="w-full h-full object-cover aspect-[4/3]"
+                loading="lazy"
+                decoding="async"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/0 to-transparent" />
+              <div className="absolute bottom-3 left-4 text-xs tracking-wide text-white/90">
+                {item.tags}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
 
-          <p className="text-[var(--muted)] text-sm leading-relaxed flex-grow flex items-center">
-            {b.note}
-          </p>
-
-          <div className="mt-3 text-xs tracking-widest text-[var(--muted)]">
-            {t.benefitCardCta}
-          </div>
-        </button>
-      );
-    })}
-  </div>
-</section>
+      {/* ===== BENEFITS ===== */}
+      <section className="py-16 max-w-6xl mx-auto px-4 reveal">
+        <h2 className="script text-4xl mb-8">{t.benefitsH}</h2>
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+          {(t.benefits || []).map((b, i) => {
+            const hash = ["individualni-navrh", "zkusenosti", "detail"][i];
+            return (
+              <button
+                key={i}
+                onClick={() => go(`/process#${hash}?mode=center`)}
+                className="benefit-card soft-shadow reveal text-left hover:translate-y-[-1px] transition flex flex-col"
+                type="button"
+              >
+                <div className="text-lg font-semibold mb-2">{b.name}</div>
+                <p className="text-[var(--muted)] text-sm leading-relaxed flex-grow flex items-center">
+                  {b.note}
+                </p>
+                <div className="mt-3 text-xs tracking-widest text-[var(--muted)]">
+                  {t.benefitCardCta}
+                </div>
+              </button>
+            );
+          })}
+        </div>
+      </section>
 
       {/* ===== FAQ ===== */}
-     <section className="py-16 max-w-4xl mx-auto px-4 reveal">
-  <h2 className="text-3xl md:text-4xl font-semibold leading-tight mb-6">{t.faqH}</h2>
-
+      <section className="py-16 max-w-4xl mx-auto px-4 reveal">
+        <h2 className="script text-4xl mb-6">{t.faqH}</h2>
         {(t.faq || []).map((f, i) => (
           <div key={i} className="faq-item">
             <div className="font-semibold mb-1">{f.q}</div>
@@ -651,7 +586,6 @@ function Home({ t }) {
         >
           {t.cta}
         </button>
-
         <p className="text-sm text-[var(--muted)] mt-4">{t.homeCtaNote}</p>
       </section>
     </>
@@ -660,9 +594,7 @@ function Home({ t }) {
 
 function Process({ t }) {
   useReveal();
-
   const bgTop = "assets/img/hero/process-hero-v2.webp";
-
   const steps = t.steps || [];
   const texts = t.stepsTxt || [];
   const imgs = t.processImgs || [];
@@ -699,16 +631,11 @@ function Process({ t }) {
                     </div>
 
                     <div className="max-w-xl">
-                      <div className="text-xs tracking-widest text-[var(--muted)] mb-2">
-                        {n}
-                      </div>
-
+                      <div className="text-xs tracking-widest text-[var(--muted)] mb-2">{n}</div>
                       <h3 className="text-2xl font-semibold mb-2">{title}</h3>
-
                       <p className="text-[var(--muted)] text-base leading-relaxed whitespace-pre-line">
                         {texts[i]}
                       </p>
-
                       <div className="mt-4 inline-flex items-center gap-2 text-sm text-[var(--muted)]">
                         <span className="w-10 h-px bg-[var(--line)]" />
                         <span>{(t.processMicroByStep || [])[i] || ""}</span>
@@ -719,9 +646,7 @@ function Process({ t }) {
                   {i < steps.length - 1 && (
                     <div className="reveal text-center py-2 md:py-3">
                       <div className="mx-auto w-24 h-px bg-[var(--line)]/80 mb-3" />
-                      <p className="text-xs italic text-[var(--muted)]">
-                        {bridges[i] || ""}
-                      </p>
+                      <p className="text-xs italic text-[var(--muted)]">{bridges[i] || ""}</p>
                     </div>
                   )}
                 </React.Fragment>
@@ -743,7 +668,6 @@ function Process({ t }) {
                 className="rounded-2xl bg-white border border-[var(--line)] soft-shadow p-7 reveal scroll-mt-24 flex flex-col"
               >
                 <h4 className="text-lg font-semibold mb-3">{c.title}</h4>
-
                 <div className="flex-1 flex flex-col justify-between">
                   <p className="text-[var(--muted)] leading-relaxed">{c.p1}</p>
                   <p className="text-[var(--muted)] leading-relaxed mt-3">{c.p2}</p>
@@ -806,7 +730,6 @@ function Pricing({ t }) {
                   <div className="text-sm italic text-[var(--muted)] mt-1">{subtitle}</div>
                 ) : null}
               </div>
-
               <button
                 type="button"
                 onClick={onClose}
@@ -842,15 +765,14 @@ function Pricing({ t }) {
 
   const bgTop = "assets/img/hero/pricing-hero.webp";
   const items = useMemo(() => t.pricingItems || [], [t]);
-
   const activeItem = activeKey ? items.find((i) => i.key === activeKey) : null;
 
   const currentItem =
     activeItem?.key === "roleta"
       ? activeItem.subtypes?.[roletaTypeIdx] || activeItem.subtypes?.[0] || activeItem
       : activeItem?.key === "systemy"
-        ? activeItem.subtypes?.[systemyTypeIdx] || activeItem.subtypes?.[0] || activeItem
-        : activeItem;
+      ? activeItem.subtypes?.[systemyTypeIdx] || activeItem.subtypes?.[0] || activeItem
+      : activeItem;
 
   return (
     <>
@@ -877,14 +799,11 @@ function Pricing({ t }) {
                 <div className="md:col-span-7 p-5 md:p-6 flex flex-col justify-between">
                   <div>
                     <h3 className="text-2xl font-semibold">{x.title}</h3>
-
                     <div className="mt-2 text-sm italic text-[var(--muted)]">{x.vibe}</div>
-
                     <div className="mt-4 inline-flex items-center gap-2 text-sm text-[var(--muted)]">
                       <span className="w-10 h-px bg-[var(--line)]" />
                       <span>{x.micro}</span>
                     </div>
-
                     <p
                       className="mt-4 text-[var(--muted)] text-sm leading-relaxed overflow-hidden"
                       style={{
@@ -907,7 +826,8 @@ function Pricing({ t }) {
                       }}
                       className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold border border-[var(--line)] bg-white hover:bg-[var(--bg2)] hover:border-[var(--sand)] transition"
                     >
-                      {t.openDetail} <span aria-hidden="true">→</span>
+                      {t.openDetail}
+                      <span aria-hidden="true">→</span>
                     </button>
                   </div>
                 </div>
@@ -989,6 +909,7 @@ function Pricing({ t }) {
                   <div className="mt-3">
                     <RangeChipsLocal items={currentItem.ranges} />
                   </div>
+
                   {currentItem.rangesNote ? (
                     <p className="mt-3 text-xs text-[var(--muted)] leading-relaxed">
                       {currentItem.rangesNote}
@@ -1006,13 +927,9 @@ function Pricing({ t }) {
                 ) : (
                   <div className="rounded-2xl border border-[var(--line)] bg-white px-4 py-4">
                     <div className="text-sm font-semibold">{currentItem.tiersTitle}</div>
-
                     <div className="grid sm:grid-cols-3 gap-4 mt-3">
                       {(currentItem.tiers || []).map((t0, i) => (
-                        <div
-                          key={i}
-                          className="rounded-xl bg-[var(--bg2)] px-4 py-3 flex flex-col h-full"
-                        >
+                        <div key={i} className="rounded-xl bg-[var(--bg2)] px-4 py-3 flex flex-col h-full">
                           <div className="text-sm font-semibold leading-snug min-h-[2.6rem]">
                             {t0.name}
                           </div>
@@ -1034,7 +951,8 @@ function Pricing({ t }) {
                     }}
                     className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold border border-[var(--line)] bg-white hover:bg-[var(--bg2)] hover:border-[var(--sand)] transition"
                   >
-                    {t.writeMe} <span aria-hidden="true">→</span>
+                    {t.writeMe}
+                    <span aria-hidden="true">→</span>
                   </button>
 
                   <button
@@ -1053,7 +971,6 @@ function Pricing({ t }) {
     </>
   );
 }
-
 function Gallery({ t }) {
   useReveal();
 
@@ -1271,7 +1188,6 @@ function Gallery({ t }) {
   const onTouchEndOurWork = (e) => {
     touchEndXRef.current = e.changedTouches[0].clientX;
     const diff = touchStartXRef.current - touchEndXRef.current;
-
     if (Math.abs(diff) < 40) return;
 
     if (diff > 0) {
@@ -1289,7 +1205,9 @@ function Gallery({ t }) {
         <div className="flex items-end justify-between gap-4">
           <div className="max-w-3xl">
             <h3 className="script text-3xl mb-3">{t.galleryOurWorkH}</h3>
-            <p className="text-[var(--muted)] text-sm leading-relaxed">{t.galleryOurWorkP}</p>
+            <p className="text-[var(--muted)] text-sm leading-relaxed">
+              {t.galleryOurWorkP}
+            </p>
           </div>
 
           <button
@@ -1346,7 +1264,11 @@ function Gallery({ t }) {
                 <div className="ow-sub">{t.galleryModalSub}</div>
               </div>
 
-              <button type="button" onClick={() => setOurWorkOpen(false)} className="ow-close">
+              <button
+                type="button"
+                onClick={() => setOurWorkOpen(false)}
+                className="ow-close"
+              >
                 {t.close}
               </button>
             </div>
@@ -1358,6 +1280,7 @@ function Gallery({ t }) {
                     {row.map((src, i) => {
                       const absoluteIndex = rIdx * perRow + i;
                       const grow = ratios[absoluteIndex] || 1.6;
+
                       return (
                         <a
                           key={src}
@@ -1377,8 +1300,11 @@ function Gallery({ t }) {
                               const w = img.naturalWidth || 1;
                               const h = img.naturalHeight || 1;
                               const ratio = Math.max(0.7, Math.min(3.2, w / h));
+
                               setRatios((prev) =>
-                                prev[absoluteIndex] ? prev : { ...prev, [absoluteIndex]: ratio }
+                                prev[absoluteIndex]
+                                  ? prev
+                                  : { ...prev, [absoluteIndex]: ratio }
                               );
                             }}
                           />
@@ -1456,7 +1382,9 @@ function Gallery({ t }) {
       <section className="max-w-6xl mx-auto px-4 pb-20 reveal">
         <div className="max-w-3xl">
           <h3 className="script text-3xl mb-3">{t.galleryPartnersH}</h3>
-          <p className="text-[var(--muted)] text-sm leading-relaxed">{t.galleryPartnersP}</p>
+          <p className="text-[var(--muted)] text-sm leading-relaxed">
+            {t.galleryPartnersP}
+          </p>
         </div>
 
         <div className="mt-10 space-y-6">
@@ -1527,7 +1455,6 @@ function Finished({ t }) {
         <div className="max-w-4xl mx-auto mt-10">
           <div className="rounded-2xl border border-dashed border-[var(--line)] bg-[var(--bg2)] p-10 text-center soft-shadow">
             <h3 className="text-xl font-semibold mb-3">{t.finishedBoxH}</h3>
-
             <p className="text-[var(--muted)] text-sm leading-relaxed max-w-2xl mx-auto whitespace-pre-line">
               {t.finishedBoxP}
             </p>
@@ -1558,23 +1485,26 @@ function Essences({ t }) {
       <Hero t={t} small bg={bg} title={t.essenceH} />
 
       <section className="max-w-6xl mx-auto px-4 py-16 reveal">
-        <p className="text-[var(--muted)] max-w-3xl mb-8 mx-auto text-center">{t.essenceLead}</p>
+        <p className="text-[var(--muted)] max-w-3xl mb-8 mx-auto text-center">
+          {t.essenceLead}
+        </p>
 
         <div className="max-w-3xl mx-auto mt-10">
           <div className="rounded-2xl border border-dashed border-[var(--line)] bg-[var(--bg2)] p-8 text-center soft-shadow">
             <h3 className="text-lg font-semibold mb-2">{t.essenceBoxH}</h3>
-
             <p className="text-[var(--muted)] text-sm leading-relaxed whitespace-pre-line">
               {t.essenceBoxP}
             </p>
-
-            <p className="text-xs tracking-wide text-[var(--muted)] mt-4">{t.essenceBoxFoot}</p>
+            <p className="text-xs tracking-wide text-[var(--muted)] mt-4">
+              {t.essenceBoxFoot}
+            </p>
           </div>
         </div>
       </section>
     </>
   );
 }
+
 function Contact({ t }) {
   useReveal();
 
@@ -1583,19 +1513,16 @@ function Contact({ t }) {
   const [phone, setPhone] = React.useState("");
   const [message, setMessage] = React.useState("");
   const [touched, setTouched] = React.useState(false);
-
   const [sending, setSending] = React.useState(false);
   const [statusMsg, setStatusMsg] = React.useState("");
   const [statusKind, setStatusKind] = React.useState(""); // "", "success", "error"
   const [showModal, setShowModal] = React.useState(false);
-
   const [files, setFiles] = React.useState([]);
 
   const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
   const phoneOk = phone.trim().length >= 6;
   const nameOk = name.trim().length >= 2;
   const messageOk = message.trim().length >= 5;
-
   const canSend = nameOk && emailOk && phoneOk && messageOk;
 
   const SCRIPT_URL = "https://hook.eu1.make.com/o1lk627xrpjl8d6exq9sh5yrplr58sw8";
@@ -1604,9 +1531,9 @@ function Contact({ t }) {
   const MAX_FILES = 5;
 
   // ✅ komprese = rychlejší upload do Make/Drive
-  const MAX_EDGE = 1600;       // px
-  const JPEG_QUALITY = 0.75;   // 0..1
-  const MAX_TOTAL_MB = 12;     // bezpečně nízko
+  const MAX_EDGE = 1600; // px
+  const JPEG_QUALITY = 0.75; // 0..1
+  const MAX_TOTAL_MB = 12; // bezpečně nízko
 
   function bytesToMB(b) {
     return b / (1024 * 1024);
@@ -1617,7 +1544,6 @@ function Contact({ t }) {
 
     try {
       const img = await createImageBitmap(file);
-
       let w = img.width;
       let h = img.height;
 
@@ -1683,13 +1609,14 @@ function Contact({ t }) {
       setSending(true);
 
       const selected = files.slice(0, MAX_FILES);
-
       const compressed = [];
+
       for (const f of selected) {
         compressed.push(await compressImage(f));
       }
 
       const totalBytes = compressed.reduce((s, f) => s + (f?.size || 0), 0);
+
       if (bytesToMB(totalBytes) > MAX_TOTAL_MB) {
         throw new Error(
           `Přílohy jsou moc velké (${bytesToMB(totalBytes).toFixed(1)} MB). Zkus vybrat méně fotek nebo menší.`
@@ -1931,7 +1858,6 @@ function Contact({ t }) {
               </button>
 
               {statusMsg && <p className="text-sm mt-2">{statusMsg}</p>}
-
               <p className="text-[var(--muted)] text-sm">{t.contactDemo}</p>
             </div>
           </form>
@@ -1983,6 +1909,7 @@ function Contact({ t }) {
             <div className="text-lg font-semibold mb-2">
               {statusKind === "success" ? "Odesláno" : "Něco se nepovedlo"}
             </div>
+
             <p className="text-sm text-[var(--muted)]">
               {statusKind === "success"
                 ? "Děkujeme! Ozveme se vám co nejdříve."
@@ -2004,8 +1931,10 @@ function Contact({ t }) {
     </>
   );
 }
+
 function Terms({ t }) {
   useReveal();
+
   return (
     <section className="max-w-4xl mx-auto px-4 py-16 reveal">
       <h2 className="script text-4xl mb-6">{t.termsH}</h2>
@@ -2023,6 +1952,7 @@ function Terms({ t }) {
 
 function Privacy({ t }) {
   useReveal();
+
   return (
     <section className="max-w-4xl mx-auto px-4 py-16 reveal">
       <h2 className="script text-4xl mb-6">{t.privacyH}</h2>
@@ -2040,9 +1970,11 @@ function Privacy({ t }) {
 
 function CookiesPage({ t }) {
   useReveal();
+
   return (
     <section className="max-w-4xl mx-auto px-4 py-16 reveal">
       <h2 className="script text-4xl mb-6">{t.cookiesH}</h2>
+
       {(t.cookiesP || []).map((p, i) => (
         <p key={i} className="text-[var(--muted)] text-sm mb-3">
           {p}
@@ -2055,6 +1987,7 @@ function CookiesPage({ t }) {
 function App() {
   const { lang, setLang, t } = useLang();
   const { path } = useRoute();
+
   useReveal();
 
   const Page = useMemo(() => {
@@ -2085,7 +2018,6 @@ function App() {
   return (
     <>
       <Header t={t} lang={lang} setLang={setLang} />
-
       <main className="pt-16">{Page}</main>
 
       <footer className="bg-[#222] text-[#ddd] mt-10 reveal">
@@ -2099,11 +2031,9 @@ function App() {
               loading="lazy"
               decoding="async"
             />
-
             <div>
               <div className="script text-2xl text-white">{t.brand2}</div>
               <div className="text-sm text-[#bdbdbd]">{t.brand1}</div>
-
               <p className="text-sm text-[#bdbdbd] mt-4 leading-relaxed whitespace-pre-line">
                 {t.footerBlurb}
               </p>
@@ -2113,12 +2043,11 @@ function App() {
           {/* CONTACT */}
           <div>
             <div className="text-white font-semibold mb-3">{t.footerContactH}</div>
-
             <div className="text-sm text-[#bdbdbd] space-y-2">
               <div>
                 {t.email}:{" "}
                 <a className="underline hover:text-white" href="mailto:hello@janasegelberg.com">
-                 info@stinenisesenci.cz
+                  info@stinenisesenci.cz
                 </a>
               </div>
 
@@ -2144,22 +2073,33 @@ function App() {
           {/* LEGAL */}
           <div>
             <div className="text-white font-semibold mb-3">{t.footerLegalH}</div>
-
             <div className="text-sm text-[#bdbdbd] space-y-2">
               <div>
-                <button type="button" onClick={() => go("/terms")} className="underline hover:text-white">
+                <button
+                  type="button"
+                  onClick={() => go("/terms")}
+                  className="underline hover:text-white"
+                >
                   {t.footerTerms}
                 </button>
               </div>
 
               <div>
-                <button type="button" onClick={() => go("/privacy")} className="underline hover:text-white">
+                <button
+                  type="button"
+                  onClick={() => go("/privacy")}
+                  className="underline hover:text-white"
+                >
                   {t.footerPrivacy}
                 </button>
               </div>
 
               <div>
-                <button type="button" onClick={() => go("/cookies")} className="underline hover:text-white">
+                <button
+                  type="button"
+                  onClick={() => go("/cookies")}
+                  className="underline hover:text-white"
+                >
                   {t.footerCookies}
                 </button>
               </div>
@@ -2199,12 +2139,16 @@ function App() {
 
 // ===== MOUNT APP (NECHAT ÚPLNĚ DOLE) =====
 const rootEl = document.getElementById("root");
+
 if (!rootEl) {
   console.error('Missing <div id="root"></div> in index.html');
 } else {
   const root = ReactDOM.createRoot(rootEl);
   root.render(<App />);
 }
+
+
+
 
 
 
