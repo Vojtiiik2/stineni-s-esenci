@@ -457,19 +457,26 @@ function Hero({ t, small = false, showCta = false, intervalMs = 8000, bg, title 
             textClass
           }
         >
-         <h1 className="text-4xl md:text-5xl font-semibold leading-tight mb-3 max-w-3xl">
-  {title || slide.h1 || ""}
-</h1>
+          <h1 className="script text-3xl md:text-5xl leading-tight mb-3 max-w-3xl">
+            {title || slide.h1 || ""}
+          </h1>
+
           <p className="text-lg opacity-95">{t.heroSub}</p>
 
           {!small && showCta && (
-            <button
-              onClick={() => go("/contact")}
-              className="btn-cta inline-block mt-6 px-5 py-3 rounded-full bg-[var(--sand)] text-[var(--text)] font-bold border border-black/5"
-              type="button"
-            >
-              {t.cta}
-            </button>
+            <>
+              <button
+                onClick={() => go("/contact")}
+                className="btn-cta inline-block mt-6 px-5 py-3 rounded-full bg-[var(--sand)] text-[var(--text)] font-bold border border-black/5"
+                type="button"
+              >
+                {t.cta}
+              </button>
+
+              <p className="mt-4 text-sm text-white/80 max-w-md leading-relaxed">
+                Zakázkové záclony, závěsy, rolety a garnýže na míru. Návrh, výroba i montáž.
+              </p>
+            </>
           )}
         </div>
       </div>
