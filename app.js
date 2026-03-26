@@ -506,122 +506,122 @@ function Home({ t }) {
     {/* dál pokračuje tvůj původní obsah */}
 
       {/* ===== ABOUT ===== */}
-      <section className="py-16 max-w-6xl mx-auto px-4 reveal">
-        <div className="grid md:grid-cols-2 gap-8 items-center">
-          <div className="soft-shadow rounded-2xl overflow-hidden">
-            <img
-              src="assets/img/Onas/onas-01.webp"
-              alt="Interior"
-              className="w-full h-full object-cover"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
+     <section className="py-16 max-w-6xl mx-auto px-4 reveal">
+  <div className="grid md:grid-cols-2 gap-8 items-center">
+    <div className="soft-shadow rounded-2xl overflow-hidden">
+      <img
+        src="assets/img/Onas/onas-01.webp"
+        alt="Interior"
+        className="w-full h-full object-cover"
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
 
-          <div>
-           <h2 className="text-3xl md:text-4xl font-semibold leading-tight mb-4">{t.homeAboutH}</h2>
-            {(t.homeAbout || []).map((p, idx) => (
-              <p
-                key={idx}
-                className={"text-[var(--muted)] text-lg leading-relaxed" + (idx > 0 ? " mt-4" : "")}
-              >
-                {p}
-              </p>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ===== SERVICES ===== */}
-      <section className="py-16 max-w-6xl mx-auto px-4 reveal">
-       <h2 className="text-3xl md:text-4xl font-semibold leading-tight mb-8">{t.servicesH}</h2>
-        
-        <div className="grid sm:grid-cols-2 md:grid-cols-5 gap-6">
-          {(t.services || []).map((s, i) => {
-            const hash = ["zaclon", "zaves", "roleta", "systemy", "servis"][i];
-
-            return (
-              <button
-                key={i}
-                onClick={() => go(`/pricing#${hash}?mode=center`)}
-                className="service-card soft-shadow reveal text-left hover:translate-y-[-1px] transition flex flex-col"
-                type="button"
-              >
-                <div className="text-lg font-semibold mb-2">{s.name}</div>
-
-                <p className="text-[var(--muted)] text-sm leading-relaxed flex-grow flex items-center">
-                  {s.note}
-                </p>
-
-                <div className="mt-3 text-xs tracking-widest text-[var(--muted)]">
-                  {t.serviceCardCta}
-                </div>
-              </button>
-            );
-          })}
-        </div>
-      </section>
-
-      {/* ===== ATMOSPHERE ===== */}
-      <section className="py-16 max-w-6xl mx-auto px-4 reveal">
-       className="script text-4xl mb-3">{t.inspH}</h2>
-
-        <p className="text-[var(--text)]/80 text-lg md:text-xl leading-relaxed mb-6 max-w-3xl whitespace-pre-line">
-          {t.inspLead}
+    <div>
+      <h2 className="text-3xl md:text-4xl font-semibold leading-tight mb-4">{t.homeAboutH}</h2>
+      {(t.homeAbout || []).map((p, idx) => (
+        <p
+          key={idx}
+          className={"text-[var(--muted)] text-lg leading-relaxed" + (idx > 0 ? " mt-4" : "")}
+        >
+          {p}
         </p>
+      ))}
+    </div>
+  </div>
+</section>
 
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-          {[
-            { src: "assets/img/atmosfera/atmosfera-01.webp", tags: (t.inspTags || [])[0] || "" },
-            { src: "assets/img/atmosfera/atmosfera-02.webp", tags: (t.inspTags || [])[1] || "" },
-            { src: "assets/img/atmosfera/atmosfera-03.webp", tags: (t.inspTags || [])[2] || "" }
-          ].map((item, i) => (
-            <div key={i} className="relative inspiration-img soft-shadow overflow-hidden">
-              <img
-                src={item.src}
-                alt={`Atmosphere ${i + 1}`}
-                className="w-full h-full object-cover aspect-[4/3]"
-                loading="lazy"
-                decoding="async"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/0 to-transparent" />
-              <div className="absolute bottom-3 left-4 text-xs tracking-wide text-white/90">
-                {item.tags}
-              </div>
-            </div>
-          ))}
+{/* ===== SERVICES ===== */}
+<section className="py-16 max-w-6xl mx-auto px-4 reveal">
+  <h2 className="text-3xl md:text-4xl font-semibold leading-tight mb-8">{t.servicesH}</h2>
+
+  <div className="grid sm:grid-cols-2 md:grid-cols-5 gap-6">
+    {(t.services || []).map((s, i) => {
+      const hash = ["zaclon", "zaves", "roleta", "systemy", "servis"][i];
+
+      return (
+        <button
+          key={i}
+          onClick={() => go(`/pricing#${hash}?mode=center`)}
+          className="service-card soft-shadow reveal text-left hover:translate-y-[-1px] transition flex flex-col"
+          type="button"
+        >
+          <div className="text-lg font-semibold mb-2">{s.name}</div>
+
+          <p className="text-[var(--muted)] text-sm leading-relaxed flex-grow flex items-center">
+            {s.note}
+          </p>
+
+          <div className="mt-3 text-xs tracking-widest text-[var(--muted)]">
+            {t.serviceCardCta}
+          </div>
+        </button>
+      );
+    })}
+  </div>
+</section>
+
+{/* ===== ATMOSPHERE ===== */}
+<section className="py-16 max-w-6xl mx-auto px-4 reveal">
+  <h2 className="script text-4xl mb-3">{t.inspH}</h2>
+
+  <p className="text-[var(--text)]/80 text-lg md:text-xl leading-relaxed mb-6 max-w-3xl whitespace-pre-line">
+    {t.inspLead}
+  </p>
+
+  <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+    {[
+      { src: "assets/img/atmosfera/atmosfera-01.webp", tags: (t.inspTags || [])[0] || "" },
+      { src: "assets/img/atmosfera/atmosfera-02.webp", tags: (t.inspTags || [])[1] || "" },
+      { src: "assets/img/atmosfera/atmosfera-03.webp", tags: (t.inspTags || [])[2] || "" }
+    ].map((item, i) => (
+      <div key={i} className="relative inspiration-img soft-shadow overflow-hidden">
+        <img
+          src={item.src}
+          alt={`Atmosphere ${i + 1}`}
+          className="w-full h-full object-cover aspect-[4/3]"
+          loading="lazy"
+          decoding="async"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/0 to-transparent" />
+        <div className="absolute bottom-3 left-4 text-xs tracking-wide text-white/90">
+          {item.tags}
         </div>
-      </section>
+      </div>
+    ))}
+  </div>
+</section>
 
-      {/* ===== BENEFITS ===== */}
-      <section className="py-16 max-w-6xl mx-auto px-4 reveal">
- className="text-3xl md:text-4xl font-semibold leading-tight mb-8">{t.benefitsH}</h2>
-        
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {(t.benefits || []).map((b, i) => {
-            const hash = ["individualni-navrh", "zkusenosti", "detail"][i];
+{/* ===== BENEFITS ===== */}
+<section className="py-16 max-w-6xl mx-auto px-4 reveal">
+  <h2 className="text-3xl md:text-4xl font-semibold leading-tight mb-8">{t.benefitsH}</h2>
 
-            return (
-              <button
-                key={i}
-                onClick={() => go(`/process#${hash}?mode=center`)}
-                className="benefit-card soft-shadow reveal text-left hover:translate-y-[-1px] transition flex flex-col"
-                type="button"
-              >
-                <div className="text-lg font-semibold mb-2">{b.name}</div>
+  <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+    {(t.benefits || []).map((b, i) => {
+      const hash = ["individualni-navrh", "zkusenosti", "detail"][i];
 
-                <p className="text-[var(--muted)] text-sm leading-relaxed flex-grow flex items-center">
-                  {b.note}
-                </p>
+      return (
+        <button
+          key={i}
+          onClick={() => go(`/process#${hash}?mode=center`)}
+          className="benefit-card soft-shadow reveal text-left hover:translate-y-[-1px] transition flex flex-col"
+          type="button"
+        >
+          <div className="text-lg font-semibold mb-2">{b.name}</div>
 
-                <div className="mt-3 text-xs tracking-widest text-[var(--muted)]">
-                  {t.benefitCardCta}
-                </div>
-              </button>
-            );
-          })}
-        </div>
-      </section>
+          <p className="text-[var(--muted)] text-sm leading-relaxed flex-grow flex items-center">
+            {b.note}
+          </p>
+
+          <div className="mt-3 text-xs tracking-widest text-[var(--muted)]">
+            {t.benefitCardCta}
+          </div>
+        </button>
+      );
+    })}
+  </div>
+</section>
 
       {/* ===== FAQ ===== */}
       <section className="py-16 max-w-4xl mx-auto px-4 reveal">
