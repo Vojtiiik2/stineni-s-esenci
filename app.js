@@ -482,6 +482,32 @@ function Home({ t }) {
     <>
       <Hero t={t} showCta intervalMs={8000} />
 
+
+return (
+  <>
+    <Hero t={t} showCta intervalMs={8000} />
+
+    {/* TRUST BLOK */}
+    <section className="py-10 max-w-6xl mx-auto px-4 reveal">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        {(t.homeTrust || []).map((item, i) => (
+          <div
+            key={i}
+            className="rounded-2xl border border-[var(--line)] bg-white soft-shadow px-5 py-5 text-center"
+          >
+            <div className="text-2xl md:text-3xl font-semibold text-[var(--brand-brown-dark)]">
+              {item.value}
+            </div>
+            <div className="text-sm text-[var(--muted)] mt-1">
+              {item.label}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    {/* dál pokračuje tvůj původní obsah */}
+
       {/* ===== ABOUT ===== */}
       <section className="py-16 max-w-6xl mx-auto px-4 reveal">
         <div className="grid md:grid-cols-2 gap-8 items-center">
