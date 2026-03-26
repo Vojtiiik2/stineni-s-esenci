@@ -64,6 +64,17 @@ faq: [
 ],
 
     homeCtaNote: "Praha a okolí. Konzultace přímo ve vašem interiéru. Návrh, výroba i montáž na míru.",
+
+homeTrust: [
+  { value: "20+", label: "let zkušeností" },
+  { value: "87+", label: "realizací" },
+  { value: "Kompletní servis", label: "od návrhu po montáž" },
+  { value: "Spolupráce", label: "s architekty a designéry" }
+],
+
+
+
+    
     // Process
     processH: "Jak pracujeme",
     steps: ["Konzultace", "Návrh řešení", "Příprava & výroba", "Realizace"],
