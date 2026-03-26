@@ -624,8 +624,8 @@ function Home({ t }) {
 </section>
 
       {/* ===== FAQ ===== */}
-      <section className="py-16 max-w-4xl mx-auto px-4 reveal">
-className="text-3xl md:text-4xl font-semibold leading-tight mb-6">{t.faqH}</h2>
+     <section className="py-16 max-w-4xl mx-auto px-4 reveal">
+  <h2 className="text-3xl md:text-4xl font-semibold leading-tight mb-6">{t.faqH}</h2>
 
         {(t.faq || []).map((f, i) => (
           <div key={i} className="faq-item">
