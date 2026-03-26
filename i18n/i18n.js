@@ -11,63 +11,59 @@ window.STR = {
     nav: ["Jak pracujeme", "Kolik zaplatíte", "Galerie", "Hotové stínění", "Esence", "Kontakt"],
 
     // Hero
-    heroSub: "Záclony · Závěsy · Rolety · Esence",
-    cta: "Kontaktujte nás",
+   heroSub: "Záclony · Závěsy · Rolety · Garnýže na míru",
+cta: "Domluvit konzultaci",
 
-    heroSlides: [
-      { h1: "Kde se světlo setká s emocí", bg: "assets/img/hero/hero-01.webp", pos: "center", posMobile: "center 35%" },
-      { h1: "Stínění, které dává domovu klid", bg: "assets/img/hero/hero-02.webp", pos: "center", posMobile: "center 55%" },
-      { h1: "Látka, světlo a detail v rovnováze", bg: "assets/img/hero/hero-03.webp", pos: "center", posMobile: "center 50%" }
-    ],
+heroSlides: [
+  { h1: "Záclony, závěsy, rolety a garnýže na míru", bg: "assets/img/hero/hero-01.webp", pos: "center", posMobile: "center 35%" },
+  { h1: "Navrhujeme stínění, které dává interiéru klid, soukromí a atmosféru", bg: "assets/img/hero/hero-02.webp", pos: "center", posMobile: "center 55%" },
+  { h1: "Kompletní realizace od konzultace po finální montáž", bg: "assets/img/hero/hero-03.webp", pos: "center", posMobile: "center 50%" }
+],
 
     // Home
-    homeAboutH: "O nás",
-    homeAbout: [
-      "Navrhujeme stínění tak, aby sedělo vašemu prostoru i tomu, jak v něm opravdu žijete. Nejde jen o látku a systém. Jde o světlo během dne, soukromí večer a pocit, který doma chcete mít.",
-      "Každý detail ladíme podle vás. Respektujeme vaše potřeby a přizpůsobujeme se tomu, co je pro vás důležité. Někdo chce klid a měkké světlo, jiný funkční zatemnění nebo jednoduché řešení bez zbytečností. Vždy hledáme cestu, která dává smysl právě vám.",
-      "Jsme Česká rodinná firma a zakládáme si na kvalitě a precizním provedení. Máme více než dvacet let zkušeností s látkami, šitím i technikou. Navrhujeme stínění na míru od první konzultace až po finální realizaci tak, aby výsledek fungoval dlouhodobě."
-    ],
+   homeAboutH: "Navrhujeme a realizujeme vnitřní stínění na míru",
+homeAbout: [
+  "Pomáháme vytvářet interiéry, ve kterých světlo, soukromí a atmosféra fungují v rovnováze. Navrhujeme záclony, závěsy, rolety, garnýže a technické systémy tak, aby odpovídaly prostoru i tomu, jak v něm skutečně žijete.",
+  "Jsme česká rodinná firma s více než 20 lety zkušeností. Zajišťujeme kompletní servis od konzultace a zaměření přes výběr materiálů a šití až po montáž a finální dekorování."
+],
 
-    servicesH: "Služby",
-    services: [
-      { name: "Záclony", note: "Lehkost, jemnost a útulnost." },
-      { name: "Závěsy", note: "Estetika, teplo a soukromí." },
-      { name: "Rolety", note: "Praktičnost a čisté linie." },
-      { name: "Technické systémy", note: "Dekorativní a funkční řešení." },
-      { name: "Servis", note: "Čištění, praní, žehlení." }
-    ],
-    serviceCardCta: "Kolik zaplatíte →",
+    servicesH: "Co navrhujeme a realizujeme",
+services: [
+  { name: "Záclony", note: "Zjemní denní světlo, dodají soukromí a odlehčí prostor." },
+  { name: "Závěsy", note: "Pomohou se zatemněním, akustikou i pocitem tepla a klidu." },
+  { name: "Rolety", note: "Praktické řešení pro přesnou regulaci světla a čistý vzhled." },
+  { name: "Technické systémy", note: "Kolejnice, garnýže a řešení navržená podle prostoru." },
+  { name: "Servis", note: "Sundání, vyčištění, vyžehlení a opětovné zavěšení našich realizací." }
+],
+serviceCardCta: "Zobrazit orientační ceny →",
 
-    inspH: "Atmosféra",
-    inspLead:
-      "Stejný prostor. Jiný pocit.\nRozdíl mezi oknem bez stínění, se záclonou a se závěsem je často větší, než čekáte.",
+    inspH: "Atmosféra prostoru",
+inspLead:
+  "Správně navržené stínění mění víc než jen okno.\nOvlivňuje světlo během dne, soukromí večer i celkový dojem z interiéru. Rozdíl mezi prostorem bez stínění a promyšleným řešením bývá větší, než čekáte.",
     inspTags: [
       "Světlo · Prostor · Svoboda",
       "Měkkost · Pohyb · Soukromí",
       "Funkčnost · Ticho · Domov"
     ],
 
-    benefitsH: "Proč s námi",
-    benefits: [
-      { name: "Individuální návrh", note: "Řešení vytvořené přesně pro váš prostor a vaše potřeby." },
-      { name: "20 let zkušeností", note: "Znalost materiálů i technologií." },
-      { name: "Preciznost a jemnost v detailu", note: "Preciznost v každém kroku." }
-    ],
-    benefitCardCta: "Zjistit víc →",
+    benefitsH: "Proč si klienti vybírají nás",
+benefits: [
+  { name: "Individuální návrh", note: "Každý prostor má jiné světlo, proporce i potřeby. Návrh proto vzniká vždy podle konkrétního interiéru." },
+  { name: "20 let zkušeností", note: "Známe materiály, technická řešení i detaily, které rozhodují o výsledku." },
+  { name: "Kompletní realizace", note: "Od první konzultace přes zaměření a výrobu až po montáž a finální zavěšení." }
+],
+benefitCardCta: "Zjistit víc →",
 
     faqH: "Často se ptáte",
-    faq: [
-      { q: "Jak probíhá konzultace?", a: "Přijedu k vám, podívám se na prostor, probereme vaše potřeby a zvolíme směr i materiály." },
-      { q: "Jak dlouho trvá výroba?", a: "Obvykle 2–8 týdnů podle rozsahu zakázky a dostupnosti materiálů." },
-      {
-        q: "Mohu vidět vzorky?",
-        a: "Ano, vzorky látek přivezu na osobní konzultaci přímo do vašeho prostoru. Zároveň je možné si vzorníky prohlédnout také v naší vzorkovně, vždy je ale nutné si schůzku předem domluvit."
-      },
-      { q: "Montujete i kolejnice?", a: "Ano, zajišťujeme kompletní dodání včetně techniky a montáže." }
-    ],
+faq: [
+  { q: "Jak probíhá konzultace?", a: "Přijedeme k vám, podíváme se na prostor, probereme vaše potřeby a doporučíme vhodné řešení stínění." },
+  { q: "Jak dlouho trvá realizace?", a: "Obvykle 2–8 týdnů podle rozsahu zakázky, zvolených materiálů a dostupnosti." },
+  { q: "Přivezete vzorky látek k nám domů?", a: "Ano, vzorky látek vozíme na osobní konzultaci přímo do vašeho prostoru, aby bylo možné vybírat v reálném světle a kontextu interiéru." },
+  { q: "Dodáváte i kolejnice a garnýže?", a: "Ano, zajišťujeme kompletní dodání včetně kolejnic, garnýží, technických systémů a montáže." },
+  { q: "Je možné řešit i jen jednu místnost?", a: "Ano. Navrhujeme jak celé interiéry, tak jednotlivé místnosti podle konkrétních potřeb klienta." }
+],
 
-    homeCtaNote: "Praha a okolí. Konzultace u vás doma. Výroba obvykle 2–8 týdnů.",
-
+    homeCtaNote: "Praha a okolí. Konzultace přímo ve vašem interiéru. Návrh, výroba i montáž na míru.",
     // Process
     processH: "Jak pracujeme",
     steps: ["Konzultace", "Návrh řešení", "Příprava & výroba", "Realizace"],
@@ -359,7 +355,7 @@ contactPhotos: "Fotografie (volitelné)",
     footerPrivacy: "Ochrana osobních údajů",
     footerCookies: "Cookies",
     footerCta: "Napište mi →",
-    footerBlurb: "Návrh a realizace vnitřního stínění na míru.\nZáclony · Závěsy · Rolety · Technické systémy",
+    footerBlurb: "Návrh a realizace vnitřního stínění na míru.\nZáclony · Závěsy · Rolety · Garnýže · Technické systémy",
     rights: "Všechna práva vyhrazena.",
 
     // Terms / Privacy / Cookies pages
