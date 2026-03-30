@@ -1456,6 +1456,25 @@ function Gallery({ t }) {
           ))}
         </div>
       </section>
+
+      {/* ===== GALLERY CTA ===== */}
+      <section className="py-16 max-w-4xl mx-auto px-4 reveal text-center">
+        <h3 className="text-2xl md:text-3xl font-semibold mb-4">
+          Chcete podobné řešení pro svůj interiér?
+        </h3>
+
+        <p className="text-[var(--muted)] text-lg mb-8 max-w-2xl mx-auto leading-relaxed">
+          Pošlete nám fotografie oken nebo prostoru. Navrhneme vám řešení, které bude dávat smysl právě u vás.
+        </p>
+
+        <button
+          onClick={() => go("/contact")}
+          className="btn-cta px-6 py-4 rounded-full bg-[var(--sand)] text-[var(--text)] font-bold border border-black/5 text-lg"
+          type="button"
+        >
+          Nezávazně se zeptat →
+        </button>
+      </section>
     </>
   );
 }
