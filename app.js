@@ -1788,6 +1788,18 @@ function Contact({ t }) {
             onSubmit={handleSubmit}
           >
             <div className="grid gap-4">
+              <div className="mb-2">
+                <p className="text-base leading-relaxed">
+                  Popište nám prostor, pošlete fotografie a společně najdeme řešení, které bude dávat smysl právě u vás.
+                </p>
+
+                <ul className="mt-4 space-y-2 text-sm text-[var(--muted)]">
+                  <li>• Ozveme se vám s návrhem dalšího postupu</li>
+                  <li>• Domluvíme termín konzultace</li>
+                  <li>• Vzorky přivezeme přímo do vašeho interiéru</li>
+                </ul>
+              </div>
+
               <label className="text-sm">
                 {t.contactFullName}
                 <input
@@ -1890,11 +1902,14 @@ function Contact({ t }) {
                   (!canSend || sending ? "opacity-50 cursor-not-allowed" : "")
                 }
               >
-                {sending ? "Odesílám…" : statusKind === "success" ? "Odesláno" : t.send}
+                {sending ? "Odesílám…" : statusKind === "success" ? "Odesláno" : "Poslat nezávaznou poptávku"}
               </button>
 
               {statusMsg && <p className="text-sm mt-2">{statusMsg}</p>}
-              <p className="text-[var(--muted)] text-sm">{t.contactDemo}</p>
+
+              <p className="text-[var(--muted)] text-sm">
+                Ozveme se vám co nejdříve a navrhneme další postup podle vašeho prostoru a potřeb.
+              </p>
             </div>
           </form>
 
@@ -1967,7 +1982,6 @@ function Contact({ t }) {
     </>
   );
 }
-
 function Terms({ t }) {
   useReveal();
 
