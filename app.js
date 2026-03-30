@@ -457,6 +457,23 @@ function Home({ t }) {
     <>
       <Hero t={t} showCta intervalMs={8000} />
 
+      {/* ===== TRUST ===== */}
+      <section className="py-12 max-w-6xl mx-auto px-4 reveal">
+        <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
+          {(t.homeTrust || []).map((item, i) => (
+            <div
+              key={i}
+              className="service-card soft-shadow reveal text-center flex flex-col justify-center"
+            >
+              <div className="text-xl md:text-2xl font-semibold mb-2">{item.value}</div>
+              <p className="text-[var(--muted)] text-sm leading-relaxed">
+                {item.label}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* ===== ABOUT ===== */}
       <section className="py-16 max-w-6xl mx-auto px-4 reveal">
         <div className="grid md:grid-cols-2 gap-8 items-center">
