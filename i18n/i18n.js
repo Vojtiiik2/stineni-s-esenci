@@ -472,62 +472,64 @@ contactPhotos: "Fotografie (volitelné)",
 
     nav: ["How we work", "Pricing", "Gallery", "Ready-made", "Essences", "Contact"],
 
-    heroSub: "Sheers · Curtains · Blinds · Essences",
-    cta: "Contact us",
+   heroSub: "Sheers · Curtains · Blinds · Custom curtain rods",
+cta: "Arrange a consultation",
 
-    heroSlides: [
-      { h1: "Where light meets emotion", bg: "assets/img/hero/hero-01.webp", pos: "center", posMobile: "center 35%" },
-      { h1: "Window treatments that bring calm home", bg: "assets/img/hero/hero-02.webp", pos: "center", posMobile: "center 55%" },
-      { h1: "Fabric, light and detail in balance", bg: "assets/img/hero/hero-03.webp", pos: "center", posMobile: "center 50%" }
-    ],
-
-    homeAboutH: "About us",
-    homeAbout: [
-  "We design window treatments to suit both your space and the way you truly live in it. It’s not just about the fabric or the system it’s about the light during the day, privacy in the evening, and the feeling you want your home to have.",
-  "Every detail is tailored to you. We respect your needs and adapt to what matters most to you. Some people prefer calm and soft natural light, others need full blackout or a simple, practical solution without unnecessary elements. Our goal is always to find the approach that makes the most sense for you.",
-  "We are a Czech family company and take pride in quality and precise craftsmanship. With more than twenty years of experience in fabrics, tailoring, and technical solutions, we design custom window treatments from the initial consultation through to the final installation, ensuring the result works beautifully for years to come."
+heroSlides: [
+  { h1: "Custom sheers, curtains, blinds and curtain rods", bg: "assets/img/hero/hero-01.webp", pos: "center", posMobile: "center 35%" },
+  { h1: "We design window treatments that bring calm, privacy and atmosphere to the interior", bg: "assets/img/hero/hero-02.webp", pos: "center", posMobile: "center 55%" },
+  { h1: "Complete service from consultation to final installation", bg: "assets/img/hero/hero-03.webp", pos: "center", posMobile: "center 50%" }
 ],
+    
+   homeAboutH: "We design and deliver custom interior window treatments",
+homeAbout: [
+  "We help create interiors where light, privacy and atmosphere work in balance. We design sheers, curtains, blinds, curtain rods and technical systems so they suit both the space and the way you actually live in it.",
+  "We are a Czech family business with more than 20 years of experience. We provide a complete service from consultation and measuring through material selection and sewing to installation and final styling."
+],
+    
+    servicesH: "What we design and deliver",
+services: [
+  { name: "Sheers", note: "Soften daylight, add privacy and lighten the space." },
+  { name: "Curtains", note: "Help with blackout, acoustics and the feeling of warmth and calm." },
+  { name: "Blinds", note: "A practical solution for precise light control and a clean look." },
+  { name: "Technical systems", note: "Tracks, curtain rods and solutions designed for the space." },
+  { name: "Service", note: "Taking down, cleaning, ironing and rehanging our installations." }
+],
+serviceCardCta: "View guide prices →",
 
-    servicesH: "Services",
-    services: [
-      { name: "Sheers", note: "Lightness, softness and coziness." },
-      { name: "Curtains", note: "Aesthetics, warmth and privacy." },
-      { name: "Blinds", note: "Practicality and clean lines." },
-      { name: "Technical systems", note: "Decorative and functional solutions." },
-      { name: "Service", note: "Cleaning, washing, ironing." }
-    ],
-    serviceCardCta: "Pricing →",
-
-    inspH: "Atmosphere",
-    inspLead:
-      "Same space. Different feeling.\nThe difference between a window without treatments, with sheers, and with curtains is often bigger than you expect.",
+    inspH: "Atmosphere of the space",
+inspLead:
+  "Well-designed window treatments change more than just the window.\nThey affect the light during the day, privacy in the evening and the overall impression of the interior. The difference between a space without window treatments and a thoughtfully designed solution is often greater than you expect.",
     inspTags: [
       "Light · Space · Freedom",
       "Softness · Movement · Privacy",
       "Function · Silence · Home"
     ],
 
-    benefitsH: "Why work with us",
-    benefits: [
-      { name: "Tailored design", note: "A solution created for your space and your needs." },
-      { name: "20 years of experience", note: "Know-how in materials and technology." },
-      { name: "Precision and softness in detail", note: "Careful execution at every step." }
-    ],
+    benefitsH: "Why clients choose us",
+benefits: [
+  { name: "Tailored design", note: "Every space has different light, proportions and needs. That is why every design is created specifically for the given interior." },
+  { name: "20 years of experience", note: "We know the materials, technical solutions and details that determine the result." },
+  { name: "Complete service", note: "From the first consultation through measuring and production to installation and final hanging." }
+],
     benefitCardCta: "Learn more →",
 
-    faqH: "Frequently asked",
-    faq: [
-      { q: "How does the consultation work?", a: "I come to your place, review the space, discuss your needs and choose the direction and materials." },
-      { q: "How long does production take?", a: "Typically 2–8 weeks depending on the scope and material availability." },
-      {
-        q: "Can I see fabric samples?",
-        a: "Yes. I bring fabric samples to the in-person consultation in your space. You can also view sample books in our showroom, but the appointment must be arranged in advance."
-      },
-      { q: "Do you install tracks as well?", a: "Yes. We provide a complete delivery including technical systems and installation." }
-    ],
+    faqH: "Frequently asked questions",
+faq: [
+  { q: "How does the consultation work?", a: "We come to you, look at the space, discuss your needs and recommend a suitable window treatment solution." },
+  { q: "How long does the project take?", a: "Usually 2–8 weeks depending on the scope of the project, selected materials and availability." },
+  { q: "Will you bring fabric samples to our home?", a: "Yes, we bring fabric samples to the personal consultation directly in your space so you can choose in real light and in the context of the interior." },
+  { q: "Do you also supply tracks and curtain rods?", a: "Yes, we provide complete delivery including tracks, curtain rods, technical systems and installation." },
+  { q: "Is it possible to do just one room?", a: "Yes. We design both entire interiors and individual rooms according to the client’s specific needs." }
+],
+   homeCtaNote: "Prague and surrounding area. Consultation directly in your interior. Tailor-made design, production and installation.",
 
-    homeCtaNote: "Prague and nearby. In-home consultation. Production typically 2–8 weeks.",
-
+homeTrust: [
+  { value: "20+", label: "years of experience" },
+  { value: "87+", label: "completed projects" },
+  { value: "Complete service", label: "from design to installation" },
+  { value: "Collaboration", label: "with architects and designers" }
+],
     processH: "How we work",
     steps: ["Consultation", "Design proposal", "Preparation & production", "Installation"],
    stepsTxt: [
@@ -811,7 +813,7 @@ contactPhotos: "Photos (optional)",
     footerPrivacy: "Privacy Policy",
     footerCookies: "Cookies",
     footerCta: "Message me →",
-    footerBlurb: "Custom interior window treatments.\nSheers · Curtains · Blinds · Technical systems",
+   footerBlurb: "Custom design and installation of interior window treatments.\nSheers · Curtains · Blinds · Curtain rods · Technical systems",
     rights: "All rights reserved.",
 
     termsH: "Terms & Conditions",
