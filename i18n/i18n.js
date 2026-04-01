@@ -67,7 +67,7 @@ faq: [
 
 homeTrust: [
   { value: "20+", label: "let zkušeností" },
-  { value: "87+", label: "realizací" },
+  { value: "1500+", label: "realizací" },
   { value: "Kompletní servis", label: "od návrhu po montáž" },
   { value: "Spolupráce", label: "s architekty a designéry" }
 ],
@@ -526,7 +526,7 @@ faq: [
 
 homeTrust: [
   { value: "20+", label: "years of experience" },
-  { value: "87+", label: "completed projects" },
+  { value: "1500+", label: "completed projects" },
   { value: "Complete service", label: "from design to installation" },
   { value: "Collaboration", label: "with architects and designers" }
 ],
