@@ -124,7 +124,16 @@ homeTrust: [
     processEnding: "Cílem je, abyste se v prostoru cítili přirozeně a dobře.",
 
     // Pricing
-   priceH: "Kolik zaplatíte",
+   priceH: "Kolik stojí stínění na míru",
+    
+    
+    pricingIntro: [
+  "Cena stínění na míru se liší podle velikosti oken, typu materiálu a zvoleného řešení.",
+  "Na této stránce najdete orientační ceny záclon, závěsů, rolet, kolejnic a garnýží, abyste si mohli udělat představu ještě před konzultací.",
+  "Každý návrh připravujeme individuálně podle prostoru, světla a způsobu využití interiéru."
+],
+
+
     pricingDisclaimer:
       "Uvedené částky jsou orientační scénáře pro představu. Konkrétní návrh a rozpočet vždy upřesníme po konzultaci na místě podle rozměrů, zvolených materiálů a technického řešení.",
     openDetail: "Otevřít detail",
@@ -139,7 +148,7 @@ homeTrust: [
         img: "assets/img/pricing/pricing-01.webp",
         vibe: "Světlo zůstává. Prostor se zjemní a zútulní.",
         micro: "Světlo, proporce, jemnost.",
-        intro: "Lehká vrstva, která propouští denní světlo a zároveň vytváří základní pocit soukromí.",
+        intro: "Záclony na míru propouští denní světlo a zároveň vytváří základní soukromí v interiéru. Ideální řešení pro obývací pokoje, ložnice i velká francouzská okna.",
         rangesTitle: "Orientačně (pro představu)",
         ranges: [
           { label: "malé okno (200 x 270cm)", value: "cca 3–16 tis. Kč" },
@@ -159,7 +168,7 @@ homeTrust: [
         img: "assets/img/pricing/pricing-02.webp",
         vibe: "Vytvoří soukromí. Večer zklidní. Ráno ochrání.",
         micro: "Materiál, ticho, komfort.",
-        intro: "Těžší vrstva, vytvoří plné soukromí a zatemnění.",
+       intro: "Závěsy na míru zajišťují soukromí, zatemnění a pomáhají regulovat světlo i teplotu v prostoru. Vhodné do ložnic, obývacích pokojů i interiérů, kde chcete dosáhnout maximálního klidu.",
         rangesTitle: "Orientačně (pro představu)",
         ranges: [
           { label: "malé okno (200 x 270cm)", value: "cca 6–21 tis. Kč" },
@@ -179,14 +188,14 @@ homeTrust: [
         img: "assets/img/pricing/roleta-latkova.webp",
         vibe: "Čisté linie. Funkce bez kompromisu.",
         micro: "Regulace světla, jednoduchost.",
-        intro: "Praktické řešení s čistými liniemi. Vhodné pro kuchyně, koupelny, pracovny/kanceláře.",
+       intro: "Rolety na míru umožňují přesnou regulaci světla a čisté, minimalistické řešení bez závěsů. Vhodné pro kuchyně, koupelny, pracovny i moderní interiéry.",
         subtypes: [
           {
             key: "latkova",
             label: "Látková roleta",
             img: "assets/img/pricing/roleta-latkova.webp",
             micro: "Regulace světla, jednoduchost.",
-            intro: "Praktické řešení s čistými liniemi. Vhodné pro kuchyně, koupelny, pracovny/kanceláře.",
+           intro: "Látkové rolety na míru umožňují regulaci světla podle zvoleného materiálu od lehkého zastínění po výraznější zatemnění. Praktické řešení pro každodenní používání.",
             rangesTitle: "Orientačně (pro představu)",
             ranges: [
               { label: "malé okno (130 x 200cm)", value: "cca 10–35 tis. Kč / ks" },
@@ -205,7 +214,7 @@ homeTrust: [
             label: "Římská roleta",
             img: "assets/img/pricing/roleta-rimska.webp",
             micro: "Měkká textilní vrstva, dekor a klid.",
-            intro: "Textilní roleta s výrazem závěsu. Hodí se tam, kde chcete měkký dojem a čistý tvar bez dlouhých záclon či závěsů.",
+            intro: "Římské rolety na míru kombinují funkčnost rolety a vzhled závěsu. Vhodné do interiérů, kde chcete zachovat měkkost textilu bez klasických závěsů.",
             rangesTitle: "Orientačně (pro představu)",
             ranges: [
               { label: "malé okno (110 x 150cm)", value: "cca 6–11 tis. Kč / ks" },
@@ -224,7 +233,7 @@ homeTrust: [
             label: "Plissé roleta",
             img: "assets/img/pricing/roleta-plisse.webp",
             micro: "Přesné dávkování světla. Skvělé i na atypy.",
-            intro: "Plissé je skladaná roleta vhodná i na atypická okna. Umožňuje stínit shora i zdola a velmi přesně regulovat světlo.",
+           intro: "Plissé rolety na míru umožňují stínění shora i zdola a umožňuje přesně regulovat světlo. Ideální řešení pro atypická okna a specifické situace.",
             rangesTitle: "Orientačně (pro představu)",
             ranges: [
               { label: "malé okno (80 x 100cm)", value: "cca 3,3–6 tis. Kč / ks" },
@@ -241,18 +250,18 @@ homeTrust: [
       },
       {
         key: "systemy",
-        title: "Technické systémy",
+        title: "Kolejnice a garnýže na míru",
         img: "assets/img/pricing/systemy-kolejnice.webp",
         vibe: "Základ který vše drží a řídí.",
         micro: "Funkční i dekorativní.",
-        intro: "Kolejnice, garnýže, ohyby a motory na míru - řešení pro každý interiér.",
+        intro: "Kolejnice a garnýže na míru zajišťují správnou funkci i vzhled stínění. Navrhujeme je podle prostoru a typu textilu.",
         subtypes: [
           {
             key: "kolejnice",
             label: "Kolejnice",
             img: "assets/img/pricing/systemy-kolejnice.webp",
             micro: "Čistá linie. Funkce a přesnost.",
-            intro: "Kolejnice jsou minimalistické a univerzální. Řeší rovné i ohýbané varianty, stropy i stěny, ruční i motorové ovládání.",
+            intro: intro: "Kolejnice na závěsy a záclony umožňují čisté a funkční řešení stínění. Vhodné pro stropy, stěny a atypické prostory včetně ohýbaných variant.",
             rangesTitle: "Orientačně (pro představu)",
             ranges: [
               { label: "malé okno (200 x 270cm)", value: "cca 1–13 tis. Kč" },
@@ -271,7 +280,7 @@ homeTrust: [
             label: "Garnýže",
             img: "assets/img/pricing/systemy-garnyze.webp",
             micro: "Dekor. Detail, který je vidět.",
-            intro: "Garnýže tvoří viditelnou součást interiéru. Volíme materiály, barvy a koncovky tak, aby ladily s látkou i prostorem.",
+           intro: "Garnýže na míru tvoří viditelný prvek interiéru. Volíme materiály, barvy i detaily tak, aby ladily s textilem a celkovým stylem prostoru.",
             rangesTitle: "Orientačně (pro představu)",
             ranges: [
               { label: "malé okno (200 x 270cm)", value: "cca 1–13 tis. Kč" },
