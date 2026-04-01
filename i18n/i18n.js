@@ -289,11 +289,11 @@ homeTrust: [
       },
       {
         key: "servis",
-        title: "Servis",
+        title: "Servis a údržba stínění",
         img: "assets/img/pricing/pricing-05.webp",
         vibe: "Profesionální údržba ve třech krocích.",
         micro: "Znovu jako nové.",
-        intro: "Sundání textilu, praní/čištění, věšení a žehlení.",
+       intro: "Zajišťujeme servis záclon a závěsů od sundání přes praní nebo čištění až po opětovné zavěšení a finální úpravu.",
         rangesTitle: "Orientačně podle rozsahu",
         ranges: [
           { label: "malé okno (200 x 270cm)", value: "cca 6–8 tis. Kč" },
