@@ -145,7 +145,7 @@ homeTrust: [
           { label: "malé okno (200 x 270cm)", value: "cca 3–16 tis. Kč" },
           { label: "velké okno (500 x 290cm)", value: "cca 8–42 tis. Kč" }
         ],
-        rangesNote: "Orientační cena zahrnuje Návrh na míru podle prostoru, Zaměření, Výrobu, Montáž a finální dekorování",
+         rangesNote: "Orientační cena zahrnuje návrh na míru podle prostoru, zaměření, výrobu, montáž a finální dekorování",
         tiersTitle: "Typy",
         tiers: [
           { name: "Základní lehké voály", note: "Vzdušné látky s nižší pořizovací cenou." },
@@ -165,7 +165,7 @@ homeTrust: [
           { label: "malé okno (200 x 270cm)", value: "cca 6–21 tis. Kč" },
           { label: "velké okno (500 x 290cm)", value: "cca 15–49 tis. Kč" }
         ],
-        rangesNote: "Orientační cena zahrnuje Návrh na míru podle prostoru, Zaměření, Výrobu, Montáž a finální dekorování",
+        rangesNote: "Orientační cena zahrnuje návrh na míru podle prostoru, zaměření, výrobu, montáž a finální dekorování",
         tiersTitle: "Typy",
         tiers: [
           { name: "Dekorativní závěs", note: "Primárně vzhled a soukromí." },
@@ -192,7 +192,7 @@ homeTrust: [
               { label: "malé okno (130 x 200cm)", value: "cca 10–35 tis. Kč / ks" },
               { label: "velké okno (350 x 300cm)", value: "cca 32–85 tis. Kč / ks" }
             ],
-            rangesNote: "Orientační cena zahrnuje Návrh na míru podle prostoru, Zaměření, Výrobu, Montáž a finální dekorování",
+            rangesNote: "Orientační cena zahrnuje návrh na míru podle prostoru, zaměření, výrobu, montáž a finální dekorování",
             tiersTitle: "Typy",
             tiers: [
               { name: "Screen / denní", note: "Regulace světla, vzdušnost." },
@@ -211,7 +211,7 @@ homeTrust: [
               { label: "malé okno (110 x 150cm)", value: "cca 6–11 tis. Kč / ks" },
               { label: "velké okno (180 x 250cm)", value: "cca 14–19 tis. Kč / ks" }
             ],
-            rangesNote: "Orientační cena zahrnuje Návrh na míru podle prostoru, Zaměření, Výrobu, Montáž a finální dekorování",
+            rangesNote: "Orientační cena zahrnuje návrh na míru podle prostoru, zaměření, výrobu, montáž a finální dekorování",
             tiersTitle: "Typy",
             tiers: [
               { name: "Ze záclonových látek", note: "Vzdušnost, praktičnost." },
@@ -230,7 +230,7 @@ homeTrust: [
               { label: "malé okno (80 x 100cm)", value: "cca 3,3–6 tis. Kč / ks" },
               { label: "velké okno (120 x 220cm)", value: "cca 7–16 tis. Kč / ks" }
             ],
-            rangesNote: "Orientační cena zahrnuje Návrh na míru podle prostoru, Zaměření, Výrobu, Montáž a finální dekorování",
+            rangesNote: "Orientační cena zahrnuje návrh na míru podle prostoru, zaměření, výrobu, montáž a finální dekorování",
             tiersTitle: "Typy",
             tiers: [
               { name: "Screen / denní", note: "Regulace světla, vzdušnost." },
@@ -258,7 +258,7 @@ homeTrust: [
               { label: "malé okno (200 x 270cm)", value: "cca 1–13 tis. Kč" },
               { label: "velké okno (500 x 290cm)", value: "cca 2.5–18 tis. Kč" }
             ],
-            rangesNote: "Orientační cena zahrnuje Návrh na míru podle prostoru, Zaměření, Výrobu, Montáž a finální dekorování",
+            rangesNote: "Orientační cena zahrnuje návrh na míru podle prostoru, zaměření, výrobu, montáž a finální dekorování",
             tiersTitle: "Typy",
             tiers: [
               { name: "Rovná", note: "Jednoduché, čisté řešení." },
@@ -277,7 +277,7 @@ homeTrust: [
               { label: "malé okno (200 x 270cm)", value: "cca 1–13 tis. Kč" },
               { label: "velké okno (500 x 290cm)", value: "cca 2.5–18 tis. Kč" }
             ],
-            rangesNote: "Orientační cena zahrnuje Návrh na míru podle prostoru, Zaměření, Výrobu, Montáž a finální dekorování",
+             rangesNote: "Orientační cena zahrnuje návrh na míru podle prostoru, zaměření, výrobu, montáž a finální dekorování",
             tiersTitle: "Typy",
             tiers: [
               { name: "Klasická", note: "Dekorativní řešení do bytů i domů." },
