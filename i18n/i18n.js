@@ -261,7 +261,7 @@ homeTrust: [
             label: "Kolejnice",
             img: "assets/img/pricing/systemy-kolejnice.webp",
             micro: "Čistá linie. Funkce a přesnost.",
-            intro: intro: "Kolejnice na závěsy a záclony umožňují čisté a funkční řešení stínění. Vhodné pro stropy, stěny a atypické prostory včetně ohýbaných variant.",
+            intro: "Kolejnice na závěsy a záclony umožňují čisté a funkční řešení stínění. Vhodné pro stropy, stěny a atypické prostory včetně ohýbaných variant.",
             rangesTitle: "Orientačně (pro představu)",
             ranges: [
               { label: "malé okno (200 x 270cm)", value: "cca 1–13 tis. Kč" },
