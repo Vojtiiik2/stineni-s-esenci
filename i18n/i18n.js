@@ -124,17 +124,18 @@ homeTrust: [
     processEnding: "Cílem je, abyste se v prostoru cítili přirozeně a dobře.",
 
     // Pricing
-    priceH: "Kolik zaplatíte",
+   priceH: "Kolik zaplatíte",
     pricingDisclaimer:
       "Uvedené částky jsou orientační scénáře pro představu. Konkrétní návrh a rozpočet vždy upřesníme po konzultaci na místě podle rozměrů, zvolených materiálů a technického řešení.",
     openDetail: "Otevřít detail",
-    writeMe: "Napište mi",
+    writeMe: "Nezávazná konzultace",
     close: "Zavřít",
+
 
     pricingItems: [
       {
         key: "zaclon",
-        title: "Záclony",
+        title: "Záclony na míru",
         img: "assets/img/pricing/pricing-01.webp",
         vibe: "Světlo zůstává. Prostor se zjemní a zútulní.",
         micro: "Světlo, proporce, jemnost.",
@@ -144,7 +145,7 @@ homeTrust: [
           { label: "malé okno (200 x 270cm)", value: "cca 3–16 tis. Kč" },
           { label: "velké okno (500 x 290cm)", value: "cca 8–42 tis. Kč" }
         ],
-        rangesNote: "Orientační cena zahrnuje látku, zpracování a drobnou galanterii.",
+        rangesNote: "Orientační cena zahrnuje Návrh na míru podle prostoru, Zaměření, Výrobu, Montáž a finální dekorování",
         tiersTitle: "Typy",
         tiers: [
           { name: "Základní lehké voály", note: "Vzdušné látky s nižší pořizovací cenou." },
@@ -154,7 +155,7 @@ homeTrust: [
       },
       {
         key: "zaves",
-        title: "Závěsy",
+        title: "Závěsy na míru",
         img: "assets/img/pricing/pricing-02.webp",
         vibe: "Vytvoří soukromí. Večer zklidní. Ráno ochrání.",
         micro: "Materiál, ticho, komfort.",
@@ -164,7 +165,7 @@ homeTrust: [
           { label: "malé okno (200 x 270cm)", value: "cca 6–21 tis. Kč" },
           { label: "velké okno (500 x 290cm)", value: "cca 15–49 tis. Kč" }
         ],
-        rangesNote: "Orientační cena zahrnuje látku, zpracování a drobnou galanterii.",
+        rangesNote: "Orientační cena zahrnuje Návrh na míru podle prostoru, Zaměření, Výrobu, Montáž a finální dekorování",
         tiersTitle: "Typy",
         tiers: [
           { name: "Dekorativní závěs", note: "Primárně vzhled a soukromí." },
@@ -174,7 +175,7 @@ homeTrust: [
       },
       {
         key: "roleta",
-        title: "Rolety",
+        title: "Rolety na míru",
         img: "assets/img/pricing/roleta-latkova.webp",
         vibe: "Čisté linie. Funkce bez kompromisu.",
         micro: "Regulace světla, jednoduchost.",
@@ -191,6 +192,7 @@ homeTrust: [
               { label: "malé okno (130 x 200cm)", value: "cca 10–35 tis. Kč / ks" },
               { label: "velké okno (350 x 300cm)", value: "cca 32–85 tis. Kč / ks" }
             ],
+            rangesNote: "Orientační cena zahrnuje Návrh na míru podle prostoru, Zaměření, Výrobu, Montáž a finální dekorování",
             tiersTitle: "Typy",
             tiers: [
               { name: "Screen / denní", note: "Regulace světla, vzdušnost." },
@@ -209,6 +211,7 @@ homeTrust: [
               { label: "malé okno (110 x 150cm)", value: "cca 6–11 tis. Kč / ks" },
               { label: "velké okno (180 x 250cm)", value: "cca 14–19 tis. Kč / ks" }
             ],
+            rangesNote: "Orientační cena zahrnuje Návrh na míru podle prostoru, Zaměření, Výrobu, Montáž a finální dekorování",
             tiersTitle: "Typy",
             tiers: [
               { name: "Ze záclonových látek", note: "Vzdušnost, praktičnost." },
@@ -227,6 +230,7 @@ homeTrust: [
               { label: "malé okno (80 x 100cm)", value: "cca 3,3–6 tis. Kč / ks" },
               { label: "velké okno (120 x 220cm)", value: "cca 7–16 tis. Kč / ks" }
             ],
+            rangesNote: "Orientační cena zahrnuje Návrh na míru podle prostoru, Zaměření, Výrobu, Montáž a finální dekorování",
             tiersTitle: "Typy",
             tiers: [
               { name: "Screen / denní", note: "Regulace světla, vzdušnost." },
@@ -239,9 +243,9 @@ homeTrust: [
         key: "systemy",
         title: "Technické systémy",
         img: "assets/img/pricing/systemy-kolejnice.webp",
-        vibe: "Základ který vše řídí.",
+        vibe: "Základ který vše drží a řídí.",
         micro: "Funkční i dekorativní.",
-        intro: "Kolejnice, garnýže, ohyby, motory – řešení pro každý interiér.",
+        intro: "Kolejnice, garnýže, ohyby a motory na míru - řešení pro každý interiér.",
         subtypes: [
           {
             key: "kolejnice",
@@ -254,6 +258,7 @@ homeTrust: [
               { label: "malé okno (200 x 270cm)", value: "cca 1–13 tis. Kč" },
               { label: "velké okno (500 x 290cm)", value: "cca 2.5–18 tis. Kč" }
             ],
+            rangesNote: "Orientační cena zahrnuje Návrh na míru podle prostoru, Zaměření, Výrobu, Montáž a finální dekorování",
             tiersTitle: "Typy",
             tiers: [
               { name: "Rovná", note: "Jednoduché, čisté řešení." },
@@ -272,6 +277,7 @@ homeTrust: [
               { label: "malé okno (200 x 270cm)", value: "cca 1–13 tis. Kč" },
               { label: "velké okno (500 x 290cm)", value: "cca 2.5–18 tis. Kč" }
             ],
+            rangesNote: "Orientační cena zahrnuje Návrh na míru podle prostoru, Zaměření, Výrobu, Montáž a finální dekorování",
             tiersTitle: "Typy",
             tiers: [
               { name: "Klasická", note: "Dekorativní řešení do bytů i domů." },
