@@ -67,7 +67,7 @@ faq: [
 
 homeTrust: [
   { value: "20+", label: "let zkušeností" },
-  { value: "1500+", label: "realizací" },
+  { value: "Návrh na míru", label: "podle prostoru a způsobu využití" },
   { value: "Kompletní servis", label: "od návrhu po montáž" },
   { value: "Spolupráce", label: "s architekty a designéry" }
 ],
@@ -526,7 +526,7 @@ faq: [
 
 homeTrust: [
   { value: "20+", label: "years of experience" },
-  { value: "1500+", label: "completed projects" },
+  { value: "Tailored design", label: "based on the space and how it is used" },
   { value: "Complete service", label: "from design to installation" },
   { value: "Collaboration", label: "with architects and designers" }
 ],
