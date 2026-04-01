@@ -73,16 +73,16 @@ homeTrust: [
 ],
 
 
-
-    
     // Process
     processH: "Jak pracujeme",
-    steps: ["Konzultace", "Návrh řešení", "Příprava & výroba", "Realizace"],
+    steps: ["Konzultace", "Návrh a cena", "Výroba", "Realizace"],
     stepsTxt: [
-      "Přijedeme za vámi, prostor si projdeme přímo na místě a vše přesně zaměříme.\n\nSpolečně probereme, co od stínění očekáváte, soukromí, zatemnění, nebo čistě dekorativní funkci.\n\nUkážeme vám vzorky látek a řekneme si, co je v daném prostoru vhodné a co by naopak nedávalo smysl po technické, funkční i vizuální stránce.\n\nPo setkání víte, jakým směrem se návrh bude ubírat, jaké typy stínění a materiálů připadají v úvahu.",
-      "Na základě vybraných materiálů a technického systému připravíme cenovou nabídku. Ta slouží jako výchozí bod. Pokud je potřeba cenu upravit, hledáme společně alternativy, ať už v úpravě materiálů, techniky nebo skladby řešení. Naším cílem je vždy najít rovnováhu mezi kvalitou, funkčností a cenou.",
-      "Po schválení rozpočtu a složení zálohy zahajujeme proces výroby.\n\nV průběhu jednotlivých fází zpracování současně plánujeme termín realizace.",
-      "Hotové stínění přivezeme, odborně namontujeme a textil pečlivě pověsíme.\n\nZáclony i závěsy vyžehlíme, nadekorujeme a doladíme tak, aby vše fungovalo nejen vizuálně, ale i technicky.\n\nPo dokončení práce vždy uklidíme, prostor vám předáme čistý a připravený k používání.\n\nNa místě vám vysvětlíme ovládání všech prvků a doporučíme vám vhodnou údržbu textilu, aby stínění dlouhodobě fungovalo tak, jak má."
+     stepsTxt: [
+      "Přijedeme za vámi, prostor si projdeme přímo na místě a vše přesně zaměříme.\n\nProbereme zda od stínění očekáváte soukromí, zatemnění nebo čistě dekorativní funkci.\n\nUkážeme vám vzorky látek a doporučíme řešení, která dávají v prostoru smysl po technické i vizuální stránce.\n\nPo konzultaci budete mít jasno, jaké možnosti připadají v úvahu a jakým směrem se návrh bude ubírat.",
+      "Na základě vybraných materiálů a technického řešení připravíme cenovou nabídku.\n\nTa slouží jako výchozí bod. Pokud je potřeba cenu upravit, hledáme společně alternativy v materiálech, technice nebo skladbě řešení.\n\nCílem je najít rovnováhu mezi funkčností, estetikou a rozpočtem.\n\nPřed zahájením výroby přesně víte, co bude realizováno a v jaké ceně.",
+      "Po schválení nabídky a složení zálohy zahajujeme výrobu.\n\nV této fázi probíhá zpracování textilu a příprava všech technických prvků.\n\nSoučasně domlouváme termín realizace tak, aby navazoval na dokončení výroby.\n\nVýroba obvykle trvá několik týdnů podle rozsahu zakázky a zvolených materiálů.",
+       "Hotové stínění přivezeme, odborně namontujeme a textil pečlivě pověsíme.\n\nZáclony i závěsy vyžehlíme, nadekorujeme a doladíme tak, aby vše fungovalo vizuálně i technicky.\n\nPo dokončení práce prostor uklidíme a předáme vám ho připravený k používání.\n\nNa místě vám vysvětlíme ovládání a doporučíme vhodnou údržbu, aby stínění dlouhodobě fungovalo tak, jak má."
+    ],
     ],
     processImgs: [
       "assets/img/process/process-01.webp",
@@ -103,7 +103,7 @@ homeTrust: [
         id: "individualni-navrh",
         title: "Individuální návrh",
         p1: "Každý prostor má jiné světlo, jiné proporce a jiný rytmus dne.",
-        p2: "Návrh vzniká až na místě z komunikace s vámi, z pozorování světla, z toho, jak prostor používáte, a z toho, co od stínění opravdu očekáváte.",
+        p2: "Návrh vzniká přímo na místě z pozorování světla, dispozice prostoru a způsobu, jak interiér používáte.",
         p3: "Individuální návrh pro nás znamená společně najít správnou volbu."
       },
       {
@@ -111,14 +111,14 @@ homeTrust: [
         title: "20 let zkušeností",
         p1: "Zkušenosti nám dávají nadhled a jistotu při rozhodování.",
         p2: "Pomáháme vám se zorientovat v možnostech a sladit funkčnost s estetikou.",
-        p3: "Výsledkem není kompromis ale pocit jistoti, že zvolené řešení dává smysl právě pro vás a váš prostor."
+        p3: "Výsledkem je řešení, které dává smysl nejen vizuálně, ale i funkčně a dlouhodobě.",
       },
       {
         id: "detail",
         title: "Preciznost a jemnost v detailu",
         p1: "Kvalita zpracování a technické provedení rozhodují o tom, jestli stínění bude dlouhodobě fungovat a dobře vypadat i po letech.",
         p2: "V detailech se ukazuje rozdíl mezi řešením, které jen dobře vypadá, a řešením, které obstojí v čase.",
-        p3: "Preciznost a detail je na první pohled viditelné, právě v nich se potkává vaše očekávání s naší zkušeností pracovat s materiály."
+        p3: "Preciznost a detail jsou viditelné na první pohled, právě v nich se potkává vaše očekávání s naší zkušeností.",
       }
     ],
     processEnding: "Cílem je, abyste se v prostoru cítili přirozeně a dobře.",
