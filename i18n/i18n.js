@@ -318,14 +318,14 @@ homeTrust: [
     ],
 
    // Gallery
-galleryH: "Galerie",
-galleryOurWorkH: "Naše realizace",
-galleryOurWorkP: "Výběr projektů, kde řešíme světlo, látku a proporce prostoru.",
-galleryShowAll: "Zobrazit vše →",
-galleryModalH: "Naše realizace",
-galleryModalSub: "Procházejte fotky – můžete scrollovat dolů.",
-galleryPartnersH: "Spolupracujeme s",
-galleryPartnersP: "Architekti a designéři, se kterými často ladíme finální vrstvu stínění.",
+galleryH: "Realizace stínění na míru",
+galleryOurWorkH: "Ukázky našich realizací",
+galleryOurWorkP: "Prohlédněte si realizace záclon, závěsů, rolet, kolejnic a garnýží na míru v různých typech interiérů. Každé řešení navrhujeme podle prostoru, světla a způsobu využití místnosti.",
+galleryShowAll: "Zobrazit všechny realizace →",
+galleryModalH: "Realizace stínění na míru",
+galleryModalSub: "Prohlédněte si detaily našich realizací záclon, závěsů, rolet a technických systémů.",
+galleryPartnersH: "Spolupracujeme s architekty a designéry",
+galleryPartnersP: "Na realizacích často spolupracujeme s architekty a interiérovými designéry, se kterými ladíme finální podobu stínění tak, aby odpovídala prostoru i celkovému konceptu interiéru.",
 galleryVisitWeb: "Navštívit web →",
 
 galleryPartnersNotes: {
