@@ -994,7 +994,7 @@ function Gallery({ t }) {
   const OUR_WORK = [
     "assets/img/gallery/our-work/ourwork-01.webp",
     "assets/img/gallery/our-work/ourwork-02.webp",
-    "assets/img/gallery/our-work/ourwork-03.webp",
+    "assets/img/gallery/our-work/ourwork-03-02.webp",
     "assets/img/gallery/our-work/ourwork-04.webp",
     "assets/img/gallery/our-work/ourwork-05.webp",
     "assets/img/gallery/our-work/ourwork-06.webp",
