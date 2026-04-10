@@ -152,7 +152,7 @@ const Header = ({ t, lang, setLang }) => {
     return () => (document.body.style.overflow = "");
   }, [menuOpen]);
 
-  const navPaths = ["/process", "/pricing", "/gallery", "/finished", "/essences", "/contact"];
+  const navPaths = ["/process", "/pricing", "/gallery", "/essences", "/contact"];
 
   return (
     <>
@@ -1479,39 +1479,6 @@ function Gallery({ t }) {
   );
 }
 
-function Finished({ t }) {
-  useReveal();
-  const bg = "assets/img/hero/finished-hero.webp";
-
-  return (
-    <>
-      <Hero t={t} small bg={bg} title={t.finishedH} />
-
-      <section className="max-w-6xl mx-auto px-4 py-16 reveal">
-        <div className="max-w-4xl mx-auto mt-10">
-          <div className="rounded-2xl border border-dashed border-[var(--line)] bg-[var(--bg2)] p-10 text-center soft-shadow">
-            <h3 className="text-xl font-semibold mb-3">{t.finishedBoxH}</h3>
-            <p className="text-[var(--muted)] text-sm leading-relaxed max-w-2xl mx-auto whitespace-pre-line">
-              {t.finishedBoxP}
-            </p>
-
-            <div className="mt-6">
-              <button
-                onClick={() => go("/contact")}
-                className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold border border-[var(--line)] hover:bg-white transition"
-              >
-                {t.finishedBoxBtn}
-              </button>
-            </div>
-
-            <p className="text-xs text-[var(--muted)] mt-4">{t.finishedBoxFoot}</p>
-          </div>
-        </div>
-      </section>
-    </>
-  );
-}
-
 function Essences({ t }) {
   useReveal();
   const bg = "assets/img/hero/essence-hero.webp";
@@ -2048,8 +2015,6 @@ function App() {
         return <Pricing t={t} />;
       case "/gallery":
         return <Gallery t={t} />;
-      case "/finished":
-        return <Finished t={t} />;
       case "/essences":
         return <Essences t={t} />;
       case "/contact":
