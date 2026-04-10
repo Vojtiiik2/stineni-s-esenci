@@ -30,7 +30,7 @@ homeAbout: [
 
     serviceCardCta: "Zobrazit orientační ceny →",
 services: [
-  { name: "Záclony", note: "Zjemní denní světlo, dodají soukromí a odlehčí prostor." },
+  { name: "Záclony", note: "Zjemní denní světlo, zútulní a odlehčí prostor." },
   { name: "Závěsy", note: "Pomohou se zatemněním, akustikou i pocitem tepla a klidu." },
   { name: "Rolety", note: "Praktické řešení pro přesnou regulaci světla a čistý vzhled." },
   { name: "Technické systémy", note: "Kolejnice, garnýže a řešení navržená podle prostoru." },
