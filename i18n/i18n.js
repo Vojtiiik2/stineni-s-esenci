@@ -8,7 +8,7 @@ window.STR = {
     brand2: "Stínění s esencí",
 
     // Header nav
-    nav: ["Jak pracujeme", "Kolik zaplatíte", "Galerie", "Hotové stínění", "Esence", "Kontakt"],
+  nav: ["Jak pracujeme", "Kolik zaplatíte", "Galerie", "Esence", "Kontakt"],
 
     // Hero
    heroSub: "Záclony · Závěsy · Rolety · Garnýže na míru",
@@ -338,16 +338,6 @@ galleryPartnersNotes: {
   epic: "Interiérové studio se zaměřením na atmosféru, funkci a detail. Společně ladíme finální vrstvu stínění tak, aby prostor působil přirozeně a harmonicky.",
   broda: "Interiérový design zaměřený na nadčasovost, práci s prostorem a materiály. Spolupracujeme na projektech, kde stínění dotváří klid a charakter interiéru."
 },
-
-
-    
-    // Finished
-    finishedH: "Hotové stínění",
-    finishedBoxH: "Hotová řešení připravujeme",
-    finishedBoxP:
-      "Nabídku hotových řešení stínění aktuálně připravujeme.\n\nKaždý prostor řešíme individuálně. Pokud vás zajímá, jaké řešení by dávalo smysl právě u vás, ozvěte se nám a připravíme návrh na míru.",
-    finishedBoxBtn: "Nezávazně se zeptat →",
-    finishedBoxFoot: "Hotová kolekce bude dostupná později",
 
     // Essences
     essenceH: "Esence",
