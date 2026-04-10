@@ -355,7 +355,7 @@ galleryPartnersNotes: {
       "Vůně jemně doplňuje vizuální dojem z prostoru. Pomáhá dotvořit atmosféru, která se pojí se světlem, látkou i rytmem dne. Vybrané esence používáme jako nenápadný, ale účinný prvek celkového vnímání interiéru.",
     essenceBoxH: "Esence připravujeme",
     essenceBoxP:
-      "Vůně budou samostatnou kapitolou navázanou na prostor a atmosféru v něm.\n\nEsence budou laděny tak, aby odpovídali potřebám a aktivitám vykonávaným v daném prostoru.",
+      "Vůně budou samostatnou kapitolou navázanou na prostor a atmosféru v něm.\n\nEsence budou laděny tak, aby odpovídaly potřebám a aktivitám vykonávaným v daném prostoru.",
     essenceBoxFoot: "Připravujeme pro vás",
 
     // Contact
