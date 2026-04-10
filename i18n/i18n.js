@@ -125,7 +125,7 @@ homeTrust: [
     processEnding: "Cílem je, abyste se v prostoru cítili přirozeně a dobře.",
 
     // Pricing
-   priceH: "Kolik stojí stínění na míru",
+   priceH: "Kolik stojí stínění od nás",
     
     
     pricingIntro: [
