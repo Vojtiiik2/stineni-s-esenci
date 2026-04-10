@@ -15,7 +15,7 @@ window.STR = {
 cta: "Domluvit konzultaci",
 
 heroSlides: [
-  { h1: "Záclony, závěsy, rolety a garnýže podle vašeho prostoru", bg: "assets/img/hero/hero-01.webp", pos: "center", posMobile: "center 35%" },
+  { h1: "Záclony, závěsy, rolety a garnýže pro váš interiér", bg: "assets/img/hero/hero-01.webp", pos: "center", posMobile: "center 35%" },
   { h1: "Navrhujeme stínění, které dává interiéru klid, soukromí a atmosféru", bg: "assets/img/hero/hero-02.webp", pos: "center", posMobile: "center 55%" },
   { h1: "Kompletní realizace od konzultace po finální montáž", bg: "assets/img/hero/hero-03.webp", pos: "center", posMobile: "center 50%" }
 ],
