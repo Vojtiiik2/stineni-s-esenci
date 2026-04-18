@@ -1194,7 +1194,7 @@ function PricingModal({ t, item, onClose }) {
   );
 }
 
-function Lightbox({ state, setState }) {
+function Lightbox({ state, setState, t }) {
   const isEn = (document.documentElement.lang || "cs") === "en";
 
   useEffect(() => {
@@ -1226,16 +1226,24 @@ function Lightbox({ state, setState }) {
               {isEn ? "Browse the photos using the arrow keys or by clicking the buttons." : "Procházejte fotografie šipkami nebo kliknutím na tlačítka."}
             </p>
           </div>
-          <button className="modal-close" onClick={() => setState((s) => ({ ...s, open: false }))}>{t?.close || (isEn ? "Close" : "Zavřít")}</button>
+          <button className="modal-close" onClick={() => setState((s) => ({ ...s, open: false }))}>
+            {t?.close || (isEn ? "Close" : "Zavřít")}
+          </button>
         </div>
         <div className="lightbox-stage">
           <img src={src} alt={isEn ? `Project ${state.index + 1}` : `Realizace ${state.index + 1}`} />
         </div>
         <div className="lightbox-nav">
-          <button className="button button-secondary" onClick={() => setState((s) => ({ ...s, index: (s.index - 1 + s.images.length) % s.images.length }))}>
+          <button
+            className="button button-secondary"
+            onClick={() => setState((s) => ({ ...s, index: (s.index - 1 + s.images.length) % s.images.length }))}
+          >
             {isEn ? "Previous" : "Předchozí"}
           </button>
-          <button className="button button-primary" onClick={() => setState((s) => ({ ...s, index: (s.index + 1) % s.images.length }))}>
+          <button
+            className="button button-primary"
+            onClick={() => setState((s) => ({ ...s, index: (s.index + 1) % s.images.length }))}
+          >
             {isEn ? "Next" : "Další"}
           </button>
         </div>
