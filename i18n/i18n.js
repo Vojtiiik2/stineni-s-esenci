@@ -189,217 +189,220 @@ homeFinalCtaLocation:
     ],
     processEnding: "Cílem je, abyste se v prostoru cítili přirozeně a dobře.",
 
-    // Pricing
-    priceH: "Kolik stojí stínění od nás",
-    pricingLead: "Orientační ceny a typy řešení pro představu ještě před konzultací.",
-    pricingLeadMobile: "Orientační ceny pro rychlou představu ještě před konzultací.",
-    pricingSectionTitle: "Cena se odvíjí od prostoru, materiálu i detailu provedení",
-    pricingOpenButton: "Zobrazit orientační ceny",
+   // Pricing
+priceH: "Kolik stojí stínění od nás",
+pricingLead: "Orientační ceny a typy řešení pro představu ještě před konzultací.",
+pricingLeadMobile: "Orientační ceny pro rychlou představu ještě před konzultací.",
+pricingSectionTitle: "Cena se odvíjí od prostoru, materiálu i detailu provedení",
+pricingOpenButton: "Zobrazit orientační ceny",
 
-    pricingIntroMobile: [
-      "Cena stínění na míru se liší podle velikosti oken, typu materiálu a zvoleného řešení.",
-      "Níže najdete orientační přehled pro rychlou představu."
+pricingIntroMobile: [
+  "Cena stínění na míru se liší podle velikosti oken, typu materiálu a zvoleného řešení.",
+  "Níže najdete orientační přehled pro rychlou představu."
+],
+
+pricingIntro: [
+  "Cena stínění na míru se liší podle velikosti oken, typu materiálu a zvoleného řešení.",
+  "Na této stránce najdete orientační ceny záclon, závěsů, rolet, kolejnic a garnýží, abyste si mohli udělat představu ještě před konzultací.",
+  "Každý návrh připravujeme individuálně podle prostoru, světla a způsobu využití interiéru."
+],
+
+pricingDisclaimer:
+  "Uvedené částky jsou orientační scénáře pro představu. Konkrétní návrh a rozpočet vždy upřesníme po konzultaci na místě podle rozměrů, zvolených materiálů a technického řešení.",
+pricingDisclaimerMobile:
+  "Ceny jsou orientační. Přesný návrh a rozpočet připravíme po konzultaci na místě.",
+openDetail: "Otevřít detail",
+writeMe: "Nezávazná konzultace",
+close: "Zavřít",
+previous: "Předchozí",
+next: "Další",
+lightboxHint: "Procházejte fotografie šipkami nebo kliknutím na tlačítka.",
+mobileSwipeHint: "Přejeďte pro další",
+mobileSwipeHintServices: "Přejeďte pro další řešení",
+mobileSwipeHintBenefits: "Přejeďte pro další důvody",
+mobileSwipeHintProjects: "Přejeďte pro další realizace",
+mobileSwipeHintProcess: "Přejeďte pro další principy",
+
+pricingItems: [
+  {
+    key: "zaclon",
+    title: "Záclony",
+    img: "assets/img/pricing/pricing-01.webp",
+    vibe: "Světlo zůstává. Prostor se zjemní a zútulní.",
+    micro: "Světlo, proporce, jemnost.",
+    intro: "Záclony propouští denní světlo a zároveň vytváří základní soukromí v interiéru. Ideální řešení pro obývací pokoje, ložnice i velká francouzská okna.",
+    modalLead: "Lehké textilie, které změkčí světlo a doplní interiér o soukromí i lehkost.",
+    rangesTitle: "Orientačně (pro představu)",
+    ranges: [
+      { label: "malé okno (200 x 270cm)", value: "cca 3–16 tis. Kč" },
+      { label: "velké okno (500 x 290cm)", value: "cca 8–42 tis. Kč" }
     ],
-
-    pricingIntro: [
-      "Cena stínění na míru se liší podle velikosti oken, typu materiálu a zvoleného řešení.",
-      "Na této stránce najdete orientační ceny záclon, závěsů, rolet, kolejnic a garnýží, abyste si mohli udělat představu ještě před konzultací.",
-      "Každý návrh připravujeme individuálně podle prostoru, světla a způsobu využití interiéru."
+    rangesNote: "Orientační cena zahrnuje návrh podle prostoru, zaměření, výrobu, montáž a finální dekorování",
+    tiersTitle: "Typy",
+    tiers: [
+      { name: "Základní lehké voály", note: "Vzdušné látky s nižší pořizovací cenou." },
+      { name: "Střední kategorie", note: "Vyvážený poměr ceny, vzhledu a funkce." },
+      { name: "Prémiové tkaniny", note: "Exkluzivní textura, přírodní materiály." }
+    ]
+  },
+  {
+    key: "zaves",
+    title: "Závěsy",
+    img: "assets/img/pricing/pricing-02.webp",
+    vibe: "Vytvoří soukromí. Večer zklidní. Ráno ochrání.",
+    micro: "Materiál, ticho, komfort.",
+    intro: "Závěsy zajišťují soukromí, zatemnění a pomáhají regulovat světlo i teplotu v prostoru. Vhodné do ložnic, obývacích pokojů i interiérů, kde chcete dosáhnout maximálního klidu.",
+    modalLead: "Textil pro větší soukromí, regulaci světla a celkově klidnější atmosféru prostoru.",
+    rangesTitle: "Orientačně (pro představu)",
+    ranges: [
+      { label: "malé okno (200 x 270cm)", value: "cca 6–21 tis. Kč" },
+      { label: "velké okno (500 x 290cm)", value: "cca 15–49 tis. Kč" }
     ],
-
-    pricingDisclaimer:
-      "Uvedené částky jsou orientační scénáře pro představu. Konkrétní návrh a rozpočet vždy upřesníme po konzultaci na místě podle rozměrů, zvolených materiálů a technického řešení.",
-    pricingDisclaimerMobile:
-      "Ceny jsou orientační. Přesný návrh a rozpočet připravíme po konzultaci na místě.",
-    openDetail: "Otevřít detail",
-    writeMe: "Nezávazná konzultace",
-    close: "Zavřít",
-    previous: "Předchozí",
-    next: "Další",
-    lightboxHint: "Procházejte fotografie šipkami nebo kliknutím na tlačítka.",
-    mobileSwipeHint: "Přejeďte pro další",
-    mobileSwipeHintServices: "Přejeďte pro další řešení",
-    mobileSwipeHintBenefits: "Přejeďte pro další důvody",
-    mobileSwipeHintProjects: "Přejeďte pro další realizace",
-    mobileSwipeHintProcess: "Přejeďte pro další principy",
-
-    pricingItems: [
+    rangesNote: "Orientační cena zahrnuje návrh podle prostoru, zaměření, výrobu, montáž a finální dekorování",
+    tiersTitle: "Typy",
+    tiers: [
+      { name: "Dekorativní závěs", note: "Primárně vzhled a soukromí." },
+      { name: "Dim-out", note: "Ztlumí světlo, ale úplnou tmu neudělá." },
+      { name: "Blackout", note: "Maximální zatemnění, částečná tepelná izolace." }
+    ]
+  },
+  {
+    key: "roleta",
+    title: "Rolety",
+    img: "assets/img/pricing/roleta-latkova.webp",
+    vibe: "Čisté linie. Funkce bez kompromisu.",
+    micro: "Regulace světla, jednoduchost.",
+    intro: "Rolety umožňují přesnou regulaci světla a čisté, minimalistické řešení bez závěsů. Vhodné pro kuchyně, koupelny, pracovny i moderní interiéry.",
+    subtypes: [
       {
-        key: "zaclon",
-        title: "Záclony",
-        img: "assets/img/pricing/pricing-01.webp",
-        vibe: "Světlo zůstává. Prostor se zjemní a zútulní.",
-        micro: "Světlo, proporce, jemnost.",
-        intro: "Záclony propouští denní světlo a zároveň vytváří základní soukromí v interiéru. Ideální řešení pro obývací pokoje, ložnice i velká francouzská okna.",
-        rangesTitle: "Orientačně (pro představu)",
-        ranges: [
-          { label: "malé okno (200 x 270cm)", value: "cca 3–16 tis. Kč" },
-          { label: "velké okno (500 x 290cm)", value: "cca 8–42 tis. Kč" }
-        ],
-        rangesNote: "Orientační cena zahrnuje návrh podle prostoru, zaměření, výrobu, montáž a finální dekorování",
-        tiersTitle: "Typy",
-        tiers: [
-          { name: "Základní lehké voály", note: "Vzdušné látky s nižší pořizovací cenou." },
-          { name: "Střední kategorie", note: "Vyvážený poměr ceny, vzhledu a funkce." },
-          { name: "Prémiové tkaniny", note: "Exkluzivní textura, přírodní materiály." }
-        ]
-      },
-      {
-        key: "zaves",
-        title: "Závěsy",
-        img: "assets/img/pricing/pricing-02.webp",
-        vibe: "Vytvoří soukromí. Večer zklidní. Ráno ochrání.",
-        micro: "Materiál, ticho, komfort.",
-        intro: "Závěsy zajišťují soukromí, zatemnění a pomáhají regulovat světlo i teplotu v prostoru. Vhodné do ložnic, obývacích pokojů i interiérů, kde chcete dosáhnout maximálního klidu.",
-        rangesTitle: "Orientačně (pro představu)",
-        ranges: [
-          { label: "malé okno (200 x 270cm)", value: "cca 6–21 tis. Kč" },
-          { label: "velké okno (500 x 290cm)", value: "cca 15–49 tis. Kč" }
-        ],
-        rangesNote: "Orientační cena zahrnuje návrh podle prostoru, zaměření, výrobu, montáž a finální dekorování",
-        tiersTitle: "Typy",
-        tiers: [
-          { name: "Dekorativní závěs", note: "Primárně vzhled a soukromí." },
-          { name: "Dim-out", note: "Ztlumí světlo, ale úplnou tmu neudělá." },
-          { name: "Blackout", note: "Maximální zatemnění, částečná tepelná izolace." }
-        ]
-      },
-      {
-        key: "roleta",
-        title: "Rolety",
+        key: "latkova",
+        label: "Látková roleta",
         img: "assets/img/pricing/roleta-latkova.webp",
-        vibe: "Čisté linie. Funkce bez kompromisu.",
         micro: "Regulace světla, jednoduchost.",
-        intro: "Rolety umožňují přesnou regulaci světla a čisté, minimalistické řešení bez závěsů. Vhodné pro kuchyně, koupelny, pracovny i moderní interiéry.",
-        subtypes: [
-          {
-            key: "latkova",
-            label: "Látková roleta",
-            img: "assets/img/pricing/roleta-latkova.webp",
-            micro: "Regulace světla, jednoduchost.",
-            intro: "Látkové rolety umožňují regulaci světla podle zvoleného materiálu od lehkého zastínění po výraznější zatemnění. Praktické řešení pro každodenní používání.",
-            rangesTitle: "Orientačně (pro představu)",
-            ranges: [
-              { label: "malé okno (130 x 200cm)", value: "cca 10–35 tis. Kč / ks" },
-              { label: "velké okno (350 x 300cm)", value: "cca 32–85 tis. Kč / ks" }
-            ],
-            rangesNote: "Orientační cena zahrnuje návrh podle prostoru, zaměření, výrobu, montáž a finální dekorování",
-            tiersTitle: "Typy",
-            tiers: [
-              { name: "Screen / denní", note: "Regulace světla, vzdušnost." },
-              { name: "Zatemňovací", note: "Větší soukromí a tlumení světla." },
-              { name: "Motor", note: "Komfort, vyšší náklady." }
-            ]
-          },
-          {
-            key: "rimska",
-            label: "Římská roleta",
-            img: "assets/img/pricing/roleta-rimska.webp",
-            micro: "Měkká textilní vrstva, dekor a klid.",
-            intro: "Římské rolety kombinují funkčnost rolety a vzhled závěsu. Vhodné do interiérů, kde chcete zachovat měkkost textilu bez klasických závěsů.",
-            rangesTitle: "Orientačně (pro představu)",
-            ranges: [
-              { label: "malé okno (110 x 150cm)", value: "cca 6–11 tis. Kč / ks" },
-              { label: "velké okno (180 x 250cm)", value: "cca 14–19 tis. Kč / ks" }
-            ],
-            rangesNote: "Orientační cena zahrnuje návrh podle prostoru, zaměření, výrobu, montáž a finální dekorování",
-            tiersTitle: "Typy",
-            tiers: [
-              { name: "Ze záclonových látek", note: "Vzdušnost, praktičnost." },
-              { name: "Ze závěsových látek", note: "Soukromí, zatemnění." },
-              { name: "Motor", note: "Komfort, vyšší náklady." }
-            ]
-          },
-          {
-            key: "plisse",
-            label: "Plissé roleta",
-            img: "assets/img/pricing/roleta-plisse.webp",
-            micro: "Přesné dávkování světla. Skvělé i na atypy.",
-            intro: "Plissé rolety umožňují stínění shora i zdola a umožňuje přesně regulovat světlo. Ideální řešení pro atypická okna a specifické situace.",
-            rangesTitle: "Orientačně (pro představu)",
-            ranges: [
-              { label: "malé okno (80 x 100cm)", value: "cca 3,3–6 tis. Kč / ks" },
-              { label: "velké okno (120 x 220cm)", value: "cca 7–16 tis. Kč / ks" }
-            ],
-            rangesNote: "Orientační cena zahrnuje návrh podle prostoru, zaměření, výrobu, montáž a finální dekorování",
-            tiersTitle: "Typy",
-            tiers: [
-              { name: "Screen / denní", note: "Regulace světla, vzdušnost." },
-              { name: "Zatemňovací", note: "Větší soukromí a tlumení světla." }
-            ]
-          }
-        ]
-      },
-      {
-        key: "systemy",
-        title: "Kolejnice a garnýže",
-        img: "assets/img/pricing/systemy-kolejnice.webp",
-        vibe: "Základ který vše drží a řídí.",
-        micro: "Funkční i dekorativní.",
-        intro: "Kolejnice a garnýže zajišťují správnou funkci i vzhled stínění. Navrhujeme je podle prostoru a typu textilu.",
-        subtypes: [
-          {
-            key: "kolejnice",
-            label: "Kolejnice",
-            img: "assets/img/pricing/systemy-kolejnice.webp",
-            micro: "Čistá linie. Funkce a přesnost.",
-            intro: "Kolejnice na závěsy a záclony umožňují čisté a funkční řešení stínění. Vhodné pro stropy, stěny a atypické prostory včetně ohýbaných variant.",
-            rangesTitle: "Orientačně (pro představu)",
-            ranges: [
-              { label: "malé okno (200 x 270cm)", value: "cca 1–13 tis. Kč" },
-              { label: "velké okno (500 x 290cm)", value: "cca 2.5–18 tis. Kč" }
-            ],
-            rangesNote: "Orientační cena zahrnuje návrh podle prostoru, zaměření, výrobu, montáž a finální dekorování",
-            tiersTitle: "Typy",
-            tiers: [
-              { name: "Rovná", note: "Jednoduché, čisté řešení." },
-              { name: "Ohýbaná", note: "Podle dispozice a vedení prostoru." },
-              { name: "Motor", note: "Komfort a automatizace." }
-            ]
-          },
-          {
-            key: "garnyze",
-            label: "Garnýže",
-            img: "assets/img/pricing/systemy-garnyze.webp",
-            micro: "Dekor. Detail, který je vidět.",
-            intro: "Garnýže tvoří viditelný prvek interiéru. Volíme materiály, barvy i detaily tak, aby ladily s textilem a celkovým stylem prostoru.",
-            rangesTitle: "Orientačně (pro představu)",
-            ranges: [
-              { label: "malé okno (200 x 270cm)", value: "cca 1–13 tis. Kč" },
-              { label: "velké okno (500 x 290cm)", value: "cca 2.5–18 tis. Kč" }
-            ],
-            rangesNote: "Orientační cena zahrnuje návrh podle prostoru, zaměření, výrobu, montáž a finální dekorování",
-            tiersTitle: "Typy",
-            tiers: [
-              { name: "Klasická", note: "Dekorativní řešení do bytů i domů." },
-              { name: "Designová", note: "Výraznější materiál, povrch, detail." },
-              { name: "Individuální řešení", note: "Specifické uchycení, délky, rohy." }
-            ]
-          }
-        ]
-      },
-      {
-        key: "servis",
-        title: "Servis a údržba stínění",
-        img: "assets/img/pricing/pricing-05.webp",
-        vibe: "Profesionální údržba ve třech krocích.",
-        micro: "Znovu jako nové.",
-        intro: "Zajišťujeme servis záclon a závěsů od sundání přes praní nebo čištění až po opětovné zavěšení a finální úpravu.",
-        rangesTitle: "Orientačně podle rozsahu",
+        intro: "Látkové rolety umožňují regulaci světla podle zvoleného materiálu od lehkého zastínění po výraznější zatemnění. Praktické řešení pro každodenní používání.",
+        rangesTitle: "Orientačně (pro představu)",
         ranges: [
-          { label: "malé okno (200 x 270cm)", value: "cca 6–8 tis. Kč" },
-          { label: "velké okno (500 x 290cm)", value: "cca 17–20 tis. Kč" }
+          { label: "malé okno (130 x 200cm)", value: "cca 10–35 tis. Kč / ks" },
+          { label: "velké okno (350 x 300cm)", value: "cca 32–85 tis. Kč / ks" }
         ],
-        rangesNote: "Orientační cena zahrnuje obě vrstvy textilu, tedy záclonu i závěs.",
+        rangesNote: "Orientační cena zahrnuje návrh podle prostoru, zaměření, výrobu, montáž a finální dekorování",
         tiersTitle: "Typy",
         tiers: [
-          { name: "Běžná údržba", note: "Sundání, praní/čištění, žehlení a pověšení." },
-          { name: "Velké plochy", note: "Více dílů, větší náročnost manipulace." },
-          { name: "Atyp / výšky", note: "Speciální přístup, lešení/plošina dle situace." }
+          { name: "Screen / denní", note: "Regulace světla, vzdušnost." },
+          { name: "Zatemňovací", note: "Větší soukromí a tlumení světla." },
+          { name: "Motor", note: "Komfort, vyšší náklady." }
+        ]
+      },
+      {
+        key: "rimska",
+        label: "Římská roleta",
+        img: "assets/img/pricing/roleta-rimska.webp",
+        micro: "Měkká textilní vrstva, dekor a klid.",
+        intro: "Římské rolety kombinují funkčnost rolety a vzhled závěsu. Vhodné do interiérů, kde chcete zachovat měkkost textilu bez klasických závěsů.",
+        rangesTitle: "Orientačně (pro představu)",
+        ranges: [
+          { label: "malé okno (110 x 150cm)", value: "cca 6–11 tis. Kč / ks" },
+          { label: "velké okno (180 x 250cm)", value: "cca 14–19 tis. Kč / ks" }
         ],
-        serviceOnlyNote: "Servis poskytujeme pouze na naše realizace."
+        rangesNote: "Orientační cena zahrnuje návrh podle prostoru, zaměření, výrobu, montáž a finální dekorování",
+        tiersTitle: "Typy",
+        tiers: [
+          { name: "Ze záclonových látek", note: "Vzdušnost, praktičnost." },
+          { name: "Ze závěsových látek", note: "Soukromí, zatemnění." },
+          { name: "Motor", note: "Komfort, vyšší náklady." }
+        ]
+      },
+      {
+        key: "plisse",
+        label: "Plissé roleta",
+        img: "assets/img/pricing/roleta-plisse.webp",
+        micro: "Přesné dávkování světla. Skvělé i na atypy.",
+        intro: "Plissé rolety umožňují stínění shora i zdola a umožňuje přesně regulovat světlo. Ideální řešení pro atypická okna a specifické situace.",
+        rangesTitle: "Orientačně (pro představu)",
+        ranges: [
+          { label: "malé okno (80 x 100cm)", value: "cca 3,3–6 tis. Kč / ks" },
+          { label: "velké okno (120 x 220cm)", value: "cca 7–16 tis. Kč / ks" }
+        ],
+        rangesNote: "Orientační cena zahrnuje návrh podle prostoru, zaměření, výrobu, montáž a finální dekorování",
+        tiersTitle: "Typy",
+        tiers: [
+          { name: "Screen / denní", note: "Regulace světla, vzdušnost." },
+          { name: "Zatemňovací", note: "Větší soukromí a tlumení světla." }
+        ]
       }
+    ]
+  },
+  {
+    key: "systemy",
+    title: "Kolejnice a garnýže",
+    img: "assets/img/pricing/systemy-kolejnice.webp",
+    vibe: "Základ který vše drží a řídí.",
+    micro: "Funkční i dekorativní.",
+    intro: "Kolejnice a garnýže zajišťují správnou funkci i vzhled stínění. Navrhujeme je podle prostoru a typu textilu.",
+    subtypes: [
+      {
+        key: "kolejnice",
+        label: "Kolejnice",
+        img: "assets/img/pricing/systemy-kolejnice.webp",
+        micro: "Čistá linie. Funkce a přesnost.",
+        intro: "Kolejnice na závěsy a záclony umožňují čisté a funkční řešení stínění. Vhodné pro stropy, stěny a atypické prostory včetně ohýbaných variant.",
+        rangesTitle: "Orientačně (pro představu)",
+        ranges: [
+          { label: "malé okno (200 x 270cm)", value: "cca 1–13 tis. Kč" },
+          { label: "velké okno (500 x 290cm)", value: "cca 2.5–18 tis. Kč" }
+        ],
+        rangesNote: "Orientační cena zahrnuje návrh podle prostoru, zaměření, výrobu, montáž a finální dekorování",
+        tiersTitle: "Typy",
+        tiers: [
+          { name: "Rovná", note: "Jednoduché, čisté řešení." },
+          { name: "Ohýbaná", note: "Podle dispozice a vedení prostoru." },
+          { name: "Motor", note: "Komfort a automatizace." }
+        ]
+      },
+      {
+        key: "garnyze",
+        label: "Garnýže",
+        img: "assets/img/pricing/systemy-garnyze.webp",
+        micro: "Dekor. Detail, který je vidět.",
+        intro: "Garnýže tvoří viditelný prvek interiéru. Volíme materiály, barvy i detaily tak, aby ladily s textilem a celkovým stylem prostoru.",
+        rangesTitle: "Orientačně (pro představu)",
+        ranges: [
+          { label: "malé okno (200 x 270cm)", value: "cca 1–13 tis. Kč" },
+          { label: "velké okno (500 x 290cm)", value: "cca 2.5–18 tis. Kč" }
+        ],
+        rangesNote: "Orientační cena zahrnuje návrh podle prostoru, zaměření, výrobu, montáž a finální dekorování",
+        tiersTitle: "Typy",
+        tiers: [
+          { name: "Klasická", note: "Dekorativní řešení do bytů i domů." },
+          { name: "Designová", note: "Výraznější materiál, povrch, detail." },
+          { name: "Individuální řešení", note: "Specifické uchycení, délky, rohy." }
+        ]
+      }
+    ]
+  },
+  {
+    key: "servis",
+    title: "Servis a údržba stínění",
+    img: "assets/img/pricing/pricing-05.webp",
+    vibe: "Profesionální údržba ve třech krocích.",
+    micro: "Znovu jako nové.",
+    intro: "Zajišťujeme servis záclon a závěsů od sundání přes praní nebo čištění až po opětovné zavěšení a finální úpravu.",
+    modalLead: "Pravidelná údržba, praní i opětovné zavěšení, aby stínění zůstalo v perfektním stavu.",
+    rangesTitle: "Orientačně podle rozsahu",
+    ranges: [
+      { label: "malé okno (200 x 270cm)", value: "cca 6–8 tis. Kč" },
+      { label: "velké okno (500 x 290cm)", value: "cca 17–20 tis. Kč" }
     ],
+    rangesNote: "Orientační cena zahrnuje obě vrstvy textilu, tedy záclonu i závěs.",
+    tiersTitle: "Typy",
+    tiers: [
+      { name: "Běžná údržba", note: "Sundání, praní/čištění, žehlení a pověšení." },
+      { name: "Velké plochy", note: "Více dílů, větší náročnost manipulace." },
+      { name: "Atyp / výšky", note: "Speciální přístup, lešení/plošina dle situace." }
+    ],
+    serviceOnlyNote: "Servis poskytujeme pouze na naše realizace."
+  }
+],
 
     // Gallery
     galleryH: "Realizace stínění",
@@ -748,218 +751,220 @@ homeFinalCtaLocation:
     ],
     processEnding: "The goal is for you to feel naturally and genuinely well in the space.",
 
-    // Pricing
-    priceH: "What Our Window Treatments Cost",
-    pricingLead: "Guide prices and types of solutions to give you a clear idea before the consultation.",
-    pricingLeadMobile: "Indicative pricing for a quick overview before the consultation.",
-    pricingSectionTitle: "Price depends on the space, the material and the level of detail",
-    pricingOpenButton: "View guide prices",
+ // Pricing
+priceH: "What Our Window Treatments Cost",
+pricingLead: "Guide prices and types of solutions to give you a clear idea before the consultation.",
+pricingLeadMobile: "Indicative pricing for a quick overview before the consultation.",
+pricingSectionTitle: "Price depends on the space, the material and the level of detail",
+pricingOpenButton: "View guide prices",
 
-    pricingIntroMobile: [
-      "Made-to-measure shading varies with window size, material and technical solution.",
-      "Below you will find an indicative overview for a quick first impression."
+pricingIntroMobile: [
+  "Made-to-measure shading varies with window size, material and technical solution.",
+  "Below you will find an indicative overview for a quick first impression."
+],
+
+pricingIntro: [
+  "The price of made-to-measure window treatments varies depending on window size, material and the chosen solution.",
+  "On this page, you will find guide prices for sheers, curtains, blinds, tracks and curtain rods so you can get an initial idea before the consultation.",
+  "Every proposal is prepared individually according to the space, the light and the way the interior is used."
+],
+
+pricingDisclaimer:
+  "The amounts shown are indicative scenarios for reference only. The exact design and quotation are always refined after an on-site consultation according to dimensions, selected materials and the technical solution.",
+pricingDisclaimerMobile:
+  "Prices are indicative. We prepare the exact proposal and quotation after the on-site consultation.",
+openDetail: "Open detail",
+writeMe: "Non-binding consultation",
+close: "Close",
+previous: "Previous",
+next: "Next",
+lightboxHint: "Browse the photos using the arrow keys or by clicking the buttons.",
+mobileSwipeHint: "Swipe to see more",
+mobileSwipeHintServices: "Swipe for more solutions",
+mobileSwipeHintBenefits: "Swipe for more reasons",
+mobileSwipeHintProjects: "Swipe for more projects",
+mobileSwipeHintProcess: "Swipe for more principles",
+
+pricingItems: [
+  {
+    key: "zaclon",
+    title: "Sheers",
+    img: "assets/img/pricing/pricing-01.webp",
+    vibe: "The light remains. The space becomes softer and more welcoming.",
+    micro: "Light, proportion, softness.",
+    intro: "Sheers allow daylight to pass through while creating a basic level of privacy in the interior. An ideal solution for living rooms, bedrooms and large French windows.",
+    modalLead: "Light textiles that soften daylight and bring privacy and lightness into the interior.",
+    rangesTitle: "Guide prices",
+    ranges: [
+      { label: "small window (200 x 270cm)", value: "approx. CZK 3–16 thousand" },
+      { label: "large window (500 x 290cm)", value: "approx. CZK 8–42 thousand" }
     ],
-
-    pricingIntro: [
-      "The price of made-to-measure window treatments varies depending on window size, material and the chosen solution.",
-      "On this page, you will find guide prices for sheers, curtains, blinds, tracks and curtain rods so you can get an initial idea before the consultation.",
-      "Every proposal is prepared individually according to the space, the light and the way the interior is used."
+    rangesNote: "The guide price includes design according to the space, measuring, production, installation and final styling.",
+    tiersTitle: "Types",
+    tiers: [
+      { name: "Basic lightweight voiles", note: "Airy fabrics with a lower purchase cost." },
+      { name: "Mid-range category", note: "A balanced ratio of price, appearance and function." },
+      { name: "Premium fabrics", note: "Exclusive texture and natural materials." }
+    ]
+  },
+  {
+    key: "zaves",
+    title: "Curtains",
+    img: "assets/img/pricing/pricing-02.webp",
+    vibe: "They create privacy. They calm the evening. They protect the morning.",
+    micro: "Material, quiet, comfort.",
+    intro: "Curtains provide privacy, blackout and help regulate both light and temperature in the space. Suitable for bedrooms, living rooms and interiors where you want to achieve a strong sense of calm.",
+    modalLead: "Textiles for greater privacy, light control and a calmer overall atmosphere in the space.",
+    rangesTitle: "Guide prices",
+    ranges: [
+      { label: "small window (200 x 270cm)", value: "approx. CZK 6–21 thousand" },
+      { label: "large window (500 x 290cm)", value: "approx. CZK 15–49 thousand" }
     ],
-
-    pricingDisclaimer:
-      "The amounts shown are indicative scenarios for reference only. The exact design and quotation are always refined after an on-site consultation according to dimensions, selected materials and the technical solution.",
-    pricingDisclaimerMobile:
-      "Prices are indicative. We prepare the exact proposal and quotation after the on-site consultation.",
-    openDetail: "Open detail",
-    writeMe: "Non-binding consultation",
-    close: "Close",
-    previous: "Previous",
-    next: "Next",
-    lightboxHint: "Browse the photos using the arrow keys or by clicking the buttons.",
-    mobileSwipeHint: "Swipe to see more",
-    mobileSwipeHintServices: "Swipe for more solutions",
-    mobileSwipeHintBenefits: "Swipe for more reasons",
-    mobileSwipeHintProjects: "Swipe for more projects",
-    mobileSwipeHintProcess: "Swipe for more principles",
-
-    pricingItems: [
+    rangesNote: "The guide price includes design according to the space, measuring, production, installation and final styling.",
+    tiersTitle: "Types",
+    tiers: [
+      { name: "Decorative curtain", note: "Primarily for appearance and privacy." },
+      { name: "Dim-out", note: "Softens the light, but does not create complete darkness." },
+      { name: "Blackout", note: "Maximum blackout with partial thermal insulation." }
+    ]
+  },
+  {
+    key: "roleta",
+    title: "Blinds",
+    img: "assets/img/pricing/roleta-latkova.webp",
+    vibe: "Clean lines. Function without compromise.",
+    micro: "Light control, simplicity.",
+    intro: "Blinds allow precise light control and offer a clean, minimalist solution without curtains. Suitable for kitchens, bathrooms, studies and modern interiors.",
+    subtypes: [
       {
-        key: "zaclon",
-        title: "Sheers",
-        img: "assets/img/pricing/pricing-01.webp",
-        vibe: "The light remains. The space becomes softer and more welcoming.",
-        micro: "Light, proportion, softness.",
-        intro: "Sheers allow daylight to pass through while creating a basic level of privacy in the interior. An ideal solution for living rooms, bedrooms and large French windows.",
-        rangesTitle: "Guide prices",
-        ranges: [
-          { label: "small window (200 x 270cm)", value: "approx. CZK 3–16 thousand" },
-          { label: "large window (500 x 290cm)", value: "approx. CZK 8–42 thousand" }
-        ],
-        rangesNote: "The guide price includes design according to the space, measuring, production, installation and final styling.",
-        tiersTitle: "Types",
-        tiers: [
-          { name: "Basic lightweight voiles", note: "Airy fabrics with a lower purchase cost." },
-          { name: "Mid-range category", note: "A balanced ratio of price, appearance and function." },
-          { name: "Premium fabrics", note: "Exclusive texture and natural materials." }
-        ]
-      },
-      {
-        key: "zaves",
-        title: "Curtains",
-        img: "assets/img/pricing/pricing-02.webp",
-        vibe: "They create privacy. They calm the evening. They protect the morning.",
-        micro: "Material, quiet, comfort.",
-        intro: "Curtains provide privacy, blackout and help regulate both light and temperature in the space. Suitable for bedrooms, living rooms and interiors where you want to achieve a strong sense of calm.",
-        rangesTitle: "Guide prices",
-        ranges: [
-          { label: "small window (200 x 270cm)", value: "approx. CZK 6–21 thousand" },
-          { label: "large window (500 x 290cm)", value: "approx. CZK 15–49 thousand" }
-        ],
-        rangesNote: "The guide price includes design according to the space, measuring, production, installation and final styling.",
-        tiersTitle: "Types",
-        tiers: [
-          { name: "Decorative curtain", note: "Primarily for appearance and privacy." },
-          { name: "Dim-out", note: "Softens the light, but does not create complete darkness." },
-          { name: "Blackout", note: "Maximum blackout with partial thermal insulation." }
-        ]
-      },
-      {
-        key: "roleta",
-        title: "Blinds",
+        key: "latkova",
+        label: "Fabric blind",
         img: "assets/img/pricing/roleta-latkova.webp",
-        vibe: "Clean lines. Function without compromise.",
         micro: "Light control, simplicity.",
-        intro: "Blinds allow precise light control and offer a clean, minimalist solution without curtains. Suitable for kitchens, bathrooms, studies and modern interiors.",
-        subtypes: [
-          {
-            key: "latkova",
-            label: "Fabric blind",
-            img: "assets/img/pricing/roleta-latkova.webp",
-            micro: "Light control, simplicity.",
-            intro: "Fabric blinds allow light to be regulated according to the selected material, from gentle shading to stronger blackout. A practical solution for everyday use.",
-            rangesTitle: "Guide prices",
-            ranges: [
-              { label: "small window (130 x 200cm)", value: "approx. CZK 10–35 thousand / pc" },
-              { label: "large window (350 x 300cm)", value: "approx. CZK 32–85 thousand / pc" }
-            ],
-            rangesNote: "The guide price includes design according to the space, measuring, production, installation and final styling.",
-            tiersTitle: "Types",
-            tiers: [
-              { name: "Screen / daytime", note: "Light control and airiness." },
-              { name: "Blackout", note: "More privacy and softened light." },
-              { name: "Motorised", note: "More comfort, higher cost." }
-            ]
-          },
-          {
-            key: "rimska",
-            label: "Roman blind",
-            img: "assets/img/pricing/roleta-rimska.webp",
-            micro: "A soft textile layer, decoration and calm.",
-            intro: "Roman blinds combine the function of a blind with the look of a curtain. Suitable for interiors where you want to preserve the softness of textile without classic curtains.",
-            rangesTitle: "Guide prices",
-            ranges: [
-              { label: "small window (110 x 150cm)", value: "approx. CZK 6–11 thousand / pc" },
-              { label: "large window (180 x 250cm)", value: "approx. CZK 14–19 thousand / pc" }
-            ],
-            rangesNote: "The guide price includes design according to the space, measuring, production, installation and final styling.",
-            tiersTitle: "Types",
-            tiers: [
-              { name: "In sheer fabrics", note: "Airiness and practicality." },
-              { name: "In curtain fabrics", note: "Privacy and blackout." },
-              { name: "Motorised", note: "More comfort, higher cost." }
-            ]
-          },
-          {
-            key: "plisse",
-            label: "Pleated blind",
-            img: "assets/img/pricing/roleta-plisse.webp",
-            micro: "Precise dosing of light. Excellent for unusual window shapes.",
-            intro: "Pleated blinds can be drawn from both the top and the bottom, allowing very precise light control. An ideal solution for unusual windows and specific situations.",
-            rangesTitle: "Guide prices",
-            ranges: [
-              { label: "small window (80 x 100cm)", value: "approx. CZK 3.3–6 thousand / pc" },
-              { label: "large window (120 x 220cm)", value: "approx. CZK 7–16 thousand / pc" }
-            ],
-            rangesNote: "The guide price includes design according to the space, measuring, production, installation and final styling.",
-            tiersTitle: "Types",
-            tiers: [
-              { name: "Screen / daytime", note: "Light control and airiness." },
-              { name: "Blackout", note: "More privacy and softened light." }
-            ]
-          }
-        ]
-      },
-      {
-        key: "systemy",
-        title: "Tracks and curtain rods",
-        img: "assets/img/pricing/systemy-kolejnice.webp",
-        vibe: "The foundation that holds and guides everything.",
-        micro: "Functional as well as decorative.",
-        intro: "Tracks and curtain rods ensure both the correct function and the visual finish of the window treatments. We design them according to the space and the type of textile.",
-        subtypes: [
-          {
-            key: "kolejnice",
-            label: "Tracks",
-            img: "assets/img/pricing/systemy-kolejnice.webp",
-            micro: "A clean line. Function and precision.",
-            intro: "Tracks for curtains and sheers provide a clean and functional window treatment solution. Suitable for ceilings, walls and unusual spaces, including curved options.",
-            rangesTitle: "Guide prices",
-            ranges: [
-              { label: "small window (200 x 270cm)", value: "approx. CZK 1–13 thousand" },
-              { label: "large window (500 x 290cm)", value: "approx. CZK 2.5–18 thousand" }
-            ],
-            rangesNote: "The guide price includes design according to the space, measuring, production, installation and final styling.",
-            tiersTitle: "Types",
-            tiers: [
-              { name: "Straight", note: "A simple, clean solution." },
-              { name: "Curved", note: "According to layout and spatial flow." },
-              { name: "Motorised", note: "Comfort and automation." }
-            ]
-          },
-          {
-            key: "garnyze",
-            label: "Curtain rods",
-            img: "assets/img/pricing/systemy-garnyze.webp",
-            micro: "Décor. A detail that remains visible.",
-            intro: "Curtain rods are a visible interior element. We choose materials, colours and details so they work in harmony with the textile and the overall character of the space.",
-            rangesTitle: "Guide prices",
-            ranges: [
-              { label: "small window (200 x 270cm)", value: "approx. CZK 1–13 thousand" },
-              { label: "large window (500 x 290cm)", value: "approx. CZK 2.5–18 thousand" }
-            ],
-            rangesNote: "The guide price includes design according to the space, measuring, production, installation and final styling.",
-            tiersTitle: "Types",
-            tiers: [
-              { name: "Classic", note: "Decorative solutions for flats and houses." },
-              { name: "Designer", note: "A more distinctive material, finish or detail." },
-              { name: "Individual solution", note: "Specific fixing, lengths and corner details." }
-            ]
-          }
-        ]
-      },
-      {
-        key: "servis",
-        title: "Service and maintenance",
-        img: "assets/img/pricing/pricing-05.webp",
-        vibe: "Professional care in three steps.",
-        micro: "Like new again.",
-        intro: "We provide service for sheers and curtains from taking them down through washing or cleaning to rehanging and final finishing.",
-        rangesTitle: "Guide prices by scope",
+        intro: "Fabric blinds allow light to be regulated according to the selected material, from gentle shading to stronger blackout. A practical solution for everyday use.",
+        rangesTitle: "Guide prices",
         ranges: [
-          { label: "small window (200 x 270cm)", value: "approx. CZK 6–8 thousand" },
-          { label: "large window (500 x 290cm)", value: "approx. CZK 17–20 thousand" }
+          { label: "small window (130 x 200cm)", value: "approx. CZK 10–35 thousand / pc" },
+          { label: "large window (350 x 300cm)", value: "approx. CZK 32–85 thousand / pc" }
         ],
-        rangesNote: "The guide price includes both textile layers, meaning both the sheer and the curtain.",
+        rangesNote: "The guide price includes design according to the space, measuring, production, installation and final styling.",
         tiersTitle: "Types",
         tiers: [
-          { name: "Standard maintenance", note: "Taking down, washing/cleaning, steaming and rehanging." },
-          { name: "Large areas", note: "More panels and more demanding handling." },
-          { name: "Unusual layouts / heights", note: "Special access, scaffolding/lift depending on the situation." }
+          { name: "Screen / daytime", note: "Light control and airiness." },
+          { name: "Blackout", note: "More privacy and softened light." },
+          { name: "Motorised", note: "More comfort, higher cost." }
+        ]
+      },
+      {
+        key: "rimska",
+        label: "Roman blind",
+        img: "assets/img/pricing/roleta-rimska.webp",
+        micro: "A soft textile layer, decoration and calm.",
+        intro: "Roman blinds combine the function of a blind with the look of a curtain. Suitable for interiors where you want to preserve the softness of textile without classic curtains.",
+        rangesTitle: "Guide prices",
+        ranges: [
+          { label: "small window (110 x 150cm)", value: "approx. CZK 6–11 thousand / pc" },
+          { label: "large window (180 x 250cm)", value: "approx. CZK 14–19 thousand / pc" }
         ],
-        serviceOnlyNote: "We provide service only for our own installations."
+        rangesNote: "The guide price includes design according to the space, measuring, production, installation and final styling.",
+        tiersTitle: "Types",
+        tiers: [
+          { name: "In sheer fabrics", note: "Airiness and practicality." },
+          { name: "In curtain fabrics", note: "Privacy and blackout." },
+          { name: "Motorised", note: "More comfort, higher cost." }
+        ]
+      },
+      {
+        key: "plisse",
+        label: "Pleated blind",
+        img: "assets/img/pricing/roleta-plisse.webp",
+        micro: "Precise dosing of light. Excellent for unusual window shapes.",
+        intro: "Pleated blinds can be drawn from both the top and the bottom, allowing very precise light control. An ideal solution for unusual windows and specific situations.",
+        rangesTitle: "Guide prices",
+        ranges: [
+          { label: "small window (80 x 100cm)", value: "approx. CZK 3.3–6 thousand / pc" },
+          { label: "large window (120 x 220cm)", value: "approx. CZK 7–16 thousand / pc" }
+        ],
+        rangesNote: "The guide price includes design according to the space, measuring, production, installation and final styling.",
+        tiersTitle: "Types",
+        tiers: [
+          { name: "Screen / daytime", note: "Light control and airiness." },
+          { name: "Blackout", note: "More privacy and softened light." }
+        ]
       }
+    ]
+  },
+  {
+    key: "systemy",
+    title: "Tracks and curtain rods",
+    img: "assets/img/pricing/systemy-kolejnice.webp",
+    vibe: "The foundation that holds and guides everything.",
+    micro: "Functional as well as decorative.",
+    intro: "Tracks and curtain rods ensure both the correct function and the visual finish of the window treatments. We design them according to the space and the type of textile.",
+    subtypes: [
+      {
+        key: "kolejnice",
+        label: "Tracks",
+        img: "assets/img/pricing/systemy-kolejnice.webp",
+        micro: "A clean line. Function and precision.",
+        intro: "Tracks for curtains and sheers provide a clean and functional window treatment solution. Suitable for ceilings, walls and unusual spaces, including curved options.",
+        rangesTitle: "Guide prices",
+        ranges: [
+          { label: "small window (200 x 270cm)", value: "approx. CZK 1–13 thousand" },
+          { label: "large window (500 x 290cm)", value: "approx. CZK 2.5–18 thousand" }
+        ],
+        rangesNote: "The guide price includes design according to the space, measuring, production, installation and final styling.",
+        tiersTitle: "Types",
+        tiers: [
+          { name: "Straight", note: "A simple, clean solution." },
+          { name: "Curved", note: "According to layout and spatial flow." },
+          { name: "Motorised", note: "Comfort and automation." }
+        ]
+      },
+      {
+        key: "garnyze",
+        label: "Curtain rods",
+        img: "assets/img/pricing/systemy-garnyze.webp",
+        micro: "Décor. A detail that remains visible.",
+        intro: "Curtain rods are a visible interior element. We choose materials, colours and details so they work in harmony with the textile and the overall character of the space.",
+        rangesTitle: "Guide prices",
+        ranges: [
+          { label: "small window (200 x 270cm)", value: "approx. CZK 1–13 thousand" },
+          { label: "large window (500 x 290cm)", value: "approx. CZK 2.5–18 thousand" }
+        ],
+        rangesNote: "The guide price includes design according to the space, measuring, production, installation and final styling.",
+        tiersTitle: "Types",
+        tiers: [
+          { name: "Classic", note: "Decorative solutions for flats and houses." },
+          { name: "Designer", note: "A more distinctive material, finish or detail." },
+          { name: "Individual solution", note: "Specific fixing, lengths and corner details." }
+        ]
+      }
+    ]
+  },
+  {
+    key: "servis",
+    title: "Service and maintenance",
+    img: "assets/img/pricing/pricing-05.webp",
+    vibe: "Professional care in three steps.",
+    micro: "Like new again.",
+    intro: "We provide service for sheers and curtains from taking them down through washing or cleaning to rehanging and final finishing.",
+    modalLead: "Regular care, cleaning and rehanging so your window treatments stay in excellent condition.",
+    rangesTitle: "Guide prices by scope",
+    ranges: [
+      { label: "small window (200 x 270cm)", value: "approx. CZK 6–8 thousand" },
+      { label: "large window (500 x 290cm)", value: "approx. CZK 17–20 thousand" }
     ],
-
+    rangesNote: "The guide price includes both textile layers, meaning both the sheer and the curtain.",
+    tiersTitle: "Types",
+    tiers: [
+      { name: "Standard maintenance", note: "Taking down, washing/cleaning, steaming and rehanging." },
+      { name: "Large areas", note: "More panels and more demanding handling." },
+      { name: "Unusual layouts / heights", note: "Special access, scaffolding/lift depending on the situation." }
+    ],
+    serviceOnlyNote: "We provide service only for our own installations."
+  }
+],
     // Gallery
     galleryH: "Completed Projects",
     galleryLead: "A selection of completed sheers, curtains, blinds and technical systems.",
