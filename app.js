@@ -132,6 +132,24 @@ function useReveal(route) {
   }, [route]);
 }
 
+function useIsMobile(breakpoint = 820) {
+  const getValue = () =>
+    typeof window !== "undefined" ? window.innerWidth <= breakpoint : false;
+
+  const [isMobile, setIsMobile] = useState(getValue);
+
+  useEffect(() => {
+    const onResize = () => setIsMobile(getValue());
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, [breakpoint]);
+
+  return isMobile;
+}
+
+
+
+
 function Header({ t, lang, setLang, route, menuOpen, setMenuOpen }) {
   useEffect(() => {
     document.body.classList.toggle("menu-open", menuOpen);
