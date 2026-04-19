@@ -440,36 +440,39 @@ homeFinalCtaLocation:
     contactLead: "Pošlete zprávu, fotografie prostoru a ozveme se s dalším krokem.",
     contactLeadMobile: "Napište nám a připojte fotky prostoru. Ozveme se s dalším krokem.",
     contactAddressLabel: "Adresa",
-    contactFormTitle: "Nezávazná poptávka",
-    contactFormIntro:
-      "Popište nám prostor, pošlete fotografie a společně najdeme řešení, které bude dávat smysl právě u vás.",
-    contactFormNote:
-      "Popište nám prostor, o co jde a jaký výsledek očekáváte. Vzorky vozíme přímo do interiéru.",
-    contactSubmitCta: "Poslat nezávaznou poptávku",
-    name: "Jméno",
-    email: "E-mail",
-    message: "Zpráva",
-    send: "Odeslat",
-    contactHowH: "Jak to probíhá",
-    contactHow: [
-      "Pošlete krátkou zprávu a případně fotografie oken či prostoru.",
-      "Ozvu se vám s návrhem termínu konzultace.",
-      "Na místě společně doladíme řešení, které pro vás připravím."
-    ],
-    contactNote: "",
-    contactFullName: "Jméno a příjmení",
-    contactPhone: "Kontakt (telefon)",
-    contactPhotos: "Fotografie (volitelné)",
-    contactFormSteps: [
-      "• Ozveme se vám s návrhem dalšího postupu",
-      "• Domluvíme termín konzultace",
-      "• Vzorky přivezeme přímo do vašeho interiéru"
-    ],
-    contactPhotosLimit: "Můžete přiložit až 5 fotografií.",
-    contactValidationError: "Vyplňte prosím správně všechna povinná pole.",
-    contactSuccessMessage: "Děkuji. Zpráva byla odeslána.",
-    contactErrorMessage: "Odeslání se nepodařilo. Zkuste to prosím znovu.",
-    contactSending: "Odesílám…",
+   contactFormTitle: "Nezávazná poptávka",
+
+contactFormIntro:
+  "Popište prostor a pošlete fotografie. Společně najdeme řešení, které bude dávat smysl právě u vás.",
+
+contactName: "Jméno a příjmení",
+contactEmail: "E-mail",
+contactPhone: "Kontakt (telefon)",
+contactMessage: "Zpráva",
+
+contactPhotos: "Fotografie (volitelné)",
+contactPhotosNote: "Můžete přiložit až 5 fotografií.",
+
+contactNextStepsTitle: "Co bude následovat:",
+contactNextSteps: [
+  "Navrhneme další postup",
+  "Domluvíme termín konzultace",
+  "Vzorky přivezeme přímo do interiéru",
+],
+
+contactSubmit: "Poslat nezávaznou poptávku",
+contactSending: "Odesílání...",
+
+contactSuccess:
+  "Děkujeme, zpráva byla odeslána. Ozveme se vám s dalším krokem.",
+contactError:
+  "Odeslání se nepodařilo. Zkuste to prosím znovu.",
+
+uploadSelect: "Vybrat soubory",
+uploadEmpty: "Nejsou vybrané soubory",
+uploadSelected: "soubor vybrán",
+uploadSelectedFew: "soubory vybrány",
+uploadSelectedMany: "souborů vybráno",
 
     // Footer
     footerContactH: "Kontakt",
@@ -998,36 +1001,39 @@ homeFinalCtaLocation:
     contactLead: "Send us a message, a few photos of the space and we will get back to you with the next step.",
     contactLeadMobile: "Send us a message and a few photos of the space. We will follow up with the next step.",
     contactAddressLabel: "Address",
-    contactFormTitle: "Non-binding enquiry",
-    contactFormIntro:
-      "Describe the space, send us a few photos and together we will find a solution that makes sense for your interior.",
-    contactFormNote:
-      "Tell us about the space, what you need and what result you expect. We bring samples directly to the interior.",
-    contactSubmitCta: "Send non-binding enquiry",
-    name: "Name",
-    email: "E-mail",
-    message: "Message",
-    send: "Send",
-    contactHowH: "How it works",
-    contactHow: [
-      "Send a short message and optionally photos of the windows or the space.",
-      "I will get back to you with a suggested consultation date.",
-      "On site, we will refine the solution together and I will prepare it for you."
-    ],
-    contactNote: "",
-    contactFullName: "Full name",
-    contactPhone: "Phone",
-    contactPhotos: "Photos (optional)",
-    contactFormSteps: [
-      "• We will get back to you with the next recommended step",
-      "• We will arrange a consultation date",
-      "• We bring samples directly to your interior"
-    ],
-    contactPhotosLimit: "You can attach up to 5 photos.",
-    contactValidationError: "Please fill in all required fields correctly.",
-    contactSuccessMessage: "Thank you. Your message has been sent.",
-    contactErrorMessage: "Sending failed. Please try again.",
-    contactSending: "Sending…",
+    contactFormTitle: "Enquiry",
+
+contactFormIntro:
+  "Describe your space and share photos. Together we’ll find a solution that works for your interior.",
+
+contactName: "Full name",
+contactEmail: "Email",
+contactPhone: "Phone",
+contactMessage: "Message",
+
+contactPhotos: "Photos (optional)",
+contactPhotosNote: "You can attach up to 5 photos.",
+
+contactNextStepsTitle: "What happens next:",
+contactNextSteps: [
+  "We’ll suggest the next step",
+  "We’ll arrange a consultation",
+  "We’ll bring samples to your interior",
+],
+
+contactSubmit: "Send enquiry",
+contactSending: "Sending...",
+
+contactSuccess:
+  "Thank you. Your message has been sent. We’ll get back to you with the next step.",
+contactError:
+  "Something went wrong. Please try again.",
+
+uploadSelect: "Select files",
+uploadEmpty: "No files selected",
+uploadSelected: "file selected",
+uploadSelectedFew: "files selected",
+uploadSelectedMany: "files selected",
 
     // Footer
     footerContactH: "Contact",
