@@ -282,8 +282,6 @@ function Hero({ t, title, lead, image, small = false }) {
 }
 
 function TrustBand({ t }) {
-  const isEn = (document.documentElement.lang || "cs") === "en";
-
   return (
     <div className="trust-band">
       <div className="shell trust-grid">
@@ -291,9 +289,7 @@ function TrustBand({ t }) {
           <div className="trust-card reveal" key={item.label + item.value}>
             <strong>{item.value}</strong>
             <span>{item.label}</span>
-            <small>
-              {item.detail || item.label}
-            </small>
+            <small>{item.detail || item.label}</small>
           </div>
         ))}
       </div>
