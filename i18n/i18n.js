@@ -473,6 +473,14 @@ uploadSelected: "soubor vybrán",
 uploadSelectedFew: "soubory vybrány",
 uploadSelectedMany: "souborů vybráno",
 
+  footerContactH: "Kontakt",
+footerLegalH: "Práva a informace",
+footerTerms: "Obchodní podmínky",
+footerPrivacy: "Ochrana osobních údajů",
+footerCookies: "Cookies",
+footerCta: "Napište mi →",
+footerBlurb: "Návrh a realizace vnitřního stínění na míru.\nZáclony · Závěsy · Rolety · Garnýže · Technické systémy",
+rights: "Všechna práva vyhrazena.",
     
     // Terms / Privacy / Cookies pages
     termsH: "Obchodní podmínky",
