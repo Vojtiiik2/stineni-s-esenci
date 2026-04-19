@@ -306,7 +306,7 @@ function Home({ t }) {
       <Hero t={t} />
       <TrustBand t={t} />
 
-      <section className="section">
+      <section className="section home-feature">
         <div className="shell grid-2 feature-split">
           <div className="feature-media reveal">
             <img src="assets/img/Onas/onas-01.webp" alt={isEn ? "Fabric samples and materials" : "Vzorky a materiály"} />
@@ -328,7 +328,7 @@ function Home({ t }) {
                 ? "We work with what truly matters in a space — light, proportion, the need for privacy, the way the interior is used and the softness of materials. It is not just about covering a window. It is about helping the space work better."
                 : "Pracujeme s tím, co v prostoru skutečně hraje roli — světlo, proporce, potřeba soukromí, způsob používání interiéru i jemnost materiálů. Nejde jen o to okno zakrýt. Jde o to, aby prostor fungoval lépe.")}
             </p>
-            <div style={{ marginTop: 24, display: "flex", gap: 14, flexWrap: "wrap" }}>
+            <div className="home-feature-actions" style={{ marginTop: 24, display: "flex", gap: 14, flexWrap: "wrap" }}>
               <button className="button button-primary" onClick={() => go("/process")}>
                 {t.processH}
               </button>
@@ -340,7 +340,7 @@ function Home({ t }) {
         </div>
       </section>
 
-      <section className="section section-tight">
+      <section className="section section-tight home-services">
         <div className="shell">
           <div className="section-header reveal">
             <h2 className="display h2">{t.homeServicesTitle || (isEn ? "Solutions that hold both atmosphere and function" : "Řešení, která drží atmosféru i funkci")}</h2>
@@ -349,7 +349,7 @@ function Home({ t }) {
             </p>
           </div>
 
-          <div className="grid-3">
+          <div className="grid-3 home-services-grid">
             {(t.services || []).map((service, index) => (
               <article
                 className="card service-card reveal"
@@ -379,14 +379,14 @@ function Home({ t }) {
         </div>
       </section>
 
-      <section className="section section-tight">
+      <section className="section section-tight home-atmos">
         <div className="shell">
           <div className="section-header reveal">
             <h2 className="display h2">{t.homeAtmosTitle || (isEn ? "An interior changes not only in appearance. It changes in feeling." : "Interiér se nemění jen vzhledem. Mění se pocitem.")}</h2>
             <p className="lead">{t.inspLead}</p>
           </div>
 
-          <div className="atmos-grid">
+          <div className="atmos-grid home-atmos-grid">
             {ATMOS_IMAGES.map((src, index) => (
               <figure className="atmos-card reveal" key={src}>
                 <img src={src} alt={isEn ? `Interior atmosphere ${index + 1}` : `Atmosféra interiéru ${index + 1}`} />
@@ -397,13 +397,13 @@ function Home({ t }) {
         </div>
       </section>
 
-      <section className="section section-tight">
+      <section className="section section-tight home-benefits">
         <div className="shell">
           <div className="section-header reveal">
             <h2 className="display h2">{t.homeLuxuryTitle || (isEn ? "A luxurious feeling does not come from showiness. It comes from confidence." : "Luxusní pocit nevzniká okázalostí. Vzniká jistotou.")}</h2>
           </div>
 
-          <div className="grid-3">
+          <div className="grid-3 home-benefits-grid">
             {(t.benefits || []).map((item) => (
               <article
                 className="card benefit-card reveal"
@@ -423,7 +423,7 @@ function Home({ t }) {
         </div>
       </section>
 
-      <section className="section section-tight">
+      <section className="section section-tight home-projects">
         <div className="shell">
           <div className="section-header reveal">
             <h2 className="display h2">{t.homeProjectsTitle || (isEn ? "Completed projects" : "Hotové realizace")}</h2>
@@ -432,7 +432,7 @@ function Home({ t }) {
             </p>
           </div>
 
-          <div className="gallery-grid-home reveal">
+          <div className="gallery-grid-home home-projects-grid reveal">
             {featuredWorks.map((item, index) => (
               <button
                 type="button"
@@ -446,7 +446,7 @@ function Home({ t }) {
             ))}
           </div>
 
-          <div style={{ marginTop: 24 }} className="reveal">
+          <div style={{ marginTop: 24 }} className="reveal home-projects-cta">
             <button className="button button-secondary" onClick={() => go("/gallery")}>
               {t.galleryShowAll}
             </button>
@@ -454,7 +454,7 @@ function Home({ t }) {
         </div>
       </section>
 
-      <section className="section section-tight">
+      <section className="section section-tight home-faq">
         <div className="shell">
           <div className="section-header reveal">
             <h2 className="display h2">{t.homeFaqTitle || (isEn ? "The essentials a client wants to know in advance" : "To podstatné, co chce klient vědět předem")}</h2>
@@ -463,11 +463,11 @@ function Home({ t }) {
         </div>
       </section>
 
-      <section className="section">
+      <section className="section home-final-cta">
         <div className="shell accent-surface card card-inner reveal">
           <h2 className="display h2">{t.homeFinalCtaTitle || (isEn ? "First we look at your space. Only then do we design." : "Nejdřív se podíváme na váš prostor. Až potom navrhujeme.")}</h2>
           <p className="lead">{t.homeCtaNote}</p>
-          <div style={{ marginTop: 28, display: "flex", gap: 14, flexWrap: "wrap" }}>
+          <div className="home-final-cta-actions" style={{ marginTop: 28, display: "flex", gap: 14, flexWrap: "wrap" }}>
             <button className="button button-primary" onClick={() => go("/contact")}>
               {t.cta}
             </button>
