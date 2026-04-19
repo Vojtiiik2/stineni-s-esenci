@@ -578,7 +578,9 @@ function Process({ t }) {
                 <div className="script">
                   {(t.processBridges || [])[index] || (t.processMicroByStep || [])[index]}
                 </div>
-                <p>{(t.stepsTxt || [])[index]}</p>
+               {((t.stepsTxt || [])[index] || []).map((line, i) => (
+  <p key={i}>{line}</p>
+))}
               </div>
             </article>
           ))}
@@ -593,9 +595,7 @@ function Process({ t }) {
             {(t.processBehindCards || []).map((card) => (
               <article className="card process-card reveal" key={card.id}>
                 <h3>{card.title}</h3>
-                <p>{card.p1}</p>
-                <p>{card.p2}</p>
-                <p>{card.p3}</p>
+               {card.text && <p>{card.text}</p>}
               </article>
             ))}
           </div>
