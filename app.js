@@ -1383,13 +1383,12 @@ function PricingModal({ t, item, onClose }) {
   return (
     <div className="modal-backdrop" onClick={onClose}>
       <div className="modal-panel" onClick={(e) => e.stopPropagation()}>
-        <div className="modal-header">
-          <div>
-            <h3>{item.title}</h3>
-            <p>{item.modalLead || item.intro}</p>
-          </div>
-          <button className="modal-close" onClick={onClose}>{t.close}</button>
-        </div>
+      <div className="modal-header">
+  <div>
+    <h3>{item.title}</h3>
+  </div>
+  <button className="modal-close" onClick={onClose}>{t.close}</button>
+</div>
         <div className="modal-body">
           <div className="modal-grid">
             <div className="modal-image">
