@@ -108,13 +108,28 @@ homeFinalCtaLocation:
 
     homeCtaNote: "Praha a okolí. Konzultace přímo ve vašem interiéru. Návrh, výroba i montáž na míru.",
 
-    homeTrust: [
-      { value: "20+", label: "years of experience", detail: "In interior window treatments and textile work." },
-      { value: "Tailored design", label: "to the space and its use", detail: "Based on light, proportion and the way the interior is used." },
-      { value: "Complete service", label: "from design to installation", detail: "Measuring, production, installation and final styling." },
-      { value: "Collaboration", label: "with architects and designers", detail: "We work with interior concepts as well as technical requirements." }
-    ],
-
+   homeTrust: [
+  {
+    value: "20+",
+    label: "let zkušeností",
+    detail: "Ve vnitřním stínění a textilních realizacích."
+  },
+  {
+    value: "Individuální návrh",
+    label: "podle prostoru a jeho fungování",
+    detail: "Podle světla, proporcí i toho, jak se interiér používá."
+  },
+  {
+    value: "Kompletní realizace",
+    label: "od návrhu po montáž",
+    detail: "Zaměření, výroba, instalace i finální dekorování."
+  },
+  {
+    value: "Spolupráce",
+    label: "s architekty a designéry",
+    detail: "Respektujeme koncept interiéru i technické požadavky prostoru."
+  }
+],
     // Process
     processH: "Jak pracujeme",
     processLead:
