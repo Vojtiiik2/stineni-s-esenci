@@ -291,6 +291,7 @@ function TrustBand({ t }) {
 
 function Home({ t }) {
   const isEn = (document.documentElement.lang || "cs") === "en";
+  const isMobile = useIsMobile(820);
 
   const featuredWorks = [
     { src: OUR_WORK[0], cols: "span 2" },
@@ -301,6 +302,33 @@ function Home({ t }) {
     { src: OUR_WORK[4], cols: "span 2" },
   ];
 
+  const mobileFeaturedWorks = featuredWorks.slice(0, 4);
+
+  const aboutMain =
+    Array.isArray(t.homeAbout) ? t.homeAbout[0] : t.homeAbout;
+
+  const aboutExtra = isMobile
+    ? ""
+    : (t.homeAboutExtra || (isEn
+        ? "We work with what truly matters in a space — light, proportion, the need for privacy, the way the interior is used and the softness of materials. It is not just about covering a window. It is about helping the space work better."
+        : "Pracujeme s tím, co v prostoru skutečně hraje roli — světlo, proporce, potřeba soukromí, způsob používání interiéru i jemnost materiálů. Nejde jen o to okno zakrýt. Jde o to, aby prostor fungovalo lépe."));
+
+  const atmosLead = isMobile
+    ? (isEn
+        ? "Well-designed window treatments change more than just the window. They shape light, privacy and the overall feeling of the interior."
+        : "Správně navržené stínění mění víc než jen okno. Ovlivňuje světlo, soukromí i celkový pocit z interiéru.")
+    : t.inspLead;
+
+  const finalCtaNote = isMobile
+    ? (isEn
+        ? "Prague and surrounding areas. Consultation directly in your interior."
+        : "Praha a okolí. Konzultace přímo ve vašem interiéru.")
+    : t.homeCtaNote;
+
+  const benefitsToShow = isMobile ? (t.benefits || []).slice(0, 2) : (t.benefits || []);
+  const faqToShow = isMobile ? (t.faq || []).slice(0, 3) : (t.faq || []);
+  const worksToShow = isMobile ? mobileFeaturedWorks : featuredWorks;
+
   return (
     <>
       <Hero t={t} />
@@ -309,9 +337,14 @@ function Home({ t }) {
       <section className="section home-feature">
         <div className="shell grid-2 feature-split">
           <div className="feature-media reveal">
-            <img src="assets/img/Onas/onas-01.webp" alt={isEn ? "Fabric samples and materials" : "Vzorky a materiály"} />
+            <img
+              src="assets/img/Onas/onas-01.webp"
+              alt={isEn ? "Fabric samples and materials" : "Vzorky a materiály"}
+            />
             <div className="feature-note">
-              <span className="script">{t.featureNoteTitle || (isEn ? "Design begins in the space itself" : "Návrh začíná v prostoru")}</span>
+              <span className="script">
+                {t.featureNoteTitle || (isEn ? "Design begins in the space itself" : "Návrh začíná v prostoru")}
+              </span>
               <div>
                 {t.featureNoteText || (isEn
                   ? "We choose materials in real light, in the actual interior and with respect to its rhythm."
@@ -323,17 +356,16 @@ function Home({ t }) {
           <div className="feature-copy reveal">
             <h2 className="display h2">{t.homeAboutH}</h2>
 
-            <p className="copy home-about-main">
-              {Array.isArray(t.homeAbout) ? t.homeAbout[0] : t.homeAbout}
-            </p>
+            <p className="copy home-about-main">{aboutMain}</p>
 
-            <p className="copy home-about-extra">
-              {t.homeAboutExtra || (isEn
-                ? "We work with what truly matters in a space — light, proportion, the need for privacy, the way the interior is used and the softness of materials. It is not just about covering a window. It is about helping the space work better."
-                : "Pracujeme s tím, co v prostoru skutečně hraje roli — světlo, proporce, potřeba soukromí, způsob používání interiéru i jemnost materiálů. Nejde jen o to okno zakrýt. Jde o to, aby prostor fungoval lépe.")}
-            </p>
+            {!!aboutExtra && (
+              <p className="copy home-about-extra">{aboutExtra}</p>
+            )}
 
-            <div className="home-feature-actions" style={{ marginTop: 24, display: "flex", gap: 14, flexWrap: "wrap" }}>
+            <div
+              className="home-feature-actions"
+              style={{ marginTop: 24, display: "flex", gap: 14, flexWrap: "wrap" }}
+            >
               <button className="button button-primary" onClick={() => go("/process")}>
                 {t.processH}
               </button>
@@ -349,7 +381,9 @@ function Home({ t }) {
         <div className="shell">
           <div className="section-header reveal">
             <h2 className="display h2">
-              {t.homeServicesTitle || (isEn ? "Solutions that hold both atmosphere and function" : "Řešení, která drží atmosféru i funkci")}
+              {t.homeServicesTitle || (isEn
+                ? "Solutions that hold both atmosphere and function"
+                : "Řešení, která drží atmosféru i funkci")}
             </h2>
             <p className="lead">
               {t.homeServicesLead || (isEn
@@ -386,23 +420,25 @@ function Home({ t }) {
             ))}
           </div>
 
-          <div className="mobile-only mobile-inline-cta reveal">
-            <div className="card card-inner mobile-inline-cta-card">
-              <h3 className="display h3">
-                {isEn ? "Not sure which type fits your space?" : "Nevíte, co je pro váš prostor vhodné?"}
-              </h3>
-              <p className="copy">
-                {isEn
-                  ? "At the consultation we choose the right solution based on light, privacy and the way the interior is used."
-                  : "Na konzultaci vybereme vhodné řešení podle světla, soukromí a způsobu používání interiéru."}
-              </p>
-              <div className="mobile-inline-cta-actions">
-                <button className="button button-primary" onClick={() => go("/contact")}>
-                  {t.cta}
-                </button>
+          {isMobile && (
+            <div className="mobile-only mobile-inline-cta reveal">
+              <div className="card card-inner mobile-inline-cta-card">
+                <h3 className="display h3">
+                  {isEn ? "Not sure what suits your space?" : "Nevíte, co je pro váš prostor vhodné?"}
+                </h3>
+                <p className="copy">
+                  {isEn
+                    ? "At the consultation we choose the right solution based on light, privacy and the way the interior is used."
+                    : "Na konzultaci vybereme vhodné řešení podle světla, soukromí a způsobu používání interiéru."}
+                </p>
+                <div className="mobile-inline-cta-actions">
+                  <button className="button button-primary" onClick={() => go("/contact")}>
+                    {t.cta}
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
+          )}
         </div>
       </section>
 
@@ -410,15 +446,20 @@ function Home({ t }) {
         <div className="shell">
           <div className="section-header reveal">
             <h2 className="display h2">
-              {t.homeAtmosTitle || (isEn ? "An interior changes not only in appearance. It changes in feeling." : "Interiér se nemění jen vzhledem. Mění se pocitem.")}
+              {t.homeAtmosTitle || (isEn
+                ? "An interior changes not only in appearance. It changes in feeling."
+                : "Interiér se nemění jen vzhledem. Mění se pocitem.")}
             </h2>
-            <p className="lead">{t.inspLead}</p>
+            <p className="lead">{atmosLead}</p>
           </div>
 
           <div className="atmos-grid home-atmos-grid">
             {ATMOS_IMAGES.map((src, index) => (
               <figure className="atmos-card reveal" key={src}>
-                <img src={src} alt={isEn ? `Interior atmosphere ${index + 1}` : `Atmosféra interiéru ${index + 1}`} />
+                <img
+                  src={src}
+                  alt={isEn ? `Interior atmosphere ${index + 1}` : `Atmosféra interiéru ${index + 1}`}
+                />
                 <figcaption>{(t.inspTags || [])[index]}</figcaption>
               </figure>
             ))}
@@ -430,12 +471,14 @@ function Home({ t }) {
         <div className="shell">
           <div className="section-header reveal">
             <h2 className="display h2">
-              {t.homeLuxuryTitle || (isEn ? "A luxurious feeling does not come from showiness. It comes from confidence." : "Luxusní pocit nevzniká okázalostí. Vzniká jistotou.")}
+              {t.homeLuxuryTitle || (isEn
+                ? "A luxurious feeling does not come from showiness. It comes from confidence."
+                : "Luxusní pocit nevzniká okázalostí. Vzniká jistotou.")}
             </h2>
           </div>
 
           <div className="grid-3 home-benefits-grid">
-            {(t.benefits || []).map((item) => (
+            {benefitsToShow.map((item) => (
               <article
                 className="card benefit-card reveal"
                 key={item.name}
@@ -468,15 +511,18 @@ function Home({ t }) {
           </div>
 
           <div className="gallery-grid-home home-projects-grid reveal">
-            {featuredWorks.map((item, index) => (
+            {worksToShow.map((item, index) => (
               <button
                 type="button"
                 key={item.src}
                 className="gallery-item-home"
-                style={{ gridColumn: item.cols }}
-                onClick={() => openGalleryLightbox(index, featuredWorks.map((w) => w.src))}
+                style={isMobile ? undefined : { gridColumn: item.cols }}
+                onClick={() => openGalleryLightbox(index, worksToShow.map((w) => w.src))}
               >
-                <img src={item.src} alt={isEn ? `Project ${index + 1}` : `Realizace ${index + 1}`} />
+                <img
+                  src={item.src}
+                  alt={isEn ? `Project ${index + 1}` : `Realizace ${index + 1}`}
+                />
               </button>
             ))}
           </div>
@@ -487,23 +533,25 @@ function Home({ t }) {
             </button>
           </div>
 
-          <div className="mobile-only mobile-inline-cta reveal">
-            <div className="card card-inner mobile-inline-cta-card mobile-inline-cta-accent">
-              <h3 className="display h3">
-                {isEn ? "Would you like a similar result?" : "Chcete podobný výsledek?"}
-              </h3>
-              <p className="copy">
-                {isEn
-                  ? "We start with your space, your light conditions and what the interior should do during the day."
-                  : "Začínáme vaším prostorem, světlem v interiéru a tím, jak má místnost během dne fungovat."}
-              </p>
-              <div className="mobile-inline-cta-actions">
-                <button className="button button-primary" onClick={() => go("/contact")}>
-                  {t.cta}
-                </button>
+          {isMobile && (
+            <div className="mobile-only mobile-inline-cta reveal">
+              <div className="card card-inner mobile-inline-cta-card mobile-inline-cta-accent">
+                <h3 className="display h3">
+                  {isEn ? "Would you like a similar result?" : "Chcete podobný výsledek?"}
+                </h3>
+                <p className="copy">
+                  {isEn
+                    ? "We start with your space, its light and the way the room should work during the day."
+                    : "Začínáme vaším prostorem, světlem v interiéru a tím, jak má místnost během dne fungovat."}
+                </p>
+                <div className="mobile-inline-cta-actions">
+                  <button className="button button-primary" onClick={() => go("/contact")}>
+                    {t.cta}
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
+          )}
         </div>
       </section>
 
@@ -511,20 +559,27 @@ function Home({ t }) {
         <div className="shell">
           <div className="section-header reveal">
             <h2 className="display h2">
-              {t.homeFaqTitle || (isEn ? "The essentials a client wants to know in advance" : "To podstatné, co chce klient vědět předem")}
+              {t.homeFaqTitle || (isEn
+                ? "The essentials a client wants to know in advance"
+                : "To podstatné, co chce klient vědět předem")}
             </h2>
           </div>
-          <Faq items={t.faq || []} />
+          <Faq items={faqToShow} />
         </div>
       </section>
 
       <section className="section home-final-cta">
         <div className="shell accent-surface card card-inner reveal">
           <h2 className="display h2">
-            {t.homeFinalCtaTitle || (isEn ? "First we look at your space. Only then do we design." : "Nejdřív se podíváme na váš prostor. Až potom navrhujeme.")}
+            {t.homeFinalCtaTitle || (isEn
+              ? "First we look at your space. Only then do we design."
+              : "Nejdřív se podíváme na váš prostor. Až potom navrhujeme.")}
           </h2>
-          <p className="lead">{t.homeCtaNote}</p>
-          <div className="home-final-cta-actions" style={{ marginTop: 28, display: "flex", gap: 14, flexWrap: "wrap" }}>
+          <p className="lead">{finalCtaNote}</p>
+          <div
+            className="home-final-cta-actions"
+            style={{ marginTop: 28, display: "flex", gap: 14, flexWrap: "wrap" }}
+          >
             <button className="button button-primary" onClick={() => go("/contact")}>
               {t.cta}
             </button>
