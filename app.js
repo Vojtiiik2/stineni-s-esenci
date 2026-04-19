@@ -979,7 +979,6 @@ function Essence({ t }) {
 }
 
 function Contact({ t }) {
-  const isEn = (document.documentElement.lang || "cs") === "en";
   const isMobile = useIsMobile(820);
   const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
   const [files, setFiles] = useState([]);
@@ -992,6 +991,17 @@ function Contact({ t }) {
   const phoneOk = form.phone.trim().length >= 6;
   const messageOk = form.message.trim().length >= 5;
   const canSend = nameOk && emailOk && phoneOk && messageOk;
+
+  function handleFilesChange(e) {
+    setFiles(Array.from(e.target.files || []).slice(0, 5));
+  }
+
+  function getUploadText() {
+    if (files.length === 0) return t.uploadEmpty;
+    if (files.length === 1) return `1 ${t.uploadSelected}`;
+    if (files.length >= 2 && files.length <= 4) return `${files.length} ${t.uploadSelectedFew}`;
+    return `${files.length} ${t.uploadSelectedMany}`;
+  }
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -1011,7 +1021,7 @@ function Contact({ t }) {
     if (!validName || !validEmail || !validPhone || !validMessage || sending) {
       setStatus({
         kind: "error",
-        text: t.contactValidationError,
+        text: t.contactError || "Odeslání se nepodařilo. Zkontrolujte formulář a zkuste to znovu.",
       });
       return;
     }
@@ -1038,12 +1048,12 @@ function Contact({ t }) {
       setTouched(false);
       setStatus({
         kind: "success",
-        text: t.contactSuccessMessage,
+        text: t.contactSuccess,
       });
     } catch (err) {
       setStatus({
         kind: "error",
-        text: t.contactErrorMessage,
+        text: t.contactError,
       });
     } finally {
       setSending(false);
@@ -1057,35 +1067,81 @@ function Contact({ t }) {
         small
         image="assets/img/hero/contact-hero01.webp"
         title={t.contactH}
-        lead={
-          isMobile ? (t.contactLeadMobile || t.contactLead) : t.contactLead
-        }
+        lead={isMobile ? (t.contactLeadMobile || t.contactLead) : t.contactLead}
       />
 
       <section className="section contact-section">
         <div className="shell contact-grid">
+          <div className="reveal contact-sidebar">
+            <article className="card contact-card" style={{ marginBottom: 20 }}>
+              <h3>Jana Segelberg</h3>
+
+              <div className="contact-list">
+                <div>
+                  <strong>{t.contactEmail}</strong>
+                  <a href="mailto:info@stinenisesenci.cz">info@stinenisesenci.cz</a>
+                </div>
+
+                <div>
+                  <strong>{t.contactPhone}</strong>
+                  <a href="tel:+420724379309">+420 724 379 309</a>
+                </div>
+
+                <div>
+                  <strong>{t.contactAddressLabel}</strong>
+                  <p>
+                    Navrátilova 1334/16
+                    <br />
+                    110 00 Praha 1
+                  </p>
+                </div>
+
+                <div>
+                  <strong>IČO / DIČ</strong>
+                  <p>
+                    61289345
+                    <br />
+                    CZ7259060062
+                  </p>
+                </div>
+              </div>
+
+              <div className="contact-steps">
+                <strong>{t.contactHowH}</strong>
+                <ol>
+                  {(t.contactHow || []).map((item, idx) => (
+                    <li key={idx}>{item}</li>
+                  ))}
+                </ol>
+              </div>
+            </article>
+
+            <article className="card contact-card">
+              <h3>Segelberg &amp; Co. s.r.o.</h3>
+              <p style={{ lineHeight: 1.9, color: "var(--muted)", margin: 0 }}>
+                Sarajevská 1051/10
+                <br />
+                120 00 Praha 2
+                <br />
+                <br />
+                IČO 08619263
+                <br />
+                DIČ CZ08619263
+              </p>
+            </article>
+          </div>
+
           <article className="card contact-card contact-form-card reveal" id="contact-form">
             <h3>{t.contactFormTitle}</h3>
 
-            <p className="form-note" style={{ marginTop: 0, marginBottom: isMobile ? 14 : 18 }}>
+            <p className="form-note contact-form-intro">
               {t.contactFormIntro}
             </p>
 
-            {!isMobile && (
-              <div className="form-note" style={{ marginTop: 0, marginBottom: 24 }}>
-                {(t.contactFormSteps || []).map((item, idx) => (
-                  <React.Fragment key={item}>
-                    {idx > 0 && <br />}
-                    {item}
-                  </React.Fragment>
-                ))}
-              </div>
-            )}
-
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="contact-form">
               <div className="form-grid">
                 <div className="field">
-                  <label>{t.contactFullName}</label>
+                  <label>{t.contactName}</label>
                   <input
                     name="name"
                     type="text"
@@ -1098,7 +1154,7 @@ function Contact({ t }) {
                 </div>
 
                 <div className="field">
-                  <label>{t.email}</label>
+                  <label>{t.contactEmail}</label>
                   <input
                     name="email"
                     type="email"
@@ -1124,7 +1180,7 @@ function Contact({ t }) {
                 </div>
 
                 <div className="field full">
-                  <label>{t.message}</label>
+                  <label>{t.contactMessage}</label>
                   <textarea
                     name="message"
                     rows="6"
@@ -1138,86 +1194,43 @@ function Contact({ t }) {
 
                 <div className="field full">
                   <label>{t.contactPhotos}</label>
-                  <input
-                    name="files"
-                    type="file"
-                    accept="image/*"
-                    multiple
-                    onChange={(e) => setFiles(Array.from(e.target.files || []).slice(0, 5))}
-                  />
-                  <small>{t.contactPhotosLimit}</small>
+
+                  <label className="upload-field">
+                    <input
+                      name="files"
+                      type="file"
+                      accept="image/*"
+                      multiple
+                      onChange={handleFilesChange}
+                    />
+                    <span className="upload-button">{t.uploadSelect}</span>
+                    <span className="upload-text">{getUploadText()}</span>
+                  </label>
+
+                  <small>{t.contactPhotosNote}</small>
                 </div>
               </div>
 
-              <p className="form-note">
-                {t.contactFormNote}
-              </p>
-
-              {isMobile && (
-                <div className="form-note contact-mobile-steps">
-                  {(t.contactFormSteps || []).map((item) => (
-                    <div key={item}>{item}</div>
+              <div className="contact-next-steps">
+                <p>{t.contactNextStepsTitle}</p>
+                <ul>
+                  {(t.contactNextSteps || []).map((item, idx) => (
+                    <li key={idx}>{item}</li>
                   ))}
-                </div>
-              )}
+                </ul>
+              </div>
 
-              <button className="button button-primary" type="submit" disabled={sending || !canSend}>
-                {sending
-                  ? t.contactSending : t.contactSubmitCta}
+              <button
+                type="submit"
+                disabled={!canSend || sending}
+                className={`contact-submit ${canSend && !sending ? "is-active" : "is-disabled"}`}
+              >
+                {sending ? t.contactSending : t.contactSubmit}
               </button>
 
               {status.text && <div className={`status ${status.kind}`}>{status.text}</div>}
             </form>
           </article>
-
-          <div className="reveal contact-sidebar">
-            <article className="card contact-card" style={{ marginBottom: 20 }}>
-              <h3>Jana Segelberg</h3>
-
-              <div className="contact-list">
-                <div>
-                  <strong>{t.email}</strong>
-                  <a href="mailto:info@stinenisesenci.cz">info@stinenisesenci.cz</a>
-                </div>
-
-                <div>
-                  <strong>{t.contactPhone}</strong>
-                  <a href="tel:+420724379309">+420 724 379 309</a>
-                </div>
-
-                <div>
-                  <strong>{t.contactAddressLabel}</strong>
-                  <p>Navrátilova 1334/16<br />110 00 Praha 1</p>
-                </div>
-
-                <div>
-                  <strong>IČO / DIČ</strong>
-                  <p>61289345<br />CZ7259060062</p>
-                </div>
-              </div>
-
-              <div className="contact-steps">
-                <strong>{t.contactHowH}</strong>
-                <ol>
-                  {(t.contactHow || []).map((item, idx) => (
-                    <li key={idx}>{item}</li>
-                  ))}
-                </ol>
-              </div>
-            </article>
-
-            <article className="card contact-card">
-              <h3>Segelberg &amp; Co. s.r.o.</h3>
-              <p style={{ lineHeight: 1.9, color: "var(--muted)", margin: 0 }}>
-                Sarajevská 1051/10<br />
-                120 00 Praha 2
-                <br /><br />
-                IČO 08619263<br />
-                DIČ CZ08619263
-              </p>
-            </article>
-          </div>
-
         </div>
       </section>
     </>
