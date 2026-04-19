@@ -435,13 +435,12 @@ homeFinalCtaLocation:
       "Vůně budou samostatnou kapitolou navázanou na prostor a atmosféru v něm.\n\nEsence budou laděny tak, aby odpovídaly potřebám a aktivitám vykonávaným v daném prostoru.",
     essenceBoxFoot: "Připravujeme pro vás",
 
-    // Contact
-    contactH: "Kontakt",
-    contactLead: "Pošlete zprávu, fotografie prostoru a ozveme se s dalším krokem.",
-    contactLeadMobile: "Napište nám a připojte fotky prostoru. Ozveme se s dalším krokem.",
-    contactAddressLabel: "Adresa",
-   contactFormTitle: "Nezávazná poptávka",
+   contactH: "Kontakt",
+contactLead: "Pošlete zprávu, fotografie prostoru a ozveme se s dalším krokem.",
+contactLeadMobile: "Napište nám a připojte fotky prostoru. Ozveme se s dalším krokem.",
+contactAddressLabel: "Adresa",
 
+contactFormTitle: "Nezávazná poptávka",
 contactFormIntro:
   "Popište prostor a pošlete fotografie. Společně najdeme řešení, které bude dávat smysl právě u vás.",
 
@@ -474,16 +473,7 @@ uploadSelected: "soubor vybrán",
 uploadSelectedFew: "soubory vybrány",
 uploadSelectedMany: "souborů vybráno",
 
-    // Footer
-    footerContactH: "Kontakt",
-    footerLegalH: "Práva a informace",
-    footerTerms: "Obchodní podmínky",
-    footerPrivacy: "Ochrana osobních údajů",
-    footerCookies: "Cookies",
-    footerCta: "Napište mi →",
-    footerBlurb: "Návrh a realizace vnitřního stínění na míru.\nZáclony · Závěsy · Rolety · Garnýže · Technické systémy",
-    rights: "Všechna práva vyhrazena.",
-
+    
     // Terms / Privacy / Cookies pages
     termsH: "Obchodní podmínky",
     termsIntro:
