@@ -322,12 +322,17 @@ function Home({ t }) {
 
           <div className="feature-copy reveal">
             <h2 className="display h2">{t.homeAboutH}</h2>
-            <p className="copy">{Array.isArray(t.homeAbout) ? t.homeAbout[0] : t.homeAbout}</p>
-            <p className="copy">
+
+            <p className="copy home-about-main">
+              {Array.isArray(t.homeAbout) ? t.homeAbout[0] : t.homeAbout}
+            </p>
+
+            <p className="copy home-about-extra">
               {t.homeAboutExtra || (isEn
                 ? "We work with what truly matters in a space — light, proportion, the need for privacy, the way the interior is used and the softness of materials. It is not just about covering a window. It is about helping the space work better."
                 : "Pracujeme s tím, co v prostoru skutečně hraje roli — světlo, proporce, potřeba soukromí, způsob používání interiéru i jemnost materiálů. Nejde jen o to okno zakrýt. Jde o to, aby prostor fungoval lépe.")}
             </p>
+
             <div className="home-feature-actions" style={{ marginTop: 24, display: "flex", gap: 14, flexWrap: "wrap" }}>
               <button className="button button-primary" onClick={() => go("/process")}>
                 {t.processH}
@@ -343,9 +348,13 @@ function Home({ t }) {
       <section className="section section-tight home-services">
         <div className="shell">
           <div className="section-header reveal">
-            <h2 className="display h2">{t.homeServicesTitle || (isEn ? "Solutions that hold both atmosphere and function" : "Řešení, která drží atmosféru i funkci")}</h2>
+            <h2 className="display h2">
+              {t.homeServicesTitle || (isEn ? "Solutions that hold both atmosphere and function" : "Řešení, která drží atmosféru i funkci")}
+            </h2>
             <p className="lead">
-              {t.homeServicesLead || (isEn ? "Every layer has its role. The feeling of a space stands on detail, not on the number of elements." : "Každá vrstva má svoji roli. Působení prostoru stojí na detailu, ne na množství prvků.")}
+              {t.homeServicesLead || (isEn
+                ? "Every layer has its role. The feeling of a space stands on detail, not on the number of elements."
+                : "Každá vrstva má svoji roli. Působení prostoru stojí na detailu, ne na množství prvků.")}
             </p>
           </div>
 
@@ -376,13 +385,33 @@ function Home({ t }) {
               </article>
             ))}
           </div>
+
+          <div className="mobile-only mobile-inline-cta reveal">
+            <div className="card card-inner mobile-inline-cta-card">
+              <h3 className="display h3">
+                {isEn ? "Not sure which type fits your space?" : "Nevíte, co je pro váš prostor vhodné?"}
+              </h3>
+              <p className="copy">
+                {isEn
+                  ? "At the consultation we choose the right solution based on light, privacy and the way the interior is used."
+                  : "Na konzultaci vybereme vhodné řešení podle světla, soukromí a způsobu používání interiéru."}
+              </p>
+              <div className="mobile-inline-cta-actions">
+                <button className="button button-primary" onClick={() => go("/contact")}>
+                  {t.cta}
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       <section className="section section-tight home-atmos">
         <div className="shell">
           <div className="section-header reveal">
-            <h2 className="display h2">{t.homeAtmosTitle || (isEn ? "An interior changes not only in appearance. It changes in feeling." : "Interiér se nemění jen vzhledem. Mění se pocitem.")}</h2>
+            <h2 className="display h2">
+              {t.homeAtmosTitle || (isEn ? "An interior changes not only in appearance. It changes in feeling." : "Interiér se nemění jen vzhledem. Mění se pocitem.")}
+            </h2>
             <p className="lead">{t.inspLead}</p>
           </div>
 
@@ -400,7 +429,9 @@ function Home({ t }) {
       <section className="section section-tight home-benefits">
         <div className="shell">
           <div className="section-header reveal">
-            <h2 className="display h2">{t.homeLuxuryTitle || (isEn ? "A luxurious feeling does not come from showiness. It comes from confidence." : "Luxusní pocit nevzniká okázalostí. Vzniká jistotou.")}</h2>
+            <h2 className="display h2">
+              {t.homeLuxuryTitle || (isEn ? "A luxurious feeling does not come from showiness. It comes from confidence." : "Luxusní pocit nevzniká okázalostí. Vzniká jistotou.")}
+            </h2>
           </div>
 
           <div className="grid-3 home-benefits-grid">
@@ -426,9 +457,13 @@ function Home({ t }) {
       <section className="section section-tight home-projects">
         <div className="shell">
           <div className="section-header reveal">
-            <h2 className="display h2">{t.homeProjectsTitle || (isEn ? "Completed projects" : "Hotové realizace")}</h2>
+            <h2 className="display h2">
+              {t.homeProjectsTitle || (isEn ? "Completed projects" : "Hotové realizace")}
+            </h2>
             <p className="lead">
-              {t.homeProjectsLead || (isEn ? "A selection of interiors where window treatments complete calm, softness and the right measure of light." : "Výběr z interiérů, kde stínění dotváří klid, měkkost a správnou míru světla.")}
+              {t.homeProjectsLead || (isEn
+                ? "A selection of interiors where window treatments complete calm, softness and the right measure of light."
+                : "Výběr z interiérů, kde stínění dotváří klid, měkkost a správnou míru světla.")}
             </p>
           </div>
 
@@ -451,13 +486,33 @@ function Home({ t }) {
               {t.galleryShowAll}
             </button>
           </div>
+
+          <div className="mobile-only mobile-inline-cta reveal">
+            <div className="card card-inner mobile-inline-cta-card mobile-inline-cta-accent">
+              <h3 className="display h3">
+                {isEn ? "Would you like a similar result?" : "Chcete podobný výsledek?"}
+              </h3>
+              <p className="copy">
+                {isEn
+                  ? "We start with your space, your light conditions and what the interior should do during the day."
+                  : "Začínáme vaším prostorem, světlem v interiéru a tím, jak má místnost během dne fungovat."}
+              </p>
+              <div className="mobile-inline-cta-actions">
+                <button className="button button-primary" onClick={() => go("/contact")}>
+                  {t.cta}
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       <section className="section section-tight home-faq">
         <div className="shell">
           <div className="section-header reveal">
-            <h2 className="display h2">{t.homeFaqTitle || (isEn ? "The essentials a client wants to know in advance" : "To podstatné, co chce klient vědět předem")}</h2>
+            <h2 className="display h2">
+              {t.homeFaqTitle || (isEn ? "The essentials a client wants to know in advance" : "To podstatné, co chce klient vědět předem")}
+            </h2>
           </div>
           <Faq items={t.faq || []} />
         </div>
@@ -465,7 +520,9 @@ function Home({ t }) {
 
       <section className="section home-final-cta">
         <div className="shell accent-surface card card-inner reveal">
-          <h2 className="display h2">{t.homeFinalCtaTitle || (isEn ? "First we look at your space. Only then do we design." : "Nejdřív se podíváme na váš prostor. Až potom navrhujeme.")}</h2>
+          <h2 className="display h2">
+            {t.homeFinalCtaTitle || (isEn ? "First we look at your space. Only then do we design." : "Nejdřív se podíváme na váš prostor. Až potom navrhujeme.")}
+          </h2>
           <p className="lead">{t.homeCtaNote}</p>
           <div className="home-final-cta-actions" style={{ marginTop: 28, display: "flex", gap: 14, flexWrap: "wrap" }}>
             <button className="button button-primary" onClick={() => go("/contact")}>
