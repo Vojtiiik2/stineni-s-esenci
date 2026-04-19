@@ -540,6 +540,7 @@ function Home({ t }) {
 
 function Process({ t }) {
   const isEn = (document.documentElement.lang || "cs") === "en";
+  const [openStep, setOpenStep] = React.useState(null);
 
   React.useEffect(() => {
     const target = localStorage.getItem("openProcessSection");
@@ -565,54 +566,73 @@ function Process({ t }) {
         lead={
           t.processLead ||
           (isEn
-            ? "From the first measurement to final styling. Every step has its own pace, reason and precision."
-            : "Od prvního zaměření po finální dekorování. Každý krok má svoje tempo, důvod i přesnost.")
+            ? "From the first measurement to final styling. Every step has its own pace and reason."
+            : "Od prvního zaměření po finální dekorování. Každý krok má svůj důvod.")
         }
       />
 
-      <section className="section">
+      <section className="section process-mobile-compact">
         <div className="shell steps">
-          {(t.steps || []).map((step, index) => (
-            <article
-              className={`card step-card reveal ${index % 2 === 1 ? "reverse" : ""}`}
-              key={step}
-            >
-              <div className="step-media">
-                <img src={(t.processImgs || [])[index]} alt={step} />
-              </div>
+          {(t.steps || []).map((step, index) => {
+            const stepText = (t.stepsTxt || [])[index];
+            const lines = Array.isArray(stepText)
+              ? stepText
+              : typeof stepText === "string"
+              ? [stepText]
+              : [];
 
-              <div className="step-content">
-                <div className="step-index">0{index + 1} / 04</div>
-                <h3>{step}</h3>
+            const preview = lines[0] || "";
+            const rest = lines.slice(1);
+            const isOpen = openStep === index;
 
-                <div className="script">
-                  {(t.processBridges || [])[index] || (t.processMicroByStep || [])[index]}
+            return (
+              <article
+                className={`card step-card reveal ${index % 2 === 1 ? "reverse" : ""} ${isOpen ? "is-open" : ""}`}
+                key={step}
+              >
+                <div className="step-media">
+                  <img src={(t.processImgs || [])[index]} alt={step} />
                 </div>
 
-                {(() => {
-                  const stepText = (t.stepsTxt || [])[index];
+                <div className="step-content">
+                  <div className="step-index">0{index + 1} / 04</div>
+                  <h3>{step}</h3>
 
-                  if (Array.isArray(stepText)) {
-                    return stepText.map((line, i) => <p key={i}>{line}</p>);
-                  }
+                  <div className="script">
+                    {(t.processBridges || [])[index] || (t.processMicroByStep || [])[index]}
+                  </div>
 
-                  if (typeof stepText === "string") {
-                    return <p>{stepText}</p>;
-                  }
+                  {preview && <p>{preview}</p>}
 
-                  return null;
-                })()}
-              </div>
-            </article>
-          ))}
+                  {rest.length > 0 && (
+                    <>
+                      <div className={`step-extra ${isOpen ? "open" : ""}`}>
+                        {rest.map((line, i) => (
+                          <p key={i}>{line}</p>
+                        ))}
+                      </div>
+
+                      <button
+                        type="button"
+                        className="step-toggle"
+                        onClick={() => setOpenStep(isOpen ? null : index)}
+                      >
+                        {isOpen
+                          ? (isEn ? "Hide detail" : "Skrýt detail")
+                          : (isEn ? "Show detail" : "Zobrazit detail")}
+                      </button>
+                    </>
+                  )}
+                </div>
+              </article>
+            );
+          })}
         </div>
       </section>
 
       <section className="section section-tight" id="process-behind">
         <div className="shell">
-          <div className="section-header reveal"></div>
-
-          <div className="process-cards">
+          <div className="process-cards process-cards-mobile-swipe">
             {(t.processBehindCards || []).map((card) => (
               <article className="card process-card reveal" key={card.id}>
                 <h3>{card.title}</h3>
@@ -630,7 +650,7 @@ function Process({ t }) {
             ))}
           </div>
 
-          <div className="quote-panel reveal" style={{ marginTop: 22 }}>
+          <div className="quote-panel process-quote-panel reveal" style={{ marginTop: 22 }}>
             <div>
               <span className="script">
                 {t.processQuoteTitle ||
@@ -651,7 +671,6 @@ function Process({ t }) {
     </>
   );
 }
-
 function Pricing({ t, openPricing }) {
   const isEn = (document.documentElement.lang || "cs") === "en";
 
