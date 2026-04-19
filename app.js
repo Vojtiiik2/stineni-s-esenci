@@ -562,25 +562,46 @@ function Process({ t }) {
         small
         image="assets/img/hero/process-hero-v2.webp"
         title={t.processH}
-        lead={t.processLead || (isEn ? "From the first measurement to final styling. Every step has its own pace, reason and precision." : "Od prvního zaměření po finální dekorování. Každý krok má svoje tempo, důvod i přesnost.")}
+        lead={
+          t.processLead ||
+          (isEn
+            ? "From the first measurement to final styling. Every step has its own pace, reason and precision."
+            : "Od prvního zaměření po finální dekorování. Každý krok má svoje tempo, důvod i přesnost.")
+        }
       />
 
       <section className="section">
         <div className="shell steps">
           {(t.steps || []).map((step, index) => (
-            <article className={`card step-card reveal ${index % 2 === 1 ? "reverse" : ""}`} key={step}>
+            <article
+              className={`card step-card reveal ${index % 2 === 1 ? "reverse" : ""}`}
+              key={step}
+            >
               <div className="step-media">
                 <img src={(t.processImgs || [])[index]} alt={step} />
               </div>
+
               <div className="step-content">
                 <div className="step-index">0{index + 1} / 04</div>
                 <h3>{step}</h3>
+
                 <div className="script">
                   {(t.processBridges || [])[index] || (t.processMicroByStep || [])[index]}
                 </div>
-               {((t.stepsTxt || [])[index] || []).map((line, i) => (
-  <p key={i}>{line}</p>
-))}
+
+                {(() => {
+                  const stepText = (t.stepsTxt || [])[index];
+
+                  if (Array.isArray(stepText)) {
+                    return stepText.map((line, i) => <p key={i}>{line}</p>);
+                  }
+
+                  if (typeof stepText === "string") {
+                    return <p>{stepText}</p>;
+                  }
+
+                  return null;
+                })()}
               </div>
             </article>
           ))}
@@ -595,16 +616,32 @@ function Process({ t }) {
             {(t.processBehindCards || []).map((card) => (
               <article className="card process-card reveal" key={card.id}>
                 <h3>{card.title}</h3>
-               {card.text && <p>{card.text}</p>}
+
+                {card.text ? (
+                  <p>{card.text}</p>
+                ) : (
+                  <>
+                    {card.p1 && <p>{card.p1}</p>}
+                    {card.p2 && <p>{card.p2}</p>}
+                    {card.p3 && <p>{card.p3}</p>}
+                  </>
+                )}
               </article>
             ))}
           </div>
 
           <div className="quote-panel reveal" style={{ marginTop: 22 }}>
             <div>
-              <span className="script">{t.processQuoteTitle || (isEn ? "The result should feel natural" : "Výsledek má být přirozený")}</span>
+              <span className="script">
+                {t.processQuoteTitle ||
+                  (isEn ? "The result should feel natural" : "Výsledek má být přirozený")}
+              </span>
+
               <p>{t.processEnding}</p>
+
+              {t.processCTAHelper && <p className="cta-helper">{t.processCTAHelper}</p>}
             </div>
+
             <button className="button button-ghost" onClick={() => go("/contact")}>
               {t.writeMe}
             </button>
