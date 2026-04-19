@@ -3,27 +3,38 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+
   <title>Stínění s esencí | Záclony, závěsy, rolety a garnýže na míru</title>
-  <link rel="icon" href="/favicon.ico">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
   <meta name="description" content="Navrhujeme a realizujeme záclony, závěsy, rolety a garnýže na míru. Kompletní servis od konzultace přes výběr materiálů až po montáž. Praha a okolí.">
+  <meta name="theme-color" content="#efe7de" />
+
+  <link rel="icon" href="/favicon.ico">
+
   <meta property="og:title" content="Stínění s esencí | Jana Segelberg">
   <meta property="og:description" content="Záclony, závěsy a stínění na míru. Navrhujeme atmosféru prostoru skrze světlo a textil.">
   <meta property="og:image" content="https://stinenisesenci.cz/assets/img/og%20-%20image.jpg">
   <meta property="og:url" content="https://stinenisesenci.cz/">
   <meta property="og:type" content="website">
-  <meta name="theme-color" content="#efe7de" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- Preload klíčových assetů -->
+  <link rel="preload" as="image" href="assets/img/hero/hero-01.webp">
+  <link rel="preload" as="image" href="assets/img/hero/contact-hero01.webp">
+  <link rel="preload" as="image" href="assets/img/logo/Logo-symbol.svg" type="image/svg+xml">
+
   <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
   <div id="root"></div>
-  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  <script src="./i18n/i18n.js"></script>
-  <script src="./app.js" type="text/babel"></script>
+
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin defer></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin defer></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js" defer></script>
+  <script src="./i18n/i18n.js" defer></script>
+  <script src="./app.js" type="text/babel" defer></script>
 </body>
 </html>
 
