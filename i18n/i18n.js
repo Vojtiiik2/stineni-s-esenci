@@ -47,6 +47,17 @@ window.STR = {
     homeProjectsTitle: "Hotové realizace",
     homeProjectsLead:
       "Výběr z interiérů, kde stínění dotváří klid, měkkost a správnou míru světla.",
+mobileProjectsCtaTitle: "Chcete podobný výsledek?",
+mobileProjectsCtaText:
+  "Začínáme vaším prostorem, světlem v interiéru a tím, jak má místnost během dne fungovat.",
+
+mobileServicesCtaTitle: "Nevíte, co je pro váš prostor vhodné?",
+mobileServicesCtaText:
+  "Na konzultaci vybereme vhodné řešení podle světla, soukromí a způsobu používání interiéru.",
+
+homeFinalCtaLocation:
+  "Praha a okolí. Konzultace přímo ve vašem interiéru.",
+    
     homeFaqTitle: "To podstatné, co chce klient vědět předem",
     homeFinalCtaTitle: "Nejdřív se podíváme na váš prostor. Až potom navrhujeme.",
 
@@ -549,9 +560,18 @@ window.STR = {
     homeProjectsTitle: "Completed projects",
     homeProjectsLead:
       "A selection of interiors where window treatments complete calm, softness and the right measure of light.",
+    mobileProjectsCtaTitle: "Would you like a similar result?",
+mobileProjectsCtaText:
+  "We start with your space, the light in the interior and how the room should function throughout the day.",
+
+mobileServicesCtaTitle: "Not sure what is right for your space?",
+mobileServicesCtaText:
+  "During the consultation, we choose the right solution based on light, privacy and how the interior is used.",
+
+homeFinalCtaLocation:
+  "Prague and surrounding areas. Consultation directly in your interior.",
     homeFaqTitle: "The essentials a client wants to know in advance",
     homeFinalCtaTitle: "First we look at your space. Only then do we design.",
-
     serviceCardCta: "View guide prices →",
     services: [
       { name: "Sheers", note: "Soften daylight, make the space feel warmer and add lightness." },
