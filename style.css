@@ -854,18 +854,28 @@ body.menu-open,body.modal-open{overflow:hidden}
 .contact-grid{
   display:grid;
   grid-template-columns:.9fr 1.1fr;
+  grid-template-areas:
+    "sidebar form";
   gap:22px;
+  align-items:start;
 }
+
+.contact-sidebar{grid-area:sidebar}
+.contact-form-card{
+  grid-area:form;
+  scroll-margin-top:110px;
+}
+
 .contact-section{padding-top:64px}
 .contact-card{padding:30px}
-.contact-form-card{scroll-margin-top:110px}
-.contact-mobile-steps{display:grid;gap:8px;margin-top:16px}
+
 .contact-card h3{
   margin:0 0 18px;
   font-family:"Cormorant Garamond",serif;
   font-size:38px;
   font-weight:600;
 }
+
 .contact-list{display:grid;gap:18px}
 .contact-list strong{
   display:block;
@@ -877,6 +887,7 @@ body.menu-open,body.modal-open{overflow:hidden}
 }
 .contact-list a{font-size:18px}
 .contact-list p{margin:0;color:var(--muted);line-height:1.8}
+
 .contact-steps{
   margin-top:26px;
   padding-top:24px;
@@ -888,19 +899,33 @@ body.menu-open,body.modal-open{overflow:hidden}
   color:var(--muted);
   line-height:1.9;
 }
+
+.contact-form{
+  display:grid;
+  gap:18px;
+}
+
+.contact-form-intro{
+  margin-top:0;
+  margin-bottom:4px;
+}
+
 .form-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:14px;
 }
+
 .field{display:flex;flex-direction:column;gap:10px}
 .field.full{grid-column:1 / -1}
+
 .field label{
   font-size:12px;
   letter-spacing:.16em;
   text-transform:uppercase;
   color:var(--brown-soft);
 }
+
 .field input,
 .field textarea{
   width:100%;
@@ -910,21 +935,138 @@ body.menu-open,body.modal-open{overflow:hidden}
   padding:16px 18px;
   color:var(--text);
   outline:none;
-  transition:border-color .2s ease,box-shadow .2s ease;
+  transition:border-color .2s ease, box-shadow .2s ease, background .2s ease;
+  appearance:none;
+  -webkit-appearance:none;
 }
+
+.field textarea{
+  min-height:170px;
+  resize:vertical;
+}
+
 .field input:focus,
 .field textarea:focus{
   border-color:var(--sand-deep);
   box-shadow:0 0 0 4px rgba(184,150,119,.12);
+  background:#fff;
 }
-.field small{color:var(--muted)}
-.form-note{color:var(--muted);line-height:1.8;margin-top:18px}
+
+.field small{
+  color:var(--muted);
+  line-height:1.6;
+}
+
+.upload-field{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  min-height:74px;
+  padding:14px 16px;
+  border:1px solid var(--line);
+  border-radius:24px;
+  background:rgba(255,255,255,.76);
+  position:relative;
+  overflow:hidden;
+  flex-wrap:wrap;
+}
+
+.upload-field input[type="file"]{
+  position:absolute;
+  inset:0;
+  opacity:0;
+  cursor:pointer;
+}
+
+.upload-button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:42px;
+  padding:0 16px;
+  border-radius:999px;
+  background:#ece7e1;
+  color:var(--text);
+  font-weight:600;
+  white-space:nowrap;
+}
+
+.upload-text{
+  color:var(--text);
+  line-height:1.5;
+  flex:1 1 220px;
+}
+
+.contact-next-steps{
+  display:grid;
+  gap:8px;
+}
+
+.contact-next-steps p{
+  margin:0;
+  font-size:15px;
+  font-weight:600;
+  color:var(--muted);
+}
+
+.contact-next-steps ul{
+  margin:0;
+  padding-left:20px;
+  color:var(--muted);
+  line-height:1.8;
+}
+
+.form-note{
+  color:var(--muted);
+  line-height:1.8;
+  margin-top:18px;
+}
+
+.contact-form .contact-submit{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  min-height:62px;
+  height:auto;
+  padding:16px 24px;
+  border:none;
+  border-radius:999px;
+  appearance:none;
+  -webkit-appearance:none;
+  font:inherit;
+  font-size:18px;
+  font-weight:700;
+  line-height:1.2;
+  text-align:center;
+  white-space:normal;
+  box-shadow:none;
+  transition:background .25s ease, color .25s ease, transform .15s ease, opacity .25s ease;
+}
+
+.contact-form .contact-submit.is-disabled{
+  background:#e7ddd2;
+  color:#a19085;
+  cursor:not-allowed;
+}
+
+.contact-form .contact-submit.is-active{
+  background:var(--brown);
+  color:#fff;
+  cursor:pointer;
+}
+
+.contact-form .contact-submit.is-active:active{
+  transform:scale(.985);
+}
+
 .status{
-  margin-top:16px;
+  margin-top:0;
   padding:14px 16px;
   border-radius:18px;
   font-size:15px;
 }
+
 .status.success{background:rgba(95,143,104,.12);color:#37593f}
 .status.error{background:rgba(168,63,63,.1);color:#7c2f2f}
 
@@ -1670,36 +1812,74 @@ body.menu-open,body.modal-open{overflow:hidden}
     min-width:0;
   }
 
-  .contact-section{padding-top:18px}
-  .contact-grid{gap:14px}
-  .contact-form-card{order:-1}
-  .contact-sidebar .contact-card:last-child{margin-bottom:0 !important}
-  .contact-card{padding:20px 18px}
-  .contact-card h3{
-    font-size:30px;
-    margin-bottom:12px;
-  }
-  .contact-list{gap:14px}
-  .contact-list a{
-    font-size:17px;
-    line-height:1.5;
-    overflow-wrap:anywhere;
-  }
-  .contact-steps{
-    margin-top:18px;
-    padding-top:18px;
-  }
-  .form-grid{gap:12px}
-  .field{gap:8px}
-  .field input,
-  .field textarea{
-    padding:15px 16px;
-    border-radius:16px;
-  }
-  .form-note{
-    margin-top:14px;
-    line-height:1.7;
-  }
+ .contact-section{padding-top:18px}
+.contact-grid{
+  grid-template-columns:1fr;
+  grid-template-areas:
+    "form"
+    "sidebar";
+  gap:14px;
+}
+.contact-form-card{order:initial}
+.contact-sidebar .contact-card:last-child{margin-bottom:0 !important}
+.contact-card{padding:20px 18px}
+.contact-card h3{
+  font-size:30px;
+  margin-bottom:12px;
+}
+.contact-list{gap:14px}
+.contact-list a{
+  font-size:17px;
+  line-height:1.5;
+  overflow-wrap:anywhere;
+}
+.contact-steps{
+  margin-top:18px;
+  padding-top:18px;
+}
+.form-grid{grid-template-columns:1fr;gap:12px}
+.field{gap:8px}
+.field input,
+.field textarea{
+  padding:15px 16px;
+  border-radius:16px;
+}
+.form-note{
+  margin-top:14px;
+  line-height:1.7;
+}
+.upload-field{
+  min-height:72px;
+  padding:12px 14px;
+  border-radius:20px;
+  gap:10px;
+}
+.upload-button{
+  min-height:40px;
+  padding:0 14px;
+  font-size:15px;
+}
+.upload-text{
+  font-size:15px;
+}
+.contact-next-steps p{
+  font-size:14px;
+}
+.contact-next-steps ul{
+  line-height:1.7;
+}
+.contact-list strong,
+.field label,
+.footer-col h4{letter-spacing:.14em}
+.contact-list p,
+.contact-steps ol{line-height:1.72}
+.contact-steps strong{
+  display:block;
+  font-size:12px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--brown-soft);
+}
 
   .service-card:hover,
   .benefit-card:hover,
