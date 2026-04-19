@@ -275,6 +275,7 @@ body.menu-open,body.modal-open{overflow:hidden}
 }
 .hero.small{min-height:68vh}
 .hero-slides,.hero-overlay,.hero-vignette{position:absolute;inset:0}
+.hero-slides,.hero-overlay,.hero-vignette{pointer-events:none}
 .hero-slides{z-index:0}
 .hero-slide{
   position:absolute;
@@ -344,6 +345,13 @@ body.menu-open,body.modal-open{overflow:hidden}
   gap:14px;
   flex-wrap:wrap;
   margin-top:30px;
+}
+.hero-copy,
+.hero-panel,
+.hero-actions,
+.hero-actions .button{
+  position:relative;
+  z-index:4;
 }
 .hero-panel{
   justify-self:end;
