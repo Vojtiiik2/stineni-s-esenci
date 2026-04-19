@@ -1386,15 +1386,19 @@ function PricingModal({ t, item, onClose }) {
         <div className="modal-header">
           <div>
             <h3>{item.title}</h3>
-            <p>{item.intro}</p>
+            <p>{item.modalLead || item.intro}</p>
           </div>
           <button className="modal-close" onClick={onClose}>{t.close}</button>
         </div>
         <div className="modal-body">
           <div className="modal-grid">
-            <div className="modal-image"><img src={detail.img || item.img} alt={detail.label || item.title} /></div>
+            <div className="modal-image">
+              <img src={detail.img || item.img} alt={detail.label || item.title} />
+            </div>
+
             <div className="modal-copy">
               <div className="script">{detail.micro || item.micro}</div>
+
               {item.subtypes?.length ? (
                 <div className="modal-subtabs">
                   {item.subtypes.map((sub) => (
@@ -1408,7 +1412,9 @@ function PricingModal({ t, item, onClose }) {
                   ))}
                 </div>
               ) : null}
+
               <p className="copy">{detail.intro}</p>
+
               <div className="range-list">
                 {(detail.ranges || []).map((range) => (
                   <div className="range-item" key={range.label}>
@@ -1417,7 +1423,9 @@ function PricingModal({ t, item, onClose }) {
                   </div>
                 ))}
               </div>
+
               <p className="copy">{detail.rangesNote}</p>
+
               <div className="tier-list">
                 {(detail.tiers || []).map((tier) => (
                   <div className="tier-item" key={tier.name}>
@@ -1426,8 +1434,17 @@ function PricingModal({ t, item, onClose }) {
                   </div>
                 ))}
               </div>
+
               <div style={{ marginTop: 18 }}>
-                <button className="button button-primary" onClick={() => { onClose(); go("/contact"); }}>{t.writeMe}</button>
+                <button
+                  className="button button-primary"
+                  onClick={() => {
+                    onClose();
+                    go("/contact");
+                  }}
+                >
+                  {t.writeMe}
+                </button>
               </div>
             </div>
           </div>
@@ -1436,7 +1453,6 @@ function PricingModal({ t, item, onClose }) {
     </div>
   );
 }
-
 function Lightbox({ state, setState, t }) {
   const isEn = (document.documentElement.lang || "cs") === "en";
 
