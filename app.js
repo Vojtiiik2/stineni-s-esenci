@@ -827,16 +827,34 @@ function Contact({ t }) {
     setTouched(true);
     setStatus({ kind: "", text: "" });
 
-    if (!canSend || sending) return;
+    const name = form.name.trim();
+    const email = form.email.trim();
+    const phone = form.phone.trim();
+    const message = form.message.trim();
+
+    const validName = name.length >= 2;
+    const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    const validPhone = phone.length >= 6;
+    const validMessage = message.length >= 5;
+
+    if (!validName || !validEmail || !validPhone || !validMessage || sending) {
+      setStatus({
+        kind: "error",
+        text: isEn
+          ? "Please fill in all required fields correctly."
+          : "Vyplňte prosím správně všechna povinná pole.",
+      });
+      return;
+    }
 
     setSending(true);
 
     try {
       const fd = new FormData();
-      fd.append("name", form.name.trim());
-      fd.append("email", form.email.trim());
-      fd.append("phone", form.phone.trim());
-      fd.append("message", form.message.trim());
+      fd.append("name", name);
+      fd.append("email", email);
+      fd.append("phone", phone);
+      fd.append("message", message);
       fd.append("filesCount", String(files.length));
       files.forEach((file) => fd.append("files", file, file.name));
 
@@ -849,9 +867,19 @@ function Contact({ t }) {
       setForm({ name: "", email: "", phone: "", message: "" });
       setFiles([]);
       setTouched(false);
-      setStatus({ kind: "success", text: isEn ? "Thank you. Your message has been sent." : "Děkuji. Zpráva byla odeslána." });
+      setStatus({
+        kind: "success",
+        text: isEn
+          ? "Thank you. Your message has been sent."
+          : "Děkuji. Zpráva byla odeslána.",
+      });
     } catch (err) {
-      setStatus({ kind: "error", text: isEn ? "Sending failed. Please try again." : "Odeslání se nepodařilo. Zkuste to prosím znovu." });
+      setStatus({
+        kind: "error",
+        text: isEn
+          ? "Sending failed. Please try again."
+          : "Odeslání se nepodařilo. Zkuste to prosím znovu.",
+      });
     } finally {
       setSending(false);
     }
@@ -864,7 +892,12 @@ function Contact({ t }) {
         small
         image="assets/img/hero/contact-hero01.webp"
         title={t.contactH}
-        lead={t.contactLead || (isEn ? "Send us a message, a few photos of the space and we will get back to you with the next step." : "Pošlete zprávu, fotografie prostoru a ozveme se s dalším krokem.")}
+        lead={
+          t.contactLead ||
+          (isEn
+            ? "Send us a message, a few photos of the space and we will get back to you with the next step."
+            : "Pošlete zprávu, fotografie prostoru a ozveme se s dalším krokem.")
+        }
       />
 
       <section className="section contact-section">
@@ -932,11 +965,13 @@ function Contact({ t }) {
               {isEn ? "• We bring samples directly to your interior" : "• Vzorky přivezeme přímo do vašeho interiéru"}
             </div>
 
-            <form onSubmit={handleSubmit} noValidate>
+            <form onSubmit={handleSubmit}>
               <div className="form-grid">
                 <div className="field">
                   <label>{t.contactFullName}</label>
                   <input
+                    name="name"
+                    type="text"
                     required
                     value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
@@ -948,6 +983,7 @@ function Contact({ t }) {
                 <div className="field">
                   <label>{t.email}</label>
                   <input
+                    name="email"
                     type="email"
                     required
                     value={form.email}
@@ -960,6 +996,7 @@ function Contact({ t }) {
                 <div className="field full">
                   <label>{t.contactPhone}</label>
                   <input
+                    name="phone"
                     type="tel"
                     required
                     value={form.phone}
@@ -972,6 +1009,7 @@ function Contact({ t }) {
                 <div className="field full">
                   <label>{t.message}</label>
                   <textarea
+                    name="message"
                     rows="6"
                     required
                     value={form.message}
@@ -984,6 +1022,7 @@ function Contact({ t }) {
                 <div className="field full">
                   <label>{t.contactPhotos}</label>
                   <input
+                    name="files"
                     type="file"
                     accept="image/*"
                     multiple
@@ -1000,7 +1039,9 @@ function Contact({ t }) {
               </p>
 
               <button className="button button-primary" type="submit" disabled={sending || !canSend}>
-                {sending ? (isEn ? "Sending…" : "Odesílám…") : (t.contactSubmitCta || (isEn ? "Send non-binding enquiry" : "Poslat nezávaznou poptávku"))}
+                {sending
+                  ? (isEn ? "Sending…" : "Odesílám…")
+                  : (t.contactSubmitCta || (isEn ? "Send non-binding enquiry" : "Poslat nezávaznou poptávku"))}
               </button>
 
               {status.text && <div className={`status ${status.kind}`}>{status.text}</div>}
