@@ -1533,13 +1533,17 @@ body.menu-open,body.modal-open{overflow:hidden}
     margin-top:20px;
   }
   .mobile-inline-cta-card{
-    padding:22px;
-    border-radius:24px;
-  }
-  .mobile-inline-cta-card .display{
-    margin:0 0 10px;
-    max-width:11ch;
-  }
+  padding:22px;
+  border-radius:24px;
+}
+
+.mobile-inline-cta-card .display{
+  margin:0 0 10px;
+  max-width:11ch;
+  font-size:22px;
+  line-height:1.1;
+  letter-spacing:-0.015em;
+}
   .mobile-inline-cta-card .copy{margin:0}
   .mobile-inline-cta-actions{
     margin-top:16px;
