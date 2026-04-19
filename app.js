@@ -441,14 +441,10 @@ function Home({ t }) {
           {isMobile && (
             <div className="mobile-only mobile-inline-cta reveal">
               <div className="card card-inner mobile-inline-cta-card">
-                <h3 className="display h3">
-                  {isEn ? "Not sure what suits your space?" : "Nevíte, co je pro váš prostor vhodné?"}
-                </h3>
-                <p className="copy">
-                  {isEn
-                    ? "At the consultation we choose the right solution based on light, privacy and the way the interior is used."
-                    : "Na konzultaci vybereme vhodné řešení podle světla, soukromí a způsobu používání interiéru."}
-                </p>
+              <h3 className="display h3">{t.ctaBoxTitle}</h3>
+
+<p className="copy">{t.ctaBoxText}</p>
+            
                 <div className="mobile-inline-cta-actions">
                   <button className="button button-primary" onClick={() => go("/contact")}>
                     {t.cta}
@@ -521,11 +517,7 @@ function Home({ t }) {
             <h2 className="display h2">
               {t.homeProjectsTitle || (isEn ? "Completed projects" : "Hotové realizace")}
             </h2>
-            <p className="lead">
-              {t.homeProjectsLead || (isEn
-                ? "A selection of interiors where window treatments complete calm, softness and the right measure of light."
-                : "Výběr z interiérů, kde stínění dotváří klid, měkkost a správnou míru světla.")}
-            </p>
+            <p className="lead">{t.homeCtaLocation}</p>
           </div>
 
           <div className="gallery-grid-home home-projects-grid reveal">
