@@ -1358,6 +1358,356 @@ body.menu-open,body.modal-open{overflow:hidden}
   .footer{
     padding:24px 0 32px;
   }
+/* =========================================================
+   MOBILE HOMEPAGE FINAL TUNING
+   pouze mobil, desktop beze změny
+   vložit úplně na konec CSS
+   ========================================================= */
+
+.mobile-only{
+  display:none;
+}
+
+@media (max-width: 820px){
+
+  /* základní rytmus */
+  .section{
+    padding:46px 0;
+  }
+
+  .section-tight{
+    padding:34px 0;
+  }
+
+  .section-header{
+    margin-bottom:28px;
+  }
+
+  .section-header .display{
+    margin-bottom:8px;
+  }
+
+  .lead{
+    font-size:17px;
+    line-height:1.7;
+  }
+
+  .copy{
+    font-size:15px;
+    line-height:1.78;
+  }
+
+  /* FAQ má být jistější a ne modré */
+  .faq-trigger{
+    color:var(--text);
+  }
+
+  .faq-trigger span:first-child{
+    color:var(--brown);
+    font-size:17px;
+    font-weight:600;
+    line-height:1.45;
+  }
+
+  .faq-trigger span:last-child{
+    color:var(--sand-deep);
+    font-size:22px;
+  }
+
+  .faq-answer{
+    color:var(--muted);
+    line-height:1.72;
+  }
+
+  /* hlavní textová sekce */
+  .home-about-main{
+    margin-top:0;
+  }
+
+  .home-about-extra{
+    display:none;
+  }
+
+  .home-feature .feature-copy .display{
+    max-width:11ch;
+  }
+
+  .home-feature .feature-media{
+    min-height:340px;
+  }
+
+  .home-feature .feature-copy{
+    gap:0;
+  }
+
+  .home-feature .home-feature-actions{
+    margin-top:18px !important;
+  }
+
+  /* služby – swipe, ale o něco méně namačkané */
+  .home-services-grid{
+    display:flex;
+    gap:16px;
+    overflow-x:auto;
+    padding:2px 2px 8px;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+
+  .home-services-grid::-webkit-scrollbar{
+    display:none;
+  }
+
+  .home-services-grid .service-card{
+    flex:0 0 86%;
+    min-width:86%;
+    scroll-snap-align:start;
+    border-radius:24px;
+  }
+
+  .home-services-grid .service-card-top{
+    padding:22px 22px 0;
+  }
+
+  .home-services-grid .service-card h3{
+    font-size:30px;
+    margin-bottom:8px;
+  }
+
+  .home-services-grid .service-card p{
+    line-height:1.68;
+  }
+
+  .home-services-grid .service-card-media{
+    margin-top:18px;
+    aspect-ratio:1.28 / 1;
+  }
+
+  .home-services-grid .service-card-foot{
+    padding:14px 22px 22px;
+    font-size:12px;
+    letter-spacing:.12em;
+  }
+
+  /* atmosféra – menší výška */
+  .home-atmos-grid{
+    gap:14px;
+  }
+
+  .home-atmos-grid .atmos-card{
+    aspect-ratio:16 / 10;
+    border-radius:22px;
+  }
+
+  .home-atmos-grid .atmos-card figcaption{
+    font-size:12px;
+    letter-spacing:.12em;
+    left:14px;
+    right:14px;
+    bottom:12px;
+  }
+
+  /* benefity – swipe */
+  .home-benefits-grid{
+    display:flex;
+    gap:16px;
+    overflow-x:auto;
+    padding:2px 2px 8px;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+
+  .home-benefits-grid::-webkit-scrollbar{
+    display:none;
+  }
+
+  .home-benefits-grid .benefit-card{
+    flex:0 0 86%;
+    min-width:86%;
+    scroll-snap-align:start;
+    padding:24px 22px;
+    border-radius:24px;
+  }
+
+  .home-benefits-grid .benefit-card .script{
+    font-size:24px;
+    margin-bottom:6px;
+  }
+
+  .home-benefits-grid .benefit-card h3{
+    font-size:30px;
+    margin-bottom:10px;
+  }
+
+  .home-benefits-grid .benefit-card p{
+    line-height:1.72;
+  }
+
+  /* realizace – homepage má být ochutnávka */
+  .home-projects-grid{
+    display:flex;
+    gap:16px;
+    overflow-x:auto;
+    padding:2px 2px 8px;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+
+  .home-projects-grid::-webkit-scrollbar{
+    display:none;
+  }
+
+  .home-projects-grid .gallery-item-home{
+    flex:0 0 86%;
+    min-width:86%;
+    height:auto;
+    aspect-ratio:5 / 4;
+    scroll-snap-align:start;
+    border-radius:22px;
+  }
+
+  /* na mobilu jen 4 realizace na homepage */
+  .home-projects-grid .gallery-item-home:nth-child(n+5){
+    display:none;
+  }
+
+  .home-projects-cta{
+    margin-top:18px !important;
+  }
+
+  .home-projects-cta .button{
+    width:100%;
+  }
+
+  /* FAQ – jen 3 nejdůležitější */
+  .home-faq .faq-list{
+    gap:12px;
+  }
+
+  .home-faq .faq-item{
+    border-radius:20px;
+  }
+
+  .home-faq .faq-item:nth-child(n+4){
+    display:none;
+  }
+
+  .home-faq .faq-trigger{
+    padding:18px 18px;
+  }
+
+  .home-faq .faq-answer{
+    padding:0 18px 18px;
+  }
+
+  /* mobilní meziblioky CTA */
+  .mobile-only{
+    display:block;
+  }
+
+  .mobile-inline-cta{
+    margin-top:20px;
+  }
+
+  .mobile-inline-cta-card{
+    padding:22px;
+    border-radius:24px;
+  }
+
+  .mobile-inline-cta-card .display{
+    margin:0 0 10px;
+    max-width:11ch;
+  }
+
+  .mobile-inline-cta-card .copy{
+    margin:0;
+  }
+
+  .mobile-inline-cta-actions{
+    margin-top:16px;
+    display:flex;
+  }
+
+  .mobile-inline-cta-actions .button{
+    width:100%;
+  }
+
+  .mobile-inline-cta-accent{
+    background:linear-gradient(135deg,rgba(255,253,250,.96),rgba(238,229,219,.96));
+  }
+
+  /* finální CTA */
+  .home-final-cta .card-inner{
+    padding:24px 22px;
+  }
+
+  .home-final-cta .display{
+    max-width:11ch;
+  }
+
+  .home-final-cta .home-final-cta-actions{
+    margin-top:18px !important;
+  }
+
+  .home-final-cta .home-final-cta-actions .button{
+    flex:1 1 auto;
+    min-width:0;
+  }
+
+  /* footer o něco čistší */
+  .footer{
+    padding:28px 0 34px;
+  }
+
+  .footer-grid{
+    gap:18px;
+  }
+
+  .footer-brand p{
+    margin-top:10px;
+    font-size:15px;
+    line-height:1.72;
+  }
+
+  .footer-bottom{
+    margin-top:18px;
+    padding-top:14px;
+    font-size:13px;
+    gap:8px;
+  }
+}
+
+@media (max-width: 560px){
+
+  .section{
+    padding:40px 0;
+  }
+
+  .section-tight{
+    padding:30px 0;
+  }
+
+  .home-services-grid .service-card,
+  .home-benefits-grid .benefit-card,
+  .home-projects-grid .gallery-item-home{
+    flex-basis:88%;
+    min-width:88%;
+  }
+
+  .home-atmos-grid .atmos-card{
+    aspect-ratio:4 / 3;
+  }
+
+  .mobile-inline-cta-card{
+    padding:20px 18px;
+  }
+
+  .home-final-cta .card-inner{
+    padding:20px 18px;
+  }
 }
 
 
