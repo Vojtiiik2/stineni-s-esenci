@@ -116,20 +116,38 @@ function useLang() {
   return { lang, setLang, t: STR[lang] || STR.cs };
 }
 
-function useReveal(route) {
+function useReveal(route, lang) {
   useEffect(() => {
     const nodes = Array.from(document.querySelectorAll(".reveal"));
+
+    nodes.forEach((n) => n.classList.remove("visible"));
+
     const obs = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) entry.target.classList.add("visible");
         });
       },
-      { threshold: 0.12 }
+      {
+        threshold: 0.08,
+        rootMargin: "0px 0px -8% 0px",
+      }
     );
+
     nodes.forEach((n) => obs.observe(n));
+
+    requestAnimationFrame(() => {
+      nodes.forEach((n) => {
+        const rect = n.getBoundingClientRect();
+        const vh = window.innerHeight || document.documentElement.clientHeight;
+        if (rect.top < vh * 0.92) {
+          n.classList.add("visible");
+        }
+      });
+    });
+
     return () => obs.disconnect();
-  }, [route]);
+  }, [route, lang]);
 }
 
 function useIsMobile(breakpoint = 820) {
@@ -1484,7 +1502,7 @@ function App() {
   const [pricingItem, setPricingItem] = useState(null);
   const [lightbox, setLightbox] = useState({ open: false, index: 0, images: [] });
 
-  useReveal(route);
+ useReveal(route, lang);
 
   useEffect(() => setMenuOpen(false), [route]);
 
