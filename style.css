@@ -1534,7 +1534,7 @@ body.menu-open,body.modal-open{overflow:hidden}
 
  .hero,
 .hero.small{
-  min-height:calc(92svh - 72px);
+ min-height:calc(88svh - 72px);
 }
   .route-- .hero{align-items:center}
 
