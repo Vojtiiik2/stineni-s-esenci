@@ -368,24 +368,25 @@ pricingItems: [
         ]
       },
       {
-        key: "garnyze",
-        label: "Garnýže",
-        img: "assets/img/pricing/systemy-garnyze.webp",
-        micro: "Dekor. Detail, který je vidět.",
-        intro: "Garnýže tvoří viditelný prvek interiéru. Volíme materiály, barvy i detaily tak, aby ladily s textilem a celkovým stylem prostoru.",
-        rangesTitle: "Orientačně (pro představu)",
-        ranges: [
-          { label: "malé okno (200 x 270cm)", value: "cca 1–13 tis. Kč" },
-          { label: "velké okno (500 x 290cm)", value: "cca 2.5–18 tis. Kč" }
-        ],
-        rangesNote: "Orientační cena zahrnuje návrh podle prostoru, zaměření, výrobu, montáž a finální dekorování",
-        tiersTitle: "Typy",
-        tiers: [
-          { name: "Klasická", note: "Dekorativní řešení do bytů i domů." },
-          { name: "Designová", note: "Výraznější materiál, povrch, detail." },
-          { name: "Individuální řešení", note: "Specifické uchycení, délky, rohy." }
-        ]
-      }
+       {
+  key: "garnyze",
+  label: "Garnýže",
+  img: "assets/img/pricing/garnyze-detail.webp",
+  micro: "Dekor. Detail, který je vidět.",
+  intro: "Garnýže tvoří viditelný prvek interiéru. Volíme materiály, barvy i detaily tak, aby ladily s textilem a celkovým stylem prostoru.",
+  rangesTitle: "Orientačně (pro představu)",
+  ranges: [
+    { label: "malé okno (200 x 270cm)", value: "cca 1–13 tis. Kč" },
+    { label: "velké okno (500 x 290cm)", value: "cca 2.5–18 tis. Kč" }
+  ],
+  rangesNote: "Orientační cena zahrnuje návrh podle prostoru, zaměření, výrobu, montáž a finální dekorování",
+  tiersTitle: "Typy",
+  tiers: [
+    { name: "Klasická", note: "Dekorativní řešení do bytů i domů." },
+    { name: "Designová", note: "Výraznější materiál, povrch, detail." },
+    { name: "Individuální řešení", note: "Specifické uchycení, délky, rohy." }
+  ]
+}
     ]
   },
   {
