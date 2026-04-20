@@ -23,7 +23,7 @@ window.STR = {
     heroPanelTitle: "Světlo, klid a detail",
     heroPanelText:
       "Navrhujeme a realizujeme vnitřní stínění tak, aby prostor působil přirozeně, harmonicky a dlouhodobě dobře fungoval.",
-    heroScript: "Vy rozhodujete. My navrhujeme.",
+    heroScript: "My navrhujeme. Vy rozhodujete.",
     heroTitleMobile: "Záclony, závěsy, rolety a garnýže na míru",
     heroLeadMobile: "rostoru, světla a toho, jak interiér funguje.",
 
