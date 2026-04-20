@@ -80,15 +80,11 @@ const CONTACT_WEBHOOK = "https://hook.eu1.make.com/o1lk627xrpjl8d6exq9sh5yrplr58
 
 function normalizePath(path) {
   const raw = (path || "").replace(/^#/, "") || "/";
-  return raw.startsWith("/") ? raw : "/";
+  return raw.startsWith("/") ? raw : `/${raw}`;
 }
 
 function getInitialPath() {
   return normalizePath(window.location.hash);
-}
-
-function dispatchRouteChange() {
-  window.dispatchEvent(new Event("app-routechange"));
 }
 
 function go(path, options = {}) {
@@ -104,10 +100,23 @@ function go(path, options = {}) {
   window.location.hash = target;
 
   requestAnimationFrame(() => {
-    dispatchRouteChange();
-    requestAnimationFrame(() => {
-      window.scrollTo({ top: 0, behavior: "auto" });
-    });
+    window.scrollTo({ top: 0, behavior: "auto" });
+  });
+}
+
+function goHome(options = {}) {
+  const behavior = options.behavior || "smooth";
+  const current = getInitialPath();
+
+  if (current === "/") {
+    window.scrollTo({ top: 0, behavior });
+    return;
+  }
+
+  window.location.hash = "/";
+
+  requestAnimationFrame(() => {
+    window.scrollTo({ top: 0, behavior: "auto" });
   });
 }
 
@@ -125,12 +134,10 @@ function useRoute() {
     };
 
     window.addEventListener("hashchange", syncRoute);
-    window.addEventListener("app-routechange", syncRoute);
     window.addEventListener("pageshow", syncRoute);
 
     return () => {
       window.removeEventListener("hashchange", syncRoute);
-      window.removeEventListener("app-routechange", syncRoute);
       window.removeEventListener("pageshow", syncRoute);
     };
   }, []);
@@ -226,7 +233,16 @@ function Header({ t, lang, setLang, route, menuOpen, setMenuOpen }) {
     <>
       <header className={`site-header ${isScrolled ? "scrolled" : ""}`}>
         <div className="shell site-header-inner">
-          <a className="brand" href="#/" onClick={(e) => { e.preventDefault(); go("/"); setMenuOpen(false); }} aria-label={t.a11yHome}>
+          <a
+            className="brand"
+            href="#/"
+            onClick={(e) => {
+              e.preventDefault();
+              setMenuOpen(false);
+              goHome();
+            }}
+            aria-label={t.a11yHome}
+          >
             <img src="assets/img/logo/Logo-symbol.svg" alt="Logo" />
             <span className="brand-text">
               <small>{t.brand1}</small>
@@ -240,7 +256,10 @@ function Header({ t, lang, setLang, route, menuOpen, setMenuOpen }) {
                 key={item.path}
                 href={`#${item.path}`}
                 className={`header-link ${route === item.path ? "active" : ""}`}
-                onClick={(e) => { e.preventDefault(); go(item.path); }}
+                onClick={(e) => {
+                  e.preventDefault();
+                  go(item.path);
+                }}
               >
                 {navLabels[index] || item.key}
               </a>
@@ -335,7 +354,7 @@ function Hero({ t, title, lead, image, small = false }) {
           <div className="hero-grid">
             <div className="hero-copy reveal visible">
               <div className="hero-kicker">{t.heroKicker}</div>
-            <span className="script">{t.heroScript || t.brand2}</span>
+              <span className="script">{t.heroScript || t.brand2}</span>
               <h1 className="display h1">{heroTitle}</h1>
               {heroLead ? <p className="lead">{heroLead}</p> : null}
               <div className="hero-actions">
@@ -763,6 +782,7 @@ function Process({ t }) {
     </>
   );
 }
+
 function Pricing({ t, openPricing }) {
   const isEn = (document.documentElement.lang || "cs") === "en";
   const isMobile = useIsMobile(820);
@@ -872,7 +892,6 @@ function Pricing({ t, openPricing }) {
 function Gallery({ t }) {
   const isEn = (document.documentElement.lang || "cs") === "en";
   const isMobile = useIsMobile(820);
-  const [ratios, setRatios] = React.useState({});
   const [visibleCount, setVisibleCount] = React.useState(isMobile ? 18 : 30);
   const loadMoreRef = React.useRef(null);
 
@@ -930,41 +949,24 @@ function Gallery({ t }) {
             </p>
           </div>
 
-          <div className={`ow-grid-page reveal visible ${isMobile ? "mobile" : "desktop"}`}>
-            {visibleWorks.map((src, absoluteIndex) => {
-              const ratio = ratios[absoluteIndex] || 1;
-
-              return (
-                <button
-                  type="button"
-                  key={src}
-                  className="ow-card-page"
-                  style={!isMobile ? { gridRowEnd: `span ${Math.max(18, Math.round(18 / ratio))}` } : undefined}
-                  onClick={() => openGalleryLightbox(absoluteIndex, OUR_WORK)}
-                >
-                  <img
-                    src={src}
-                    alt={isEn ? `Project ${absoluteIndex + 1}` : `Realizace ${absoluteIndex + 1}`}
-                    className="ow-img-page"
-                    loading={absoluteIndex < (isMobile ? 8 : 12) ? "eager" : "lazy"}
-                    fetchPriority={absoluteIndex < 4 ? "high" : "auto"}
-                    decoding="async"
-                    onLoad={(e) => {
-                      const img = e.currentTarget;
-                      const w = img.naturalWidth || 1;
-                      const h = img.naturalHeight || 1;
-                      const ratio = Math.max(0.65, Math.min(3.2, w / h));
-
-                      setRatios((prev) =>
-                        prev[absoluteIndex]
-                          ? prev
-                          : { ...prev, [absoluteIndex]: ratio }
-                      );
-                    }}
-                  />
-                </button>
-              );
-            })}
+          <div className="ow-grid-page reveal visible">
+            {visibleWorks.map((src, absoluteIndex) => (
+              <button
+                type="button"
+                key={src}
+                className="ow-card-page"
+                onClick={() => openGalleryLightbox(absoluteIndex, OUR_WORK)}
+              >
+                <img
+                  src={src}
+                  alt={isEn ? `Project ${absoluteIndex + 1}` : `Realizace ${absoluteIndex + 1}`}
+                  className="ow-img-page"
+                  loading={absoluteIndex < (isMobile ? 8 : 12) ? "eager" : "lazy"}
+                  fetchPriority={absoluteIndex < 4 ? "high" : "auto"}
+                  decoding="async"
+                />
+              </button>
+            ))}
           </div>
 
           {visibleCount < OUR_WORK.length && (
@@ -1011,7 +1013,6 @@ function Gallery({ t }) {
       </section>
     </>
   );
-
 }
 
 function Essence({ t }) {
@@ -1337,7 +1338,14 @@ function Footer({ t }) {
     <footer className="footer">
       <div className="shell footer-grid">
         <div className="footer-brand">
-          <a className="brand" href="#/" onClick={(e) => { e.preventDefault(); go("/"); }}>
+          <a
+            className="brand"
+            href="#/"
+            onClick={(e) => {
+              e.preventDefault();
+              goHome();
+            }}
+          >
             <img src="assets/img/logo/Logo-symbol.svg" alt="Logo" />
             <span className="brand-text">
               <small>{t.brand1}</small>
@@ -1419,12 +1427,12 @@ function PricingModal({ t, item, onClose }) {
   return (
     <div className="modal-backdrop" onClick={onClose}>
       <div className="modal-panel" onClick={(e) => e.stopPropagation()}>
-      <div className="modal-header">
-  <div>
-    <h3>{item.title}</h3>
-  </div>
-  <button className="modal-close" onClick={onClose}>{t.close}</button>
-</div>
+        <div className="modal-header">
+          <div>
+            <h3>{item.title}</h3>
+          </div>
+          <button className="modal-close" onClick={onClose}>{t.close}</button>
+        </div>
         <div className="modal-body">
           <div className="modal-grid">
             <div className="modal-image">
@@ -1488,6 +1496,7 @@ function PricingModal({ t, item, onClose }) {
     </div>
   );
 }
+
 function Lightbox({ state, setState, t }) {
   const isEn = (document.documentElement.lang || "cs") === "en";
 
@@ -1553,7 +1562,7 @@ function App() {
   const [pricingItem, setPricingItem] = useState(null);
   const [lightbox, setLightbox] = useState({ open: false, index: 0, images: [] });
 
- useReveal(route, lang);
+  useReveal(route, lang);
 
   useEffect(() => setMenuOpen(false), [route]);
 
@@ -1586,7 +1595,6 @@ function App() {
 }
 
 ReactDOM.createRoot(document.getElementById("root")).render(<App />);
-
 
 
 
