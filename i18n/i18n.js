@@ -198,24 +198,24 @@ homeFinalCtaLocation:
     ],
     processEnding: "Cílem je, abyste se v prostoru cítili přirozeně a dobře.",
 
-   // Pricing
+  // Pricing
 priceH: "Kolik stojí stínění od nás",
 pricingLead: "Orientační ceny a typy řešení pro představu ještě před konzultací.",
 pricingLeadMobile: "Orientační ceny pro rychlou představu ještě před konzultací.",
-pricingSectionTitle: "Cena se odvíjí od prostoru, materiálu i detailu provedení",
+pricingSectionTitle: "Co ovlivňuje cenu stínění",
 pricingOpenButton: "Zobrazit orientační ceny",
 
 pricingIntroMobile: [
-  "Cena stínění na míru se liší podle velikosti oken, typu materiálu a zvoleného řešení.",
-  "Níže najdete orientační přehled pro rychlou představu."
+  "Prostor, materiál a zvolené řešení.",
+  "Níže najdete orientační přehled."
 ],
 
 pricingIntro: [
-  "Cena stínění na míru se liší podle velikosti oken, typu materiálu a zvoleného řešení.",
-  "Na této stránce najdete orientační ceny záclon, závěsů, rolet, kolejnic a garnýží, abyste si mohli udělat představu ještě před konzultací.",
-  "Každý návrh připravujeme individuálně podle prostoru, světla a způsobu využití interiéru."
+  "Prostor, materiál a zvolené řešení.",
+  "Níže najdete orientační přehled."
 ],
 
+    
 pricingDisclaimer:
   "Uvedené částky jsou orientační scénáře pro představu. Konkrétní návrh a rozpočet vždy upřesníme po konzultaci na místě podle rozměrů, zvolených materiálů a technického řešení.",
 pricingDisclaimerMobile:
