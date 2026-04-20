@@ -38,7 +38,9 @@ window.STR = {
 
     
     homeAboutMobile:
-      "Vybrané řešení musí sedět prostoru, světlu i tomu, jak místnost během dne používáte.",
+     `Jsme česká rodinná firma a zakládáme si na kvalitě a precizním provedení. Máme více než dvacet let zkušeností s látkami, šitím i technikou. Navrhujeme stínění na míru od první konzultace až po finální realizaci tak, aby výsledek fungoval dlouhodobě.
+
+Každý detail ladíme podle vás. Respektujeme vaše potřeby a přizpůsobujeme se tomu, co je pro vás důležité. Někdo chce klid a měkké světlo, jiný funkční zatemnění nebo jednoduché řešení bez zbytečností. Vždy hledáme cestu, která dává smysl právě vám.`,
 
     featureImageAlt: "Vzorky a materiály",
     inspLeadMobile:
