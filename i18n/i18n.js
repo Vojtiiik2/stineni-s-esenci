@@ -44,7 +44,14 @@ window.STR = {
     inspLeadMobile:
       "Správně navržené stínění ovlivňuje světlo, soukromí i celkový pocit z interiéru.",
     homeAboutExtra:
-      "Pracujeme s tím, co v prostoru skutečně hraje roli — světlo, proporce, potřeba soukromí, způsob používání interiéru i jemnost materiálů. Nejde jen o to okno zakrýt. Jde o to, aby prostor fungoval lépe.",
+      "Navrhujeme stínění tak, aby sedělo vašemu prostoru i tomu, jak v něm opravdu žijete. Nejde jen o látku a systém. Jde o
+světlo během dne, soukromí večer a pocit, který doma chcete mít.
+Každý detail ladíme podle vás. Respektujeme vaše potřeby a přizpůsobujeme se tomu, co je pro vás důležité. Někdo
+chce klid a měkké světlo, jiný funkční zatemnění nebo jednoduché řešení bez zbytečností. Vždy hledáme cestu, která
+dává smysl právě vám.
+Jsme Česká rodinná firma a zakládáme si na kvalitě a precizním provedení. Máme více než dvacet let zkušeností s
+látkami, šitím i technikou. Navrhujeme stínění na míru od první konzultace až po finální realizaci tak, aby výsledek
+fungoval dlouhodobě.",
 
     homeServicesTitle: "Řešení, která drží atmosféru i funkci",
     homeServicesLead:
