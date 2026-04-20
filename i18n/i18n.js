@@ -40,12 +40,6 @@ window.STR = {
     homeAboutMobile:
       "Vybrané řešení musí sedět prostoru, světlu i tomu, jak místnost během dne používáte.",
 
-    featureNoteTitle: "Návrh začíná v prostoru",
-    featureNoteTitleMobile: "Návrh začíná v prostoru",
-    featureNoteText:
-      "Materiál vybíráme v reálném světle, v konkrétním interiéru a s ohledem na jeho rytmus.",
-    featureNoteTextMobile:
-      "Materiál vybíráme přímo v interiéru a v reálném světle.",
     featureImageAlt: "Vzorky a materiály",
     inspLeadMobile:
       "Správně navržené stínění ovlivňuje světlo, soukromí i celkový pocit z interiéru.",
@@ -54,7 +48,7 @@ window.STR = {
 
     homeServicesTitle: "Řešení, která drží atmosféru i funkci",
     homeServicesLead:
-      "Každá vrstva má svoji roli.",
+      "Návrh začíná v interiéru. Každá vrstva má svoji roli.",
     homeServicesLeadMobile: "",
 
     homeAtmosTitle: "Interiér se nemění jen vzhledem. Mění se pocitem.",
