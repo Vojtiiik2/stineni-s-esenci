@@ -36,9 +36,7 @@ window.STR = {
     homeAboutH: "Navrhujeme a realizujeme vnitřní stínění",
     homeAboutHMobile: "Stínění podle prostoru",
 
-    homeAbout: [
-      "Stínění není samostatný prvek. Vybíráme ho v návaznosti na prostor, materiály i způsob používání tak, aby celek působil klidně a jistě."
-    ],
+    
     homeAboutMobile:
       "Vybrané řešení musí sedět prostoru, světlu i tomu, jak místnost během dne používáte.",
 
