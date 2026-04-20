@@ -771,20 +771,19 @@ homeFinalCtaLocation:
 priceH: "What Our Window Treatments Cost",
 pricingLead: "Guide prices and types of solutions to give you a clear idea before the consultation.",
 pricingLeadMobile: "Indicative pricing for a quick overview before the consultation.",
-pricingSectionTitle: "Price depends on the space, the material and the level of detail",
+pricingSectionTitle: "What affects the price of shading",
 pricingOpenButton: "View guide prices",
 
 pricingIntroMobile: [
-  "Made-to-measure shading varies with window size, material and technical solution.",
-  "Below you will find an indicative overview for a quick first impression."
+  "Space, material, and the chosen solution.",
+  "Below you will find an approximate price overview."
 ],
 
 pricingIntro: [
-  "The price of made-to-measure window treatments varies depending on window size, material and the chosen solution.",
-  "On this page, you will find guide prices for sheers, curtains, blinds, tracks and curtain rods so you can get an initial idea before the consultation.",
-  "Every proposal is prepared individually according to the space, the light and the way the interior is used."
+  "Space, material, and the chosen solution.",
+  "Below you will find an approximate price overview."
 ],
-
+    
 pricingDisclaimer:
   "The amounts shown are indicative scenarios for reference only. The exact design and quotation are always refined after an on-site consultation according to dimensions, selected materials and the technical solution.",
 pricingDisclaimerMobile:
