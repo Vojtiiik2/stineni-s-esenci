@@ -44,14 +44,7 @@ window.STR = {
     inspLeadMobile:
       "Správně navržené stínění ovlivňuje světlo, soukromí i celkový pocit z interiéru.",
     homeAboutExtra:
-      "Navrhujeme stínění tak, aby sedělo vašemu prostoru i tomu, jak v něm opravdu žijete. Nejde jen o látku a systém. Jde o
-světlo během dne, soukromí večer a pocit, který doma chcete mít.
-Každý detail ladíme podle vás. Respektujeme vaše potřeby a přizpůsobujeme se tomu, co je pro vás důležité. Někdo
-chce klid a měkké světlo, jiný funkční zatemnění nebo jednoduché řešení bez zbytečností. Vždy hledáme cestu, která
-dává smysl právě vám.
-Jsme Česká rodinná firma a zakládáme si na kvalitě a precizním provedení. Máme více než dvacet let zkušeností s
-látkami, šitím i technikou. Navrhujeme stínění na míru od první konzultace až po finální realizaci tak, aby výsledek
-fungoval dlouhodobě.",
+      "Jsme Česká rodinná firma a zakládáme si na kvalitě a precizním provedení. Máme více než dvacet let zkušeností s látkami, šitím i technikou. Navrhujeme stínění na míru od první konzultace až po finální realizaci tak, aby výsledek fungoval dlouhodobě.Každý detail ladíme podle vás. Respektujeme vaše potřeby a přizpůsobujeme se tomu, co je pro vás důležité. Někdochce klid a měkké světlo, jiný funkční zatemnění nebo jednoduché řešení bez zbytečností. Vždy hledáme cestu, kterádává smysl právě vám.",
 
     homeServicesTitle: "Řešení, která drží atmosféru i funkci",
     homeServicesLead:
