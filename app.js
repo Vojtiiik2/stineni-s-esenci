@@ -85,25 +85,31 @@ function getInitialPath() {
 
 function go(path) {
   const target = path || "/";
-  if (window.location.hash.replace(/^#/, "") === target) {
+  const current = window.location.hash.replace(/^#/, "") || "/";
+
+  if (current === target) {
     window.scrollTo({ top: 0, behavior: "smooth" });
     return;
   }
+
   window.location.hash = target;
 }
 
 function useRoute() {
   const [route, setRoute] = useState(getInitialPath());
 
-  useEffect(() => {
-    const onHash = () => {
-      setRoute(getInitialPath());
-      requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: "smooth" }));
-    };
-    window.addEventListener("hashchange", onHash);
-    return () => window.removeEventListener("hashchange", onHash);
-  }, []);
+useEffect(() => {
+  const onHash = () => {
+    setRoute(getInitialPath());
 
+    requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, behavior: "auto" });
+    });
+  };
+
+  window.addEventListener("hashchange", onHash);
+  return () => window.removeEventListener("hashchange", onHash);
+}, []);
   return route;
 }
 
@@ -896,25 +902,26 @@ function Gallery({ t }) {
                       style={{ flexGrow: grow }}
                       onClick={() => openGalleryLightbox(absoluteIndex, OUR_WORK)}
                     >
-                      <img
-                        src={src}
-                        alt={isEn ? `Project ${absoluteIndex + 1}` : `Realizace ${absoluteIndex + 1}`}
-                        className="ow-img-page"
-                        loading="lazy"
-                        decoding="async"
-                        onLoad={(e) => {
-                          const img = e.currentTarget;
-                          const w = img.naturalWidth || 1;
-                          const h = img.naturalHeight || 1;
-                          const ratio = Math.max(0.7, Math.min(3.2, w / h));
+                     <img
+  src={src}
+  alt={isEn ? `Project ${absoluteIndex + 1}` : `Realizace ${absoluteIndex + 1}`}
+  className="ow-img-page"
+  loading={absoluteIndex < 6 ? "eager" : "lazy"}
+  fetchPriority={absoluteIndex < 3 ? "high" : "auto"}
+  decoding="sync"
+  onLoad={(e) => {
+    const img = e.currentTarget;
+    const w = img.naturalWidth || 1;
+    const h = img.naturalHeight || 1;
+    const ratio = Math.max(0.7, Math.min(3.2, w / h));
 
-                          setRatios((prev) =>
-                            prev[absoluteIndex]
-                              ? prev
-                              : { ...prev, [absoluteIndex]: ratio }
-                          );
-                        }}
-                      />
+    setRatios((prev) =>
+      prev[absoluteIndex]
+        ? prev
+        : { ...prev, [absoluteIndex]: ratio }
+    );
+  }}
+/>
                     </button>
                   );
                 })}
@@ -1516,7 +1523,7 @@ function App() {
   if (route === "/") page = <Home t={t} />;
   else if (route === "/process") page = <Process t={t} />;
   else if (route === "/pricing") page = <Pricing t={t} openPricing={setPricingItem} />;
-  else if (route === "/gallery") page = <Gallery t={t} />;
+  else if (route === "/gallery") page = <Gallery key={`gallery-${route}-${lang}`} t={t} />;
   else if (route === "/essence") page = <Essence t={t} />;
   else if (route === "/contact") page = <Contact t={t} />;
   else if (route === "/terms") page = <LegalPage t={t} kind="terms" />;
