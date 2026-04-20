@@ -560,22 +560,47 @@ body.menu-open,body.modal-open{overflow:hidden}
   padding:28px;
   min-height:100%;
   cursor:pointer;
-  transition:transform .3s ease, box-shadow .3s ease;
+  transition:
+    transform .32s ease,
+    box-shadow .32s ease,
+    border-color .32s ease,
+    background .32s ease;
 }
-.benefit-card .script{font-size:28px;color:var(--sand-deep);margin-bottom:8px}
+
+.benefit-card .script{
+  font-size:28px;
+  color:var(--sand-deep);
+  margin-bottom:8px;
+  transition:color .32s ease;
+}
+
 .benefit-card h3{
   margin:0 0 12px;
   font-family:"Cormorant Garamond",serif;
   font-size:34px;
   font-weight:600;
 }
-.benefit-card p{margin:0;color:var(--muted);line-height:1.9}
-.benefit-card:hover{
-  transform:translateY(-6px);
-  box-shadow:0 20px 40px rgba(0,0,0,.08);
-}
-.benefit-card:active{transform:translateY(-2px)}
 
+.benefit-card p{
+  margin:0;
+  color:var(--muted);
+  line-height:1.9;
+}
+
+.benefit-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 26px 60px rgba(49,33,23,.12);
+  border-color:var(--line-strong);
+  background:#fffdfa;
+}
+
+.benefit-card:hover .script{
+  color:var(--brown-soft);
+}
+
+.benefit-card:active{
+  transform:translateY(-3px);
+}
 .faq-list{display:grid;gap:12px}
 .faq-item{
   border-radius:24px;
