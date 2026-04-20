@@ -25,7 +25,6 @@ window.STR = {
       "Navrhujeme a realizujeme vnitřní stínění tak, aby prostor působil přirozeně, harmonicky a dlouhodobě dobře fungoval.",
     heroScript: "Vy rozhodujete. My navrhujeme.",
     heroTitleMobile: "Záclony, závěsy, rolety a garnýže na míru",
-    heroLead: "Stínění navrhujeme podle prostoru, světla a způsobu používání interiéru.",
     heroLeadMobile: "Stínění navrhujeme podle prostoru, světla a toho, jak interiér funguje.",
 
     heroSlides: [
