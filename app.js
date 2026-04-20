@@ -87,21 +87,16 @@ function getInitialPath() {
   return normalizePath(window.location.hash);
 }
 
-function go(path, options = {}) {
-  const target = normalizePath(path || "/");
-  const current = getInitialPath();
-  const behavior = options.behavior || "smooth";
+function go(path) {
+  const target = path || "/";
+  const current = window.location.hash.replace(/^#/, "") || "/";
 
   if (current === target) {
-    window.scrollTo({ top: 0, behavior });
+    window.scrollTo({ top: 0, behavior: "smooth" });
     return;
   }
 
   window.location.hash = target;
-
-  requestAnimationFrame(() => {
-    window.scrollTo({ top: 0, behavior: "auto" });
-  });
 }
 
 function goHome(options = {}) {
@@ -233,13 +228,11 @@ function Header({ t, lang, setLang, route, menuOpen, setMenuOpen }) {
     <>
       <header className={`site-header ${isScrolled ? "scrolled" : ""}`}>
         <div className="shell site-header-inner">
-          <a
+          <button
             className="brand"
-            href="#/"
-            onClick={(e) => {
-              e.preventDefault();
+            onClick={() => {
+              go("/");
               setMenuOpen(false);
-              goHome();
             }}
             aria-label={t.a11yHome}
           >
@@ -248,21 +241,17 @@ function Header({ t, lang, setLang, route, menuOpen, setMenuOpen }) {
               <small>{t.brand1}</small>
               <strong>{t.brand2}</strong>
             </span>
-          </a>
+          </button>
 
           <nav className="header-nav" aria-label={t.a11yMainNav}>
             {NAV_ROUTES.map((item, index) => (
-              <a
+              <button
                 key={item.path}
-                href={`#${item.path}`}
                 className={`header-link ${route === item.path ? "active" : ""}`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  go(item.path);
-                }}
+                onClick={() => go(item.path)}
               >
                 {navLabels[index] || item.key}
-              </a>
+              </button>
             ))}
           </nav>
 
@@ -286,18 +275,16 @@ function Header({ t, lang, setLang, route, menuOpen, setMenuOpen }) {
       <div className={`mobile-drawer ${menuOpen ? "open" : ""}`}>
         <nav>
           {NAV_ROUTES.map((item, index) => (
-            <a
+            <button
               key={item.path}
-              href={`#${item.path}`}
               className="header-link"
-              onClick={(e) => {
-                e.preventDefault();
+              onClick={() => {
                 setMenuOpen(false);
                 go(item.path);
               }}
             >
               {navLabels[index] || item.key}
-            </a>
+            </button>
           ))}
         </nav>
         <button className="button button-primary" onClick={() => { setMenuOpen(false); go("/contact"); }}>
@@ -307,7 +294,6 @@ function Header({ t, lang, setLang, route, menuOpen, setMenuOpen }) {
     </>
   );
 }
-
 function Hero({ t, title, lead, image, small = false }) {
   const [active, setActive] = useState(0);
   const isEn = (document.documentElement.lang || "cs") === "en";
@@ -892,41 +878,27 @@ function Pricing({ t, openPricing }) {
 function Gallery({ t }) {
   const isEn = (document.documentElement.lang || "cs") === "en";
   const isMobile = useIsMobile(820);
-  const [visibleCount, setVisibleCount] = React.useState(isMobile ? 18 : 30);
-  const loadMoreRef = React.useRef(null);
+  const [ratios, setRatios] = React.useState({});
+  const [perRow, setPerRow] = React.useState(
+    typeof window !== "undefined" && window.innerWidth <= 768 ? 2 : 3
+  );
 
   React.useEffect(() => {
-    setVisibleCount(isMobile ? 18 : 30);
-  }, [isMobile]);
+    const onResize = () => {
+      setPerRow(window.innerWidth <= 768 ? 2 : 3);
+    };
 
-  React.useEffect(() => {
-    const preload = OUR_WORK.slice(0, isMobile ? 12 : 18);
-    preload.forEach((src) => {
-      const img = new Image();
-      img.src = src;
-    });
-  }, [isMobile]);
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
 
-  React.useEffect(() => {
-    const node = loadMoreRef.current;
-    if (!node) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setVisibleCount((prev) => Math.min(prev + (isMobile ? 12 : 18), OUR_WORK.length));
-          }
-        });
-      },
-      { rootMargin: "800px 0px" }
-    );
-
-    observer.observe(node);
-    return () => observer.disconnect();
-  }, [isMobile, visibleCount]);
-
-  const visibleWorks = OUR_WORK.slice(0, visibleCount);
+  const chunk = (arr, size) => {
+    const out = [];
+    for (let i = 0; i < arr.length; i += size) {
+      out.push(arr.slice(i, i + size));
+    }
+    return out;
+  };
 
   return (
     <>
@@ -949,29 +921,47 @@ function Gallery({ t }) {
             </p>
           </div>
 
-          <div className="ow-grid-page reveal visible">
-            {visibleWorks.map((src, absoluteIndex) => (
-              <button
-                type="button"
-                key={src}
-                className="ow-card-page"
-                onClick={() => openGalleryLightbox(absoluteIndex, OUR_WORK)}
-              >
-                <img
-                  src={src}
-                  alt={isEn ? `Project ${absoluteIndex + 1}` : `Realizace ${absoluteIndex + 1}`}
-                  className="ow-img-page"
-                  loading={absoluteIndex < (isMobile ? 8 : 12) ? "eager" : "lazy"}
-                  fetchPriority={absoluteIndex < 4 ? "high" : "auto"}
-                  decoding="async"
-                />
-              </button>
+          <div className="ow-rows reveal visible">
+            {chunk(OUR_WORK, perRow).map((row, rIdx) => (
+              <div className="ow-row-page" key={rIdx}>
+                {row.map((src, i) => {
+                  const absoluteIndex = rIdx * perRow + i;
+                  const grow = ratios[absoluteIndex] || 1.6;
+
+                  return (
+                    <button
+                      type="button"
+                      key={src}
+                      className="ow-card-page"
+                      style={{ flexGrow: grow }}
+                      onClick={() => openGalleryLightbox(absoluteIndex, OUR_WORK)}
+                    >
+                      <img
+                        src={src}
+                        alt={isEn ? `Project ${absoluteIndex + 1}` : `Realizace ${absoluteIndex + 1}`}
+                        className="ow-img-page"
+                        loading={absoluteIndex < 6 ? "eager" : "lazy"}
+                        fetchPriority={absoluteIndex < 3 ? "high" : "auto"}
+                        decoding="sync"
+                        onLoad={(e) => {
+                          const img = e.currentTarget;
+                          const w = img.naturalWidth || 1;
+                          const h = img.naturalHeight || 1;
+                          const ratio = Math.max(0.7, Math.min(3.2, w / h));
+
+                          setRatios((prev) =>
+                            prev[absoluteIndex]
+                              ? prev
+                              : { ...prev, [absoluteIndex]: ratio }
+                          );
+                        }}
+                      />
+                    </button>
+                  );
+                })}
+              </div>
             ))}
           </div>
-
-          {visibleCount < OUR_WORK.length && (
-            <div ref={loadMoreRef} className="gallery-load-trigger" aria-hidden="true" />
-          )}
         </div>
       </section>
 
