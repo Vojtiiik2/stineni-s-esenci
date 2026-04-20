@@ -341,76 +341,76 @@ pricingItems: [
     ]
   },
   {
-    key: "systemy",
-    title: "Kolejnice a garnýže",
-    img: "assets/img/pricing/systemy-kolejnice.webp",
-    vibe: "Základ který vše drží a řídí.",
-    micro: "Funkční i dekorativní.",
-    intro: "Kolejnice a garnýže zajišťují správnou funkci i vzhled stínění. Navrhujeme je podle prostoru a typu textilu.",
-    subtypes: [
-      {
-        key: "kolejnice",
-        label: "Kolejnice",
-        img: "assets/img/pricing/systemy-kolejnice.webp",
-        micro: "Čistá linie. Funkce a přesnost.",
-        intro: "Kolejnice na závěsy a záclony umožňují čisté a funkční řešení stínění. Vhodné pro stropy, stěny a atypické prostory včetně ohýbaných variant.",
-        rangesTitle: "Orientačně (pro představu)",
-        ranges: [
-          { label: "malé okno (200 x 270cm)", value: "cca 1–13 tis. Kč" },
-          { label: "velké okno (500 x 290cm)", value: "cca 2.5–18 tis. Kč" }
-        ],
-        rangesNote: "Orientační cena zahrnuje návrh podle prostoru, zaměření, výrobu, montáž a finální dekorování",
-        tiersTitle: "Typy",
-        tiers: [
-          { name: "Rovná", note: "Jednoduché, čisté řešení." },
-          { name: "Ohýbaná", note: "Podle dispozice a vedení prostoru." },
-          { name: "Motor", note: "Komfort a automatizace." }
-        ]
-      },
-      {
-       {
-  key: "garnyze",
-  label: "Garnýže",
-  img: "assets/img/pricing/garnyze-detail.webp",
-  micro: "Dekor. Detail, který je vidět.",
-  intro: "Garnýže tvoří viditelný prvek interiéru. Volíme materiály, barvy i detaily tak, aby ladily s textilem a celkovým stylem prostoru.",
-  rangesTitle: "Orientačně (pro představu)",
+{
+  key: "systemy",
+  title: "Kolejnice a garnýže",
+  img: "assets/img/pricing/systemy-kolejnice.webp",
+  vibe: "Základ který vše drží a řídí.",
+  micro: "Funkční i dekorativní.",
+  intro: "Kolejnice a garnýže zajišťují správnou funkci i vzhled stínění. Navrhujeme je podle prostoru a typu textilu.",
+  subtypes: [
+    {
+      key: "kolejnice",
+      label: "Kolejnice",
+      img: "assets/img/pricing/systemy-kolejnice.webp",
+      micro: "Čistá linie. Funkce a přesnost.",
+      intro: "Kolejnice na závěsy a záclony umožňují čisté a funkční řešení stínění. Vhodné pro stropy, stěny a atypické prostory včetně ohýbaných variant.",
+      rangesTitle: "Orientačně (pro představu)",
+      ranges: [
+        { label: "malé okno (200 x 270cm)", value: "cca 1–13 tis. Kč" },
+        { label: "velké okno (500 x 290cm)", value: "cca 2.5–18 tis. Kč" }
+      ],
+      rangesNote: "Orientační cena zahrnuje návrh podle prostoru, zaměření, výrobu, montáž a finální dekorování",
+      tiersTitle: "Typy",
+      tiers: [
+        { name: "Rovná", note: "Jednoduché, čisté řešení." },
+        { name: "Ohýbaná", note: "Podle dispozice a vedení prostoru." },
+        { name: "Motor", note: "Komfort a automatizace." }
+      ]
+    },
+    {
+      key: "garnyze",
+      label: "Garnýže",
+      img: "assets/img/pricing/garnyze-detail.webp",
+      micro: "Dekor. Detail, který je vidět.",
+      intro: "Garnýže tvoří viditelný prvek interiéru. Volíme materiály, barvy i detaily tak, aby ladily s textilem a celkovým stylem prostoru.",
+      rangesTitle: "Orientačně (pro představu)",
+      ranges: [
+        { label: "malé okno (200 x 270cm)", value: "cca 1–13 tis. Kč" },
+        { label: "velké okno (500 x 290cm)", value: "cca 2.5–18 tis. Kč" }
+      ],
+      rangesNote: "Orientační cena zahrnuje návrh podle prostoru, zaměření, výrobu, montáž a finální dekorování",
+      tiersTitle: "Typy",
+      tiers: [
+        { name: "Klasická", note: "Dekorativní řešení do bytů i domů." },
+        { name: "Designová", note: "Výraznější materiál, povrch, detail." },
+        { name: "Individuální řešení", note: "Specifické uchycení, délky, rohy." }
+      ]
+    }
+  ]
+},
+{
+  key: "servis",
+  title: "Servis a údržba stínění",
+  img: "assets/img/pricing/pricing-05.webp",
+  vibe: "Profesionální údržba ve třech krocích.",
+  micro: "Znovu jako nové.",
+  intro: "Zajišťujeme servis záclon a závěsů od sundání přes praní nebo čištění až po opětovné zavěšení a finální úpravu.",
+  modalLead: "Pravidelná údržba, praní i opětovné zavěšení, aby stínění zůstalo v perfektním stavu.",
+  rangesTitle: "Orientačně podle rozsahu",
   ranges: [
-    { label: "malé okno (200 x 270cm)", value: "cca 1–13 tis. Kč" },
-    { label: "velké okno (500 x 290cm)", value: "cca 2.5–18 tis. Kč" }
+    { label: "malé okno (200 x 270cm)", value: "cca 6–8 tis. Kč" },
+    { label: "velké okno (500 x 290cm)", value: "cca 17–20 tis. Kč" }
   ],
-  rangesNote: "Orientační cena zahrnuje návrh podle prostoru, zaměření, výrobu, montáž a finální dekorování",
+  rangesNote: "Orientační cena zahrnuje obě vrstvy textilu, tedy záclonu i závěs.",
   tiersTitle: "Typy",
   tiers: [
-    { name: "Klasická", note: "Dekorativní řešení do bytů i domů." },
-    { name: "Designová", note: "Výraznější materiál, povrch, detail." },
-    { name: "Individuální řešení", note: "Specifické uchycení, délky, rohy." }
-  ]
+    { name: "Běžná údržba", note: "Sundání, praní/čištění, žehlení a pověšení." },
+    { name: "Velké plochy", note: "Více dílů, větší náročnost manipulace." },
+    { name: "Atyp / výšky", note: "Speciální přístup, lešení/plošina dle situace." }
+  ],
+  serviceOnlyNote: "Servis poskytujeme pouze na naše realizace."
 }
-    ]
-  },
-  {
-    key: "servis",
-    title: "Servis a údržba stínění",
-    img: "assets/img/pricing/pricing-05.webp",
-    vibe: "Profesionální údržba ve třech krocích.",
-    micro: "Znovu jako nové.",
-    intro: "Zajišťujeme servis záclon a závěsů od sundání přes praní nebo čištění až po opětovné zavěšení a finální úpravu.",
-    modalLead: "Pravidelná údržba, praní i opětovné zavěšení, aby stínění zůstalo v perfektním stavu.",
-    rangesTitle: "Orientačně podle rozsahu",
-    ranges: [
-      { label: "malé okno (200 x 270cm)", value: "cca 6–8 tis. Kč" },
-      { label: "velké okno (500 x 290cm)", value: "cca 17–20 tis. Kč" }
-    ],
-    rangesNote: "Orientační cena zahrnuje obě vrstvy textilu, tedy záclonu i závěs.",
-    tiersTitle: "Typy",
-    tiers: [
-      { name: "Běžná údržba", note: "Sundání, praní/čištění, žehlení a pověšení." },
-      { name: "Velké plochy", note: "Více dílů, větší náročnost manipulace." },
-      { name: "Atyp / výšky", note: "Speciální přístup, lešení/plošina dle situace." }
-    ],
-    serviceOnlyNote: "Servis poskytujeme pouze na naše realizace."
-  }
 ],
 
     // Gallery
