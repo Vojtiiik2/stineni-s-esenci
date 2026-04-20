@@ -117,7 +117,7 @@ homeFinalCtaLocation:
   {
     value: "20+",
     label: "let zkušeností",
-    detail: "Ve vnitřním stínění a textilních realizacích."
+    detail: "S dekorací oken a vnitřním stíněním"
   },
   {
     value: "Individuální návrh",
