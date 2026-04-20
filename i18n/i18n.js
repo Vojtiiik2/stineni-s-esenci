@@ -340,8 +340,7 @@ pricingItems: [
       }
     ]
   },
-  {
-{
+ {
   key: "systemy",
   title: "Kolejnice a garnýže",
   img: "assets/img/pricing/systemy-kolejnice.webp",
