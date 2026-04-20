@@ -207,7 +207,6 @@ pricingOpenButton: "Zobrazit orientační ceny",
 
 pricingIntroMobile: [
   "Prostor, materiál a zvolené řešení.",
-  "Níže najdete orientační přehled."
 ],
 
 pricingIntro: [
