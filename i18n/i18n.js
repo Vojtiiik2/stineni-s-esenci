@@ -33,8 +33,8 @@ window.STR = {
       { h1: "Kompletní realizace od konzultace po finální montáž", bg: "assets/img/hero/hero-03.webp", pos: "center", posMobile: "center 50%" }
     ],
 
-    homeAboutH: "Navrhujeme a realizujeme vnitřní stínění",
-    homeAboutHMobile: "Stínění podle prostoru",
+    homeAboutH: "O nás",
+    homeAboutHMobile: "O nás",
 
     
     homeAboutMobile:
