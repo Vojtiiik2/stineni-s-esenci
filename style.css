@@ -72,7 +72,12 @@ body.menu-open,body.modal-open{overflow:hidden}
 .h3{font-size:clamp(24px,2.5vw,34px)}
 
 .lead{font-size:clamp(18px,2vw,22px);line-height:1.7;color:var(--muted);margin:0}
-.copy{font-size:16px;line-height:1.9;color:var(--muted)}
+.copy{
+  font-size:16px;
+  line-height:1.9;
+  color:var(--muted);
+  white-space: pre-line;
+}
 .muted{color:var(--muted)}
 
 .site-header{
