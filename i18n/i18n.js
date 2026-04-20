@@ -25,7 +25,7 @@ window.STR = {
       "Navrhujeme a realizujeme vnitřní stínění tak, aby prostor působil přirozeně, harmonicky a dlouhodobě dobře fungoval.",
     heroScript: "My navrhujeme. Vy rozhodujete.",
     heroTitleMobile: "Záclony, závěsy, rolety a garnýže na míru",
-    heroLeadMobile: "rostoru, světla a toho, jak interiér funguje.",
+    heroLeadMobile: "Prostoru, světla a toho, jak interiér funguje.",
 
     heroSlides: [
       { h1: "Záclony, závěsy, rolety a garnýže podle vašeho prostoru", bg: "assets/img/hero/hero-01.webp", pos: "center", posMobile: "center 35%" },
@@ -614,14 +614,12 @@ rights: "Všechna práva vyhrazena.",
       { h1: "Complete service from consultation to final installation", bg: "assets/img/hero/hero-03.webp", pos: "center", posMobile: "center 50%" }
     ],
 
-    homeAboutH: "We design and deliver interior window treatments",
-    homeAboutHMobile: "Window treatments shaped by the room",
+    homeAboutH: "About us",
+  homeAboutHMobile: "About us",
 
-    homeAbout: [
-      "Window treatments are never an isolated element. We choose them in relation to the space, the materials and the way the interior is used, so the whole feels calm, balanced and assured."
-    ],
-    homeAboutMobile:
-      "The right solution has to fit the room, the light and how the space is used during the day.",
+  homeAboutMobile: `We are a Czech family company with more than 20 years of experience. We design shading so it works long-term — both technically and visually.
+
+Every detail is tailored to you. We respect your needs and adapt to what matters most to you. Some want calm and soft light, others need full blackout or a simple, clean solution. We always look for an approach that truly fits your space and the way you live in it.`,
 
     featureNoteTitle: "Design begins in the space itself",
     featureNoteTitleMobile: "Design begins in the space itself",
@@ -632,8 +630,9 @@ rights: "Všechna práva vyhrazena.",
     featureImageAlt: "Fabric samples and materials",
     inspLeadMobile:
       "Well-designed window treatments shape light, privacy and the overall feeling of the interior.",
-    homeAboutExtra:
-      "We work with what truly matters in a space — light, proportion, the need for privacy, the way the interior is used and the softness of materials. It is not just about covering a window. It is about helping the space work better.",
+   homeAboutExtra: `We are a Czech family company and we focus on quality and precise execution. With over twenty years of experience in fabrics, sewing and technical solutions, we design and deliver shading from the first consultation to the final installation so it performs long-term.
+
+Every detail is tailored to you. We respect your needs and adapt to what matters most. Whether you are looking for calm and soft light, effective blackout or a clean and simple solution, we always look for an approach that makes sense for you and your space.`,
 
     homeServicesTitle: "Solutions that hold both atmosphere and function",
     homeServicesLead:
