@@ -18,17 +18,17 @@ window.STR = {
     // Hero
     heroSub: "Záclony · Závěsy · Rolety · Garnýže na míru",
     cta: "Domluvit konzultaci",
-    heroKicker: "Jana Segelberg · Interiérové stínění",
+    heroKicker: "Jana Segelberg · Vnitřní stínění",
     heroKickerSmall: "Praha · okolí · interiéry",
-    heroPanelTitle: "Světlo, klid a detail",
+    heroPanelTitle: "Světlo,  soukromí a atmosféra",
     heroPanelText:
-      "Navrhujeme a realizujeme vnitřní stínění tak, aby prostor působil přirozeně, harmonicky a dlouhodobě dobře fungoval.",
+      "Navrhujeme a realizujeme vnitřní stínění, které přirozeně navazuje na interiér a respektuje každodenní potřeby.",
     heroScript: "My navrhujeme. Vy rozhodujete.",
     heroTitleMobile: "Záclony, závěsy, rolety a garnýže na míru",
     heroLeadMobile: "Prostoru, světla a toho, jak interiér funguje.",
 
     heroSlides: [
-      { h1: "Záclony, závěsy, rolety a garnýže podle vašeho prostoru", bg: "assets/img/hero/hero-01.webp", pos: "center", posMobile: "center 35%" },
+      { h1: "Záclony, závěsy, rolety a garnýže do vašeho interiéru", bg: "assets/img/hero/hero-01.webp", pos: "center", posMobile: "center 35%" },
       { h1: "Navrhujeme stínění, které dává interiéru klid, soukromí a atmosféru", bg: "assets/img/hero/hero-02.webp", pos: "center", posMobile: "center 55%" },
       { h1: "Kompletní realizace od konzultace po finální montáž", bg: "assets/img/hero/hero-03.webp", pos: "center", posMobile: "center 50%" }
     ],
@@ -54,11 +54,11 @@ Každý detail ladíme podle vás. Respektujeme vaše potřeby a přizpůsobujem
       "Návrh začíná v interiéru. Každá vrstva má svoji roli.",
     homeServicesLeadMobile: "",
 
-    homeAtmosTitle: "Interiér se nemění jen vzhledem. Mění se pocitem.",
-    homeLuxuryTitle: "Luxusní pocit nevzniká okázalostí. Vzniká jistotou.",
-    homeLuxuryLead: "Na výsledku je to vidět. V proporci, materiálu i v tom, jak prostor funguje každý den.",
+    homeAtmosTitle: "Stejné okno. Úplně jiný výsledek",
+    homeLuxuryTitle: "Každé řešení má svůj důvod",
+    homeLuxuryLead: "Ukážeme vám, co dává smysl a proč.",
     homeProjectsLeadMobile: "",
-    benefitDetailLabel: "Detail",
+    benefitDetailLabel: "Zjistit víc",
     homeProjectsTitle: "Hotové realizace",
     homeProjectsLead:
       "Výběr z interiérů, kde stínění dotváří klid, měkkost a správnou míru světla.",
@@ -99,7 +99,7 @@ homeFinalCtaLocation:
     benefits: [
       { name: "Individuální návrh", note: "Každý prostor má jiné světlo, proporce i potřeby. Návrh proto vzniká vždy podle konkrétního interiéru." },
       { name: "20 let zkušeností", note: "Známe materiály, technická řešení i detaily, které rozhodují o výsledku." },
-      { name: "Kompletní realizace", note: "Od první konzultace přes zaměření a výrobu až po montáž a finální zavěšení." }
+      { name: "Preciznost a detail", note: "Kvalita zpracování a technické provedení rozhodují o tom, jak bude stínění fungovat i po letech." }
     ],
 
     benefitCardCta: "Zjistit víc →",
