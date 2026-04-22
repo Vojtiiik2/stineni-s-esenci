@@ -374,7 +374,7 @@ function Hero({ t, title, lead, image, small = false }) {
                     go("/gallery", { force: true, native: true });
                   }}
                 >
-                  {t.galleryH}
+                  {t.heroSecondaryCta}
                 </a>
               </div>
             </div>
