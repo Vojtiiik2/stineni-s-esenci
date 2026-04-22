@@ -621,12 +621,6 @@ rights: "Všechna práva vyhrazena.",
 
 Every detail is tailored to you. We respect your needs and adapt to what matters most to you. Some want calm and soft light, others need full blackout or a simple, clean solution. We always look for an approach that truly fits your space and the way you live in it.`,
 
-    featureNoteTitle: "Design begins in the space itself",
-    featureNoteTitleMobile: "Design begins in the space itself",
-    featureNoteText:
-      "We choose materials in real light, in the actual interior and with respect to its rhythm.",
-    featureNoteTextMobile:
-      "We choose materials directly in the interior and in real light.",
     featureImageAlt: "Fabric samples and materials",
     inspLeadMobile:
       "Well-designed window treatments shape light, privacy and the overall feeling of the interior.",
