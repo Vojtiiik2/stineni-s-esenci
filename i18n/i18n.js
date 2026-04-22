@@ -23,7 +23,7 @@ window.STR = {
     heroPanelTitle: "Světlo,  soukromí a atmosféra",
     heroPanelText:
       "Navrhujeme a realizujeme vnitřní stínění, které přirozeně navazuje na interiér a respektuje každodenní potřeby.",
-    heroScript: "My navrhujeme. Vy rozhodujete.",
+    heroScript: "Navrhujeme řešení, která fungují",
     heroTitleMobile: "Záclony, závěsy, rolety a garnýže na míru",
     heroLeadMobile: "Prostoru, světla a toho, jak interiér funguje.",
 
@@ -56,7 +56,7 @@ Každý detail ladíme podle vás. Respektujeme vaše potřeby a přizpůsobujem
 
     homeAtmosTitle: "Stejné okno. Úplně jiný výsledek",
     homeLuxuryTitle: "Každé řešení má svůj důvod",
-    homeLuxuryLead: "Ukážeme vám, co dává smysl a proč.",
+    homeLuxuryLead: "Rádi vám ukážeme, co dává smysl a proč.",
     homeProjectsLeadMobile: "",
     benefitDetailLabel: "Zjistit víc",
     homeProjectsTitle: "Hotové realizace",
@@ -78,7 +78,7 @@ homeFinalCtaLocation:
 
     serviceCardCta: "Zobrazit orientační ceny →",
     services: [
-      { name: "Záclony", note: "Zjemní denní světlo, zútulní a odlehčí prostor." },
+      { name: "Záclony", note: "Zjemní denní světlo, zútulní a odlehčí." },
       { name: "Závěsy", note: "Pomohou se zatemněním, akustikou i pocitem tepla a klidu." },
       { name: "Rolety", note: "Praktické řešení pro přesnou regulaci světla a čistý vzhled." },
       { name: "Technické systémy", note: "Kolejnice, garnýže a řešení navržená podle prostoru." },
