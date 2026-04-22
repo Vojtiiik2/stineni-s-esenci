@@ -16,9 +16,10 @@ window.STR = {
     nav: ["Jak pracujeme", "Kolik zaplatíte", "Galerie", "Esence", "Kontakt"],
 
     // Hero
-    heroSub: "Záclony · Závěsy · Rolety · Garnýže na míru",
-   heroSecondaryCta: "Prohlédnout realizace",
-    heroKicker: "Jana Segelberg · Vnitřní stínění",
+   heroSub: "Záclony · Závěsy · Rolety · Garnýže na míru",
+cta: "Domluvit konzultaci",
+heroSecondaryCta: "Prohlédnout realizace",
+heroKicker: "Jana Segelberg · Vnitřní stínění",
     heroKickerSmall: "Praha · okolí · interiéry",
     heroPanelTitle: "Světlo,  soukromí a atmosféra",
     heroPanelText:
@@ -597,9 +598,11 @@ rights: "Všechna práva vyhrazena.",
     nav: ["How We Work", "Pricing", "Gallery", "Essences", "Contact"],
 
     // Hero
-    heroSub: "Sheers · Curtains · Blinds · Curtain Rods Made to Measure",
-    heroSecondaryCta: "View projects",
-    heroKicker: "Jana Segelberg · Interior Window Treatments",
+   // Hero
+heroSub: "Sheers · Curtains · Blinds · Curtain Rods Made to Measure",
+cta: "Book a Consultation",
+heroSecondaryCta: "View projects",
+heroKicker: "Jana Segelberg · Interior Window Treatments",
     heroKickerSmall: "Prague · surrounding areas · interiors",
     heroPanelTitle: "Light, calm and detail",
     heroPanelText:
