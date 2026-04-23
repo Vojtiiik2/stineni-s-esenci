@@ -120,7 +120,7 @@ homeFinalCtaLocation:
   {
     value: "20+",
     label: "let zkušeností",
-    detail: "S dekorací oken a vnitřním stíněním"
+    detail: "S dekorací oken a vnitřním stíněním."
   },
   {
     value: "Individuální návrh",
