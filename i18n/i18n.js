@@ -411,7 +411,6 @@ pricingItems: [
     galleryH: "Realizace stínění",
     galleryLead: "Výběr realizací záclon, závěsů, rolet a technických systémů.",
     gallerySectionTitle: "Realizace, ve kterých stínění nepůsobí navíc. Působí správně.",
-    gallerySectionLeadMobile: "Ukázka hotových realizací. Klepnutím otevřete detail fotografie.",
     galleryOurWorkH: "Ukázky našich realizací",
     galleryOurWorkP: "Prohlédněte si realizace záclon, závěsů, rolet, kolejnic a garnýží v různých typech interiérů. Každé řešení navrhujeme na míru podle prostoru, světla a způsobu využití místnosti.",
     galleryShowAll: "Zobrazit všechny realizace →",
