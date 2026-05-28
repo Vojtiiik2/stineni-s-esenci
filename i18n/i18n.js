@@ -410,7 +410,6 @@ pricingItems: [
     // Gallery
     galleryH: "Realizace stínění",
     galleryLead: "Výběr realizací záclon, závěsů, rolet a technických systémů.",
-    galleryLeadMobile: "Výběr hotových realizací v rychlejším přehledu pro telefon.",
     gallerySectionTitle: "Realizace, ve kterých stínění nepůsobí navíc. Působí správně.",
     gallerySectionLead: "Výběr realizací záclon, závěsů, rolet a technických systémů.",
     gallerySectionLeadMobile: "Ukázka hotových realizací. Klepnutím otevřete detail fotografie.",
