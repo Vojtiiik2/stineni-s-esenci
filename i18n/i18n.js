@@ -716,10 +716,10 @@ homeFinalCtaLocation:
       "We deliver the finished window treatments, install them professionally and hang the textiles with care.\n\nBoth sheers and curtains are steamed, styled and adjusted so that everything works visually as well as technically.\n\nOnce the work is finished, we tidy the space and hand it back ready to use.\n\nOn site, we explain the operation and recommend suitable maintenance so the window treatments continue to function as they should over time."
     ],
     processImgs: [
-      "assets/img/process/process-01.webp",
-      "assets/img/process/process-02.webp",
-      "assets/img/process/process-03.webp",
-      "assets/img/process/process-04.webp"
+      "assets/img/process/process-01-v2.webp",
+      "assets/img/process/process-02-v2.webp",
+      "assets/img/process/process-03-v2.webp",
+      "assets/img/process/process-04-v2.webp"
     ],
     processBridges: ["Direction grows from observation.", "Design turns into reality.", "Detail defines the result."],
     processMicroByStep: [
@@ -791,7 +791,7 @@ pricingItems: [
   {
     key: "zaclon",
     title: "Sheers",
-    img: "assets/img/pricing/pricing-01.webp",
+    img: "assets/img/pricing/pricing-01-v2.webp",
     vibe: "The light remains. The space becomes softer and more welcoming.",
     micro: "Light, proportion, softness.",
     intro: "Sheers allow daylight to pass through while creating a basic level of privacy in the interior. An ideal solution for living rooms, bedrooms and large French windows.",
@@ -812,7 +812,7 @@ pricingItems: [
   {
     key: "zaves",
     title: "Curtains",
-    img: "assets/img/pricing/pricing-02.webp",
+    img: "assets/img/pricing/pricing-02-v2.webp",
     vibe: "They create privacy. They calm the evening. They protect the morning.",
     micro: "Material, quiet, comfort.",
     intro: "Curtains provide privacy, blackout and help regulate both light and temperature in the space. Suitable for bedrooms, living rooms and interiors where you want to achieve a strong sense of calm.",
@@ -907,7 +907,7 @@ pricingItems: [
       {
         key: "kolejnice",
         label: "Tracks",
-        img: "assets/img/pricing/systemy-kolejnice.webp",
+        img: "assets/img/pricing/pricing-04-v2.webp",
         micro: "A clean line. Function and precision.",
         intro: "Tracks for curtains and sheers provide a clean and functional window treatment solution. Suitable for ceilings, walls and unusual spaces, including curved options.",
         rangesTitle: "Guide prices",
@@ -947,7 +947,7 @@ pricingItems: [
   {
     key: "servis",
     title: "Service and maintenance",
-    img: "assets/img/pricing/pricing-05.webp",
+    img: "assets/img/pricing/pricing-05-v2.webp",
     vibe: "Professional care in three steps.",
     micro: "Like new again.",
     intro: "We provide service for sheers and curtains from taking them down through washing or cleaning to rehanging and final finishing.",
