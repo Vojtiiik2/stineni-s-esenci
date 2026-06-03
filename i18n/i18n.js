@@ -272,7 +272,7 @@ pricingItems: [
   {
     key: "roleta",
     title: "Rolety",
-    img: "assets/img/pricing/roleta-latkova.webp",
+    img: "assets/img/pricing/roleta-latkova-01.webp",
     vibe: "Čisté linie. Funkce bez kompromisu.",
     micro: "Regulace světla, jednoduchost.",
     intro: "Rolety umožňují přesnou regulaci světla a čisté, minimalistické řešení bez závěsů. Vhodné pro kuchyně, koupelny, pracovny i moderní interiéry.",
@@ -280,7 +280,7 @@ pricingItems: [
       {
         key: "latkova",
         label: "Látková roleta",
-        img: "assets/img/pricing/roleta-latkova.webp",
+        img: "assets/img/pricing/roleta-latkova-01.webp",
         micro: "Regulace světla, jednoduchost.",
         intro: "Látkové rolety umožňují regulaci světla podle zvoleného materiálu od lehkého zastínění po výraznější zatemnění. Praktické řešení pro každodenní používání.",
         rangesTitle: "Orientačně (pro představu)",
@@ -299,7 +299,7 @@ pricingItems: [
       {
         key: "rimska",
         label: "Římská roleta",
-        img: "assets/img/pricing/roleta-rimska.webp",
+        img: "assets/img/pricing/roleta-rimska-01.webp",
         micro: "Měkká textilní vrstva, dekor a klid.",
         intro: "Římské rolety kombinují funkčnost rolety a vzhled závěsu. Vhodné do interiérů, kde chcete zachovat měkkost textilu bez klasických závěsů.",
         rangesTitle: "Orientačně (pro představu)",
@@ -318,7 +318,7 @@ pricingItems: [
       {
         key: "plisse",
         label: "Plissé roleta",
-        img: "assets/img/pricing/roleta-plisse.webp",
+        img: "assets/img/pricing/roleta-plisse-01.webp",
         micro: "Přesné dávkování světla. Skvělé i na atypy.",
         intro: "Plissé rolety umožňují stínění shora i zdola a umožňuje přesně regulovat světlo. Ideální řešení pro atypická okna a specifické situace.",
         rangesTitle: "Orientačně (pro představu)",
@@ -926,7 +926,7 @@ pricingItems: [
       {
         key: "garnyze",
         label: "Curtain rods",
-        img: "assets/img/pricing/systemy-garnyze.webp",
+        img: "assets/img/pricing/garnyze-detail-01.webp",
         micro: "Décor. A detail that remains visible.",
         intro: "Curtain rods are a visible interior element. We choose materials, colours and details so they work in harmony with the textile and the overall character of the space.",
         rangesTitle: "Guide prices",
