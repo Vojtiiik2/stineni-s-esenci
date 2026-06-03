@@ -155,10 +155,10 @@ homeFinalCtaLocation:
       "Hotové stínění přivezeme, odborně namontujeme a textil pečlivě pověsíme.\n\nZáclony i závěsy vyžehlíme, nadekorujeme a doladíme tak, aby vše fungovalo vizuálně i technicky.\n\nPo dokončení práce prostor uklidíme a předáme vám ho připravený k používání.\n\nNa místě vám vysvětlíme ovládání a doporučíme vhodnou údržbu, aby stínění dlouhodobě fungovalo tak, jak má."
     ],
     processImgs: [
-      "assets/img/process/process-01.webp",
-      "assets/img/process/process-02.webp",
-      "assets/img/process/process-03.webp",
-      "assets/img/process/process-04.webp"
+      "assets/img/process/process-01-v2.webp",
+      "assets/img/process/process-02-v2.webp",
+      "assets/img/process/process-03-v2.webp",
+      "assets/img/process/process-04-v2.webp"
     ],
     processBridges: ["Z pozorování vzniká směr.", "Návrh se mění v realitu.", "Detail rozhoduje o výsledku."],
     processMicroByStep: [
@@ -230,7 +230,7 @@ pricingItems: [
   {
     key: "zaclon",
     title: "Záclony",
-    img: "assets/img/pricing/pricing-01.webp",
+    img: "assets/img/pricing/pricing-01-v2.webp",
     vibe: "Světlo zůstává. Prostor se zjemní a zútulní.",
     micro: "Světlo, proporce, jemnost.",
     intro: "Záclony propouští denní světlo a zároveň vytváří základní soukromí v interiéru. Ideální řešení pro obývací pokoje, ložnice i velká francouzská okna.",
@@ -251,7 +251,7 @@ pricingItems: [
   {
     key: "zaves",
     title: "Závěsy",
-    img: "assets/img/pricing/pricing-02.webp",
+    img: "assets/img/pricing/pricing-02-v2.webp",
     vibe: "Vytvoří soukromí. Večer zklidní. Ráno ochrání.",
     micro: "Materiál, ticho, komfort.",
     intro: "Závěsy zajišťují soukromí, zatemnění a pomáhají regulovat světlo i teplotu v prostoru. Vhodné do ložnic, obývacích pokojů i interiérů, kde chcete dosáhnout maximálního klidu.",
@@ -346,7 +346,7 @@ pricingItems: [
     {
       key: "kolejnice",
       label: "Kolejnice",
-      img: "assets/img/pricing/systemy-kolejnice.webp",
+      img: "assets/img/pricing/pricing-04-v2.webp",
       micro: "Čistá linie. Funkce a přesnost.",
       intro: "Kolejnice na závěsy a záclony umožňují čisté a funkční řešení stínění. Vhodné pro stropy, stěny a atypické prostory včetně ohýbaných variant.",
       rangesTitle: "Orientačně (pro představu)",
@@ -386,7 +386,7 @@ pricingItems: [
 {
   key: "servis",
   title: "Servis a údržba stínění",
-  img: "assets/img/pricing/pricing-05.webp",
+  img: "assets/img/pricing/pricing-05-v2.webp",
   vibe: "Profesionální údržba ve třech krocích.",
   micro: "Znovu jako nové.",
   intro: "Zajišťujeme servis záclon a závěsů od sundání přes praní nebo čištění až po opětovné zavěšení a finální úpravu.",
