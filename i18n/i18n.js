@@ -338,7 +338,7 @@ pricingItems: [
  {
   key: "systemy",
   title: "Kolejnice a garnýže",
-  img: "assets/img/pricing/systemy-kolejnice.webp",
+  img: "assets/img/pricing/pricing-04-v2.webp",
   vibe: "Základ který vše drží a řídí.",
   micro: "Funkční i dekorativní.",
   intro: "Kolejnice a garnýže zajišťují správnou funkci i vzhled stínění. Navrhujeme je podle prostoru a typu textilu.",
