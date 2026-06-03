@@ -365,7 +365,7 @@ pricingItems: [
     {
       key: "garnyze",
       label: "Garnýže",
-      img: "assets/img/pricing/garnyze-detail.webp",
+      img: "assets/img/pricing/garnyze-detail-01.webp",
       micro: "Dekor. Detail, který je vidět.",
       intro: "Garnýže tvoří viditelný prvek interiéru. Volíme materiály, barvy i detaily tak, aby ladily s textilem a celkovým stylem prostoru.",
       rangesTitle: "Orientačně (pro představu)",
