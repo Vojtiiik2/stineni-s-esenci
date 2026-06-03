@@ -18,7 +18,7 @@ const HERO_IMAGES = [
 const HOME_SERVICE_IMAGES = [
   "assets/img/pricing/pricing-01-v2.webp",
   "assets/img/pricing/pricing-02-v2.webp",
-  "assets/img/pricing/roleta-rimska.webp",
+  "assets/img/pricing/roleta-rimska-01.webp",
   "assets/img/pricing/pricing-04-v2.webp",
   "assets/img/pricing/pricing-05-v2.webp",
 ];
