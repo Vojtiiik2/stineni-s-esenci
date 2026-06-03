@@ -16,11 +16,11 @@ const HERO_IMAGES = [
 ];
 
 const HOME_SERVICE_IMAGES = [
-  "assets/img/pricing/pricing-01.webp",
-  "assets/img/pricing/pricing-02.webp",
+  "assets/img/pricing/pricing-01-v2.webp",
+  "assets/img/pricing/pricing-02-v2.webp",
   "assets/img/pricing/roleta-rimska.webp",
-  "assets/img/pricing/systemy-kolejnice.webp",
-  "assets/img/pricing/pricing-05.webp",
+  "assets/img/pricing/pricing-04-v2.webp",
+  "assets/img/pricing/pricing-05-v2.webp",
 ];
 
 const ATMOS_IMAGES = [
@@ -699,7 +699,7 @@ function Process({ t }) {
       <Hero
         t={t}
         small
-        image="assets/img/hero/process-hero-v2.webp"
+        image="assets/img/hero/process-hero-v3.webp"
         title={t.processH}
         lead={
           (isMobile ? t.processLeadMobile : t.processLead) ||
@@ -1170,7 +1170,7 @@ function Contact({ t }) {
       <Hero
         t={t}
         small
-        image="assets/img/hero/contact-hero01.webp"
+        image="assets/img/hero/contact-hero02.webp"
         title={t.contactH}
         lead={isMobile ? (t.contactLeadMobile || t.contactLead) : t.contactLead}
       />
@@ -1348,13 +1348,13 @@ function LegalPage({ t, kind }) {
       title: t.termsH,
       intro: t.termsIntro,
       sections: t.termsSections,
-      image: "assets/img/hero/process-hero-v2.webp",
+      image: "assets/img/hero/process-hero-v3.webp",
     },
     privacy: {
       title: t.privacyH,
       intro: t.privacyIntro,
       sections: t.privacySections,
-      image: "assets/img/hero/contact-hero01.webp",
+      image: "assets/img/hero/contact-hero02.webp",
     },
     cookies: {
       title: t.cookiesH,
