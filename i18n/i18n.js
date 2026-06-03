@@ -833,7 +833,7 @@ pricingItems: [
   {
     key: "roleta",
     title: "Blinds",
-    img: "assets/img/pricing/roleta-latkova.webp",
+    img: "assets/img/pricing/roleta-latkova-01.webp",
     vibe: "Clean lines. Function without compromise.",
     micro: "Light control, simplicity.",
     intro: "Blinds allow precise light control and offer a clean, minimalist solution without curtains. Suitable for kitchens, bathrooms, studies and modern interiors.",
@@ -841,7 +841,7 @@ pricingItems: [
       {
         key: "latkova",
         label: "Fabric blind",
-        img: "assets/img/pricing/roleta-latkova.webp",
+        img: "assets/img/pricing/roleta-latkova-01.webp",
         micro: "Light control, simplicity.",
         intro: "Fabric blinds allow light to be regulated according to the selected material, from gentle shading to stronger blackout. A practical solution for everyday use.",
         rangesTitle: "Guide prices",
@@ -860,7 +860,7 @@ pricingItems: [
       {
         key: "rimska",
         label: "Roman blind",
-        img: "assets/img/pricing/roleta-rimska.webp",
+        img: "assets/img/pricing/roleta-rimska-01.webp",
         micro: "A soft textile layer, decoration and calm.",
         intro: "Roman blinds combine the function of a blind with the look of a curtain. Suitable for interiors where you want to preserve the softness of textile without classic curtains.",
         rangesTitle: "Guide prices",
