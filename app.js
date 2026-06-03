@@ -458,7 +458,7 @@ function Home({ t }) {
         <div className="shell grid-2 feature-split">
           <div className="feature-media reveal">
             <img
-              src="assets/img/Onas/onas-01.webp"
+              src="assets/img/Onas/onas-02.webp"
               alt={t.featureImageAlt}
             />
             <div className="feature-note">
