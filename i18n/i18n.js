@@ -155,7 +155,7 @@ homeFinalCtaLocation:
       "Hotové stínění přivezeme, odborně namontujeme a textil pečlivě pověsíme.\n\nZáclony i závěsy vyžehlíme, nadekorujeme a doladíme tak, aby vše fungovalo vizuálně i technicky.\n\nPo dokončení práce prostor uklidíme a předáme vám ho připravený k používání.\n\nNa místě vám vysvětlíme ovládání a doporučíme vhodnou údržbu, aby stínění dlouhodobě fungovalo tak, jak má."
     ],
     processImgs: [
-      "assets/img/process/process-01-v2.webp",
+      "assets/img/process/process-01-v3.webp",
       "assets/img/process/process-02-v2.webp",
       "assets/img/process/process-03-v2.webp",
       "assets/img/process/process-04-v2.webp"
