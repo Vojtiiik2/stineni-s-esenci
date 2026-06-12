@@ -365,7 +365,7 @@ pricingItems: [
     {
       key: "garnyze",
       label: "Garnýže",
-      img: "assets/img/pricing/garnyze-detail-01.webp",
+      img: "assets/img/pricing/garnyze-detail-01.png",
       micro: "Dekor. Detail, který je vidět.",
       intro: "Garnýže tvoří viditelný prvek interiéru. Volíme materiály, barvy i detaily tak, aby ladily s textilem a celkovým stylem prostoru.",
       rangesTitle: "Orientačně (pro představu)",
@@ -926,7 +926,7 @@ pricingItems: [
       {
         key: "garnyze",
         label: "Curtain rods",
-        img: "assets/img/pricing/garnyze-detail-01.webp",
+        img: "assets/img/pricing/garnyze-detail-01.png",
         micro: "Décor. A detail that remains visible.",
         intro: "Curtain rods are a visible interior element. We choose materials, colours and details so they work in harmony with the textile and the overall character of the space.",
         rangesTitle: "Guide prices",
