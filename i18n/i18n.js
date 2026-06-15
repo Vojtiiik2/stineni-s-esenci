@@ -144,7 +144,7 @@ homeFinalCtaLocation:
       "Od prvního zaměření po finální dekorování. Každý krok má svoje tempo, důvod i přesnost.",
     processLeadMobile:
       "Od zaměření po finální dekorování. Jasně, krok za krokem.",
-    processQuoteTitle: "Výsledek má být přirozený",
+   processQuoteTitle: "Každý detail má svůj význam",
     processShowDetail: "Zobrazit detail",
     processHideDetail: "Skrýt detail",
     steps: ["Konzultace", "Návrh a cena", "Výroba", "Realizace"],
@@ -191,7 +191,7 @@ homeFinalCtaLocation:
         p3: "Preciznost a detail jsou viditelné na první pohled, právě v nich se potkává vaše očekávání s naší zkušeností."
       }
     ],
-    processEnding: "Cílem je, abyste se v prostoru cítili přirozeně a dobře.",
+   processEnding: "Klidný a promyšlený interiér, který dobře slouží svému účelu.",
 
   // Pricing
 priceH: "Kolik stojí stínění od nás",
