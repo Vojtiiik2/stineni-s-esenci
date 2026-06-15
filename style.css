@@ -518,6 +518,14 @@ body.menu-open,body.modal-open{overflow:hidden}
   color:#fff;
   box-shadow:var(--shadow);
 }
+.process-quote-panel{
+  min-height:146px;
+}
+
+.process-quote-panel .button{
+  align-self:center;
+  white-space:nowrap;
+}
 .quote-panel p{margin:0;line-height:1.85;color:rgba(255,255,255,.85)}
 .quote-panel .script{font-size:34px;color:#ead7c5}
 
@@ -2126,7 +2134,11 @@ body.menu-open,body.modal-open{overflow:hidden}
 
   .hero.small{min-height:48svh}
 
-  .hero-actions{flex-direction:column;align-items:stretch}
+  .hero-actions{
+    flex-direction:column;
+    align-items:stretch;
+  }
+
   .trust-grid,
   .ribbon-stack{
     grid-template-columns:1fr;
@@ -2136,6 +2148,7 @@ body.menu-open,body.modal-open{overflow:hidden}
   .ow-img-page{height:190px}
 
   .gallery-grid-home{grid-template-columns:1fr}
+
   .gallery-item-home{
     grid-column:span 1 !important;
     aspect-ratio:4 / 5;
@@ -2146,7 +2159,6 @@ body.menu-open,body.modal-open{overflow:hidden}
 
   .range-item,
   .tier-item,
-  .quote-panel,
   .footer-bottom,
   .price-actions{
     flex-direction:column;
@@ -2154,6 +2166,7 @@ body.menu-open,body.modal-open{overflow:hidden}
   }
 
   .trust-card{padding:16px 14px}
+
   .home-services-grid .service-card,
   .home-benefits-grid .benefit-card,
   .home-projects-grid .gallery-item-home{
@@ -2161,17 +2174,62 @@ body.menu-open,body.modal-open{overflow:hidden}
     min-width:88%;
   }
 
-  .home-atmos-grid .atmos-card{aspect-ratio:4 / 3}
+  .home-atmos-grid .atmos-card{
+    aspect-ratio:4 / 3;
+  }
 
-  .home-faq .faq-trigger{padding:16px}
-  .home-faq .faq-answer{padding:0 16px 16px}
+  .home-faq .faq-trigger{
+    padding:16px;
+  }
 
-  .mobile-inline-cta-card{padding:20px 18px}
-  .home-final-cta .card-inner{padding:20px 18px}
+  .home-faq .faq-answer{
+    padding:0 16px 16px;
+  }
 
-  .footer{padding:24px 0 32px}
+  .mobile-inline-cta-card{
+    padding:20px 18px;
+  }
+
+  .home-final-cta .card-inner{
+    padding:20px 18px;
+  }
+
+  .footer{
+    padding:24px 0 32px;
+  }
+
+  .process-quote-panel{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:22px;
+    align-items:start;
+    min-height:auto;
+    padding:30px 24px 28px;
+    border-radius:32px;
+    margin-top:18px !important;
+  }
+
+  .process-quote-panel .script{
+    display:block;
+    font-size:34px;
+    line-height:1.15;
+    max-width:270px;
+  }
+
+  .process-quote-panel p{
+    margin-top:10px;
+    font-size:16px;
+    line-height:1.65;
+    max-width:290px;
+  }
+
+  .process-quote-panel .button{
+    width:100%;
+    justify-content:center;
+    min-height:52px;
+    align-self:stretch;
+  }
 }
-
 
 
 
