@@ -191,7 +191,7 @@ homeFinalCtaLocation:
         p3: "Preciznost a detail jsou viditelné na první pohled, právě v nich se potkává vaše očekávání s naší zkušeností."
       }
     ],
-  processEnding: "Výsledkem je interiér, který působí klidně, promyšleně a dobře slouží svému účelu."
+  processEnding: "Výsledkem je interiér, který působí klidně, promyšleně a dobře slouží svému účelu.",
 
   // Pricing
 priceH: "Kolik stojí stínění od nás",
