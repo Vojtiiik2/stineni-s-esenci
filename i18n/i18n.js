@@ -367,7 +367,7 @@ pricingItems: [
       label: "Motorické kolejnice",
       img: "assets/img/pricing/motor-01.png",
       micro: "Komfort. Tichý pohyb a automatizace.",
-      intro: "Motorické kolejnice spojují pohodlí a funkčnost. Ideální pro velká okna a moderní interiéry kde má být stínění součástí každodenního.",
+      intro: "Motorické kolejnice spojují pohodlí a funkčnost. Ideální pro velká okna a moderní interiéry kde má být stínění součástí každodenního komfortu.",
       rangesTitle: "Orientačně (pro představu)",
       ranges: [
         { label: "malé okno (200 x 270cm)", value: "cca 38.4-69.5 tis. Kč" },
