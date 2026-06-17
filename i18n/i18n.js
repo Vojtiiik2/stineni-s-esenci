@@ -365,7 +365,7 @@ pricingItems: [
     {
       key: "motoricke-kolejnice",
       label: "Motorické kolejnice",
-      img: "assets/img/pricing/pricing-04-v2.webp",
+      img: "assets/img/pricing/motor-01.png",
       micro: "Komfort. Tichý pohyb a automatizace.",
       intro: "Motorické kolejnice spojují pohodlí a funkčnost. Ideální pro velká okna a moderní interiéry kde má být stínění součástí každodenního.",
       rangesTitle: "Orientačně (pro představu)",
