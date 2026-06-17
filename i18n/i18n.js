@@ -367,11 +367,11 @@ pricingItems: [
       label: "Motorické kolejnice",
       img: "assets/img/pricing/pricing-04-v2.webp",
       micro: "Komfort. Tichý pohyb a automatizace.",
-      intro: "Motorické kolejnice přinášejí pohodlné ovládání záclon a závěsů. Hodí se pro velké prosklené plochy, vyšší okna i interiéry, kde má být stínění součástí každodenního komfortu.",
+      intro: "Motorické kolejnice spojují pohodlí a funkčnost. Ideální pro velká okna a moderní interiéry kde má být stínění součástí každodenního.",
       rangesTitle: "Orientačně (pro představu)",
       ranges: [
-        { label: "malé okno (200 x 270cm)", value: "38 400–69 500 Kč" },
-        { label: "velké okno (500 x 290cm)", value: "51 200–78 900 Kč" }
+        { label: "malé okno (200 x 270cm)", value: "cca 38.4-69.5 tis. Kč" },
+        { label: "velké okno (500 x 290cm)", value: "cca 51.2–78.9 tis Kč" }
       ],
       rangesNote: "Orientační cena zahrnuje návrh podle prostoru, zaměření, výrobu, montáž a finální dekorování",
       tiersTitle: "Typy",
