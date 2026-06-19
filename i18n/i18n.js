@@ -945,7 +945,7 @@ pricingItems: [
       {
         key: "motorised-tracks",
         label: "Motorised tracks",
-        img: "assets/img/pricing/motor-01.png"
+        img: "assets/img/pricing/motor-01.png",
         micro: "Comfort. Quiet movement and automation.",
         intro: "Motorised tracks provide convenient control of curtains and sheers. They are suitable for large glazed areas, higher windows and interiors where window treatments are part of everyday comfort.",
         rangesTitle: "Guide prices",
