@@ -735,7 +735,7 @@ homeFinalCtaLocation:
       "We deliver the finished window treatments, install them professionally and hang the textiles with care.\n\nBoth sheers and curtains are steamed, styled and adjusted so that everything works visually as well as technically.\n\nOnce the work is finished, we tidy the space and hand it back ready to use.\n\nOn site, we explain the operation and recommend suitable maintenance so the window treatments continue to function as they should over time."
     ],
     processImgs: [
-      "assets/img/process/process-01-v2.webp",
+      "assets/img/process/process-01-v3.webp",
       "assets/img/process/process-02-v2.webp",
       "assets/img/process/process-03-v2.webp",
       "assets/img/process/process-04-v2.webp"
@@ -918,7 +918,7 @@ pricingItems: [
   {
     key: "systemy",
     title: "Tracks and curtain rods",
-    img: "assets/img/pricing/systemy-kolejnice.webp",
+    img: "assets/img/pricing/pricing-04-v2.webp",
     vibe: "The foundation that holds and guides everything.",
     micro: "Functional as well as decorative.",
     intro: "Tracks and curtain rods ensure both the correct function and the visual finish of the window treatments. We design them according to the space and the type of textile.",
@@ -964,7 +964,7 @@ pricingItems: [
       {
         key: "garnyze",
         label: "Curtain rods",
-        img: "assets/img/pricing/garnyze-detail-01.png",
+        img: "assets/img/pricing/garnyze-detail-02.png",
         micro: "Décor. A detail that remains visible.",
         intro: "Curtain rods are a visible interior element. We choose materials, colours and details so they work in harmony with the textile and the overall character of the space.",
         rangesTitle: "Guide prices",
