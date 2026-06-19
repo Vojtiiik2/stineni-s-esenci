@@ -898,7 +898,7 @@ pricingItems: [
       {
         key: "plisse",
         label: "Pleated blind",
-        img: "assets/img/pricing/roleta-plisse.webp",
+        img: "assets/img/pricing/roleta-plisse-01.webp",
         micro: "Precise dosing of light. Excellent for unusual window shapes.",
         intro: "Pleated blinds can be drawn from both the top and the bottom, allowing very precise light control. An ideal solution for unusual windows and specific situations.",
         rangesTitle: "Guide prices",
